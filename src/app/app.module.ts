@@ -68,13 +68,14 @@ import { InputAutocompleteComponent } from '@component/input-autocomplete/input-
 
   ],
   providers: [
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000, verticalPosition:"top", horizontalPosition:"right"}},
+
     DataDefinitionService, 
     SessionStorageService, 
     ParserService, 
     ValidatorsService,
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000, verticalPosition:"top", horizontalPosition:"right"}}
-
+    
     //DataDefinitionLoaderService, 
   ],
   bootstrap: [AppComponent]
