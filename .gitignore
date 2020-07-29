@@ -45,4 +45,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-app.config.ts
+src/app/app.config.ts
