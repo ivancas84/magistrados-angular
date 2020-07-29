@@ -34,7 +34,7 @@ import { SummaryPipe } from '@pipe/summary.pipe';
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
 import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
 
-//import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
+import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
 //import { MenuComponent } from './component/menu/menu.component'
 
 @NgModule({
@@ -76,7 +76,7 @@ import { InputAutocompleteComponent } from '@component/input-autocomplete/input-
     ParserService, 
     ValidatorsService,
     
-    //DataDefinitionLoaderService, 
+    DataDefinitionLoaderService, 
   ],
   bootstrap: [AppComponent]
 })
