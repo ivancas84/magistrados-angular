@@ -19,9 +19,33 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { DataDefinitionService } from '@service/data-definition/data-definition.service';
+import { SessionStorageService } from '@service/storage/session-storage.service';
+import { ParserService } from '@service/parser/parser.service';
+import { ValidatorsService } from '@service/validators/validators.service';
+
+import { LabelPipe } from '@pipe/label.pipe';
+import { ToDatePipe } from '@pipe/to-date.pipe';
+import { ToTimePipe } from '@pipe/to-time.pipe';
+import { SiNoPipe } from '@pipe/si-no.pipe';
+import { StoragePipe } from '@pipe/storage.pipe';
+import { SummaryPipe } from '@pipe/summary.pipe';
+
+import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
+import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
+
+//import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
+//import { MenuComponent } from './component/menu/menu.component'
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+    LabelPipe, ToDatePipe, ToTimePipe, SiNoPipe, SummaryPipe, StoragePipe,
+
+    DialogAlertComponent,
+    InputAutocompleteComponent,
+    //MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,8 +68,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
   ],
   providers: [
+    DataDefinitionService, 
+    SessionStorageService, 
+    ParserService, 
+    ValidatorsService,
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000, verticalPosition:"top", horizontalPosition:"right"}}
+
+    //DataDefinitionLoaderService, 
   ],
   bootstrap: [AppComponent]
 })
