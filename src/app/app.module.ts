@@ -35,7 +35,7 @@ import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.compo
 import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
 
 import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
-//import { MenuComponent } from './component/menu/menu.component'
+import { MenuComponent } from '@component/menu/menu.component'
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { DataDefinitionLoaderService } from '@service/data-definition-loader.ser
 
     DialogAlertComponent,
     InputAutocompleteComponent,
-    //MenuComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
