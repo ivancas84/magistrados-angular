@@ -9,9 +9,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import {MatNativeDateModule} from '@angular/material/core';
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -35,7 +38,11 @@ import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.compo
 import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
 
 import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
-import { MenuComponent } from '@component/menu/menu.component'
+import { MenuComponent } from '@component/menu/menu.component';
+
+import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
+import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -46,6 +53,8 @@ import { MenuComponent } from '@component/menu/menu.component'
     DialogAlertComponent,
     InputAutocompleteComponent,
     MenuComponent,
+
+    PersonaAdminComponent, PersonaFieldsetComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,17 +68,21 @@ import { MenuComponent } from '@component/menu/menu.component'
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
+    MatDatepickerModule,
     MatDialogModule,
     MatIconModule,
     MatInputModule,
     MatMenuModule,
     MatSnackBarModule,
     MatToolbarModule,
+    MatNativeDateModule,
+    
 
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000, verticalPosition:"top", horizontalPosition:"right"}},
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
 
     DataDefinitionService, 
     SessionStorageService, 
