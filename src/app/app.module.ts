@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
@@ -36,6 +37,7 @@ import { SummaryPipe } from '@pipe/summary.pipe';
 
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
 import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
+import { InputSelectComponent } from '@component/input-select/input-select.component';
 
 import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
 import { MenuComponent } from '@component/menu/menu.component';
@@ -52,6 +54,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
     DialogAlertComponent,
     InputAutocompleteComponent,
+    InputSelectComponent,
     MenuComponent,
 
     PersonaAdminComponent, PersonaFieldsetComponent,
@@ -73,11 +76,10 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     MatIconModule,
     MatInputModule,
     MatMenuModule,
-    MatSnackBarModule,
-    MatToolbarModule,
     MatNativeDateModule,
-    
-
+    MatSnackBarModule,
+    MatSelectModule,
+    MatToolbarModule,
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
