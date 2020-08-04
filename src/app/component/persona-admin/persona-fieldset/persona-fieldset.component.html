@@ -24,15 +24,34 @@
       </div>
       <div fxFlex="auto">
         <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="ejemplo@dominio.com">
+          <mat-error *ngIf="email.hasError('pattern')">El formato es incorrecto</mat-error>
+        </mat-form-field>
+      </div>
+      
+    </div>
+    <div fxLayout="row"
+      fxLayout.xs="column"
+      fxLayoutGap="10px">
+      <app-input-select fxFlex="10%" [field]="tipoDocumento" [entityName]="'tipo_documento'" [title]="'Tipo Documento'"></app-input-select>
+      <div fxFlex="auto">
+        <mat-form-field>
           <mat-label>Numero documento</mat-label>
           <input matInput formControlName="numero_documento" >
           <mat-error *ngIf="numeroDocumento.hasError('required')">Debe completar valor</mat-error>
         </mat-form-field>
       </div>
-    </div>
-    <div fxLayout="row"
-      fxLayout.xs="column"
-      fxLayoutGap="10px">
+      <div fxFlex="auto">
+        <mat-form-field>
+          <mat-label>Fecha nacimiento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento" placeholder="Seleccione fecha" disabled>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker disabled="false"></mat-datepicker>
+          <mat-error *ngIf="fechaNacimiento.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
+        </mat-form-field>
+      </div>
+      
       <div fxFlex="auto">
         <mat-form-field>
           <mat-label>Telefono laboral</mat-label>
@@ -45,22 +64,7 @@
           <input matInput formControlName="telefono_particular" >
         </mat-form-field>
       </div>
-      <div fxFlex="auto">
-        <mat-form-field>
-          <mat-label>Fecha nacimiento</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento" placeholder="Seleccione fecha" disabled>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker disabled="false"></mat-datepicker>
-          <mat-error *ngIf="fechaNacimiento.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
-        </mat-form-field>
-      </div>
-      <div fxFlex="auto">
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" placeholder="ejemplo@dominio.com">
-          <mat-error *ngIf="email.hasError('pattern')">El formato es incorrecto</mat-error>
-        </mat-form-field>
-      </div>
+      
     </div>
     <div fxLayout="row"
       fxLayout.xs="column"
@@ -68,12 +72,6 @@
         <app-input-select fxFlex="auto" [field]="cargo" [entityName]="'cargo'" [title]="'Cargo'"></app-input-select>
         <app-input-select fxFlex="auto" [field]="organo" [entityName]="'organo'" [title]="'Organo'"></app-input-select>
         <app-input-select fxFlex="auto" [field]="departamentoJudicial" [entityName]="'departamento_judicial'" [title]="'Departamento Judicial'"></app-input-select>
-        <app-input-select fxFlex="auto" [field]="departamentoJudicialInformado" [entityName]="'departamento_judicial'" [title]="'Departamento Judicial Informado'"></app-input-select>
-    </div>
-    <div fxLayout="row"
-      fxLayout.xs="column"
-      fxLayoutGap="10px">
-        <app-input-select fxFlex="auto" [field]="tipoDocumento" [entityName]="'tipo_documento'" [title]="'Tipo Documento'"></app-input-select>
     </div>
   </mat-card-content>
 </mat-card>
