@@ -55,7 +55,6 @@ export class PersonaFieldsetComponent extends FieldsetComponent {
         validators: [Validators.required],
       }],
       tipo_documento: [null, {
-        validators: [Validators.required],
       }],
     });
     return fg;
