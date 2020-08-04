@@ -9,14 +9,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import {MatNativeDateModule} from '@angular/material/core';
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
@@ -33,9 +37,14 @@ import { SummaryPipe } from '@pipe/summary.pipe';
 
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
 import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
+import { InputSelectComponent } from '@component/input-select/input-select.component';
 
 import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
-import { MenuComponent } from '@component/menu/menu.component'
+import { MenuComponent } from '@component/menu/menu.component';
+
+import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
+import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -45,7 +54,10 @@ import { MenuComponent } from '@component/menu/menu.component'
 
     DialogAlertComponent,
     InputAutocompleteComponent,
+    InputSelectComponent,
     MenuComponent,
+
+    PersonaAdminComponent, PersonaFieldsetComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,17 +71,20 @@ import { MenuComponent } from '@component/menu/menu.component'
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
+    MatDatepickerModule,
     MatDialogModule,
     MatIconModule,
     MatInputModule,
     MatMenuModule,
+    MatNativeDateModule,
     MatSnackBarModule,
+    MatSelectModule,
     MatToolbarModule,
-
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000, verticalPosition:"top", horizontalPosition:"right"}},
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
 
     DataDefinitionService, 
     SessionStorageService, 
