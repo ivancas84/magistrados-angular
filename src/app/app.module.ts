@@ -8,7 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MAT_DATE_LOCALE } from '@angular/material/core';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import {MatNativeDateModule} from '@angular/material/core';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -38,6 +38,7 @@ import { SummaryPipe } from '@pipe/summary.pipe';
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
 import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
 import { InputSelectComponent } from '@component/input-select/input-select.component';
+import { InputSearchGoComponent } from '@component/input-search-go/input-search-go.component';
 
 import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
 import { MenuComponent } from '@component/menu/menu.component';
@@ -45,6 +46,19 @@ import { MenuComponent } from '@component/menu/menu.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+
+export const APP_DATE_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @NgModule({
   declarations: [
@@ -55,6 +69,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     DialogAlertComponent,
     InputAutocompleteComponent,
     InputSelectComponent,
+    InputSearchGoComponent,
     MenuComponent,
 
     PersonaAdminComponent, PersonaFieldsetComponent,
@@ -86,6 +101,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000, verticalPosition:"top", horizontalPosition:"right"}},
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
     {provide: MAT_DATE_LOCALE, useValue: 'es-AR' },
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]},
+    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS},
 
     DataDefinitionService, 
     SessionStorageService, 
