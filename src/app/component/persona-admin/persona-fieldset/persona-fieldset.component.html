@@ -24,6 +24,8 @@
           <mat-form-field>
             <mat-label>Legajo</mat-label>
             <input matInput formControlName="legajo" >
+            <mat-error *ngIf="legajo.hasError('required')">El formato es incorrecto</mat-error>
+
           </mat-form-field>
         </div>
         <div fxFlex="auto">
