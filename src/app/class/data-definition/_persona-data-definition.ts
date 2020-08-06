@@ -37,4 +37,19 @@ export class _PersonaDataDefinition extends DataDefinition {
     this.stg.setItem("persona" + rowCloned.id, rowCloned);
   }
 
+  label (id: string | number): string {
+    var row = this.stg.getItem(this.entity + id);
+    if(!row) return null;
+
+    let ret = "";
+    if (row["id"]) ret = ret.trim() + " " + row["id"];
+
+    if (row["nombres"]) ret = ret.trim() + " " + row["nombres"];
+
+    if (row["apellidos"]) ret = ret.trim() + " " + row["apellidos"];
+
+    if (row["legajo"]) ret = ret.trim() + " " + row["legajo"];
+
+    return ret.trim();
+  }
 }
