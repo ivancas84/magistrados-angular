@@ -33,8 +33,10 @@ export class PersonaFieldsetComponent extends FieldsetComponent {
       }],
       legajo: [null, {
         validators: [Validators.required],
+        asyncValidators: [this.validators.unique('legajo', 'persona')],
       }],
       numero_documento: [null, {
+        asyncValidators: [this.validators.unique('numero_documento', 'persona')],
       }],
       telefono_laboral: [null, {
       }],

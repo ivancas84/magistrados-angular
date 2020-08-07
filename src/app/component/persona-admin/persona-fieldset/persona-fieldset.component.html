@@ -25,7 +25,9 @@
             <mat-label>Legajo</mat-label>
             <input matInput formControlName="legajo" >
             <mat-error *ngIf="legajo.hasError('required')">El formato es incorrecto</mat-error>
-
+            <mat-error *ngIf="legajo.hasError('notUnique')">
+              El valor ya se encuentra utilizado: <a routerLink="/persona-admin" [queryParams]="{'legajo':legajo.value}">Cargar</a>    
+            </mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="auto">
@@ -46,6 +48,9 @@
           <mat-label>Numero documento</mat-label>
           <input matInput formControlName="numero_documento" >
           <mat-error *ngIf="numeroDocumento.hasError('required')">Debe completar valor</mat-error>
+          <mat-error *ngIf="numeroDocumento.hasError('notUnique')">
+            El valor ya se encuentra utilizado: <a routerLink="/persona-admin" [queryParams]="{'numero_documento':numeroDocumento.value}">Cargar</a>    
+          </mat-error>
         </mat-form-field>
       </div>
       <div fxFlex="auto">
