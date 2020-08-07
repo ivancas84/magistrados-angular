@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header fxLayout="row" fxLayoutAlign="start center">
+    <mat-card-title>Afiliaciones</mat-card-title>
+    <div *ngIf="data$ | async as persona; else disableAdd">
+      <a mat-mini-fab *ngIf="persona && persona.id; else disableAdd" [routerLink]="['/afiliacion-admin']" [queryParams]="{persona:persona.id}" ><mat-icon>add</mat-icon></a>
+    </div>
+    <ng-template #disableAdd>
+      <a mat-mini-fab disabled><mat-icon>add</mat-icon></a>
+    </ng-template>
+  </mat-card-header>
+  <mat-card-content>
+    En construcción
+  </mat-card-content>
+</mat-card>

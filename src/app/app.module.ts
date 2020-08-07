@@ -45,8 +45,12 @@ import { InputSearchGoComponent } from '@component/input-search-go/input-search-
 import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
 import { MenuComponent } from '@component/menu/menu.component';
 
+import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
+import { AfiliacionFieldsetComponent } from '@component/afiliacion-admin/afiliacion-fieldset/afiliacion-fieldset.component';
+
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
+import { AfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
 
 export const APP_DATE_FORMATS = {
   parse: {
@@ -72,7 +76,8 @@ export const APP_DATE_FORMATS = {
     InputSearchGoComponent,
     MenuComponent,
 
-    PersonaAdminComponent, PersonaFieldsetComponent,
+    AfiliacionAdminComponent, AfiliacionFieldsetComponent,
+    PersonaAdminComponent, PersonaFieldsetComponent, AfiliacionTableComponent
   ],
   imports: [
     BrowserModule,

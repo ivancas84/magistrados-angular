@@ -1,0 +1,30 @@
+<mat-card [formGroup]="fieldset">
+  <mat-card-header>
+    <mat-card-title>Afiliacion</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+      <div fxFlex="auto">
+        <mat-form-field>
+          <mat-label>Motivo</mat-label>
+          <input matInput formControlName="motivo" >
+          <mat-error *ngIf="motivo.hasError('required')">Debe completar valor</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="auto">
+        <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <input matInput formControlName="estado" >
+          <mat-error *ngIf="estado.hasError('required')">Debe completar valor</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="auto">
+        <mat-form-field>
+          <mat-label>Observaciones</mat-label>
+          <input matInput formControlName="observaciones" >
+        </mat-form-field>
+      </div>
+        <app-input-autocomplete fxFlex="auto" [field]="persona" [entityName]="'persona'" [title]="'Persona'"></app-input-autocomplete>
+    </div>
+  </mat-card-content>
+</mat-card>
