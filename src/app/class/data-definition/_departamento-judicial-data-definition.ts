@@ -12,4 +12,15 @@ export class _DepartamentoJudicialDataDefinition extends DataDefinition {
     this.stg.setItem("departamento_judicial" + rowCloned.id, rowCloned);
   }
 
+  label (id: string | number): string {
+    var row = this.stg.getItem(this.entity + id);
+    if(!row) return null;
+
+    let ret = "";
+    if (row["codigo"]) ret = ret.trim() + " " + row["codigo"];
+
+    if (row["nombre"]) ret = ret.trim() + " " + row["nombre"];
+
+    return ret.trim();
+  }
 }

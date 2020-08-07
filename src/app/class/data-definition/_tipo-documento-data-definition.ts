@@ -12,4 +12,13 @@ export class _TipoDocumentoDataDefinition extends DataDefinition {
     this.stg.setItem("tipo_documento" + rowCloned.id, rowCloned);
   }
 
+  label (id: string | number): string {
+    var row = this.stg.getItem(this.entity + id);
+    if(!row) return null;
+
+    let ret = "";
+    if (row["descripcion"]) ret = ret.trim() + " " + row["descripcion"];
+
+    return ret.trim();
+  }
 }

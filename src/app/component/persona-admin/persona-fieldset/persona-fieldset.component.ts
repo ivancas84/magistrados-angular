@@ -32,9 +32,11 @@ export class PersonaFieldsetComponent extends FieldsetComponent {
       apellidos: [null, {
       }],
       legajo: [null, {
+        validators: [Validators.required],
+        asyncValidators: [this.validators.unique('legajo', 'persona')],
       }],
       numero_documento: [null, {
-        validators: [Validators.required],
+        asyncValidators: [this.validators.unique('numero_documento', 'persona')],
       }],
       telefono_laboral: [null, {
       }],
@@ -54,11 +56,7 @@ export class PersonaFieldsetComponent extends FieldsetComponent {
       departamento_judicial: [null, {
         validators: [Validators.required],
       }],
-      departamento_judicial_informado: [null, {
-        validators: [Validators.required],
-      }],
       tipo_documento: [null, {
-        validators: [Validators.required],
       }],
     });
     return fg;
@@ -78,7 +76,6 @@ export class PersonaFieldsetComponent extends FieldsetComponent {
   get cargo() { return this.fieldset.get('cargo')}
   get organo() { return this.fieldset.get('organo')}
   get departamentoJudicial() { return this.fieldset.get('departamento_judicial')}
-  get departamentoJudicialInformado() { return this.fieldset.get('departamento_judicial_informado')}
   get tipoDocumento() { return this.fieldset.get('tipo_documento')}
 
 }
