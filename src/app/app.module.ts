@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
@@ -98,6 +99,7 @@ export const APP_DATE_FORMATS = {
     MatInputModule,
     MatMenuModule,
     MatNativeDateModule,
+    MatPaginatorModule,
     MatSnackBarModule,
     MatSelectModule,
     MatTableModule,
