@@ -40,7 +40,6 @@ export class AfiliacionTableComponent extends ShowElementComponent{
   ) {
     super(router);
   }
-
   
   ngOnInit(): void {
     this.load$ = this.data$.pipe(map(
@@ -48,14 +47,7 @@ export class AfiliacionTableComponent extends ShowElementComponent{
         if(isEmptyObject(persona)) return of(null);
         var d = new Display();
         d.setParams({persona:persona.id})
-        this.dd.all("afiliacion",d).subscribe(
-          data => {
-            this.data = data
-            
-            console.log(this.data);
-          }
-        );
-        return true;
+        return this.dd.all("afiliacion",d);
       }
     ))
   }
