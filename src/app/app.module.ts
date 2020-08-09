@@ -22,6 +22,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
@@ -102,6 +103,7 @@ export const APP_DATE_FORMATS = {
     MatPaginatorModule,
     MatSnackBarModule,
     MatSelectModule,
+    MatSortModule,
     MatTableModule,
     MatToolbarModule,
   ],
