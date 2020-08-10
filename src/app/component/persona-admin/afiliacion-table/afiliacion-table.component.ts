@@ -11,10 +11,10 @@ import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { MatSort, Sort } from '@angular/material/sort';
 
 @Component({
-  selector: 'app-afiliacion-table',
+  selector: 'app-persona-afiliacion-table',
   templateUrl: './afiliacion-table.component.html',
 })
-export class AfiliacionTableComponent extends TableComponent implements OnInit{
+export class PersonaAfiliacionTableComponent extends TableComponent implements OnInit{
   displayedColumns: string[] = ['motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado', 'observaciones'];
 
   constructor(
