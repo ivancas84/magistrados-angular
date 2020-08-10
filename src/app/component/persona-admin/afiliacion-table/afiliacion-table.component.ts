@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { ShowElementComponent } from '@component/show-element/show-element.component';
+import { TableComponent } from '@component/table/table.component';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -14,13 +14,8 @@ import { MatSort, Sort } from '@angular/material/sort';
   selector: 'app-afiliacion-table',
   templateUrl: './afiliacion-table.component.html',
 })
-export class AfiliacionTableComponent extends ShowElementComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'motivo'];
-
-  load$: Observable<any>;
-  data: { [index: string]: any }[] = [];
-  pageEvent: PageEvent;
-
+export class AfiliacionTableComponent extends TableComponent implements OnInit{
+  displayedColumns: string[] = ['motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado', 'observaciones'];
 
   constructor(
     protected dd: DataDefinitionService,
@@ -30,13 +25,13 @@ export class AfiliacionTableComponent extends ShowElementComponent implements On
   }
   
   ngOnInit(): void {
-
     this.load$ = this.data$.pipe(
       mergeMap(
         persona => {
           if(isEmptyObject(persona)) return of(null);
           var d = new Display();
           d.setParams({persona:persona.id})
+          d.setOrder({"creado":"desc"});
           return this.dd.all("afiliacion",d);
         }),
       tap(
