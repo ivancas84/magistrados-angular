@@ -16,11 +16,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
@@ -45,8 +49,12 @@ import { InputSearchGoComponent } from '@component/input-search-go/input-search-
 import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
 import { MenuComponent } from '@component/menu/menu.component';
 
+import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
+import { AfiliacionFieldsetComponent } from '@component/afiliacion-admin/afiliacion-fieldset/afiliacion-fieldset.component';
+
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
+import { AfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
 
 export const APP_DATE_FORMATS = {
   parse: {
@@ -72,7 +80,8 @@ export const APP_DATE_FORMATS = {
     InputSearchGoComponent,
     MenuComponent,
 
-    PersonaAdminComponent, PersonaFieldsetComponent,
+    AfiliacionAdminComponent, AfiliacionFieldsetComponent,
+    PersonaAdminComponent, PersonaFieldsetComponent, AfiliacionTableComponent
   ],
   imports: [
     BrowserModule,
@@ -88,12 +97,16 @@ export const APP_DATE_FORMATS = {
     MatCardModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatDividerModule,
     MatIconModule,
     MatInputModule,
     MatMenuModule,
     MatNativeDateModule,
+    MatPaginatorModule,
     MatSnackBarModule,
     MatSelectModule,
+    MatSortModule,
+    MatTableModule,
     MatToolbarModule,
   ],
   providers: [
