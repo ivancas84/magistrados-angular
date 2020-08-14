@@ -1,10 +1,18 @@
 <mat-toolbar>
   <span>My App</span>
   
-  <button mat-button [matMenuTriggerFor]="menu" aria-label="icon-button with menu icon">
+  
+  <button mat-button [matMenuTriggerFor]="ver" aria-label="icon-button with menu icon">
+    Ver
+  </button>
+  <mat-menu #ver="matMenu">
+    <a mat-menu-item routerLink="/afiliacion-show" routerLinkActive="active" title="Ver Afiliaciones">Afiliación</a>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="nuevo" aria-label="icon-button with menu icon">
     Nuevo
   </button>
-  <mat-menu #menu="matMenu">
+  <mat-menu #nuevo="matMenu">
     <a mat-menu-item routerLink="/persona-admin" routerLinkActive="active" title="Nueva Persona">Persona</a>
   </mat-menu>
 </mat-toolbar>
