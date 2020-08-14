@@ -1,0 +1,21 @@
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Opciones
+      </mat-panel-title>
+      
+    </mat-expansion-panel-header>
+      
+      <form [formGroup]="searchForm" novalidate (ngSubmit)="onSubmit()">       
+        <core-search-all [form]="searchForm" [display$]="display$"></core-search-all>
+        <!--app-afiliacion-search-params [form]="searchForm" [display$]="display$"></app-afiliacion-search-params-->
+        <!--app-afiliacion-search-condition [form]="searchForm" [display$]="display$"></app-afiliacion-search-condition-->
+        <!--app-afiliacion-search-order [form]="searchForm" [display$]="display$"></app-afiliacion-search-order-->
+
+        <button mat-raised-button color="primary" type="submit">Aceptar</button>&nbsp;
+      </form>
+
+  </mat-expansion-panel>
+
+</mat-accordion>
