@@ -52,6 +52,9 @@ import { MenuComponent } from '@component/menu/menu.component';
 import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
 import { AfiliacionFieldsetComponent } from '@component/afiliacion-admin/afiliacion-fieldset/afiliacion-fieldset.component';
 
+import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show/afiliacion-show.component';
+import { AfiliacionTableComponent } from '@component/afiliacion-show/afiliacion-table/afiliacion-table.component';
+
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
 import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
@@ -81,7 +84,8 @@ export const APP_DATE_FORMATS = {
     MenuComponent,
 
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
-    PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent
+    AfiliacionShowComponent, AfiliacionTableComponent,
+    PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent,
   ],
   imports: [
     BrowserModule,
