@@ -61,6 +61,7 @@ import { AfiliacionSearchComponent } from '@component/afiliacion-show/afiliacion
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
 import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
+import { AfiliacionSearchParamsComponent } from '@component/afiliacion-show/afiliacion-search-params/afiliacion-search-params.component';
 
 export const APP_DATE_FORMATS = {
   parse: {
@@ -88,7 +89,7 @@ export const APP_DATE_FORMATS = {
     SearchAllComponent,
 
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
-    AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent,
+    AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent, AfiliacionSearchParamsComponent,
     PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent,
   ],
   imports: [
