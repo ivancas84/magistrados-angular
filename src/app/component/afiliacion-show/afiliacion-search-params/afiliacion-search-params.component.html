@@ -15,6 +15,48 @@
           </mat-form-field>
         </div>
       </div>
+      <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
+        <div fxFlex="auto">
+          <mat-form-field>
+            <mat-label>Creado</mat-label>
+            <input matInput [matDatepicker]="crePicker" formControlName="creado">
+            <mat-datepicker-toggle matSuffix [for]="crePicker"></mat-datepicker-toggle>
+            <mat-datepicker #crePicker></mat-datepicker>
+            <mat-error *ngIf="creado.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="auto">
+          <mat-form-field>
+            <mat-label>Enviado</mat-label>
+            <input matInput [matDatepicker]="envPicker" formControlName="enviado">
+            <mat-datepicker-toggle matSuffix [for]="envPicker"></mat-datepicker-toggle>
+            <mat-datepicker #envPicker></mat-datepicker>
+            <mat-error *ngIf="enviado.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>  
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
+        <div fxFlex="auto">
+          <mat-form-field>
+            <mat-label>Evaluado</mat-label>
+            <input matInput [matDatepicker]="evaPicker" formControlName="evaluado">
+            <mat-datepicker-toggle matSuffix [for]="evaPicker"></mat-datepicker-toggle>
+            <mat-datepicker #evaPicker></mat-datepicker>
+            <mat-error *ngIf="evaluado.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="auto">
+          <mat-form-field>
+            <mat-label>Modificado</mat-label>
+            <input matInput [matDatepicker]="moaPicker" formControlName="modificado">
+            <mat-datepicker-toggle matSuffix [for]="moaPicker"></mat-datepicker-toggle>
+            <mat-datepicker #moaPicker></mat-datepicker>
+            <mat-error *ngIf="modificado.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
   </mat-card-content>
 </mat-card>

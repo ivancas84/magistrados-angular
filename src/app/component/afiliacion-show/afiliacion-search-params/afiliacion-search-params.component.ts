@@ -20,6 +20,10 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
     let fg: FormGroup = this.fb.group({
       motivo: null,
       estado: null,
+      creado: null,
+      enviado: null,
+      evaluado: null,
+      modificado: null,
       persona: null,
     });
     return fg;
