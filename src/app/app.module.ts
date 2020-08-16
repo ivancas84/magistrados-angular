@@ -50,6 +50,7 @@ import { InputSelectComponent } from '@component/input-select/input-select.compo
 import { InputSearchGoComponent } from '@component/input-search-go/input-search-go.component';
 import { MenuComponent } from '@component/menu/menu.component';
 import { SearchAllComponent } from '@component/search-all/search-all.component';
+import { LabelComponent } from '@component/label/label.component';
 
 import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
 import { AfiliacionFieldsetComponent } from '@component/afiliacion-admin/afiliacion-fieldset/afiliacion-fieldset.component';
@@ -87,6 +88,7 @@ export const APP_DATE_FORMATS = {
     InputSearchGoComponent,
     MenuComponent,
     SearchAllComponent,
+    LabelComponent,
 
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
     AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent, AfiliacionSearchParamsComponent,
