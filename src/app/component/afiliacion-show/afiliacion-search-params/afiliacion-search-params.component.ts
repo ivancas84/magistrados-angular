@@ -20,7 +20,7 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
     let fg: FormGroup = this.fb.group({
       motivo: null,
       estado: null,
-      creado: null,
+      creado_date: null,
       enviado: null,
       evaluado: null,
       modificado: null,
@@ -31,7 +31,7 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
 
   get motivo() { return this.fieldset.get('motivo')}
   get estado() { return this.fieldset.get('estado')}
-  get creado() { return this.fieldset.get('creado')}
+  get creado_date() { return this.fieldset.get('creado_date')}
   get enviado() { return this.fieldset.get('enviado')}
   get evaluado() { return this.fieldset.get('evaluado')}
   get modificado() { return this.fieldset.get('modificado')}

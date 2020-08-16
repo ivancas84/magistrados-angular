@@ -19,10 +19,10 @@
         <div fxFlex="auto">
           <mat-form-field>
             <mat-label>Creado</mat-label>
-            <input matInput [matDatepicker]="crePicker" formControlName="creado">
+            <input matInput [matDatepicker]="crePicker" formControlName="creado_date">
             <mat-datepicker-toggle matSuffix [for]="crePicker"></mat-datepicker-toggle>
             <mat-datepicker #crePicker></mat-datepicker>
-            <mat-error *ngIf="creado.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
+            <mat-error *ngIf="creado_date.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="auto">
