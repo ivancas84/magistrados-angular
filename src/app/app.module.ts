@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
@@ -41,23 +42,27 @@ import { SiNoPipe } from '@pipe/si-no.pipe';
 import { StoragePipe } from '@pipe/storage.pipe';
 import { SummaryPipe } from '@pipe/summary.pipe';
 
+import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
+
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
 import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
 import { InputSelectComponent } from '@component/input-select/input-select.component';
 import { InputSearchGoComponent } from '@component/input-search-go/input-search-go.component';
-
-import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
 import { MenuComponent } from '@component/menu/menu.component';
+import { SearchAllComponent } from '@component/search-all/search-all.component';
+import { LabelComponent } from '@component/label/label.component';
 
 import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
 import { AfiliacionFieldsetComponent } from '@component/afiliacion-admin/afiliacion-fieldset/afiliacion-fieldset.component';
 
 import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show/afiliacion-show.component';
 import { AfiliacionTableComponent } from '@component/afiliacion-show/afiliacion-table/afiliacion-table.component';
+import { AfiliacionSearchComponent } from '@component/afiliacion-show/afiliacion-search/afiliacion-search.component';
 
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
 import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
+import { AfiliacionSearchParamsComponent } from '@component/afiliacion-show/afiliacion-search-params/afiliacion-search-params.component';
 
 export const APP_DATE_FORMATS = {
   parse: {
@@ -82,9 +87,11 @@ export const APP_DATE_FORMATS = {
     InputSelectComponent,
     InputSearchGoComponent,
     MenuComponent,
+    SearchAllComponent,
+    LabelComponent,
 
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
-    AfiliacionShowComponent, AfiliacionTableComponent,
+    AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent, AfiliacionSearchParamsComponent,
     PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent,
   ],
   imports: [
@@ -102,6 +109,7 @@ export const APP_DATE_FORMATS = {
     MatDatepickerModule,
     MatDialogModule,
     MatDividerModule,
+    MatExpansionModule,
     MatIconModule,
     MatInputModule,
     MatMenuModule,
