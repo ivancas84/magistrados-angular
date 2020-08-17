@@ -5,13 +5,24 @@
         <div fxFlex="auto">
           <mat-form-field>
             <mat-label>Motivo</mat-label>
-            <input matInput formControlName="motivo" >
+            <mat-select formControlName="motivo">
+              <mat-option>--Seleccione--</mat-option>
+              <mat-option value="Alta">Alta</mat-option>
+              <mat-option value="Baja">Baja</mat-option>
+              <mat-option value="Pendiente">Pendiente</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div fxFlex="auto">
           <mat-form-field>
             <mat-label>Estado</mat-label>
-            <input matInput formControlName="estado" >
+            <mat-select formControlName="estado">
+              <mat-option>--Seleccione--</mat-option>
+              <mat-option value="Creado">Creado</mat-option>
+              <mat-option value="Enviado">Enviado</mat-option>
+              <mat-option value="Aprobado">Aprobado</mat-option>
+              <mat-option value="Rechazado">Rechazado</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
