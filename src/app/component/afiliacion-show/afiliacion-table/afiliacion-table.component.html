@@ -42,7 +42,7 @@
       <ng-container matColumnDef="persona">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Persona </mat-header-cell>
         <mat-cell *matCellDef="let row"> 
-          <a [routerLink]="['/persona-show']" [queryParams]="{id:row.persona}" >{{row.persona | label:'persona'}}</a>
+          <a [routerLink]="['/persona-admin']" [queryParams]="{id:row.persona}" >{{row.persona | label:'persona'}}</a>
         </mat-cell>
       </ng-container>
 
