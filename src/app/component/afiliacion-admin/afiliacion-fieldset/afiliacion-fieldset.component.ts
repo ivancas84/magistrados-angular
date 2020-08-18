@@ -34,7 +34,7 @@ export class AfiliacionFieldsetComponent extends FieldsetComponent {
       motivo: [null, {
         validators: [Validators.required],
       }],
-      estado: [null, {
+      estado: [{value: null, disabled: true}, {
         validators: [Validators.required],
       }],
       observaciones: [null, {
