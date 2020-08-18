@@ -16,6 +16,8 @@ export class AfiliacionFieldsetComponent extends FieldsetComponent {
 
   readonly entityName: string = 'afiliacion';
 
+  readonly defaultValues: {[key:string]: any} = {motivo: "Alta", estado: "Creado", creado: new Date()}
+
   constructor(
     protected fb: FormBuilder, 
     protected dd: DataDefinitionService, 
