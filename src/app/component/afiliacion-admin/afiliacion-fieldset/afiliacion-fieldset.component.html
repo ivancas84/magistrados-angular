@@ -32,14 +32,56 @@
         </div>
       </div>
     </div>
-    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-      <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
-        <div fxFlex="auto">
-          <mat-form-field>
-            <mat-label>Observaciones</mat-label>
-            <textarea matInput formControlName="observaciones" ></textarea>
-          </mat-form-field>
-        </div>
+    <div fxLayout="row"  fxLayoutGap="10px">
+      <div fxFlex="auto">
+        <mat-form-field>
+          <mat-label>Observaciones</mat-label>
+          <textarea matInput formControlName="observaciones" ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+      <div fxFlex="auto" >
+        <mat-card *ngIf="creado.value" [style.backgroundColor]="'#17a2b8'">
+          <mat-card-header>
+            <mat-card-title>Creado</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{creado.value | date:"d/M/y h:m"}}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div fxFlex="auto">
+        <mat-card *ngIf="enviado.value" [style.backgroundColor]="'#007bff'">
+          <mat-card-header>
+            <mat-card-title>Enviado</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            {{enviado.value | date:"d/M/y h:m"}}
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div fxFlex="auto">
+        <mat-card *ngIf="evaluado.value">
+          <mat-card-header>
+            <mat-card-title>Evaluado</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            {{evaluado.value | date:"d/M/y h:m"}}
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div fxFlex="auto">
+        <mat-card *ngIf="modificado.value" [style.backgroundColor]="'#6c757d'">
+          <mat-card-header>
+            <mat-card-title>Modificado</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            {{modificado.value | date:"d/M/y h:m"}}
+          </mat-card-content>
+        </mat-card>
+        
       </div>
     </div>
   </mat-card-content>

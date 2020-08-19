@@ -42,6 +42,14 @@ export class AfiliacionFieldsetComponent extends FieldsetComponent {
       persona: [null, {
         validators: [Validators.required],
       }],
+      creado: [null, {
+      }],
+      enviado: [null, {
+      }],
+      evaluado: [null, {
+      }],
+      modificado: [null, {
+      }],
     });
     return fg;
   }
