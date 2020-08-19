@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Display } from '@class/display';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { SearchParamsComponent } from '@component/search-params/search-params.component';
 
@@ -24,6 +22,7 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
       enviado: null,
       evaluado: null,
       modificado: null,
+      modificado_is_set: null,
       persona: null,
     });
     return fg;
@@ -35,6 +34,7 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
   get enviado() { return this.fieldset.get('enviado')}
   get evaluado() { return this.fieldset.get('evaluado')}
   get modificado() { return this.fieldset.get('modificado')}
+  get modificadoIsSet() { return this.fieldset.get('modificado_is_set')}
   get observaciones() { return this.fieldset.get('observaciones')}
   get persona() { return this.fieldset.get('persona')}
 
