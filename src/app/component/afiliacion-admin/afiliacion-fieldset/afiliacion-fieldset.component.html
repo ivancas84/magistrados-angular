@@ -41,44 +41,44 @@
       </div>
     </div>
     
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+    <div *ngIf="(data$ | async) as data" fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
       <div fxFlex="auto" >
-        <mat-card *ngIf="creado.value" [style.backgroundColor]="'#17a2b8'">
+        <mat-card *ngIf="data.creado" [style.backgroundColor]="'#17a2b8'">
           <mat-card-header>
             <mat-card-title>Creado</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <p>{{creado.value | date:"d/M/y h:m"}}</p>
+            <p>{{data.creado | toDate | date:"d/M/y"}}</p>
           </mat-card-content>
         </mat-card>
       </div>
       <div fxFlex="auto">
-        <mat-card *ngIf="enviado.value" [style.backgroundColor]="'#007bff'">
+        <mat-card *ngIf="data.enviado" [style.backgroundColor]="'#007bff'">
           <mat-card-header>
             <mat-card-title>Enviado</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            {{enviado.value | date:"d/M/y h:m"}}
+            {{data.enviado | toDate | date:"d/M/y"}}
           </mat-card-content>
         </mat-card>
       </div>
       <div fxFlex="auto">
-        <mat-card *ngIf="evaluado.value">
+        <mat-card *ngIf="data.evaluado">
           <mat-card-header>
             <mat-card-title>Evaluado</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            {{evaluado.value | date:"d/M/y h:m"}}
+            {{data.evaluado | toDate | date:"d/M/y"}}
           </mat-card-content>
         </mat-card>
       </div>
       <div fxFlex="auto">
-        <mat-card *ngIf="modificado.value" [style.backgroundColor]="'#6c757d'">
+        <mat-card *ngIf="data.modificado" [style.backgroundColor]="'#6c757d'">
           <mat-card-header>
             <mat-card-title>Modificado</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            {{modificado.value | date:"d/M/y h:m"}}
+            {{data.modificado | toDate | date:"d/M/y"}}
           </mat-card-content>
         </mat-card>
         

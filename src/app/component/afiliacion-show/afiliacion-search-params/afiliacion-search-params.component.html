@@ -67,6 +67,16 @@
             <mat-error *ngIf="modificado.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
           </mat-form-field>
         </div>
+        <div fxFlex="auto">
+          <mat-form-field>
+            <mat-label>Modificado</mat-label>
+            <mat-select formControlName="modificado_is_set">
+              <mat-option>--Seleccione--</mat-option>
+              <mat-option value="true">Si</mat-option>
+              <mat-option value="false">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
     </div>
   </mat-card-content>
