@@ -6,7 +6,7 @@
     Ver
   </button>
   <mat-menu #ver="matMenu">
-    <a mat-menu-item routerLink="/afiliacion-show" routerLinkActive="active" title="Ver Afiliaciones">Afiliación</a>
+    <a mat-menu-item routerLink="/afiliacion-show" [queryParams]="{'modificado_is_set':'false'}"  routerLinkActive="active" title="Ver Afiliaciones">Afiliación</a>
   </mat-menu>
 
   <button mat-button [matMenuTriggerFor]="nuevo" aria-label="icon-button with menu icon">
