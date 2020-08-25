@@ -62,6 +62,8 @@ import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-s
 import { AfiliacionTableComponent } from '@component/afiliacion-show/afiliacion-table/afiliacion-table.component';
 import { AfiliacionSearchComponent } from '@component/afiliacion-show/afiliacion-search/afiliacion-search.component';
 
+import { CreateInfoSueldosComponent } from '@component/create-info-sueldos/create-info-sueldos.component';
+
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
 import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
@@ -98,7 +100,7 @@ export const APP_DATE_FORMATS = {
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
     AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent, AfiliacionSearchParamsComponent,
     PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent,
-    UploadInfoSueldosComponent,
+    UploadInfoSueldosComponent, CreateInfoSueldosComponent,
   ],
   imports: [
     BrowserModule,
