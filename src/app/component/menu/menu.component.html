@@ -6,7 +6,7 @@
     Ver
   </button>
   <mat-menu #ver="matMenu">
-    <a mat-menu-item routerLink="/afiliacion-show" routerLinkActive="active" title="Ver Afiliaciones">Afiliación</a>
+    <a mat-menu-item routerLink="/afiliacion-show" [queryParams]="{'modificado_is_set':'false'}"  routerLinkActive="active" title="Ver Afiliaciones">Afiliación</a>
   </mat-menu>
 
   <button mat-button [matMenuTriggerFor]="nuevo" aria-label="icon-button with menu icon">
@@ -14,6 +14,14 @@
   </button>
   <mat-menu #nuevo="matMenu">
     <a mat-menu-item routerLink="/persona-admin" routerLinkActive="active" title="Nueva Persona">Persona</a>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="herramientas" aria-label="icon-button with menu icon">
+    Herramientas
+  </button>
+  <mat-menu #herramientas="matMenu">
+    <a mat-menu-item routerLink="/create-info-sueldos" routerLinkActive="active" title="Crear Archivo">Crear Archivo Sueldos</a>
+    <a mat-menu-item routerLink="/upload-info-sueldos" routerLinkActive="active" title="Procesar Archivo">Procesar Archivo Sueldos</a>
   </mat-menu>
 </mat-toolbar>
 

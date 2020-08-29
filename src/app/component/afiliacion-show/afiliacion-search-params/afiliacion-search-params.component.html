@@ -1,31 +1,41 @@
 <mat-card *ngIf="load$ | async" [formGroup]="fieldset">
   <mat-card-content>
-    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-      <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
-        <div fxFlex="auto">
-          <mat-form-field>
-            <mat-label>Motivo</mat-label>
-            <mat-select formControlName="motivo">
-              <mat-option>--Seleccione--</mat-option>
-              <mat-option value="Alta">Alta</mat-option>
-              <mat-option value="Baja">Baja</mat-option>
-              <mat-option value="Pendiente">Pendiente</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div fxFlex="auto">
-          <mat-form-field>
-            <mat-label>Estado</mat-label>
-            <mat-select formControlName="estado">
-              <mat-option>--Seleccione--</mat-option>
-              <mat-option value="Creado">Creado</mat-option>
-              <mat-option value="Enviado">Enviado</mat-option>
-              <mat-option value="Aprobado">Aprobado</mat-option>
-              <mat-option value="Rechazado">Rechazado</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+      <div fxFlex="auto">
+        <mat-form-field>
+          <mat-label>Motivo</mat-label>
+          <mat-select formControlName="motivo">
+            <mat-option>--Seleccione--</mat-option>
+            <mat-option value="Alta">Alta</mat-option>
+            <mat-option value="Baja">Baja</mat-option>
+            <mat-option value="Pendiente">Pendiente</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
+      <div fxFlex="auto">
+        <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="estado">
+            <mat-option>--Seleccione--</mat-option>
+            <mat-option value="Creado">Creado</mat-option>
+            <mat-option value="Enviado">Enviado</mat-option>
+            <mat-option value="Aprobado">Aprobado</mat-option>
+            <mat-option value="Rechazado">Rechazado</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="auto">
+        <mat-form-field>
+          <mat-label>Está modificado</mat-label>
+          <mat-select formControlName="modificado_is_set">
+            <mat-option>--Seleccione--</mat-option>
+            <mat-option value="true">Si</mat-option>
+            <mat-option value="false">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
       <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
         <div fxFlex="auto">
           <mat-form-field>
@@ -45,9 +55,7 @@
             <mat-error *ngIf="enviado.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
           </mat-form-field>
         </div>
-      </div>
-    </div>  
-    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      </div>  
       <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
         <div fxFlex="auto">
           <mat-form-field>
@@ -66,17 +74,7 @@
             <mat-datepicker #moaPicker></mat-datepicker>
             <mat-error *ngIf="modificado.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
           </mat-form-field>
-        </div>
-        <div fxFlex="auto">
-          <mat-form-field>
-            <mat-label>Modificado</mat-label>
-            <mat-select formControlName="modificado_is_set">
-              <mat-option>--Seleccione--</mat-option>
-              <mat-option value="true">Si</mat-option>
-              <mat-option value="false">No</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+        </div>  
       </div>
     </div>
   </mat-card-content>
