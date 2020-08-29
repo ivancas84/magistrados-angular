@@ -7,7 +7,7 @@
     <mat-card-title>Afiliacion</mat-card-title>
   </mat-card-header>
   <mat-card-content *ngIf="(loadLength$ | async); else loading">
-    <mat-table *ngIf="(load$ | async); else loading" [dataSource]="dataSource" matSort matSortDisableClear (matSortChange)="onChangeSort($event)" class="mat-elevation-z8">
+    <mat-table *ngIf="(load$ | async); else loading" [dataSource]="dataSource" matSort matSortActive="creado" matSortDirection="desc" matSortDisableClear (matSortChange)="onChangeSort($event)" class="mat-elevation-z8">
       <ng-container matColumnDef="motivo">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Motivo </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.motivo}} </mat-cell>
