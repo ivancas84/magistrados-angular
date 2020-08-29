@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
+import { SessionStorageService } from '@service/storage/session-storage.service';
 
 @Component({
   selector: 'app-create-info-sueldos',
@@ -15,13 +14,20 @@ export class CreateInfoSueldosComponent {
   constructor(
     protected dd: DataDefinitionService, 
     protected dialog: MatDialog,
+    protected storage: SessionStorageService,
   ) {}
   
   onSubmit(): void {
     console.log("test");
     this.dd.base(this.entityName).subscribe(
       (res) => {
-        console.log(res);
+        /**
+         * res: {
+         *   file: id de archivo para redireccionar
+         *   detail: detalle de entidades actualizadas para remover del storage
+         * }
+         */
+        this.storage.removeItemsPersisted(res["detail"]);
         
         this.dialog.open(DialogAlertComponent, {
           data: {title: "Archivo creado", message: "El archivo se ha creado correctamente"}
