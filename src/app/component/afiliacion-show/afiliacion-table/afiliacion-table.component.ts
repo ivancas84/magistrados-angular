@@ -16,9 +16,13 @@ export class AfiliacionTableComponent extends TableComponent {
   displayedColumns: string[] = ['persona', 'motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado', 'observaciones'];
 
   onChangeSort(sort: Sort) {
+    this.paginator.pageIndex = 0;
+
     if(sort.active == "persona"){
       const order = {"per_nombres":sort.direction};
       this.display$.value.setOrder(order);
+      this.display$.value.setPage(1);
+
       this.router.navigateByUrl('/' + emptyUrl(this.router.url) + '?' + this.display$.value.encodeURI());  
       return;
     }
