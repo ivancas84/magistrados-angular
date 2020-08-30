@@ -15,15 +15,19 @@ import { compare } from '@function/compare';
 export class AfiliacionTableComponent extends TableComponent { 
   displayedColumns: string[] = ['persona', 'motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado', 'observaciones'];
 
-  onChangeSort(sort: Sort) {
+  serverSort(sort: Sort): boolean{
+    /**
+     * @override
+     */
     if(sort.active == "persona"){
       const order = {"per_nombres":sort.direction};
       this.display$.value.setOrder(order);
-      this.router.navigateByUrl('/' + emptyUrl(this.router.url) + '?' + this.display$.value.encodeURI());  
-      return;
-    }
+      this.display$.value.setPage(1);
 
-    super.onChangeSort(sort);
+      this.router.navigateByUrl('/' + emptyUrl(this.router.url) + '?' + this.display$.value.encodeURI());  
+      return true;
+    }
+    return super.serverSort(sort);
   }
   
 }
