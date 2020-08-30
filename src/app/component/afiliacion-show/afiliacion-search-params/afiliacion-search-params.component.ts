@@ -19,23 +19,30 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
       motivo: null,
       estado: null,
       creado_date: null,
-      enviado: null,
-      evaluado: null,
-      modificado: null,
+      enviado_date: null,
+      evaluado_date: null,
+      modificado_date: null,
       modificado_is_set: null,
       persona: null,
+      per_organo: null,
+      per_departamento_judicial: null,
+      per_cargo: null,
+
     });
     return fg;
   }
 
   get motivo() { return this.fieldset.get('motivo')}
   get estado() { return this.fieldset.get('estado')}
-  get creado_date() { return this.fieldset.get('creado_date')}
-  get enviado() { return this.fieldset.get('enviado')}
-  get evaluado() { return this.fieldset.get('evaluado')}
-  get modificado() { return this.fieldset.get('modificado')}
+  get creadoDate() { return this.fieldset.get('creado_date')}
+  get enviadoDate() { return this.fieldset.get('enviado_date')}
+  get evaluadoDate() { return this.fieldset.get('evaluado_date')}
+  get modificadoDate() { return this.fieldset.get('modificado_date')}
   get modificadoIsSet() { return this.fieldset.get('modificado_is_set')}
   get observaciones() { return this.fieldset.get('observaciones')}
   get persona() { return this.fieldset.get('persona')}
+  get organo() { return this.fieldset.get('per_organo')}
+  get departamentoJudicial() { return this.fieldset.get('per_departamento_judicial')}
+  get cargo() { return this.fieldset.get('per_cargo')}
 
 }
