@@ -20,22 +20,22 @@
 
       <ng-container matColumnDef="creado">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Creado </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.creado | toDate | date:'dd/MM/yyyy HH:mm'}} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{row.creado | toDate | date:'dd/MM/yyyy'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="enviado">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Enviado </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.enviado | toDate | date:'dd/MM/yyyy HH:mm'}} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{row.enviado | toDate | date:'dd/MM/yyyy'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="evaluado">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Evaluado </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.evaluado | toDate | date:'dd/MM/yyyy HH:mm'}} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{row.evaluado | toDate | date:'dd/MM/yyyy'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="modificado">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Modificado </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.modificado | toDate | date:'dd/MM/yyyy HH:mm'}} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{row.modificado | toDate | date:'dd/MM/yyyy'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="observaciones">
