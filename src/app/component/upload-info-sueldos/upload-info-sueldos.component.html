@@ -35,18 +35,39 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <div mat-subheader>Altas</div>
     <mat-selection-list role="list" [multiple]="false">
       <mat-list-option role="listitem">
-        <a [routerLink]="['/afiliacion-show']" [queryParams]="{ modificado_is_set: false, evaluado_date: response.evaluado, estado: 'Aprobado', enviado_is_set: true}">Altas aprobadas: {{response.altas_aprobadas}}</a>
+        Existentes: {{response.altas_existentes}}
       </mat-list-option>
       <mat-list-option role="listitem">
-        <a [routerLink]="['/afiliacion-show']" [queryParams]="{ modificado_is_set: false, evaluado_date: response.evaluado, estado: 'Rechazado', enviado_is_set: true}">Altas rechazadas: {{response.altas_rechazadas}}</a>
+        <a [routerLink]="['/afiliacion-show']" [queryParams]="{ modificado_is_set: false, evaluado_date: response.evaluado, estado: 'Aprobado', enviado_is_set: true, motivo:'Alta'}">Aprobadas: {{response.altas_aprobadas}}</a>
       </mat-list-option>
-      <mat-list-option role="listitem">Altas automáticas: 0</mat-list-option>
-      <mat-list-option role="listitem">Bajas aprobadas: 0</mat-list-option>
-      <mat-list-option role="listitem">Bajas rechazadas: 0 </mat-list-option>
-      <mat-list-option role="listitem">Bajas automáticas: 0</mat-list-option>
+      <mat-list-option role="listitem">
+        <a [routerLink]="['/afiliacion-show']" [queryParams]="{ modificado_is_set: false, evaluado_date: response.evaluado, estado: 'Rechazado', enviado_is_set: true, motivo:'Alta'}">Rechazadas: {{response.altas_rechazadas}}</a>
+      </mat-list-option>
+      <mat-list-option role="listitem">
+        <a [routerLink]="['/afiliacion-show']" [queryParams]="{ modificado_is_set: false, evaluado_date: response.evaluado, estado: 'Aprobado', enviado_is_set: false, motivo:'Alta'}">Altas automáticas: {{response.altas_automaticas}}</a>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Bajas</div>
+      <mat-list-option role="listitem">
+        <a [routerLink]="['/afiliacion-show']" [queryParams]="{ modificado_is_set: false, evaluado_date: response.evaluado, estado: 'Aprobado', enviado_is_set: true, motivo:'Baja'}">Aprobadas: {{response.bajas_aprobadas}}</a>
+      </mat-list-option>
+      <mat-list-option role="listitem">
+        <a [routerLink]="['/afiliacion-show']" [queryParams]="{ modificado_is_set: false, evaluado_date: response.evaluado, estado: 'Rechazado', enviado_is_set: true, motivo:'Baja'}">Rechazadas: {{response.bajas_rechazadas}}</a>
+      </mat-list-option>
+      <mat-list-option role="listitem">
+        <a [routerLink]="['/afiliacion-show']" [queryParams]="{ modificado_is_set: false, evaluado_date: response.evaluado, estado: 'Rechazado', enviado_is_set: true, motivo:'Baja'}">Automáticas: {{response.bajas_automaticas}}</a>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+    <div mat-subheader>Errores</div>
+    <mat-list-option *ngFor="let error of response.errors" role="listitem">
+      {{error}}
+    </mat-list-option>
     </mat-selection-list>
+    
+      
   </mat-card-content>  
 </mat-card>
 <!--p>Debug Form value: {{ uploadForm.value | json }}</p>
