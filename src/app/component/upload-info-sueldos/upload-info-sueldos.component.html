@@ -28,6 +28,9 @@
   </mat-card-content>
 </mat-card>
 
+<mat-progress-bar *ngIf="!response && isSubmitted" mode="indeterminate"></mat-progress-bar>
+
+
 <mat-card *ngIf="response">
   <mat-card-header>
     <mat-card-title>
