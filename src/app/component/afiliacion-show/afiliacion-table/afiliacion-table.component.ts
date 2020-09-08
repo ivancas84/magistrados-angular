@@ -20,7 +20,7 @@ export class AfiliacionTableComponent extends TableComponent {
      * @override
      */
     if(sort.active == "persona"){
-      const order = {"per_nombres":sort.direction};
+      const order = {"per_apellidos":sort.direction};
       this.display$.value.setOrder(order);
       this.display$.value.setPage(1);
 
