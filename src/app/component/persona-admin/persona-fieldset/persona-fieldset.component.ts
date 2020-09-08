@@ -55,7 +55,10 @@ export class PersonaFieldsetComponent extends FieldsetComponent {
         validators: [Validators.required],
       }],
       departamento_judicial: [null, {
+        
         validators: [Validators.required],
+      }],
+      departamento_judicial_informado: [{value:null,disabled:true}, {
       }],
       tipo_documento: [null, {
       }],
@@ -77,6 +80,8 @@ export class PersonaFieldsetComponent extends FieldsetComponent {
   get cargo() { return this.fieldset.get('cargo')}
   get organo() { return this.fieldset.get('organo')}
   get departamentoJudicial() { return this.fieldset.get('departamento_judicial')}
+  get departamentoJudicialInformado() { return this.fieldset.get('departamento_judicial_informado')}
+
   get tipoDocumento() { return this.fieldset.get('tipo_documento')}
 
 }
