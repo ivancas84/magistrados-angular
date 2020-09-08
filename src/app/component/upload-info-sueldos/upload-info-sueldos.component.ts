@@ -38,8 +38,6 @@ export class UploadInfoSueldosComponent extends UploadComponent {
     }
   );
 
-  response: any = null;
-
   formData(): FormData{
     /**
      * @override

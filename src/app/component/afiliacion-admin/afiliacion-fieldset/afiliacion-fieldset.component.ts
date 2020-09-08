@@ -55,14 +55,10 @@ export class AfiliacionFieldsetComponent extends FieldsetComponent {
       var s = this.data$.subscribe(
         response => {
           if(this.formValues) {
-            console.log("voy a inicializar con storage")
-            console.log(this.formValues);
             var d = this.formValues.hasOwnProperty(this.entityName)? this.formValues[this.entityName] : null;
             (d) ? this.fieldset.reset(d) : this.fieldset.reset();
             this.formValues = null;
           } else {
-            console.log("voy a inicializar sin storage");
-            console.log(response);
             this.initValues(response);
             /**
              * response puede tener el valor de algunos datos, por las dudas inicializo los valores por defecto

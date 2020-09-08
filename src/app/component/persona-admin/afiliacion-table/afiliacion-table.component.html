@@ -50,7 +50,8 @@
       <ng-container matColumnDef="persona">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Persona </th>
         <td mat-cell *matCellDef="let row"> 
-          <a [routerLink]="['/persona-show']" [queryParams]="{id:row.persona}" >{{row.persona | label:'persona'}}</a>
+          <a [routerLink]="['/persona-show']" [queryParams]="{id:row.persona}" >
+            <core-label [id]="row.persona" [entityName]="'persona'"></core-label></a>
         </td>
       </ng-container>
 
