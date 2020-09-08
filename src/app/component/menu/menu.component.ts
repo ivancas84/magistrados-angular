@@ -10,7 +10,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.afiliacionShowQueryParams = {
       modificado_is_set:'false', 
-      order:JSON.stringify({creado:'desc',per_nombres:'asc'})
+      order:JSON.stringify({creado:'desc',per_apellidos:'asc'})
     }
   }
 }
