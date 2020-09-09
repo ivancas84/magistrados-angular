@@ -18,32 +18,30 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
     let fg: FormGroup = this.fb.group({
       motivo: null,
       estado: null,
-      creado_date: null,
-      enviado_date: null,
-      evaluado_date: null,
-      modificado_date: null,
+      creado_ym: null,
+      enviado_ym: null,
+      evaluado_ym: null,
+      modificado_ym: null,
       modificado_is_set: null,
       persona: null,
       per_organo: null,
       per_departamento_judicial: null,
       per_cargo: null,
-      modificado_ym: null,
-
     });
     return fg;
   }
 
   get motivo() { return this.fieldset.get('motivo')}
   get estado() { return this.fieldset.get('estado')}
-  get creadoDate() { return this.fieldset.get('creado_date')}
-  get enviadoDate() { return this.fieldset.get('enviado_date')}
-  get evaluadoDate() { return this.fieldset.get('evaluado_date')}
-  get modificadoDate() { return this.fieldset.get('modificado_date')}
+  get creadoYm() { return this.fieldset.get('creado_ym')}
+  get enviadoYm() { return this.fieldset.get('enviado_ym')}
+  get evaluadoYm() { return this.fieldset.get('evaluado_ym')}
+  get modificadoYm() { return this.fieldset.get('modificado_ym')}
   get modificadoIsSet() { return this.fieldset.get('modificado_is_set')}
   get observaciones() { return this.fieldset.get('observaciones')}
   get persona() { return this.fieldset.get('persona')}
   get organo() { return this.fieldset.get('per_organo')}
   get departamentoJudicial() { return this.fieldset.get('per_departamento_judicial')}
   get cargo() { return this.fieldset.get('per_cargo')}
-  get modificadoYm() { return this.fieldset.get('modificado_ym')}
+
 }

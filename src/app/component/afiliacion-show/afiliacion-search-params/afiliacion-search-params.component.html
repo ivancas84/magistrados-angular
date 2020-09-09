@@ -1,83 +1,50 @@
 <mat-card *ngIf="load$ | async" [formGroup]="fieldset">
   <mat-card-content>
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
-      <div fxFlex="auto">
-        <mat-form-field>
-          <mat-label>Motivo</mat-label>
-          <mat-select formControlName="motivo">
-            <mat-option>--Seleccione--</mat-option>
-            <mat-option value="Alta">Alta</mat-option>
-            <mat-option value="Baja">Baja</mat-option>
-            <mat-option value="Pendiente">Pendiente</mat-option>
-          </mat-select>
-        </mat-form-field>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
+        <div fxFlex="50%">
+          <mat-form-field>
+            <mat-label>Motivo</mat-label>
+            <mat-select formControlName="motivo">
+              <mat-option>--Seleccione--</mat-option>
+              <mat-option value="Alta">Alta</mat-option>
+              <mat-option value="Baja">Baja</mat-option>
+              <mat-option value="Pendiente">Pendiente</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxFlex="50%">
+          <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="estado">
+              <mat-option>--Seleccione--</mat-option>
+              <mat-option value="Creado">Creado</mat-option>
+              <mat-option value="Enviado">Enviado</mat-option>
+              <mat-option value="Aprobado">Aprobado</mat-option>
+              <mat-option value="Rechazado">Rechazado</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
-      <div fxFlex="auto">
-        <mat-form-field>
-          <mat-label>Estado</mat-label>
-          <mat-select formControlName="estado">
-            <mat-option>--Seleccione--</mat-option>
-            <mat-option value="Creado">Creado</mat-option>
-            <mat-option value="Enviado">Enviado</mat-option>
-            <mat-option value="Aprobado">Aprobado</mat-option>
-            <mat-option value="Rechazado">Rechazado</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div fxFlex="auto">
-        <mat-form-field>
-          <mat-label>Está modificado</mat-label>
-          <mat-select formControlName="modificado_is_set">
-            <mat-option>--Seleccione--</mat-option>
-            <mat-option value="true">Si</mat-option>
-            <mat-option value="false">No</mat-option>
-          </mat-select>
-        </mat-form-field>
+      <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
+        <div fxFlex="50%">
+          <mat-form-field>
+            <mat-label>Está modificado</mat-label>
+            <mat-select formControlName="modificado_is_set">
+              <mat-option>--Seleccione--</mat-option>
+              <mat-option value="true">Si</mat-option>
+              <mat-option value="false">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <core-input-ym fxFlex="50%" [field]="modificadoYm" [title]="'Modificado'"></core-input-ym>
       </div>
     </div>
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-      <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
-        <core-input-ym fxFlex="auto" [field]="modificadoYm" [title]="'Modificado'"></core-input-ym>
-        <div fxFlex="auto">
-          <mat-form-field>
-            <mat-label>Creado</mat-label>
-            <input matInput [matDatepicker]="crePicker" formControlName="creado_date">
-            <mat-datepicker-toggle matSuffix [for]="crePicker"></mat-datepicker-toggle>
-            <mat-datepicker #crePicker></mat-datepicker>
-            <mat-error *ngIf="creadoDate.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
-          </mat-form-field>
-        </div>
-        <div fxFlex="auto">
-          <mat-form-field>
-            <mat-label>Enviado</mat-label>
-            <input matInput [matDatepicker]="envPicker" formControlName="enviado_date">
-            <mat-datepicker-toggle matSuffix [for]="envPicker"></mat-datepicker-toggle>
-            <mat-datepicker #envPicker></mat-datepicker>
-            <mat-error *ngIf="enviadoDate.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
-          </mat-form-field>
-        </div>
-      </div>  
-      <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
-        <div fxFlex="auto">
-          <mat-form-field>
-            <mat-label>Evaluado</mat-label>
-            <input matInput [matDatepicker]="evaPicker" formControlName="evaluado_date">
-            <mat-datepicker-toggle matSuffix [for]="evaPicker"></mat-datepicker-toggle>
-            <mat-datepicker #evaPicker></mat-datepicker>
-            <mat-error *ngIf="evaluadoDate.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
-          </mat-form-field>
-        </div>
-        <div fxFlex="auto">
-          <mat-form-field>
-            <mat-label>Modificado</mat-label>
-            <input matInput [matDatepicker]="moaPicker" formControlName="modificado_date">
-            <mat-datepicker-toggle matSuffix [for]="moaPicker"></mat-datepicker-toggle>
-            <mat-datepicker #moaPicker></mat-datepicker>
-            <mat-error *ngIf="modificadoDate.hasError('matDatepickerParse')">El formato es incorrecto</mat-error>
-          </mat-form-field>
-        </div>  
-      </div>
-    </div>
+      <core-input-ym fxFlex="33%" [field]="creadoYm" [title]="'Creado'"></core-input-ym>
+      <core-input-ym fxFlex="33%" [field]="enviadoYm" [title]="'Enviado'"></core-input-ym>
+      <core-input-ym fxFlex="33%" [field]="evaluadoYm" [title]="'Evaluado'"></core-input-ym>
+    </div>  
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
       <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
         <core-input-select fxFlex="auto" [field]="organo" [entityName]="'organo'" [title]="'Órgano'"></core-input-select>

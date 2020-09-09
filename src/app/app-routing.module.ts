@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'informe-afiliados', component: IaAfiliacionShowComponent, pathMatch: 'full' },
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'upload-info-sueldos', component: UploadInfoSueldosComponent, pathMatch: 'full' },
-  { path: '', component: AfiliacionShowComponent, pathMatch: 'full' },
+  { path: '', component: PersonaAdminComponent, pathMatch: 'full' },
 
   
 ];
