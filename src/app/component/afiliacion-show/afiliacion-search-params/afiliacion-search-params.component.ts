@@ -27,6 +27,7 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
       per_organo: null,
       per_departamento_judicial: null,
       per_cargo: null,
+      modificado_ym: null,
 
     });
     return fg;
@@ -44,5 +45,5 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
   get organo() { return this.fieldset.get('per_organo')}
   get departamentoJudicial() { return this.fieldset.get('per_departamento_judicial')}
   get cargo() { return this.fieldset.get('per_cargo')}
-
+  get modificadoYm() { return this.fieldset.get('modificado_ym')}
 }
