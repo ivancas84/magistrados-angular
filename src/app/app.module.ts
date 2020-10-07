@@ -9,16 +9,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatTimepickerModule } from 'mat-timepicker';
+
 //import { ClipboardModule } from '@angular/cdk/clipboard';
-//import { DATE_FORMATS } from './core/const/DATE_FORMATS';
 
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatNativeDateModule } from '@angular/material/core';
-//import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -51,13 +52,18 @@ import { SummaryPipe } from '@pipe/summary.pipe';
 import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
 
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
+import { DialogConfirmComponent } from '@component/dialog-confirm/dialog-confirm.component';
 import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
 import { InputDateComponent } from '@component/input-date/input-date.component';
+import { InputNumberComponent } from '@component/input-number/input-number.component';
+import { InputSelectCheckboxComponent } from '@component/input-select-checkbox/input-select-checkbox.component';
 import { InputSelectComponent } from '@component/input-select/input-select.component';
+import { InputSelectValueComponent } from '@component/input-select-value/input-select-value.component';
+import { InputSelectParamComponent } from '@component/input-select-param/input-select-param.component';
 import { InputSearchGoComponent } from '@component/input-search-go/input-search-go.component';
 import { InputTextComponent } from '@component/input-text/input-text.component';
-import { InputYmComponent } from '@component/input-ym/input-ym.component';
-//import { InputYearComponent } from '@component/input-year/input-year.component';
+import { InputTextareaComponent } from '@component/input-textarea/input-textarea.component';
+import { InputYearComponent } from '@component/input-year/input-year.component';
 import { MenuComponent } from '@component/menu/menu.component';
 import { SearchAllComponent } from '@component/search-all/search-all.component';
 import { LabelComponent } from '@component/label/label.component';
@@ -95,16 +101,24 @@ import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/uploa
     StoragePipe,
 
     DialogAlertComponent,
+    DialogConfirmComponent,
     InputAutocompleteComponent,
     InputDateComponent,
+    InputNumberComponent,
+    InputSelectCheckboxComponent,
     InputSelectComponent,
+    InputSelectValueComponent,
+    InputSelectParamComponent,
     InputSearchGoComponent,
     InputTextComponent,
-	//InputYearComponent,
+    InputTextareaComponent,
+    //InputTimepickerComponent,
+    //InputYearComponent,
     InputYmComponent,
     MenuComponent,
     SearchAllComponent,
     LabelComponent,
+    //DynamicTableComponent,
 
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
     AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent, AfiliacionSearchParamsComponent,
@@ -127,6 +141,7 @@ import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/uploa
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatDatepickerModule,
     MatDialogModule,
     MatDividerModule,
@@ -141,18 +156,17 @@ import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/uploa
     MatSnackBarModule,
     MatSelectModule,
     MatSortModule,
+    //MatStepperModule,
     MatTableModule,
     MatToolbarModule,
 
-    MaterialFileInputModule
+    MaterialFileInputModule,
+    //MatTimepickerModule
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000, verticalPosition:"top", horizontalPosition:"right"}},
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
-    //{provide: MAT_DATE_LOCALE, useValue: 'es-AR' },
-    //{provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]},
-    //{provide: MAT_DATE_FORMATS, useValue: DATE_FORMATS},
 
     DataDefinitionService, 
     SessionStorageService, 
