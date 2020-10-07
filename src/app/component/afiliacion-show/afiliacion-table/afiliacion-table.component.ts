@@ -21,10 +21,10 @@ export class AfiliacionTableComponent extends TableComponent {
      */
     if(sort.active == "persona"){
       const order = {"per_apellidos":sort.direction};
-      this.display$.value.setOrder(order);
-      this.display$.value.setPage(1);
+      this.display.setOrder(order);
+      this.display.setPage(1);
 
-      this.router.navigateByUrl('/' + emptyUrl(this.router.url) + '?' + this.display$.value.encodeURI());  
+      this.router.navigateByUrl('/' + emptyUrl(this.router.url) + '?' + this.display.encodeURI());  
       return true;
     }
     return super.serverSort(sort);

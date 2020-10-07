@@ -19,7 +19,7 @@ export class CreateInfoSueldosComponent {
   
   onSubmit(): void {
     console.log("test");
-    this.dd.base(this.entityName).subscribe(
+    this.dd.post("base", this.entityName).subscribe(
       (res) => {
         /**
          * res: {

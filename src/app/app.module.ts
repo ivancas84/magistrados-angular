@@ -88,6 +88,7 @@ import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afilia
 import { AfiliacionSearchParamsComponent } from '@component/afiliacion-show/afiliacion-search-params/afiliacion-search-params.component';
 
 import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/upload-info-sueldos.component';
+import { InputYmComponent } from '@component/input-ym/input-ym.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,7 @@ import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/uploa
     InputTextComponent,
     InputTextareaComponent,
     //InputTimepickerComponent,
-    //InputYearComponent,
+    InputYearComponent,
     InputYmComponent,
     MenuComponent,
     SearchAllComponent,

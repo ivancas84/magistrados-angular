@@ -6,8 +6,8 @@
   <mat-card-header>
     <mat-card-title>Afiliacion</mat-card-title>
   </mat-card-header>
-  <mat-card-content *ngIf="(loadLength$ | async); else loading">
-    <mat-table *ngIf="(load$ | async); else loading" [dataSource]="dataSource" matSort matSortActive="creado" matSortDirection="desc" matSortDisableClear (matSortChange)="onChangeSort($event)" class="mat-elevation-z8">
+  <mat-card-content *ngIf="(load$ | async) && load; else loading">
+    <mat-table [dataSource]="dataSource" matSort matSortActive="creado" matSortDirection="desc" matSortDisableClear (matSortChange)="onChangeSort($event)" class="mat-elevation-z8">
       <ng-container matColumnDef="motivo">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Motivo </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.motivo}} </mat-cell>
@@ -55,11 +55,14 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-    <mat-paginator *ngIf="(display$ | async) as display"
+    <mat-paginator *ngIf="display"
                    [length]="length"
                    [pageSize]="display.size"
-                   (page)="onChangePage($event)">
-</mat-paginator>  
+                   [pageIndex]="display.page-1"
+                   (page)="onChangePage($event)"
+                   [pageSizeOptions]="[10, 25, 50, 100]" 
+                   showFirstLastButtons>
+    </mat-paginator>
   </mat-card-content>
 </mat-card>
 

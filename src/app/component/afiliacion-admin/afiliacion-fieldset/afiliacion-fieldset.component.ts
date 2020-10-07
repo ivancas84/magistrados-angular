@@ -46,30 +46,28 @@ export class AfiliacionFieldsetComponent extends FieldsetComponent {
     return fg;
   }
 
-  initData(): void {
+  ngOnInit() {    
     /**
-     * No suscribirse desde el template!
-     * Puede disparar errores ExpressionChanged... no deseados (por ejemplo en la validacion inicial)
-     * Al suscribirse desde el template se cambia el Lifehook cycle ?
-     */  
-      var s = this.data$.subscribe(
-        response => {
-          if(this.formValues) {
-            var d = this.formValues.hasOwnProperty(this.entityName)? this.formValues[this.entityName] : null;
-            (d) ? this.fieldset.reset(d) : this.fieldset.reset();
-            this.formValues = null;
-          } else {
-            this.initValues(response);
-            /**
-             * response puede tener el valor de algunos datos, por las dudas inicializo los valores por defecto
-             */
-          }
-          if(response && response.hasOwnProperty("modificado") && response["modificado"]) this.motivo.disable();
-        }
-      );
-      this.subscriptions.add(s);
+     * Al inicializar el formulario se blanquean los valores del storage, por eso deben consultarse previamente
+     */
+    this.initForm();
+    var s = this.initData().subscribe(
+      response => {
+        this.initValues(response);
+        if(response && response.hasOwnProperty("modificado") && response["modificado"]) this.motivo.disable();
+      }
+    );
+    this.subscriptions.add(s);
+    /**
+     * @todo no me suscribo desde el template porque dispara errores ExpressionChangedAfterIfCheckedValue
+     * Un posible problema es que inicializo en null y despues asigno el valor a traves de reset o patchValue
+     * Habria que ver si se puede efectuar todo el proceso de inicializacion del formulario y asignacion de valores en un mismo observable
+     * Al suscribirse directamente en el ts no dispara los errores, se carga primero el formulario y despues se asigna el valor
+     * Puede haber inconvenientes si se desea acceder al valueChanges en los subcomponentes,
+     * la asignacion de datos iniciales no sera considerada como valueChange (se puede solucionar de la misma forma suscribiendose en el ts)
+     */
   }
-
+  
 
   get id() { return this.fieldset.get('id')}
   get motivo() { return this.fieldset.get('motivo')}
