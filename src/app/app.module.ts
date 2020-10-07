@@ -57,6 +57,7 @@ import { InputSelectComponent } from '@component/input-select/input-select.compo
 import { InputSearchGoComponent } from '@component/input-search-go/input-search-go.component';
 import { InputTextComponent } from '@component/input-text/input-text.component';
 import { InputYmComponent } from '@component/input-ym/input-ym.component';
+//import { InputYearComponent } from '@component/input-year/input-year.component';
 import { MenuComponent } from '@component/menu/menu.component';
 import { SearchAllComponent } from '@component/search-all/search-all.component';
 import { LabelComponent } from '@component/label/label.component';
@@ -99,6 +100,7 @@ import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/uploa
     InputSelectComponent,
     InputSearchGoComponent,
     InputTextComponent,
+	//InputYearComponent,
     InputYmComponent,
     MenuComponent,
     SearchAllComponent,
