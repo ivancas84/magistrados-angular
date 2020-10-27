@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Tramite Excepcional</mat-card-title>
+  </mat-card-header>
+  <mat-card-content [formGroup]="fieldset">
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <div fxLayout="row" fxFlex="100%" fxFlex.lt-md="100%" fxLayoutGap="10px" fxLayout.xs="column">
+        <core-input-select-param [field]="motivo" [options]="['Alta','Baja','Pendiente']" [title]="'Motivo'" fxFlex="33%" fxFlex.xs="100%" fxLayoutAlign="center center"></core-input-select-param>
+        <core-input-select-param [field]="estado" [options]="['Creado','Enviado','Aprobado','Rechazado']" [title]="'Estado'" fxFlex="33%" fxFlex.xs="100%" fxLayoutAlign="center center"></core-input-select-param>
+        <core-input-text [field]="monto" [title]="'Monto'" fxFlex="33%" fxFlex.xs="100%" fxLayoutAlign="center center"></core-input-text>
+      </div>  
+    </div>  
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <div fxLayout="row" fxFlex="100%" fxFlex.lt-md="100%" fxLayoutGap="10px" fxLayout.xs="column">
+        <core-input-date [field]="desde" [title]="'Desde'" fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="center center"></core-input-date>
+        <core-input-date [field]="hasta" [title]="'Hasta'" fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="center center"></core-input-date>
+      </div>
+    </div>    
+    <div fxLayout="row" fxLayoutGap="10px">
+        <core-input-textarea [field]="observaciones" [title]="'Observaciones'" fxFlex="100%" fxLayoutAlign="center center"></core-input-textarea>
+    </div>  
+  </mat-card-content>
+</mat-card>

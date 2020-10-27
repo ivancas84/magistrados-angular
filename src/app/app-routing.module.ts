@@ -6,6 +6,7 @@ import { IaAfiliacionShowComponent } from '@component/informe-afiliados/ia-afili
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/upload-info-sueldos.component';
 import { CreateInfoSueldosComponent } from '@component/create-info-sueldos/create-info-sueldos.component';
+import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
 
 const routes: Routes = [
   { path: 'afiliacion-admin', component: AfiliacionAdminComponent, pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'informe-afiliados', component: IaAfiliacionShowComponent, pathMatch: 'full' },
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'upload-info-sueldos', component: UploadInfoSueldosComponent, pathMatch: 'full' },
+  { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent, pathMatch: 'full' },
   { path: '', component: PersonaAdminComponent, pathMatch: 'full' },
 
   

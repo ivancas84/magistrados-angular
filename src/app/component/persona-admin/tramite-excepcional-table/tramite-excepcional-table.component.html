@@ -4,21 +4,19 @@
 
 <mat-card>
   <mat-card-header fxLayout="row" fxLayoutAlign="start center">
-    <mat-card-title>Registro 40</mat-card-title>
+    <mat-card-title>Registro 80</mat-card-title>
     <div *ngIf="data$ | async as persona; else disableAdd">
-      <a mat-mini-fab *ngIf="persona && persona.id; else disableAdd" [routerLink]="['/afiliacion-admin']" [queryParams]="{persona:persona.id}" ><mat-icon>add</mat-icon></a>
+      <a mat-mini-fab *ngIf="persona && persona.id; else disableAdd" [routerLink]="['/tramite-excepcional-admin']" [queryParams]="{persona:persona.id}" ><mat-icon>add</mat-icon></a>
     </div>
     <ng-template #disableAdd>
       <a mat-mini-fab disabled><mat-icon>add</mat-icon></a>
     </ng-template>
   </mat-card-header>
   <mat-card-content *ngIf="(load$ | async) && load; else loading">
-    <table mat-table [dataSource]="dataSource" matSort matSortActive="creado" matSortDirection="desc"  matSortDisableClear (matSortChange)="onChangeSort($event)" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort matSortDisableClear (matSortChange)="onChangeSort($event)" class="mat-elevation-z8">
       <ng-container matColumnDef="motivo">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Motivo </th>
-        <td mat-cell *matCellDef="let row"> 
-          <a [routerLink]="['/afiliacion-admin']" [queryParams]="{id:row.id}" >{{row.motivo}}</a>
-        </td>
+        <td mat-cell *matCellDef="let row"> {{row.motivo}} </td>
       </ng-container>
 
       <ng-container matColumnDef="estado">
@@ -51,16 +49,38 @@
         <td mat-cell *matCellDef="let row"> {{row.observaciones}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="desde">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Desde </th>
+        <td mat-cell *matCellDef="let row"> {{row.desde | toDate | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hasta">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Hasta </th>
+        <td mat-cell *matCellDef="let row"> {{row.hasta | toDate | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="monto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto </th>
+        <td mat-cell *matCellDef="let row"> {{row.monto}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="persona">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Persona </th>
         <td mat-cell *matCellDef="let row"> 
-          <a [routerLink]="['/persona-show']" [queryParams]="{id:row.persona}" >
-            <core-label [id]="row.persona" [entityName]="'persona'"></core-label></a>
+          <a [routerLink]="['/persona-show']" [queryParams]="{id:row.persona}" >{{row.persona | label:'persona'}}</a>
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>  
+    <mat-paginator *ngIf="display"
+                   [length]="length"
+                   [pageSize]="display.size"
+                   [pageIndex]="display.page-1"
+                   (page)="onChangePage($event)"
+                   [pageSizeOptions]="[10, 25, 50, 100]" 
+                   showFirstLastButtons>
+    </mat-paginator>
   </mat-card-content>
 </mat-card>

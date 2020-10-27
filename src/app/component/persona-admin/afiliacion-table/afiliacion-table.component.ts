@@ -28,14 +28,19 @@ export class PersonaAfiliacionTableComponent extends TableComponent implements O
     this.load$ = this.data$.pipe(
       mergeMap(
         persona => {
+          this.load = false;
           if(isEmptyObject(persona)) return of(null);
           var d = new Display();
           d.setParams({persona:persona.id})
           d.setOrder({"creado":"desc"});
           return this.dd.all("afiliacion",d);
         }),
-      tap(
-        data => this.dataSource = data
+      map(
+        data => {
+          this.dataSource = data;
+          this.load = true;
+          return true;
+        }
       )
     )
   }

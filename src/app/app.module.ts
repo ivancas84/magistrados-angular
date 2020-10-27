@@ -13,7 +13,7 @@ import { MatTimepickerModule } from 'mat-timepicker';
 
 //import { ClipboardModule } from '@angular/cdk/clipboard';
 
-import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material/core';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -39,17 +39,16 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { SessionStorageService } from '@service/storage/session-storage.service';
-import { ParserService } from '@service/parser/parser.service';
 import { ValidatorsService } from '@service/validators/validators.service';
 
-import { LabelPipe } from '@pipe/label.pipe';
 import { ToDatePipe } from '@pipe/to-date.pipe';
 import { ToTimePipe } from '@pipe/to-time.pipe';
 import { SiNoPipe } from '@pipe/si-no.pipe';
 import { StoragePipe } from '@pipe/storage.pipe';
 import { SummaryPipe } from '@pipe/summary.pipe';
 
-import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
+import { DataDefinitionStorageService } from '@service/data-definition-storage.service';
+import { DataDefinitionLabelService } from '@service/data-definition-label/data-definition-label.service';
 
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
 import { DialogConfirmComponent } from '@component/dialog-confirm/dialog-confirm.component';
@@ -63,10 +62,14 @@ import { InputSelectParamComponent } from '@component/input-select-param/input-s
 import { InputSearchGoComponent } from '@component/input-search-go/input-search-go.component';
 import { InputTextComponent } from '@component/input-text/input-text.component';
 import { InputTextareaComponent } from '@component/input-textarea/input-textarea.component';
+import { InputTimepickerComponent } from '@component/input-timepicker/input-timepicker.component';
+import { InputYmComponent } from '@component/input-ym/input-ym.component';
 import { InputYearComponent } from '@component/input-year/input-year.component';
 import { MenuComponent } from '@component/menu/menu.component';
 import { SearchAllComponent } from '@component/search-all/search-all.component';
 import { LabelComponent } from '@component/label/label.component';
+import { FieldLabelComponent } from '@component/field-label/field-label.component';
+import { FieldTreeLabelComponent } from '@component/field-tree-label/field-tree-label.component';
 
 import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
 import { AfiliacionFieldsetComponent } from '@component/afiliacion-admin/afiliacion-fieldset/afiliacion-fieldset.component';
@@ -88,13 +91,14 @@ import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afilia
 import { AfiliacionSearchParamsComponent } from '@component/afiliacion-show/afiliacion-search-params/afiliacion-search-params.component';
 
 import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/upload-info-sueldos.component';
-import { InputYmComponent } from '@component/input-ym/input-ym.component';
+import { PTramiteExcepcionalTableComponent } from '@component/persona-admin/tramite-excepcional-table/tramite-excepcional-table.component';
+import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
+import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-fieldset/tramite-excepcional-fieldset.component';
 
 @NgModule({
   declarations: [
     AppComponent,
 
-    LabelPipe, 
     ToDatePipe, 
     ToTimePipe, 
     SiNoPipe, 
@@ -119,13 +123,16 @@ import { InputYmComponent } from '@component/input-ym/input-ym.component';
     MenuComponent,
     SearchAllComponent,
     LabelComponent,
+    FieldLabelComponent,
+    FieldTreeLabelComponent,
     //DynamicTableComponent,
 
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
     AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent, AfiliacionSearchParamsComponent,
     IaAfiliacionShowComponent, IaAfiliacionTableComponent, IaAfiliacionSearchComponent, IaAfiliacionSearchParamsComponent,
-    PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent,
-    UploadInfoSueldosComponent, CreateInfoSueldosComponent,
+    PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent, 
+    UploadInfoSueldosComponent, CreateInfoSueldosComponent, PTramiteExcepcionalTableComponent,
+    TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent
   ],
   imports: [
     BrowserModule,
@@ -171,10 +178,11 @@ import { InputYmComponent } from '@component/input-ym/input-ym.component';
 
     DataDefinitionService, 
     SessionStorageService, 
-    ParserService, 
     ValidatorsService,
     
-    DataDefinitionLoaderService, 
+    DataDefinitionStorageService, 
+    DataDefinitionLabelService, 
+
   ],
   bootstrap: [AppComponent]
 })
