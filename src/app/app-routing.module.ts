@@ -8,6 +8,7 @@ import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/uploa
 import { CreateInfoSueldosComponent } from '@component/create-info-sueldos/create-info-sueldos.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { ArchivoAfiliacionesCreateComponent } from '@component/archivo-afiliaciones-create/archivo-afiliaciones-create/archivo-afiliaciones-create.component';
+import { LoginComponent } from '@component/login/login.component';
 
 const routes: Routes = [
   { path: 'afiliacion-admin', component: AfiliacionAdminComponent, pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'upload-info-sueldos', component: UploadInfoSueldosComponent, pathMatch: 'full' },
   { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent, pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: '', component: PersonaAdminComponent, pathMatch: 'full' },
 ];
 
