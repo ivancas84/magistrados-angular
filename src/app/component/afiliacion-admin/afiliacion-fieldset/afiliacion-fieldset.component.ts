@@ -3,8 +3,6 @@ import { FieldsetComponent } from '@component/fieldset/fieldset.component';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { ValidatorsService } from '@service/validators/validators.service';
-import { Observable } from 'rxjs';
-import { Display } from '@class/display';
 import { Router } from '@angular/router';
 import { SessionStorageService } from '@service/storage/session-storage.service';
 
@@ -67,7 +65,6 @@ export class AfiliacionFieldsetComponent extends FieldsetComponent {
      * la asignacion de datos iniciales no sera considerada como valueChange (se puede solucionar de la misma forma suscribiendose en el ts)
      */
   }
-  
 
   get id() { return this.fieldset.get('id')}
   get motivo() { return this.fieldset.get('motivo')}
