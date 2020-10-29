@@ -40,6 +40,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { SessionStorageService } from '@service/storage/session-storage.service';
 import { ValidatorsService } from '@service/validators/validators.service';
+import { CookieService } from 'ngx-cookie-service';
 
 import { ToDatePipe } from '@pipe/to-date.pipe';
 import { ToTimePipe } from '@pipe/to-time.pipe';
@@ -70,6 +71,7 @@ import { SearchAllComponent } from '@component/search-all/search-all.component';
 import { LabelComponent } from '@component/label/label.component';
 import { FieldLabelComponent } from '@component/field-label/field-label.component';
 import { FieldTreeLabelComponent } from '@component/field-tree-label/field-tree-label.component';
+import { LoginComponent } from '@component/login/login.component';
 
 import { FieldLabelOrganoComponent } from '@component/reusable/field-label-organo/field-label-organo.component';
 
@@ -99,6 +101,7 @@ import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/uploa
 import { PTramiteExcepcionalTableComponent } from '@component/persona-admin/tramite-excepcional-table/tramite-excepcional-table.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-fieldset/tramite-excepcional-fieldset.component';
+
 
 
 @NgModule({
@@ -132,6 +135,7 @@ import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcio
     FieldLabelComponent,
     FieldTreeLabelComponent,
     //DynamicTableComponent,
+    LoginComponent,
 
     FieldLabelOrganoComponent,
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
@@ -187,7 +191,8 @@ import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcio
     DataDefinitionService, 
     SessionStorageService, 
     ValidatorsService,
-    
+    CookieService, 
+
     DataDefinitionStorageService, 
     DataDefinitionLabelService, 
 
