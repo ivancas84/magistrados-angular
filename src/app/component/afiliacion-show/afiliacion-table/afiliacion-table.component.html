@@ -48,7 +48,7 @@
         <mat-cell *matCellDef="let row"> 
           <a [routerLink]="['/persona-admin']" [queryParams]="{id:row.persona}" >
             <core-label [id]="row.persona" [entityName]="'persona'"></core-label>
-          </a><span *ngIf="row.persona_.organo == 2">(*)</span>
+          </a>&nbsp;<app-field-label-organo [id]="row.persona"></app-field-label-organo>
         </mat-cell>
       </ng-container>
 
