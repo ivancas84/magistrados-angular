@@ -14,7 +14,6 @@ export class FieldLabelOrganoComponent extends FieldLabelComponent {
   }
   
   ngOnChanges(changes: SimpleChanges){
-    console.log(changes);
     if( changes['id'] && changes['id'].previousValue != changes['id'].currentValue ) {
       if(!changes['id'].currentValue) this.label = null;
       else {
