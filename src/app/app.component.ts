@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@service/auth/auth.service';
 import { SessionStorageService } from '@service/storage/session-storage.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { SessionStorageService } from '@service/storage/session-storage.service'
 export class AppComponent implements OnInit{
   constructor(
     protected storage: SessionStorageService, 
+    public auth: AuthService
   ) { }
 
   ngOnInit(): void {
