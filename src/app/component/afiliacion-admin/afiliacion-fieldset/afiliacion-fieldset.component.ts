@@ -5,6 +5,7 @@ import { DataDefinitionService } from '@service/data-definition/data-definition.
 import { ValidatorsService } from '@service/validators/validators.service';
 import { Router } from '@angular/router';
 import { SessionStorageService } from '@service/storage/session-storage.service';
+import { fastClone } from '@function/fast-clone';
 
 @Component({
   selector: 'app-afiliacion-fieldset',
@@ -44,26 +45,19 @@ export class AfiliacionFieldsetComponent extends FieldsetComponent {
     return fg;
   }
 
-  ngOnInit() {    
-    /**
-     * Al inicializar el formulario se blanquean los valores del storage, por eso deben consultarse previamente
-     */
-    this.initForm();
-    var s = this.initData().subscribe(
-      response => {
-        this.initValues(response);
-        if(response && response.hasOwnProperty("modificado") && response["modificado"]) this.motivo.disable();
+  initValues(response: {[key:string]: any} = {}){
+    if(!response) {
+      this.fieldset.reset(this.defaultValues);
+    } else {
+      var res = fastClone(response);
+      for(var key in this.defaultValues){
+        if(this.defaultValues.hasOwnProperty(key)){
+          if(!res.hasOwnProperty(key)) res[key] = this.defaultValues[key];
+        }
       }
-    );
-    this.subscriptions.add(s);
-    /**
-     * @todo no me suscribo desde el template porque dispara errores ExpressionChangedAfterIfCheckedValue
-     * Un posible problema es que inicializo en null y despues asigno el valor a traves de reset o patchValue
-     * Habria que ver si se puede efectuar todo el proceso de inicializacion del formulario y asignacion de valores en un mismo observable
-     * Al suscribirse directamente en el ts no dispara los errores, se carga primero el formulario y despues se asigna el valor
-     * Puede haber inconvenientes si se desea acceder al valueChanges en los subcomponentes,
-     * la asignacion de datos iniciales no sera considerada como valueChange (se puede solucionar de la misma forma suscribiendose en el ts)
-     */
+      this.fieldset.reset(res) 
+    }
+    if(response && response.hasOwnProperty("modificado") && response["modificado"]) this.motivo.disable();
   }
 
   get id() { return this.fieldset.get('id')}
