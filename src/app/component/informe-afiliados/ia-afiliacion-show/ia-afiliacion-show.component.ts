@@ -14,16 +14,15 @@ export class IaAfiliacionShowComponent extends ShowComponent {
 
   
   initDisplay(): void {
-    let display = new Display();
-    console.log(this.params);
-    display.setSize(0);
-    display.setParamsByQueryParams(this.params);
-    this.display$.next(display);
+    this.display = new Display();
+    this.display.setSize(0);
+    this.display.setParamsByQueryParams(this.params);
   }
 
-  data(): Observable<any>{
-    if(!Object.keys(this.display$.value.getParams()).includes("per_departamento_judicial")) return of([]);
-    return this.dd.all(this.entityName, this.display$.value);
+  
+  initData(): Observable<any>{
+    if(!Object.keys(this.display.getParams()).includes("per-departamento_judicial")) return of([]);
+    return this.dd.all(this.entityName, this.display);
   }
 
 }

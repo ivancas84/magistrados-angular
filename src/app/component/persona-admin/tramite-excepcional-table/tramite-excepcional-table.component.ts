@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Display } from '@class/display';
 import { TableComponent } from '@component/table/table.component';
 import { isEmptyObject } from '@function/is-empty-object.function';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
-import { of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
@@ -15,7 +15,7 @@ import { map, switchMap, tap } from 'rxjs/operators';
   .mat-table.mat-table { min-width: 700px; }
   `],
 })
-export class PTramiteExcepcionalTableComponent extends TableComponent { 
+export class PTramiteExcepcionalTableComponent extends TableComponent implements OnChanges{ 
   displayedColumns: string[] = ['motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado', 'observaciones', 'desde', 'hasta', 'monto'];
 
   constructor(
@@ -23,6 +23,17 @@ export class PTramiteExcepcionalTableComponent extends TableComponent {
     protected router: Router,
   ) {
     super(router);
+  }
+
+  load$: Observable<any>;
+  load: boolean;
+  data$: BehaviorSubject<any> = new BehaviorSubject(null);
+  dataSource: any;
+    
+  ngOnChanges(changes: SimpleChanges): void {
+    if( changes['data'] && changes['data'].previousValue != changes['data'].currentValue ) {    
+        this.data$.next(changes['data'].currentValue);
+    }
   }
   
   ngOnInit(): void {

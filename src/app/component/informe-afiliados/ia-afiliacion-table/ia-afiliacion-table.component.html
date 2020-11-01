@@ -5,22 +5,22 @@
 <button mat-fab color="primary" (click)="copyData()"><mat-icon>content_copy</mat-icon></button>
 <button mat-fab color="primary" (click)="printData()"><mat-icon>print</mat-icon></button>
 
-<div *ngIf="(load$ | async); else loading" #informeafiliacion>
+<div #informeafiliacion>
 <h1>Colegio de Magistrados y Funcionarios del Poder Judicial de la Provincia de Buenos Aires</h1>
-<h2>Departamento Judicial <core-label [id]="display$.value.getParams().per_departamento_judicial" [entityName]="'departamento_judicial'"></core-label></h2>
+<h2>Departamento Judicial <core-label [id]="display.getParams().per_departamento_judicial" [entityName]="'departamento_judicial'"></core-label></h2>
 <table>
   <tr>
     <th>Apellido y Nombre</th>
     <th>Legajo</th>
   </tr>
 
-  <tr *ngFor="let row of dataSource">
+  <tr *ngFor="let row of data">
     <td><core-label [id]="row.persona" [entityName]="'persona'"></core-label></td>
     <td>{{row.persona_.legajo}}</td>
   </tr>
 </table>
 <br>
-<p *ngIf="loadLength$ | async">Total de casos: {{length}}</p>
+<p>Total de casos: {{length}}</p>
 
 </div>
 
