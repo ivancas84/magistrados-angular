@@ -30,5 +30,9 @@ export class TramiteExcepcionalAdminComponent extends AdminComponent {
   ) {
     super(fb, route, router, location, dd, storage, dialog, snackBar);
   }
+
+  reload(response){
+    this.back();
+  }
 }
 

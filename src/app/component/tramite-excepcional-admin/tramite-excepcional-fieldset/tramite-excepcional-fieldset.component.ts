@@ -63,4 +63,18 @@ readonly entityName: string = 'tramite_excepcional';
   get monto() { return this.fieldset.get('monto')}
   get persona() { return this.fieldset.get('persona')}
 
+  resetForm(values: {[key:string]: any}){
+    this.fieldset.reset(values);
+    if(values && (
+        (values.hasOwnProperty("modificado") && values["modificado"])
+        || (values.hasOwnProperty("enviado") && values["enviado"])
+        || (values.hasOwnProperty("evaluado") && values["evaluado"])
+    )) {
+      this.motivo.disable();
+      this.desde.disable();
+      this.hasta.disable();
+      this.monto.disable();
+    }
+  }
+
 }

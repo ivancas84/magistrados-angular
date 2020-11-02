@@ -13,6 +13,10 @@ import { MatSort, Sort } from '@angular/material/sort';
 @Component({
   selector: 'app-persona-afiliacion-table',
   templateUrl: './afiliacion-table.component.html',
+  styles:[`
+  .mat-card-content { overflow-x: auto; }
+  .mat-table.mat-table { min-width: 700px; }
+  `],
 })
 export class PersonaAfiliacionTableComponent extends TableComponent implements OnInit, OnChanges{
   displayedColumns: string[] = ['motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado', 'observaciones'];

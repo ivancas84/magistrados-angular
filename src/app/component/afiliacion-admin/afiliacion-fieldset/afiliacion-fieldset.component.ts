@@ -5,7 +5,6 @@ import { DataDefinitionService } from '@service/data-definition/data-definition.
 import { ValidatorsService } from '@service/validators/validators.service';
 import { Router } from '@angular/router';
 import { SessionStorageService } from '@service/storage/session-storage.service';
-import { fastClone } from '@function/fast-clone';
 
 @Component({
   selector: 'app-afiliacion-fieldset',
@@ -45,19 +44,15 @@ export class AfiliacionFieldsetComponent extends FieldsetComponent {
     return fg;
   }
 
-  initValues(response: {[key:string]: any} = {}){
-    if(!response) {
-      this.fieldset.reset(this.defaultValues);
-    } else {
-      var res = fastClone(response);
-      for(var key in this.defaultValues){
-        if(this.defaultValues.hasOwnProperty(key)){
-          if(!res.hasOwnProperty(key)) res[key] = this.defaultValues[key];
-        }
-      }
-      this.fieldset.reset(res) 
+  resetForm(values: {[key:string]: any}){
+    this.fieldset.reset(values);
+    if(values && (
+      (values.hasOwnProperty("modificado") && values["modificado"])
+      || (values.hasOwnProperty("enviado") && values["enviado"])
+      || (values.hasOwnProperty("evaluado") && values["evaluado"])
+    )) {
+       this.motivo.disable();
     }
-    if(response && response.hasOwnProperty("modificado") && response["modificado"]) this.motivo.disable();
   }
 
   get id() { return this.fieldset.get('id')}

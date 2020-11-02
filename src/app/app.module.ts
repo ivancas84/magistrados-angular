@@ -84,6 +84,9 @@ import { AfiliacionSearchComponent } from '@component/afiliacion-show/afiliacion
 import { ArchivoAfiliacionesCreateComponent } from '@component/archivo-afiliaciones-create/archivo-afiliaciones-create/archivo-afiliaciones-create.component';
 import { ArchivoAfiliacionesCreateFieldsetComponent } from '@component/archivo-afiliaciones-create/archivo-afiliaciones-create-fieldset/archivo-afiliaciones-create-fieldset.component';
 
+import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
+import { ArchivoAfiliacionesTableComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-table/archivo-afiliaciones-table.component';
+
 import { CreateInfoSueldosComponent } from '@component/create-info-sueldos/create-info-sueldos.component';
 
 import { IaAfiliacionShowComponent } from '@component/informe-afiliados/ia-afiliacion-show/ia-afiliacion-show.component';
@@ -100,8 +103,6 @@ import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/uploa
 import { PTramiteExcepcionalTableComponent } from '@component/persona-admin/tramite-excepcional-table/tramite-excepcional-table.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-fieldset/tramite-excepcional-fieldset.component';
-
-
 
 @NgModule({
   declarations: [
@@ -140,6 +141,7 @@ import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcio
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
     AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent, AfiliacionSearchParamsComponent,
     ArchivoAfiliacionesCreateComponent, ArchivoAfiliacionesCreateFieldsetComponent,
+    ArchivoAfiliacionesShowComponent, ArchivoAfiliacionesTableComponent,
     IaAfiliacionShowComponent, IaAfiliacionTableComponent, IaAfiliacionSearchComponent, IaAfiliacionSearchParamsComponent,
     PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent, 
     UploadInfoSueldosComponent, CreateInfoSueldosComponent, PTramiteExcepcionalTableComponent,

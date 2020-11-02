@@ -17,31 +17,35 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
   formGroup(): FormGroup {
     let fg: FormGroup = this.fb.group({
       motivo: null,
-      estado: null,
-      creado_ym: null,
-      enviado_ym: null,
-      evaluado_ym: null,
-      modificado_ym: null,
-      modificado_is_set: null,
+      estado: null,      
       persona: null,
-      per_organo: null,
-      per_departamento_judicial: null,
-      per_cargo: null,
+      "creado.ym": null,
+      "enviado.ym": null,
+      "evaluado.ym": null,
+      "modificado.ym": null,    
+      "per-organo": null,
+      "per-departamento_judicial": null,
+      "per-cargo": null,
+      "modificado.is_set": null,
     });
+
+
+
     return fg;
+
   }
 
-  get motivo() { return this.fieldset.get('motivo')}
-  get estado() { return this.fieldset.get('estado')}
-  get creadoYm() { return this.fieldset.get('creado_ym')}
-  get enviadoYm() { return this.fieldset.get('enviado_ym')}
-  get evaluadoYm() { return this.fieldset.get('evaluado_ym')}
-  get modificadoYm() { return this.fieldset.get('modificado_ym')}
-  get modificadoIsSet() { return this.fieldset.get('modificado_is_set')}
-  get observaciones() { return this.fieldset.get('observaciones')}
-  get persona() { return this.fieldset.get('persona')}
-  get organo() { return this.fieldset.get('per_organo')}
-  get departamentoJudicial() { return this.fieldset.get('per_departamento_judicial')}
-  get cargo() { return this.fieldset.get('per_cargo')}
+  get motivo() { return this.fieldset.controls['motivo']}
+  get estado() { return this.fieldset.controls['estado']}
+  get creadoYm() { return this.fieldset.controls['creado.ym'];}
+  get enviadoYm() { return this.fieldset.controls['enviado.ym']}
+  get evaluadoYm() { return this.fieldset.controls['evaluado.ym']}
+  get modificadoYm() { return this.fieldset.controls['modificado.ym']}
+  get modificadoIsSet() { return this.fieldset.controls['modificado.is_set']}
+  get observaciones() { return this.fieldset.controls['observaciones']}
+  get persona() { return this.fieldset.controls['persona']}
+  get organo() { return this.fieldset.controls['per-organo']}
+  get departamentoJudicial() { return this.fieldset.controls['per-departamento_judicial']}
+  get cargo() { return this.fieldset.controls['per-cargo']}
 
 }

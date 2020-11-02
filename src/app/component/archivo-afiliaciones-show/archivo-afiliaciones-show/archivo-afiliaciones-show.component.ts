@@ -12,22 +12,14 @@ export class ArchivoAfiliacionesShowComponent extends ShowComponent {
   readonly entityName: string = "archivo_afiliaciones";
 
   ngOnInit(): void {
-    this.load$ = this.initData().pipe(
+    this.load$ = this.dd.post("list", this.entityName).pipe(
       map(
         data => {
           this.data = data;
-
+          return true;
         }
       )
     )
-  }
-
-  initData(): Observable<any>{
-    /**
-     * Conviene no pasar como parametro el valor de collectionSize$
-     * puede que se desee que este valor sea opcional al sobrescribir el metodo
-     */
-    return this.dd.post("list", this.entityName);
   }
 }
 

@@ -9,12 +9,13 @@ import { CreateInfoSueldosComponent } from '@component/create-info-sueldos/creat
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { ArchivoAfiliacionesCreateComponent } from '@component/archivo-afiliaciones-create/archivo-afiliaciones-create/archivo-afiliaciones-create.component';
 import { LoginComponent } from '@component/login/login.component';
+import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
 
 const routes: Routes = [
   { path: 'afiliacion-admin', component: AfiliacionAdminComponent, pathMatch: 'full' },
   { path: 'afiliacion-show', component: AfiliacionShowComponent, pathMatch: 'full' },
   { path: 'archivo-afiliaciones-create', component: ArchivoAfiliacionesCreateComponent, pathMatch: 'full' },
-
+  { path: 'archivo-afiliaciones-show', component: ArchivoAfiliacionesShowComponent, pathMatch: 'full' },
   { path: 'create-info-sueldos', component: CreateInfoSueldosComponent, pathMatch: 'full' },
   { path: 'informe-afiliados', component: IaAfiliacionShowComponent, pathMatch: 'full' },
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },

@@ -17,11 +17,13 @@
     <a mat-menu-item routerLink="/persona-admin" routerLinkActive="active" title="Nueva Persona">Persona</a>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="herramientas" aria-label="icon-button with menu icon">
-    Herramientas
+  <button mat-button [matMenuTriggerFor]="archivo" aria-label="icon-button with menu icon">
+    Archivo
   </button>
-  <mat-menu #herramientas="matMenu">
-    <a mat-menu-item routerLink="/archivo-afiliaciones-create" routerLinkActive="active" title="Crear Archivo de Afiliaciones">Crear Archivo de Afiliaciones</a>
+  <mat-menu #archivo="matMenu">
+    <a mat-menu-item routerLink="/archivo-afiliaciones-create" routerLinkActive="active" title="Crear Archivo de Afiliaciones">Crear Archivo Registro 40</a>    
+    <a mat-menu-item routerLink="/archivo-tramite-excepcional-create" routerLinkActive="active" title="Crear Archivo de Tramite Excepctional">Crear Archivo Registro 80</a>
+    <a mat-menu-item routerLink="/archivo-afiliaciones-show" routerLinkActive="active" title="Ver Archivos creados">Ver Archivos Creados (40 y 80)</a>
     <a mat-menu-item routerLink="/upload-info-sueldos" routerLinkActive="active" title="Procesar Archivo">Procesar Archivo Sueldos</a>
   </mat-menu>
   <button *ngIf="logoutMenu" mat-button aria-label="icon-button with menu icon" (click)="logout()">

@@ -30,5 +30,10 @@ export class AfiliacionAdminComponent extends AdminComponent {
   ) {
     super(fb, route, router, location, dd, storage, dialog, snackBar);
   }
+
+  reload(response){
+    this.back();
+  }
+
 }
 
