@@ -17,7 +17,5 @@ export class AppComponent implements OnInit{
     this.storage.clear();
   }
 
-
-
   title = 'magistrados';
 }

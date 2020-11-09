@@ -10,37 +10,25 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatTimepickerModule } from 'mat-timepicker';
+import { CookieService } from 'ngx-cookie-service';
+
+import { AppMaterialModule } from './core/app-material.module';
+
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+import { GOOGLE_CLIENT_ID } from './app.config';
 
 //import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material/core';
-import { MatNativeDateModule } from '@angular/material/core';
-
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
-import { MatSelectModule } from '@angular/material/select';
-import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { SessionStorageService } from '@service/storage/session-storage.service';
 import { ValidatorsService } from '@service/validators/validators.service';
-import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '@service/auth/auth.service';
+
 import { ToDatePipe } from '@pipe/to-date.pipe';
 import { ToTimePipe } from '@pipe/to-time.pipe';
 import { SiNoPipe } from '@pipe/si-no.pipe';
@@ -49,6 +37,11 @@ import { SummaryPipe } from '@pipe/summary.pipe';
 
 import { DataDefinitionStorageService } from '@service/data-definition-storage.service';
 import { DataDefinitionLabelService } from '@service/data-definition-label/data-definition-label.service';
+
+import { LoginComponent } from '@component/login/login.component';
+import { LogoutComponent } from '@component/logout/logout.component';
+import { HomeComponent } from '@component/home/home.component';
+import { SocialLoginComponent } from '@component/social-login/social-login.component';
 
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
 import { DialogConfirmComponent } from '@component/dialog-confirm/dialog-confirm.component';
@@ -70,7 +63,6 @@ import { SearchAllComponent } from '@component/search-all/search-all.component';
 import { LabelComponent } from '@component/label/label.component';
 import { FieldLabelComponent } from '@component/field-label/field-label.component';
 import { FieldTreeLabelComponent } from '@component/field-tree-label/field-tree-label.component';
-import { LoginComponent } from '@component/login/login.component';
 
 import { FieldLabelOrganoComponent } from '@component/reusable/field-label-organo/field-label-organo.component';
 
@@ -114,6 +106,11 @@ import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcio
     SummaryPipe, 
     StoragePipe,
 
+    LoginComponent,
+    SocialLoginComponent,
+    LogoutComponent,
+    HomeComponent,
+
     DialogAlertComponent,
     DialogConfirmComponent,
     InputAutocompleteComponent,
@@ -135,7 +132,6 @@ import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcio
     FieldLabelComponent,
     FieldTreeLabelComponent,
     //DynamicTableComponent,
-    LoginComponent,
 
     FieldLabelOrganoComponent,
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
@@ -156,30 +152,10 @@ import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcio
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
-
+    SocialLoginModule,
     //ClipboardModule,
 
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatSnackBarModule,
-    MatSelectModule,
-    MatSortModule,
-    //MatStepperModule,
-    MatTableModule,
-    MatToolbarModule,
+    AppMaterialModule,
 
     MaterialFileInputModule,
     //MatTimepickerModule
@@ -188,14 +164,22 @@ import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcio
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000, verticalPosition:"top", horizontalPosition:"right"}},
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
-
+    CookieService,
+    
+    AuthService,
     DataDefinitionService, 
     SessionStorageService, 
     ValidatorsService,
-    CookieService, 
     
     DataDefinitionStorageService, 
     DataDefinitionLabelService, 
+
+    {provide: 'SocialAuthServiceConfig', useValue: { autoLogin: false,  providers: [
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider(GOOGLE_CLIENT_ID)
+      },
+    ]} as SocialAuthServiceConfig, }
 
   ],
   bootstrap: [AppComponent]
