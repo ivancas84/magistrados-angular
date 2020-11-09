@@ -9,13 +9,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialFileInputModule } from 'ngx-material-file-input';
-import { MatTimepickerModule } from 'mat-timepicker';
+//import { MatTimepickerModule } from 'mat-timepicker';
 import { CookieService } from 'ngx-cookie-service';
 
 import { AppMaterialModule } from './core/app-material.module';
 
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import { GoogleLoginProvider } from 'angularx-social-login';
+//import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+//import { GoogleLoginProvider } from 'angularx-social-login';
 import { GOOGLE_CLIENT_ID } from './app.config';
 
 //import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -152,7 +152,7 @@ import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcio
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
-    SocialLoginModule,
+    //SocialLoginModule,
     //ClipboardModule,
 
     AppMaterialModule,
@@ -174,12 +174,12 @@ import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcio
     DataDefinitionStorageService, 
     DataDefinitionLabelService, 
 
-    {provide: 'SocialAuthServiceConfig', useValue: { autoLogin: false,  providers: [
+    /*{provide: 'SocialAuthServiceConfig', useValue: { autoLogin: false,  providers: [
       {
         id: GoogleLoginProvider.PROVIDER_ID,
         provider: new GoogleLoginProvider(GOOGLE_CLIENT_ID)
       },
-    ]} as SocialAuthServiceConfig, }
+    ]} as SocialAuthServiceConfig, }*/
 
   ],
   bootstrap: [AppComponent]
