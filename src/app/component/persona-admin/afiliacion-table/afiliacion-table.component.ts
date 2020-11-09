@@ -27,7 +27,6 @@ export class PersonaAfiliacionTableComponent extends TableComponent implements O
   ) {
     super(router);
   }
-
   
   load$: Observable<any>;
   load: boolean;
