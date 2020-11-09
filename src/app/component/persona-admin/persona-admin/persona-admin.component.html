@@ -4,7 +4,7 @@
 
 
 <form *ngIf="(loadParams$ | async)" [formGroup]="adminForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
-  <div *ngIf="(loadDisplay$ | async) && load; else loading">
+  <div *ngIf="(loadDisplay$ | async); else loading">
     <app-persona-fieldset [form]="adminForm" [data]="data"></app-persona-fieldset>
 
     <mat-card>
