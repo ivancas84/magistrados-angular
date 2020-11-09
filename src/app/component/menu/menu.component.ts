@@ -7,22 +7,22 @@ import { AuthService } from '@service/auth/auth.service';
 })
 export class MenuComponent implements OnInit, OnChanges { 
 
-  @Input() jwt?: string = "";
-  logoutMenu = false;
-  loginMenu = true;
+  @Input() jwt?: string;
+  authenticated = false;
+  view = [];
 
   constructor(
     protected auth: AuthService, 
   ) { }
 
-  ngOnChanges(changes: SimpleChanges): void {
+ ngOnChanges(changes: SimpleChanges): void {
     if(changes.jwt.currentValue != changes.jwt.previousValue){
-      if(this.auth.isAuthenticated()){
-        this.logoutMenu = true;
-        this.loginMenu = false;
+      this.authenticated = this.auth.isAuthenticated();
+      if(this.authenticated){
+        var token = this.auth.getToken();
+        this.view = (token && token.hasOwnProperty("view")) ? token["view"] : [];
       } else {
-        this.logoutMenu = false;
-        this.loginMenu = true;
+        this.view = [];
       }
     }
   }
@@ -36,7 +36,4 @@ export class MenuComponent implements OnInit, OnChanges {
     }
   }
 
-  logout(){
-    this.auth.logout();
-  }
 }
