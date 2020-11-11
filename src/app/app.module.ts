@@ -81,6 +81,9 @@ import { ArchivoAfiliacionesTableComponent } from '@component/archivo-afiliacion
 
 import { CreateInfoSueldosComponent } from '@component/create-info-sueldos/create-info-sueldos.component';
 
+import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
+import { DepartamentoJudicialFieldsetArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-fieldset-array/departamento-judicial-fieldset-array.component';
+
 import { IaAfiliacionShowComponent } from '@component/informe-afiliados/ia-afiliacion-show/ia-afiliacion-show.component';
 import { IaAfiliacionTableComponent } from '@component/informe-afiliados/ia-afiliacion-table/ia-afiliacion-table.component';
 import { IaAfiliacionSearchComponent } from '@component/informe-afiliados/ia-afiliacion-search/ia-afiliacion-search.component';
@@ -95,6 +98,8 @@ import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/uploa
 import { PTramiteExcepcionalTableComponent } from '@component/persona-admin/tramite-excepcional-table/tramite-excepcional-table.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-fieldset/tramite-excepcional-fieldset.component';
+import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload/archivo-sueldos-upload.component';
+
 
 @NgModule({
   declarations: [
@@ -138,10 +143,12 @@ import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcio
     AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent, AfiliacionSearchParamsComponent,
     ArchivoAfiliacionesCreateComponent, ArchivoAfiliacionesCreateFieldsetComponent,
     ArchivoAfiliacionesShowComponent, ArchivoAfiliacionesTableComponent,
+    ArchivoSueldosUploadComponent,
+    DepartamentoJudicialAdminArrayComponent, DepartamentoJudicialFieldsetArrayComponent,
     IaAfiliacionShowComponent, IaAfiliacionTableComponent, IaAfiliacionSearchComponent, IaAfiliacionSearchParamsComponent,
     PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent, 
     UploadInfoSueldosComponent, CreateInfoSueldosComponent, PTramiteExcepcionalTableComponent,
-    TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent
+    TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent,
   ],
   imports: [
     BrowserModule,
