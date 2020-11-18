@@ -41,7 +41,7 @@ export class PTramiteExcepcionalTableComponent extends TableComponent implements
       switchMap(
         persona => {
           this.load = false;
-          if(isEmptyObject(persona)) return of(null);
+          if(isEmptyObject(persona) || !persona.id) return of(null);
           var d = new Display();
           d.setParams({persona:persona.id})
           d.setOrder({"creado":"desc"});

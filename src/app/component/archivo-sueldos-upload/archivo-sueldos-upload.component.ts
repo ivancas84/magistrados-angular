@@ -14,6 +14,7 @@ import { SessionStorageService } from '@service/storage/session-storage.service'
 })
 export class ArchivoSueldosUploadComponent extends UploadComponent {
   readonly entityName: string = "archivo_sueldos"; // archivo sueldos = archivo de afiliaciones + archivo de tramites exepcionales
+  isSaved = false;
 
   constructor(
     protected fb: FormBuilder, 
@@ -55,26 +56,53 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
     return formData;
   }
 
-  upload(): void {
-    /**
-     * @override
-     */    
-    this.dd.upload(this.entityName, this.formData()).subscribe(
+  get organo() { return this.uploadForm.controls['organo']}
+  get periodo() { return this.uploadForm.controls['periodo']}
+
+
+  progress = 0;
+  saveStatus: string = "unsaved";
+
+  save(progress = 0){
+    this.saveStatus = "saving";
+    var s = this.dd._post("persist", "archivo_sueldos", {log:this.response["log"], progress:progress}).subscribe(
       (res) => {
-        this.response = res;
-        this.storage.removeItemsPersisted(this.response["detail"]);
-        this.snackBar.open("Archivo subido", "X");
+        this.progress = (res["progress"]+1) * 100 / res["total"];
+        if(res["progress"]+1 < (res["total"])) this.save(res["progress"]+1);
+        else {
+          this.saveStatus = "saved";
+          this.snackBar.open("Procesamiento realizado", "X");
+        }
       },
-      (err) => {
-        this.isSubmitted = false;  
+      (err)=> {
+        this.saveStatus = "unsaved";
         this.dialog.open(DialogAlertComponent, {
           data: {title: "Error", message: err.error}
         });
       }
     );
   }
-  get organo() { return this.uploadForm.controls['organo']}
-  get periodo() { return this.uploadForm.controls['periodo']}
+  
+
+  delete() {
+    var s = this.dd._post("delete", "archivo_sueldos", {evaluado:this.response["evaluado"]}).subscribe(
+      (res) => {
+        this.snackBar.open("Se han eliminado los registros recientes", "X");
+      },
+      (err) => {
+        this.dialog.open(DialogAlertComponent, {
+          data: {title: "Error", message: err.error}
+        });
+      }
+    );
+    this.subscriptions.add(s);
+  }
+
+  finalize(){
+    this.snackBar.open("Procesamiento finalizado", "X");
+    this.isSubmitted = false;
+    this.response = null;
+  }
 
   
 }
