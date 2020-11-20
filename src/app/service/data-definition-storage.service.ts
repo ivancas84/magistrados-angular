@@ -16,6 +16,9 @@ export class DataDefinitionStorageService {
       case "cargo": this.storageCargo(row); break;
       case "departamento_judicial": this.storageDepartamentoJudicial(row); break;
       case "file": this.storageFile(row); break;
+      case "importe": this.storageImporte(row); break;
+      case "importe_afiliacion": this.storageImporteAfiliacion(row); break;
+      case "importe_tramite_excepcional": this.storageImporteTramiteExcepcional(row); break;
       case "organo": this.storageOrgano(row); break;
       case "persona": this.storagePersona(row); break;
       case "tipo_documento": this.storageTipoDocumento(row); break;
@@ -91,6 +94,135 @@ export class DataDefinitionStorageService {
      * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
      */
     this.stg.setItem("file" + rowCloned.id, rowCloned);
+  }
+
+  storageImporte(row: { [index: string]: any }): void{
+    if(!row) return;
+    var rowCloned = JSON.parse(JSON.stringify(row))
+    /**
+     * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
+     */
+    this.stg.setItem("importe" + rowCloned.id, rowCloned);
+  }
+
+  storageImporteAfiliacion(row: { [index: string]: any }): void{
+    if(!row) return;
+    var rowCloned = JSON.parse(JSON.stringify(row))
+    /**
+     * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
+     */
+    if(('afiliacion_' in rowCloned)
+    && ('persona_' in rowCloned['afiliacion_'])
+    && ('cargo_' in rowCloned['afiliacion_']['persona_'])
+    ){
+      this.stg.setItem('cargo' + rowCloned['afiliacion_']['persona_']['cargo_'].id, rowCloned['afiliacion_']['persona_']['cargo_']);
+      delete rowCloned['afiliacion_']['persona_']['cargo_'];
+    }
+    if(('afiliacion_' in rowCloned)
+    && ('persona_' in rowCloned['afiliacion_'])
+    && ('organo_' in rowCloned['afiliacion_']['persona_'])
+    ){
+      this.stg.setItem('organo' + rowCloned['afiliacion_']['persona_']['organo_'].id, rowCloned['afiliacion_']['persona_']['organo_']);
+      delete rowCloned['afiliacion_']['persona_']['organo_'];
+    }
+    if(('afiliacion_' in rowCloned)
+    && ('persona_' in rowCloned['afiliacion_'])
+    && ('departamento_judicial_' in rowCloned['afiliacion_']['persona_'])
+    ){
+      this.stg.setItem('departamento_judicial' + rowCloned['afiliacion_']['persona_']['departamento_judicial_'].id, rowCloned['afiliacion_']['persona_']['departamento_judicial_']);
+      delete rowCloned['afiliacion_']['persona_']['departamento_judicial_'];
+    }
+    if(('afiliacion_' in rowCloned)
+    && ('persona_' in rowCloned['afiliacion_'])
+    && ('departamento_judicial_informado_' in rowCloned['afiliacion_']['persona_'])
+    ){
+      this.stg.setItem('departamento_judicial' + rowCloned['afiliacion_']['persona_']['departamento_judicial_informado_'].id, rowCloned['afiliacion_']['persona_']['departamento_judicial_informado_']);
+      delete rowCloned['afiliacion_']['persona_']['departamento_judicial_informado_'];
+    }
+    if(('afiliacion_' in rowCloned)
+    && ('persona_' in rowCloned['afiliacion_'])
+    && ('tipo_documento_' in rowCloned['afiliacion_']['persona_'])
+    ){
+      this.stg.setItem('tipo_documento' + rowCloned['afiliacion_']['persona_']['tipo_documento_'].id, rowCloned['afiliacion_']['persona_']['tipo_documento_']);
+      delete rowCloned['afiliacion_']['persona_']['tipo_documento_'];
+    }
+    if(('afiliacion_' in rowCloned)
+    && ('persona_' in rowCloned['afiliacion_'])
+    ){
+      this.stg.setItem('persona' + rowCloned['afiliacion_']['persona_'].id, rowCloned['afiliacion_']['persona_']);
+      delete rowCloned['afiliacion_']['persona_'];
+    }
+    if(('afiliacion_' in rowCloned)
+    ){
+      this.stg.setItem('afiliacion' + rowCloned['afiliacion_'].id, rowCloned['afiliacion_']);
+      delete rowCloned['afiliacion_'];
+    }
+    if(('importe_' in rowCloned)
+    ){
+      this.stg.setItem('importe' + rowCloned['importe_'].id, rowCloned['importe_']);
+      delete rowCloned['importe_'];
+    }
+    this.stg.setItem("importe_afiliacion" + rowCloned.id, rowCloned);
+  }
+
+  storageImporteTramiteExcepcional(row: { [index: string]: any }): void{
+    if(!row) return;
+    var rowCloned = JSON.parse(JSON.stringify(row))
+    /**
+     * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
+     */
+    if(('tramite_excepcional_' in rowCloned)
+    && ('persona_' in rowCloned['tramite_excepcional_'])
+    && ('cargo_' in rowCloned['tramite_excepcional_']['persona_'])
+    ){
+      this.stg.setItem('cargo' + rowCloned['tramite_excepcional_']['persona_']['cargo_'].id, rowCloned['tramite_excepcional_']['persona_']['cargo_']);
+      delete rowCloned['tramite_excepcional_']['persona_']['cargo_'];
+    }
+    if(('tramite_excepcional_' in rowCloned)
+    && ('persona_' in rowCloned['tramite_excepcional_'])
+    && ('organo_' in rowCloned['tramite_excepcional_']['persona_'])
+    ){
+      this.stg.setItem('organo' + rowCloned['tramite_excepcional_']['persona_']['organo_'].id, rowCloned['tramite_excepcional_']['persona_']['organo_']);
+      delete rowCloned['tramite_excepcional_']['persona_']['organo_'];
+    }
+    if(('tramite_excepcional_' in rowCloned)
+    && ('persona_' in rowCloned['tramite_excepcional_'])
+    && ('departamento_judicial_' in rowCloned['tramite_excepcional_']['persona_'])
+    ){
+      this.stg.setItem('departamento_judicial' + rowCloned['tramite_excepcional_']['persona_']['departamento_judicial_'].id, rowCloned['tramite_excepcional_']['persona_']['departamento_judicial_']);
+      delete rowCloned['tramite_excepcional_']['persona_']['departamento_judicial_'];
+    }
+    if(('tramite_excepcional_' in rowCloned)
+    && ('persona_' in rowCloned['tramite_excepcional_'])
+    && ('departamento_judicial_informado_' in rowCloned['tramite_excepcional_']['persona_'])
+    ){
+      this.stg.setItem('departamento_judicial' + rowCloned['tramite_excepcional_']['persona_']['departamento_judicial_informado_'].id, rowCloned['tramite_excepcional_']['persona_']['departamento_judicial_informado_']);
+      delete rowCloned['tramite_excepcional_']['persona_']['departamento_judicial_informado_'];
+    }
+    if(('tramite_excepcional_' in rowCloned)
+    && ('persona_' in rowCloned['tramite_excepcional_'])
+    && ('tipo_documento_' in rowCloned['tramite_excepcional_']['persona_'])
+    ){
+      this.stg.setItem('tipo_documento' + rowCloned['tramite_excepcional_']['persona_']['tipo_documento_'].id, rowCloned['tramite_excepcional_']['persona_']['tipo_documento_']);
+      delete rowCloned['tramite_excepcional_']['persona_']['tipo_documento_'];
+    }
+    if(('tramite_excepcional_' in rowCloned)
+    && ('persona_' in rowCloned['tramite_excepcional_'])
+    ){
+      this.stg.setItem('persona' + rowCloned['tramite_excepcional_']['persona_'].id, rowCloned['tramite_excepcional_']['persona_']);
+      delete rowCloned['tramite_excepcional_']['persona_'];
+    }
+    if(('tramite_excepcional_' in rowCloned)
+    ){
+      this.stg.setItem('tramite_excepcional' + rowCloned['tramite_excepcional_'].id, rowCloned['tramite_excepcional_']);
+      delete rowCloned['tramite_excepcional_'];
+    }
+    if(('importe_' in rowCloned)
+    ){
+      this.stg.setItem('importe' + rowCloned['importe_'].id, rowCloned['importe_']);
+      delete rowCloned['importe_'];
+    }
+    this.stg.setItem("importe_tramite_excepcional" + rowCloned.id, rowCloned);
   }
 
   storageOrgano(row: { [index: string]: any }): void{

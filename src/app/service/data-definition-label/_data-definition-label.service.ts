@@ -18,6 +18,9 @@ export class _DataDefinitionLabelService {
       case "cargo": { return this.labelCargo(id); }
       case "departamento_judicial": { return this.labelDepartamentoJudicial(id); }
       case "file": { return this.labelFile(id); }
+      case "importe": { return this.labelImporte(id); }
+      case "importe_afiliacion": { return this.labelImporteAfiliacion(id); }
+      case "importe_tramite_excepcional": { return this.labelImporteTramiteExcepcional(id); }
       case "organo": { return this.labelOrgano(id); }
       case "persona": { return this.labelPersona(id); }
       case "tipo_documento": { return this.labelTipoDocumento(id); }
@@ -54,6 +57,33 @@ export class _DataDefinitionLabelService {
   }
 
   labelFileRow (row: any): string {
+    if(!row) return null;
+
+    let ret = "";
+    if (row["id"]) ret = ret.trim() + " " + row["id"];
+
+    return ret.trim();
+  }
+
+  labelImporteRow (row: any): string {
+    if(!row) return null;
+
+    let ret = "";
+    if (row["id"]) ret = ret.trim() + " " + row["id"];
+
+    return ret.trim();
+  }
+
+  labelImporteAfiliacionRow (row: any): string {
+    if(!row) return null;
+
+    let ret = "";
+    if (row["id"]) ret = ret.trim() + " " + row["id"];
+
+    return ret.trim();
+  }
+
+  labelImporteTramiteExcepcionalRow (row: any): string {
     if(!row) return null;
 
     let ret = "";
@@ -157,6 +187,54 @@ export class _DataDefinitionLabelService {
           if(!row) return of(null);
           return combineLatest([
             of(this.labelFileRow(row)),
+          ])
+        }
+      ),
+      map(
+        response => { return (!response)? null : response.join(" "); }
+      )
+    );
+  }
+
+  labelImporte(id: string): Observable<any> {
+    return this.dd.get("importe", id).pipe(
+      switchMap(
+        row => {
+          if(!row) return of(null);
+          return combineLatest([
+            of(this.labelImporteRow(row)),
+          ])
+        }
+      ),
+      map(
+        response => { return (!response)? null : response.join(" "); }
+      )
+    );
+  }
+
+  labelImporteAfiliacion(id: string): Observable<any> {
+    return this.dd.get("importe_afiliacion", id).pipe(
+      switchMap(
+        row => {
+          if(!row) return of(null);
+          return combineLatest([
+            of(this.labelImporteAfiliacionRow(row)),
+          ])
+        }
+      ),
+      map(
+        response => { return (!response)? null : response.join(" "); }
+      )
+    );
+  }
+
+  labelImporteTramiteExcepcional(id: string): Observable<any> {
+    return this.dd.get("importe_tramite_excepcional", id).pipe(
+      switchMap(
+        row => {
+          if(!row) return of(null);
+          return combineLatest([
+            of(this.labelImporteTramiteExcepcionalRow(row)),
           ])
         }
       ),
