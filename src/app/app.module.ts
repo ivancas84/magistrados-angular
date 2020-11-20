@@ -100,6 +100,10 @@ import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional
 import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-fieldset/tramite-excepcional-fieldset.component';
 import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload/archivo-sueldos-upload.component';
 
+import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary/importe-summary.component';
+import { ImporteSummarySearchComponent } from '@component/importe-summary/importe-summary-search/importe-summary-search.component';
+import { ImporteSummarySearchParamsComponent } from '@component/importe-summary/importe-summary-search-params/importe-summary-search-params.component';
+import { ImporteSummaryTableComponent } from '@component/importe-summary/importe-summary-table/importe-summary-table.component';
 
 @NgModule({
   declarations: [
@@ -149,6 +153,7 @@ import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload
     PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent, 
     UploadInfoSueldosComponent, CreateInfoSueldosComponent, PTramiteExcepcionalTableComponent,
     TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent,
+    ImporteSummaryComponent, ImporteSummarySearchComponent, ImporteSummarySearchParamsComponent, ImporteSummaryTableComponent,
   ],
   imports: [
     BrowserModule,

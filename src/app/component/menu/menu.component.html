@@ -3,18 +3,20 @@
   
   
   <button mat-button [matMenuTriggerFor]="ver" aria-label="icon-button with menu icon">
-    Ver
+    Principal
   </button>
   <mat-menu #ver="matMenu">
-    <a mat-menu-item routerLink="/afiliacion-show" [queryParams]="afiliacionShowQueryParams"  routerLinkActive="active" title="Ver Afiliaciones">Afiliación</a>
-    <a mat-menu-item routerLink="/informe-afiliados" [queryParams]="afiliacionShowQueryParams"  routerLinkActive="informe-afiliados" title="Ver Afiliaciones">Informe Afiliados</a>
+    <a mat-menu-item routerLink="/persona-admin" routerLinkActive="active" title="Detalle de registros de una persona">Detalle</a>
+    <a mat-menu-item routerLink="/afiliacion-show" [queryParams]="afiliacionShowQueryParams"  routerLinkActive="active" title="Ver Registro 40">Registros 40</a>
+    <a mat-menu-item routerLink="/tramite-excepcional-show" [queryParams]="afiliacionShowQueryParams"  routerLinkActive="active" title="Ver Registro 80">Registros 80</a>
   </mat-menu>
 
   <button mat-button [matMenuTriggerFor]="nuevo" aria-label="icon-button with menu icon">
-    Nuevo
+    Informe
   </button>
   <mat-menu #nuevo="matMenu">
-    <a mat-menu-item routerLink="/persona-admin" routerLinkActive="active" title="Nueva Persona">Persona</a>
+    <a mat-menu-item routerLink="/informe-afiliados" [queryParams]="afiliacionShowQueryParams"  routerLinkActive="informe-afiliados" title="Ver Afiliaciones">Afiliados</a>
+    <a mat-menu-item routerLink="/informe-afiliados" [queryParams]="afiliacionShowQueryParams"  routerLinkActive="importe-summary" title="Ver Afiliaciones">Importes</a>
   </mat-menu>
 
   <button mat-button [matMenuTriggerFor]="archivo" aria-label="icon-button with menu icon">
