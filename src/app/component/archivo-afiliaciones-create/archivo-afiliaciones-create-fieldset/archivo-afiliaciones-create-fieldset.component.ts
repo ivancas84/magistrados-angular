@@ -14,7 +14,7 @@ export class  ArchivoAfiliacionesCreateFieldsetComponent extends FieldsetCompone
 
   readonly entityName: string = 'archivo_afiliaciones';
 
-  readonly defaultValues: {[key:string]: any} = {};
+  readonly defaultValues: {[key:string]: any} = {periodo: new Date()};
 
   constructor(
     protected fb: FormBuilder, 
@@ -31,10 +31,14 @@ export class  ArchivoAfiliacionesCreateFieldsetComponent extends FieldsetCompone
       organo: [null, {
         validators: [Validators.required],
       }],
+      periodo: [null, {
+        validators: [Validators.required],
+      }],
     });
     return fg;
   }
 
   get organo() { return this.fieldset.get('organo')}
+  get periodo() { return this.fieldset.get('periodo')}
 
 }
