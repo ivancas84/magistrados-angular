@@ -16,7 +16,6 @@ export class DataDefinitionStorageService {
       case "cargo": this.storageCargo(row); break;
       case "departamento_judicial": this.storageDepartamentoJudicial(row); break;
       case "file": this.storageFile(row); break;
-      case "importe": this.storageImporte(row); break;
       case "importe_afiliacion": this.storageImporteAfiliacion(row); break;
       case "importe_tramite_excepcional": this.storageImporteTramiteExcepcional(row); break;
       case "organo": this.storageOrgano(row); break;
@@ -96,15 +95,6 @@ export class DataDefinitionStorageService {
     this.stg.setItem("file" + rowCloned.id, rowCloned);
   }
 
-  storageImporte(row: { [index: string]: any }): void{
-    if(!row) return;
-    var rowCloned = JSON.parse(JSON.stringify(row))
-    /**
-     * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
-     */
-    this.stg.setItem("importe" + rowCloned.id, rowCloned);
-  }
-
   storageImporteAfiliacion(row: { [index: string]: any }): void{
     if(!row) return;
     var rowCloned = JSON.parse(JSON.stringify(row))
@@ -156,11 +146,6 @@ export class DataDefinitionStorageService {
     ){
       this.stg.setItem('afiliacion' + rowCloned['afiliacion_'].id, rowCloned['afiliacion_']);
       delete rowCloned['afiliacion_'];
-    }
-    if(('importe_' in rowCloned)
-    ){
-      this.stg.setItem('importe' + rowCloned['importe_'].id, rowCloned['importe_']);
-      delete rowCloned['importe_'];
     }
     this.stg.setItem("importe_afiliacion" + rowCloned.id, rowCloned);
   }
@@ -216,11 +201,6 @@ export class DataDefinitionStorageService {
     ){
       this.stg.setItem('tramite_excepcional' + rowCloned['tramite_excepcional_'].id, rowCloned['tramite_excepcional_']);
       delete rowCloned['tramite_excepcional_'];
-    }
-    if(('importe_' in rowCloned)
-    ){
-      this.stg.setItem('importe' + rowCloned['importe_'].id, rowCloned['importe_']);
-      delete rowCloned['importe_'];
     }
     this.stg.setItem("importe_tramite_excepcional" + rowCloned.id, rowCloned);
   }

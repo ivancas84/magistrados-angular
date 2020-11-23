@@ -18,7 +18,6 @@ export class _DataDefinitionLabelService {
       case "cargo": { return this.labelCargo(id); }
       case "departamento_judicial": { return this.labelDepartamentoJudicial(id); }
       case "file": { return this.labelFile(id); }
-      case "importe": { return this.labelImporte(id); }
       case "importe_afiliacion": { return this.labelImporteAfiliacion(id); }
       case "importe_tramite_excepcional": { return this.labelImporteTramiteExcepcional(id); }
       case "organo": { return this.labelOrgano(id); }
@@ -57,15 +56,6 @@ export class _DataDefinitionLabelService {
   }
 
   labelFileRow (row: any): string {
-    if(!row) return null;
-
-    let ret = "";
-    if (row["id"]) ret = ret.trim() + " " + row["id"];
-
-    return ret.trim();
-  }
-
-  labelImporteRow (row: any): string {
     if(!row) return null;
 
     let ret = "";
@@ -187,22 +177,6 @@ export class _DataDefinitionLabelService {
           if(!row) return of(null);
           return combineLatest([
             of(this.labelFileRow(row)),
-          ])
-        }
-      ),
-      map(
-        response => { return (!response)? null : response.join(" "); }
-      )
-    );
-  }
-
-  labelImporte(id: string): Observable<any> {
-    return this.dd.get("importe", id).pipe(
-      switchMap(
-        row => {
-          if(!row) return of(null);
-          return combineLatest([
-            of(this.labelImporteRow(row)),
           ])
         }
       ),
