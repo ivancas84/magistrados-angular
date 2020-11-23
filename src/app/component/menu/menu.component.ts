@@ -28,11 +28,17 @@ export class MenuComponent implements OnInit, OnChanges {
   }
 
   afiliacionShowQueryParams:  { [index: string]: boolean|string|number };
+  importeSummaryQueryParams:  { [index: string]: boolean|string|number };
  
   ngOnInit() {
     this.afiliacionShowQueryParams = {
       "modificado.is_set":'false', 
       order:JSON.stringify({"per-apellidos":'asc'})
+    }
+
+    this.importeSummaryQueryParams = {
+      periodo:new Date().toJSON(),
+      organo:"1"
     }
   }
 

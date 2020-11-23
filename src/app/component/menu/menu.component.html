@@ -16,7 +16,7 @@
   </button>
   <mat-menu #nuevo="matMenu">
     <a mat-menu-item routerLink="/informe-afiliados" [queryParams]="afiliacionShowQueryParams" routerLinkActive="active" title="Ver Afiliaciones">Afiliados</a>
-    <a mat-menu-item routerLink="/importe-summary" routerLinkActive="active" title="Ver Importes">Importes</a>
+    <a mat-menu-item routerLink="/importe-summary" [queryParams]="importeSummaryQueryParams" routerLinkActive="active" title="Ver Importes">Importes</a>
   </mat-menu>
 
   <button mat-button [matMenuTriggerFor]="archivo" aria-label="icon-button with menu icon">
