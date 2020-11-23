@@ -4,19 +4,49 @@
   </mat-card-header>
   <mat-card-content>
     <table mat-table [dataSource]="data" matSort matSortDisableClear (matSortChange)="onChangeSort($event)" class="mat-elevation-z8">
-      <ng-container matColumnDef="afi_per_departamento_judicial">
+      <ng-container matColumnDef="nombre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Departamento </th>
-        <td mat-cell *matCellDef="let row"> {{row.afi_per_departamento_judicial}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="count">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Afiliaciones </th>
-        <td mat-cell *matCellDef="let row"> {{row.count}} </td>
+      <ng-container matColumnDef="afiliaciones">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Colegiados </th>
+        <td mat-cell *matCellDef="let row"> {{row.afiliaciones}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="imp_valor">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor </th>
-        <td mat-cell *matCellDef="let row"> {{row.imp_valor}} </td>
+      <ng-container matColumnDef="importe">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Importe </th>
+        <td mat-cell *matCellDef="let row"> {{row.importe}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cuota_asociativa">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 15% </th>
+        <td mat-cell *matCellDef="let row"> {{row.cuota_asociativa}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fam">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> FAM </th>
+        <td mat-cell *matCellDef="let row"> {{row.fam}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total_deduccion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Total deducción </th>
+        <td mat-cell *matCellDef="let row"> {{row.total_deduccion}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total_pagar">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Total a pagar </th>
+        <td mat-cell *matCellDef="let row"> {{row.total_pagar}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="viatico">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Viático </th>
+        <td mat-cell *matCellDef="let row"> {{row.viatico}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+        <td mat-cell *matCellDef="let row"> {{row.total}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

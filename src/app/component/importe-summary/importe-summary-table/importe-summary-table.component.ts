@@ -10,6 +10,6 @@ import { TableComponent } from '@component/table/table.component';
   `],
 })
 export class ImporteSummaryTableComponent extends TableComponent { 
-  displayedColumns: string[] = ['afi_per_departamento_judicial', 'count', 'imp_valor'];
+  displayedColumns: string[] = ['nombre', 'afiliaciones', 'importe', 'cuota_asociativa', 'fam', 'total_deduccion', 'total_pagar', 'viatico', 'total'];
 
 }
