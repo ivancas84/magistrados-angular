@@ -5,7 +5,8 @@
   <mat-card-content [formGroup]="fieldset">   
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
       <div fxLayout="row" fxFlex="100%" fxFlex.lt-md="100%" fxLayoutGap="10px" fxLayout.xs="column">
-        <core-input-select [field]="organo" [entityName]="'organo'" [title]="'Organo'" fxFlex="100%" fxFlex.xs="100%" fxLayoutAlign="center center"></core-input-select>
+        <core-input-ym *ngIf="periodo" fxFlex="50%" [field]="periodo" [title]="'Período'"></core-input-ym>
+        <core-input-select [field]="organo" [entityName]="'organo'" [title]="'Organo'" fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="center center"></core-input-select>
       </div>      
     </div>  
   </mat-card-content>
