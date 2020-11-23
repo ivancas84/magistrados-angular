@@ -2,7 +2,7 @@
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </ng-template>
 
-<div *ngIf="(load$ | async) && load; else loading">
+<div *ngIf="(load$ | async); else loading">
   <app-afiliacion-search [display]="display"></app-afiliacion-search>
   <app-afiliacion-table [data]="data" [length]="length" [display]="display"></app-afiliacion-table>
 </div>

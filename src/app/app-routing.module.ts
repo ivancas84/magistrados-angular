@@ -5,7 +5,6 @@ import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-s
 import { IaAfiliacionShowComponent } from '@component/informe-afiliados/ia-afiliacion-show/ia-afiliacion-show.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/upload-info-sueldos.component';
-import { CreateInfoSueldosComponent } from '@component/create-info-sueldos/create-info-sueldos.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { ArchivoAfiliacionesCreateComponent } from '@component/archivo-afiliaciones-create/archivo-afiliaciones-create/archivo-afiliaciones-create.component';
 import { LoginComponent } from '@component/login/login.component';
@@ -20,7 +19,6 @@ const routes: Routes = [
   { path: 'archivo-afiliaciones-create', component: ArchivoAfiliacionesCreateComponent, pathMatch: 'full' },
   { path: 'archivo-afiliaciones-show', component: ArchivoAfiliacionesShowComponent, pathMatch: 'full' },
   { path: 'archivo-sueldos-upload', component: ArchivoSueldosUploadComponent, pathMatch: 'full' },
-  { path: 'create-info-sueldos', component: CreateInfoSueldosComponent, pathMatch: 'full' },
   { path: 'departamento-judicial-admin', component: DepartamentoJudicialAdminArrayComponent, pathMatch: 'full' },
   { path: 'importe-summary', component: ImporteSummaryComponent, pathMatch: 'full' },
   { path: 'informe-afiliados', component: IaAfiliacionShowComponent, pathMatch: 'full' },

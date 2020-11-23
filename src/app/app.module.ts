@@ -79,8 +79,6 @@ import { ArchivoAfiliacionesCreateFieldsetComponent } from '@component/archivo-a
 import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
 import { ArchivoAfiliacionesTableComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-table/archivo-afiliaciones-table.component';
 
-import { CreateInfoSueldosComponent } from '@component/create-info-sueldos/create-info-sueldos.component';
-
 import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
 import { DepartamentoJudicialFieldsetArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-fieldset-array/departamento-judicial-fieldset-array.component';
 
@@ -151,7 +149,7 @@ import { ImporteSummaryTableComponent } from '@component/importe-summary/importe
     DepartamentoJudicialAdminArrayComponent, DepartamentoJudicialFieldsetArrayComponent,
     IaAfiliacionShowComponent, IaAfiliacionTableComponent, IaAfiliacionSearchComponent, IaAfiliacionSearchParamsComponent,
     PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent, 
-    UploadInfoSueldosComponent, CreateInfoSueldosComponent, PTramiteExcepcionalTableComponent,
+    UploadInfoSueldosComponent, PTramiteExcepcionalTableComponent,
     TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent,
     ImporteSummaryComponent, ImporteSummarySearchComponent, ImporteSummarySearchParamsComponent, ImporteSummaryTableComponent,
   ],
