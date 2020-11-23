@@ -70,6 +70,7 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
         this.progress = (res["progress"]+1) * 100 / res["total"];
         if(res["progress"]+1 < (res["total"])) this.save(res["progress"]+1);
         else {
+          this.storage.clear();
           this.saveStatus = "saved";
           this.snackBar.open("Procesamiento realizado", "X");
         }
