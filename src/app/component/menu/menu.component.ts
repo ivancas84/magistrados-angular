@@ -33,7 +33,9 @@ export class MenuComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.afiliacionShowQueryParams = {
       "modificado.is_set":'false', 
-      order:JSON.stringify({"per-apellidos":'asc'})
+      order:JSON.stringify({"per-apellidos":'asc'}),
+      motivo:"Alta",
+      estado:"Aprobado"
     }
 
     this.importeSummaryQueryParams = {
