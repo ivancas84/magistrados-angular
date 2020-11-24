@@ -1,57 +1,31 @@
 <mat-card [formGroup]="fieldset">
   <mat-card-content>
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-      <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
-        <div fxFlex="50%">
-          <mat-form-field>
-            <mat-label>Motivo</mat-label>
-            <mat-select formControlName="motivo">
-              <mat-option>--Seleccione--</mat-option>
-              <mat-option value="Alta">Alta</mat-option>
-              <mat-option value="Baja">Baja</mat-option>
-              <mat-option value="Pendiente">Pendiente</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div fxFlex="50%">
-          <mat-form-field>
-            <mat-label>Estado</mat-label>
-            <mat-select formControlName="estado">
-              <mat-option>--Seleccione--</mat-option>
-              <mat-option value="Creado">Creado</mat-option>
-              <mat-option value="Enviado">Enviado</mat-option>
-              <mat-option value="Aprobado">Aprobado</mat-option>
-              <mat-option value="Rechazado">Rechazado</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+      <div fxLayout="row" fxFlex="100%" fxLayoutGap="10px" fxLayout.xs="column">
+        <core-input-select-param fxFlex="33%" [field]="motivo" [options]="['Alta','Baja','Pendiente']"></core-input-select-param>
+        <core-input-select-param fxFlex="33%" [field]="estado" [options]="['Creado','Enviado','Aprobado','Rechazado']"></core-input-select-param>
+        <core-input-select-checkbox fxFlex="33%" [field]="modificadoIsSet"></core-input-select-checkbox>
       </div>
+    </div>    
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
       <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
-        <div fxFlex="50%">
-          <mat-form-field>
-            <mat-label>Está modificado</mat-label>
-            <mat-select formControlName="modificado.is_set">
-              <mat-option>--Seleccione--</mat-option>
-              <mat-option value="true">Si</mat-option>
-              <mat-option value="false">No</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <core-input-ym fxFlex="50%" [field]="modificadoYm" [title]="'Modificado'"></core-input-ym>
-      </div>
-    </div>
-    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-      <core-input-ym fxFlex="33%" [field]="creadoYm" [title]="'Creado'"></core-input-ym>
-      <core-input-ym fxFlex="33%" [field]="enviadoYm" [title]="'Enviado'"></core-input-ym>
-      <core-input-ym fxFlex="33%" [field]="evaluadoYm" [title]="'Evaluado'"></core-input-ym>
-    </div>  
-    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-      <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
         <core-input-select fxFlex="auto" [field]="organo" [entityName]="'organo'" [title]="'Órgano'"></core-input-select>
         <core-input-select fxFlex="auto" [field]="departamentoJudicial" [entityName]="'departamento_judicial'" [title]="'Departamento Judicial'"></core-input-select>
+      </div>        
+      <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
         <core-input-select fxFlex="auto" [field]="cargo" [entityName]="'cargo'" [title]="'Cargo'"></core-input-select>
-        <core-input-autocomplete fxFlex="auto" [field]="persona" [entityName]="'persona'" [title]="'Persona'"></core-input-autocomplete>
+        <core-input-select fxFlex="auto" [field]="departamentoJudicialInformado" [entityName]="'departamento_judicial'" [title]="'Departamento Judicial Informado'"></core-input-select>
       </div>
     </div>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
+        <core-input-ym fxFlex="50%" [field]="creadoYm" [title]="'Creado'"></core-input-ym>
+        <core-input-ym fxFlex="50%" [field]="enviadoYm" [title]="'Enviado'"></core-input-ym>
+      </div>
+      <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
+        <core-input-ym fxFlex="50%" [field]="evaluadoYm" [title]="'Evaluado'"></core-input-ym>
+        <core-input-ym fxFlex="50%" [field]="modificadoYm" [title]="'Modificado'"></core-input-ym>
+      </div>
+    </div>  
   </mat-card-content>
 </mat-card>

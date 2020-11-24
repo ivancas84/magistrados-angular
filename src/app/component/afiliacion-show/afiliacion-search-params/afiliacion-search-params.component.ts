@@ -25,6 +25,7 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
       "modificado.ym": null,    
       "per-organo": null,
       "per-departamento_judicial": null,
+      "per-departamento_judicial_informado": null,
       "per-cargo": null,
       "modificado.is_set": null,
     });
@@ -46,6 +47,7 @@ export class AfiliacionSearchParamsComponent extends SearchParamsComponent {
   get persona() { return this.fieldset.controls['persona']}
   get organo() { return this.fieldset.controls['per-organo']}
   get departamentoJudicial() { return this.fieldset.controls['per-departamento_judicial']}
+  get departamentoJudicialInformado() { return this.fieldset.controls['per-departamento_judicial_informado']}
   get cargo() { return this.fieldset.controls['per-cargo']}
 
 }
