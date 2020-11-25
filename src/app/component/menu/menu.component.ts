@@ -29,7 +29,8 @@ export class MenuComponent implements OnInit, OnChanges {
 
   afiliacionShowQueryParams:  { [index: string]: boolean|string|number };
   importeSummaryQueryParams:  { [index: string]: boolean|string|number };
- 
+  importeAfiliacionShowQueryParams:  { [index: string]: boolean|string|number };
+
   ngOnInit() {
     this.afiliacionShowQueryParams = {
       "modificado.is_set":'false', 
@@ -41,6 +42,12 @@ export class MenuComponent implements OnInit, OnChanges {
     this.importeSummaryQueryParams = {
       periodo:new Date().toJSON(),
       organo:"1"
+    }
+
+    this.importeAfiliacionShowQueryParams = {
+      "periodo.ym":new Date().toJSON(),
+      "afi_per-organo":"1",
+      order:JSON.stringify({"afi_per-apellidos":'asc'}),
     }
   }
 

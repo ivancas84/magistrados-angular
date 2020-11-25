@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
 import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show/afiliacion-show.component';
-import { IaAfiliacionShowComponent } from '@component/informe-afiliados/ia-afiliacion-show/ia-afiliacion-show.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/upload-info-sueldos.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
@@ -12,6 +11,7 @@ import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliacione
 import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload/archivo-sueldos-upload.component';
 import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
 import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary/importe-summary.component';
+import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show/importe-afiliacion-show.component';
 
 const routes: Routes = [
   { path: 'afiliacion-admin', component: AfiliacionAdminComponent, pathMatch: 'full' },
@@ -20,8 +20,8 @@ const routes: Routes = [
   { path: 'archivo-afiliaciones-show', component: ArchivoAfiliacionesShowComponent, pathMatch: 'full' },
   { path: 'archivo-sueldos-upload', component: ArchivoSueldosUploadComponent, pathMatch: 'full' },
   { path: 'departamento-judicial-admin', component: DepartamentoJudicialAdminArrayComponent, pathMatch: 'full' },
+  { path: 'importe-afiliacion-show', component: ImporteAfiliacionShowComponent, pathMatch: 'full' },
   { path: 'importe-summary', component: ImporteSummaryComponent, pathMatch: 'full' },
-  { path: 'informe-afiliados', component: IaAfiliacionShowComponent, pathMatch: 'full' },
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'upload-info-sueldos', component: UploadInfoSueldosComponent, pathMatch: 'full' },
   { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent, pathMatch: 'full' },

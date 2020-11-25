@@ -82,11 +82,6 @@ import { ArchivoAfiliacionesTableComponent } from '@component/archivo-afiliacion
 import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
 import { DepartamentoJudicialFieldsetArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-fieldset-array/departamento-judicial-fieldset-array.component';
 
-import { IaAfiliacionShowComponent } from '@component/informe-afiliados/ia-afiliacion-show/ia-afiliacion-show.component';
-import { IaAfiliacionTableComponent } from '@component/informe-afiliados/ia-afiliacion-table/ia-afiliacion-table.component';
-import { IaAfiliacionSearchComponent } from '@component/informe-afiliados/ia-afiliacion-search/ia-afiliacion-search.component';
-import { IaAfiliacionSearchParamsComponent } from '@component/informe-afiliados/ia-afiliacion-search-params/ia-afiliacion-search-params.component';
-
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
 import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
@@ -102,6 +97,11 @@ import { ImporteSummaryComponent } from '@component/importe-summary/importe-summ
 import { ImporteSummarySearchComponent } from '@component/importe-summary/importe-summary-search/importe-summary-search.component';
 import { ImporteSummarySearchParamsComponent } from '@component/importe-summary/importe-summary-search-params/importe-summary-search-params.component';
 import { ImporteSummaryTableComponent } from '@component/importe-summary/importe-summary-table/importe-summary-table.component';
+
+import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show/importe-afiliacion-show.component';
+import { ImporteAfiliacionTableComponent } from '@component/importe-afliliacion-show/importe-afiliacion-table/importe-afiliacion-table.component';
+import { ImporteAfiliacionSearchComponent } from '@component/importe-afliliacion-show/importe-afiliacion-search/importe-afiliacion-search.component';
+import { ImporteAfiliacionSearchParamsComponent } from '@component/importe-afliliacion-show/importe-afiliacion-search-params/importe-afiliacion-search-params.component';
 
 @NgModule({
   declarations: [
@@ -147,11 +147,11 @@ import { ImporteSummaryTableComponent } from '@component/importe-summary/importe
     ArchivoAfiliacionesShowComponent, ArchivoAfiliacionesTableComponent,
     ArchivoSueldosUploadComponent,
     DepartamentoJudicialAdminArrayComponent, DepartamentoJudicialFieldsetArrayComponent,
-    IaAfiliacionShowComponent, IaAfiliacionTableComponent, IaAfiliacionSearchComponent, IaAfiliacionSearchParamsComponent,
     PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent, 
     UploadInfoSueldosComponent, PTramiteExcepcionalTableComponent,
     TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent,
     ImporteSummaryComponent, ImporteSummarySearchComponent, ImporteSummarySearchParamsComponent, ImporteSummaryTableComponent,
+    ImporteAfiliacionShowComponent, ImporteAfiliacionTableComponent, ImporteAfiliacionSearchComponent, ImporteAfiliacionSearchParamsComponent,
   ],
   imports: [
     BrowserModule,
