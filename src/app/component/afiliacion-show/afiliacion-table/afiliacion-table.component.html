@@ -4,57 +4,72 @@
 
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Afiliacion</mat-card-title>
+    <mat-card-title>Afiliacion <button mat-mini-fab color="primary" (click)="copyContent()"><mat-icon>content_copy</mat-icon></button>
+      <button mat-mini-fab color="primary" (click)="printContent()"><mat-icon>print</mat-icon></button>
+    </mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    <mat-table [dataSource]="data" matSort matSortActive="persona" matSortDirection="asc" matSortDisableClear (matSortChange)="onChangeSort($event)" class="mat-elevation-z8">
+  <mat-card-content #content *ngIf="(load$ | async)">
+    <mat-progress-bar *ngIf="!load" mode="indeterminate"></mat-progress-bar>
+    <table mat-table [dataSource]="data" matSort matSortActive="persona" matSortDirection="asc" matSortDisableClear (matSortChange)="onChangeSort($event)" class="mat-elevation-z8">
       <ng-container matColumnDef="motivo">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Motivo </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.motivo}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Motivo </th>
+        <td mat-cell *matCellDef="let row"> {{row.motivo}} </td>
       </ng-container>
 
       <ng-container matColumnDef="estado">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.estado}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+        <td mat-cell *matCellDef="let row"> {{row.estado}} </td>
       </ng-container>
 
       <ng-container matColumnDef="creado">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Creado </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.creado | toDate | date:'dd/MM/yyyy'}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Creado </th>
+        <td mat-cell *matCellDef="let row"> {{row.creado | toDate | date:'dd/MM/yyyy'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="enviado">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Enviado </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.enviado | toDate | date:'dd/MM/yyyy'}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Enviado </th>
+        <td mat-cell *matCellDef="let row"> {{row.enviado | toDate | date:'dd/MM/yyyy'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="evaluado">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Evaluado </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.evaluado | toDate | date:'dd/MM/yyyy'}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Evaluado </th>
+        <td mat-cell *matCellDef="let row"> {{row.evaluado | toDate | date:'dd/MM/yyyy'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="modificado">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Modificado </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.modificado | toDate | date:'dd/MM/yyyy'}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Modificado </th>
+        <td mat-cell *matCellDef="let row"> {{row.modificado | toDate | date:'dd/MM/yyyy'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="observaciones">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Observaciones </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.observaciones}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Observaciones </th>
+        <td mat-cell *matCellDef="let row"> {{row.observaciones}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="persona">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Persona </mat-header-cell>
-        <mat-cell *matCellDef="let row"> 
+      <ng-container matColumnDef="per-apellidos">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let row"> 
           <a [routerLink]="['/persona-admin']" [queryParams]="{id:row.persona}" >
-            <core-label [id]="row.persona" [entityName]="'persona'"></core-label>
-          </a>&nbsp;<app-field-label-organo [id]="row.persona"></app-field-label-organo>
-        </mat-cell>
+            {{row.nombre}}
+          </a>&nbsp;<!--app-field-label-organo [id]="row.persona"></app-field-label-organo-->
+        </td>
       </ng-container>
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+      <ng-container matColumnDef="per-legajo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Legajo </th>
+        <td mat-cell *matCellDef="let row"> {{row.legajo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="per_dj-codigo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Departamento Judicial </th>
+        <td mat-cell *matCellDef="let row"> <core-label [id]="row.departamento_judicial" [entityName]="'departamento_judicial'"></core-label>
+        &nbsp;(<core-field-label [id]="row.departamento_judicial_informado" [entityName]="'departamento_judicial'" [fieldNames]="['codigo']"></core-field-label>)
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
     <mat-paginator *ngIf="display"
                    [length]="length"
                    [pageSize]="display.size"
