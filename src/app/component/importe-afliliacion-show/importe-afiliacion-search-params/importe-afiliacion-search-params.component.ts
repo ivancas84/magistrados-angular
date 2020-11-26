@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { SearchParamsComponent } from '@component/search-params/search-params.component';
 
@@ -16,9 +16,15 @@ export class ImporteAfiliacionSearchParamsComponent extends SearchParamsComponen
 
   formGroup(): FormGroup {
     let fg: FormGroup = this.fb.group({
-      "periodo.ym": null,
-      "afi_per-departamento_judicial": null,
-      "afi_per-organo": null,
+      "periodo.ym": [null, {
+        validators: [Validators.required],
+      }],
+      "afi_per-departamento_judicial": [null, {
+        validators: [Validators.required],
+      }],
+      "afi_per-organo": [null, {
+        validators: [Validators.required],
+      }],
     });
     return fg;
   }

@@ -2,8 +2,7 @@ import { Component, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { TableComponent } from '@component/table/table.component';
 import { arrayColumn } from '@function/array-column';
-import { arrayCombineKey } from '@function/array-combine-key';
-import { fastClone } from '@function/fast-clone';
+
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -14,6 +13,7 @@ import { map, switchMap } from 'rxjs/operators';
   styles:[`
   .mat-card-content { overflow-x: auto; }
   .mat-table.mat-table { min-width: 700px; }
+  tr.mat-footer-row { font-weight: bold; }
   `],
 })
 export class ImporteAfiliacionTableComponent extends TableComponent { 
@@ -23,7 +23,7 @@ export class ImporteAfiliacionTableComponent extends TableComponent {
   load: boolean = false;
   data$: BehaviorSubject<any> = new BehaviorSubject(null);
   dataSource: any;
-
+  total: number;
   constructor(
     protected router: Router,
     protected dd: DataDefinitionService,
@@ -48,6 +48,7 @@ export class ImporteAfiliacionTableComponent extends TableComponent {
       map(
         data => {          
           this.dataSource = data;
+          this.total = this.dataSource.map(t => t.valor).reduce((acc, value) => acc + value, 0).toFixed(2);          
           return this.load = true;
         }
       )
@@ -81,7 +82,5 @@ export class ImporteAfiliacionTableComponent extends TableComponent {
     if(this.showValor) this.displayedColumns[2] = "valor";
     else this.displayedColumns.splice(2,1);
   }
-
-
 
 }

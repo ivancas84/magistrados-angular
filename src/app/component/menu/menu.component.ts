@@ -47,6 +47,7 @@ export class MenuComponent implements OnInit, OnChanges {
     this.importeAfiliacionShowQueryParams = {
       "periodo.ym":new Date().toJSON(),
       "afi_per-organo":"1",
+      "afi_per-departamento_judicial":"1",
       order:JSON.stringify({"afi_per-apellidos":'asc'}),
     }
   }

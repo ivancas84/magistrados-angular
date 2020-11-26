@@ -15,11 +15,6 @@ export class ImporteSummaryTableComponent extends TableComponent {
   displayedColumns: string[] = ['nombre', 'afiliaciones', 'importe', 'cuota_asociativa', 'fam', 'total_deduccion', 'total_pagar', 'viatico', 'total'];
 
   @ViewChild("summary", {read: ElementRef}) summary: ElementRef;
- 
-  copyData(): void {
-    if(this.summary){
-      copyFormatted(this.summary.nativeElement.innerHTML);
-    }
-  }
+
 
 }
