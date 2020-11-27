@@ -30,6 +30,7 @@ export class MenuComponent implements OnInit, OnChanges {
   afiliacionShowQueryParams:  { [index: string]: boolean|string|number };
   importeSummaryQueryParams:  { [index: string]: boolean|string|number };
   importeAfiliacionShowQueryParams:  { [index: string]: boolean|string|number };
+  importeTramiteExcepcionalShowQueryParams:  { [index: string]: boolean|string|number };
 
   ngOnInit() {
     this.afiliacionShowQueryParams = {
@@ -50,6 +51,10 @@ export class MenuComponent implements OnInit, OnChanges {
       "afi_per-departamento_judicial":"1",
       order:JSON.stringify({"afi_per-apellidos":'asc'}),
     }
+    this.importeTramiteExcepcionalShowQueryParams = {
+      "periodo.ym":new Date().toJSON(),
+      order:JSON.stringify({"te_per-apellidos":'asc'}),
+    }
   }
-
+  
 }

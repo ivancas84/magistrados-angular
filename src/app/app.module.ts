@@ -103,8 +103,14 @@ import { ImporteAfiliacionSearchComponent } from '@component/importe-afliliacion
 import { ImporteAfiliacionSearchParamsComponent } from '@component/importe-afliliacion-show/importe-afiliacion-search-params/importe-afiliacion-search-params.component';
 import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show/tramite-excepcional-show.component';
 import { TramiteExcepcionalTableComponent } from '@component/tramite-excepcional-show/tramite-excepcional-table/tramite-excepcional-table.component';
+
 import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete/importe-delete.component';
 import { ImporteDeleteFieldsetComponent } from '@component/importe-delete/importe-delete-fieldset/importe-delete-fieldset.component';
+
+import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
+import { ImporteTramiteExcepcionalTableComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-table/importe-tramite-excepcional-table.component';
+import { ImporteTramiteExcepcionalSearchComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-search/importe-tramite-excepcional-search.component';
+import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-search-params/importe-tramite-excepcional-search-params.component';
 
 @NgModule({
   declarations: [
@@ -153,10 +159,12 @@ import { ImporteDeleteFieldsetComponent } from '@component/importe-delete/import
     PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent, 
     PTramiteExcepcionalTableComponent,
     TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent,
-    ImporteSummaryComponent, ImporteSummarySearchComponent, ImporteSummarySearchParamsComponent, ImporteSummaryTableComponent,
     ImporteAfiliacionShowComponent, ImporteAfiliacionTableComponent, ImporteAfiliacionSearchComponent, ImporteAfiliacionSearchParamsComponent,
+    ImporteDeleteComponent, ImporteDeleteFieldsetComponent,
+    ImporteSummaryComponent, ImporteSummarySearchComponent, ImporteSummarySearchParamsComponent, ImporteSummaryTableComponent,
+    ImporteTramiteExcepcionalShowComponent, ImporteTramiteExcepcionalTableComponent, ImporteTramiteExcepcionalSearchComponent, ImporteTramiteExcepcionalSearchParamsComponent,
     TramiteExcepcionalShowComponent, TramiteExcepcionalTableComponent,
-    ImporteDeleteComponent, ImporteDeleteFieldsetComponent
+    
   ],
   imports: [
     BrowserModule,

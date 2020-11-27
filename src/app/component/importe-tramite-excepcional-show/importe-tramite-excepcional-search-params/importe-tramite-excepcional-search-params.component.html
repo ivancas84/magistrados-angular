@@ -1,0 +1,9 @@
+<mat-card [formGroup]="fieldset">
+  <mat-card-content>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <core-input-ym  fxFlex="33%" [field]="periodo" [title]="'Período'" ></core-input-ym>
+      <core-input-select fxFlex="33%" [field]="organo" [entityName]="'organo'" [title]="'Órgano'"></core-input-select>
+      <core-input-select fxFlex="33%" [field]="departamentoJudicial" [entityName]="'departamento_judicial'" [title]="'Departamento Judicial'"></core-input-select>
+    </div>
+  </mat-card-content>
+</mat-card>
