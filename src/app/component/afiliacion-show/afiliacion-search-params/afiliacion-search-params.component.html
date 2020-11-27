@@ -2,9 +2,9 @@
   <mat-card-content>
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
       <div fxLayout="row" fxFlex="100%" fxLayoutGap="10px" fxLayout.xs="column">
-        <core-input-select-param fxFlex="33%" [field]="motivo" [options]="['Alta','Baja','Pendiente']"></core-input-select-param>
-        <core-input-select-param fxFlex="33%" [field]="estado" [options]="['Creado','Enviado','Aprobado','Rechazado']"></core-input-select-param>
-        <core-input-select-checkbox fxFlex="33%" [field]="modificadoIsSet"></core-input-select-checkbox>
+        <core-input-select-param fxFlex="33%" [field]="motivo" [options]="['Alta','Baja','Pendiente']" [title]="'Motivo'"></core-input-select-param>
+        <core-input-select-param fxFlex="33%" [field]="estado" [options]="['Creado','Enviado','Aprobado','Rechazado']" [title]="'Estado'"></core-input-select-param>
+        <core-input-select-checkbox fxFlex="33%" [field]="modificadoIsSet" [title]="'Está modificado?'"></core-input-select-checkbox>
       </div>
     </div>    
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">

@@ -87,7 +87,6 @@ import { PersonaFieldsetComponent } from '@component/persona-admin/persona-field
 import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
 import { AfiliacionSearchParamsComponent } from '@component/afiliacion-show/afiliacion-search-params/afiliacion-search-params.component';
 
-import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/upload-info-sueldos.component';
 import { PTramiteExcepcionalTableComponent } from '@component/persona-admin/tramite-excepcional-table/tramite-excepcional-table.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-fieldset/tramite-excepcional-fieldset.component';
@@ -102,6 +101,10 @@ import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-s
 import { ImporteAfiliacionTableComponent } from '@component/importe-afliliacion-show/importe-afiliacion-table/importe-afiliacion-table.component';
 import { ImporteAfiliacionSearchComponent } from '@component/importe-afliliacion-show/importe-afiliacion-search/importe-afiliacion-search.component';
 import { ImporteAfiliacionSearchParamsComponent } from '@component/importe-afliliacion-show/importe-afiliacion-search-params/importe-afiliacion-search-params.component';
+import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show/tramite-excepcional-show.component';
+import { TramiteExcepcionalTableComponent } from '@component/tramite-excepcional-show/tramite-excepcional-table/tramite-excepcional-table.component';
+import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete/importe-delete.component';
+import { ImporteDeleteFieldsetComponent } from '@component/importe-delete/importe-delete-fieldset/importe-delete-fieldset.component';
 
 @NgModule({
   declarations: [
@@ -148,10 +151,12 @@ import { ImporteAfiliacionSearchParamsComponent } from '@component/importe-aflil
     ArchivoSueldosUploadComponent,
     DepartamentoJudicialAdminArrayComponent, DepartamentoJudicialFieldsetArrayComponent,
     PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent, 
-    UploadInfoSueldosComponent, PTramiteExcepcionalTableComponent,
+    PTramiteExcepcionalTableComponent,
     TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent,
     ImporteSummaryComponent, ImporteSummarySearchComponent, ImporteSummarySearchParamsComponent, ImporteSummaryTableComponent,
     ImporteAfiliacionShowComponent, ImporteAfiliacionTableComponent, ImporteAfiliacionSearchComponent, ImporteAfiliacionSearchParamsComponent,
+    TramiteExcepcionalShowComponent, TramiteExcepcionalTableComponent,
+    ImporteDeleteComponent, ImporteDeleteFieldsetComponent
   ],
   imports: [
     BrowserModule,

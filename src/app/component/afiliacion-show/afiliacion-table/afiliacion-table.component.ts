@@ -5,6 +5,8 @@ import { map, switchMap } from 'rxjs/operators';
 import { arrayColumn } from '@function/array-column';
 import { Router } from '@angular/router';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
+import { Sort } from '@angular/material/sort';
+import { emptyUrl } from '@function/empty-url.function';
 
 @Component({
   selector: 'app-afiliacion-table',
@@ -15,7 +17,7 @@ import { DataDefinitionService } from '@service/data-definition/data-definition.
   `],
 })
 export class AfiliacionTableComponent extends TableComponent { 
-  displayedColumns: string[] = ['per-apellidos', 'per-legajo', 'per_dj-codigo', 'motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado'];
+  displayedColumns: string[] = ['nombre', 'legajo', 'departamento_judicial', 'motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado'];
 
   load$: Observable<any>;
   load: boolean = false;
@@ -68,6 +70,25 @@ export class AfiliacionTableComponent extends TableComponent {
       )
     );
   }
+
+  serverSort(sort: Sort): boolean{ //@override
+    
+    var server = false; //flag para indicar que obligatoriamente debe ordenarse el servidor
+    switch(sort.active){
+      case "departamento_judicial": server = true; break;
+    }
+
+    if(!server && (!this.length || !this.display || this.data.length >= this.length)) return false;
+    switch(sort.active){
+      case "nombre": this.display.setOrderByKeys(["per-apellidos"]); break;
+      case "legajo": this.display.setOrderByKeys(["per-legajo"]); break;
+      case "departamento_judicial": this.display.setOrderByKeys(["per_dj-codigo"]); break;
+    }
+    this.display.setPage(1);
+    this.router.navigateByUrl('/' + emptyUrl(this.router.url) + '?' + this.display.encodeURI());  
+    return true;
+  }
   
+
   
 }

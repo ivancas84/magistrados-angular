@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
 import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show/afiliacion-show.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
-import { UploadInfoSueldosComponent } from '@component/upload-info-sueldos/upload-info-sueldos.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { ArchivoAfiliacionesCreateComponent } from '@component/archivo-afiliaciones-create/archivo-afiliaciones-create/archivo-afiliaciones-create.component';
 import { LoginComponent } from '@component/login/login.component';
@@ -12,6 +11,8 @@ import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload
 import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
 import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary/importe-summary.component';
 import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show/importe-afiliacion-show.component';
+import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show/tramite-excepcional-show.component';
+import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete/importe-delete.component';
 
 const routes: Routes = [
   { path: 'afiliacion-admin', component: AfiliacionAdminComponent, pathMatch: 'full' },
@@ -23,8 +24,9 @@ const routes: Routes = [
   { path: 'importe-afiliacion-show', component: ImporteAfiliacionShowComponent, pathMatch: 'full' },
   { path: 'importe-summary', component: ImporteSummaryComponent, pathMatch: 'full' },
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
-  { path: 'upload-info-sueldos', component: UploadInfoSueldosComponent, pathMatch: 'full' },
   { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent, pathMatch: 'full' },
+  { path: 'tramite-excepcional-show', component: TramiteExcepcionalShowComponent, pathMatch: 'full' },
+  { path: 'importe-delete', component: ImporteDeleteComponent, pathMatch: 'full' },
   
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: '', component: PersonaAdminComponent, pathMatch: 'full' },
