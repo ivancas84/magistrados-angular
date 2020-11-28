@@ -61,6 +61,8 @@ export class PersonaFieldsetComponent extends FieldsetComponent {
       }],
       tipo_documento: [null, {
       }],
+      tribunal: [null, {
+      }],
     });
     return fg;
   }
@@ -80,7 +82,7 @@ export class PersonaFieldsetComponent extends FieldsetComponent {
   get organo() { return this.fieldset.get('organo')}
   get departamentoJudicial() { return this.fieldset.get('departamento_judicial')}
   get departamentoJudicialInformado() { return this.fieldset.get('departamento_judicial_informado')}
-
   get tipoDocumento() { return this.fieldset.get('tipo_documento')}
+  get tribunal() { return this.fieldset.get('tribunal')}
 
 }

@@ -5,23 +5,28 @@
   </mat-card-header>
   <mat-card-content>
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-      <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
-        <core-input-text fxFlex="auto" [field]="nombres" [title]="'Nombres'"></core-input-text> 
-        <core-input-text fxFlex="auto" [field]="apellidos" [title]="'Apellidos'"></core-input-text> 
+      <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
+        <core-input-text fxFlex="35%" [field]="nombres" [title]="'Nombres'"></core-input-text> 
+        <core-input-text fxFlex="35%" [field]="apellidos" [title]="'Apellidos'"></core-input-text> 
+        <core-input-text fxFlex="30%" [field]="legajo" [title]="'Legajo'" [uniqueRoute]="'persona-admin'" ></core-input-text> 
       </div>
-      <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
-        <core-input-text fxFlex="auto" [field]="legajo" [title]="'Legajo'"></core-input-text> 
-        <core-input-text fxFlex="auto" [field]="email" [title]="'Email'" [placeholder]="'ejemplo@dominio.com'"></core-input-text> 
+      <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
+        <core-input-date fxFlex="60%" [field]="fechaNacimiento" [title]="'Fecha nacimiento'"></core-input-date>
+        <core-input-select fxFlex="30%" [field]="tipoDocumento" [entityName]="'tipo_documento'" [title]="'Tipo Documento'"></core-input-select>
+        <core-input-text fxFlex="70%" [field]="numeroDocumento" [title]="'Numero documento'" [uniqueRoute]="'persona-admin'"></core-input-text>   
       </div>
     </div>
     <div fxLayout="row"
       fxLayout.xs="column"
       fxLayoutGap="10px">
-      <core-input-select fxFlex="10%" [field]="tipoDocumento" [entityName]="'tipo_documento'" [title]="'Tipo Documento'"></core-input-select>
-      <core-input-text fxFlex="auto" [field]="numeroDocumento" [title]="'Numero documento'"></core-input-text> 
-      <core-input-date fxFlex="auto" [field]="fechaNacimiento" [title]="'Fecha nacimiento'"></core-input-date>
-      <core-input-text fxFlex="auto" [field]="telefonoLaboral" [title]="'Telefono laboral'"></core-input-text> 
-      <core-input-text fxFlex="auto" [field]="telefonoParticular" [title]="'Telefono particular'"></core-input-text> 
+      <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
+        <core-input-text fxFlex="50%" [field]="tribunal" [title]="'Tribunal'"></core-input-text>   
+        <core-input-text fxFlex="50%" [field]="telefonoLaboral" [title]="'Telefono laboral'"></core-input-text> 
+      </div>
+      <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
+        <core-input-text fxFlex="50%" [field]="telefonoParticular" [title]="'Telefono particular'"></core-input-text> 
+        <core-input-text fxFlex="50%" [field]="email" [title]="'Email'" [placeholder]="'ejemplo@dominio.com'"></core-input-text> 
+      </div>
     </div>
     <div fxLayout="row"
       fxLayout.xs="column"

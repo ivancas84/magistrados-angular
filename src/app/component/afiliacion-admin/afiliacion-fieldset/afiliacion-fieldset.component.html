@@ -63,7 +63,7 @@
         </mat-card>
       </div>
       <div fxFlex="auto">
-        <mat-card *ngIf="data.evaluado">
+        <mat-card *ngIf="data.evaluado" [style.backgroundColor]="(data.estado == 'Aprobado') ? '#aaff80' : 'ff8080'">
           <mat-card-header>
             <mat-card-title>Evaluado</mat-card-title>
           </mat-card-header>
