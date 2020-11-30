@@ -51,7 +51,7 @@
         <td mat-cell *matCellDef="let row"> 
           <a [routerLink]="['/persona-admin']" [queryParams]="{id:row.persona}" >
             {{row.nombre}}
-          </a>&nbsp;<!--app-field-label-organo [id]="row.persona"></app-field-label-organo-->
+          </a>&nbsp;<app-field-label-organo [id]="row.persona"></app-field-label-organo>
         </td>
       </ng-container>
 
@@ -63,7 +63,7 @@
       <ng-container matColumnDef="departamento_judicial">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Departamento Judicial </th>
         <td mat-cell *matCellDef="let row"> <core-label [id]="row.departamento_judicial" [entityName]="'departamento_judicial'"></core-label>
-        &nbsp;(<core-field-label [id]="row.departamento_judicial_informado" [entityName]="'departamento_judicial'" [fieldNames]="['codigo']"></core-field-label>)
+        <span *ngIf="row.departamento_judicial_informado">&nbsp;(<core-field-label [id]="row.departamento_judicial_informado" [entityName]="'departamento_judicial'" [fieldNames]="['codigo']"></core-field-label>)</span>
         </td>
       </ng-container>
 

@@ -19,7 +19,7 @@ export class FieldLabelOrganoComponent extends FieldLabelComponent {
       else {
         this.dd.get(this.entityName, this.id).subscribe(
           (row) => {
-            if(row.organo == "2") this.label = "*"
+            this.label = (row.organo == "2") ? "*" : "";
           }
         );
       }
