@@ -12,12 +12,12 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-archivo-afiliaciones-create',
-  templateUrl: './archivo-afiliaciones-create.component.html',
+  selector: 'app-archivo-sueldos-create',
+  templateUrl: './archivo-sueldos-create.component.html',
 })
-export class ArchivoAfiliacionesCreateComponent extends AdminComponent {
+export class ArchivoSueldosCreateComponent extends AdminComponent {
 
-  entityName: string = "archivo_afiliaciones";
+  entityName: string = "archivo_sueldos";
 
   constructor(
     protected fb: FormBuilder, 
@@ -33,27 +33,7 @@ export class ArchivoAfiliacionesCreateComponent extends AdminComponent {
     super(fb, route, router, location, dd, storage, dialog, snackBar);
   }
 
-  loadParams(){
-    /**
-     * No realizar la suscripcion en el template (cambia el Lifecycle)! 
-     * Puede generar errores "ExpressionChanged"
-     */
-    this.loadParams$ = this.route.queryParams.pipe(
-      map(
-        queryParams => { 
-          this.entityName = (queryParams.hasOwnProperty("entity_name")) ? queryParams["entity_name"] : "archivo_afiliaciones";
-          console.log(this.entityName);
-          this.initDisplay({})
-        },
-        error => { 
-          this.snackBar.open(JSON.stringify(error), "X"); 
-        }
-      ), 
-      map(
-        () => {return true;}
-      )
-    )
-  }
+ 
   
   persist(): Observable<any> {
     return this.dd.post("create", this.entityName, this.serverData());

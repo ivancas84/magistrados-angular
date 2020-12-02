@@ -6,9 +6,9 @@
   <mat-card-content>
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
       <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
-        <core-input-text fxFlex="35%" [field]="nombres" [title]="'Nombres'"></core-input-text> 
-        <core-input-text fxFlex="35%" [field]="apellidos" [title]="'Apellidos'"></core-input-text> 
         <core-input-text fxFlex="30%" [field]="legajo" [title]="'Legajo'" [uniqueRoute]="'persona-admin'" ></core-input-text> 
+        <core-input-text fxFlex="35%" [field]="apellidos" [title]="'Apellidos'"></core-input-text> 
+        <core-input-text fxFlex="35%" [field]="nombres" [title]="'Nombres'"></core-input-text> 
       </div>
       <div fxLayout="row" fxFlex="50%" fxLayoutGap="10px" fxLayout.xs="column">
         <core-input-date fxFlex="60%" [field]="fechaNacimiento" [title]="'Fecha nacimiento'"></core-input-date>

@@ -5,7 +5,8 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      Afiliados {{display.getParam('periodo.ym') | toDate | date:"M/y" }} - <core-label [id]="display.getParam('afi_per-departamento_judicial')" [entityName]="'departamento_judicial'"></core-label> - <core-label [id]="display.getParam('afi_per-organo')" [entityName]="'organo'"></core-label> <button mat-mini-fab (click)="switchValor()"><mat-icon>attach_money</mat-icon></button>
+      Afiliados {{display.getParam('periodo.ym') | toDate | date:"M/y" }} 
+      <span *ngIf="display.getParam('afi_per-departamento_judicial')"> - <core-label [id]="display.getParam('afi_per-departamento_judicial')" [entityName]="'departamento_judicial'"></core-label></span> - <core-label [id]="display.getParam('afi_per-organo')" [entityName]="'organo'"></core-label> <button mat-mini-fab (click)="switchValor()"><mat-icon>attach_money</mat-icon></button>
       <button mat-mini-fab color="primary" (click)="copyContent()"><mat-icon>content_copy</mat-icon></button>
       <button mat-mini-fab color="primary" (click)="printContent()"><mat-icon>print</mat-icon></button>
     </mat-card-title>

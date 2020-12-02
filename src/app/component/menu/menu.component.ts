@@ -36,8 +36,6 @@ export class MenuComponent implements OnInit, OnChanges {
     this.afiliacionShowQueryParams = {
       "modificado.is_set":'false', 
       order:JSON.stringify({"per-apellidos":'asc'}),
-      motivo:"Alta",
-      estado:"Aprobado"
     }
 
     this.importeSummaryQueryParams = {

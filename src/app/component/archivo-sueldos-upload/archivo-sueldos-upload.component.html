@@ -151,7 +151,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-list role="list">
-        <mat-list-item *ngFor="let r of response['afiliacion']['bajas_aprobadas']" role="listitem">
+        <mat-list-item *ngFor="let r of response['afiliacion']['bajas_rechazadas']" role="listitem">
           <a target="_blank" [routerLink]="['/persona-admin']" [queryParams]="{legajo:r.per_legajo}">{{r.per_legajo}} {{r.per_nombres}} {{r.per_apellidos}}</a>
         </mat-list-item>
       </mat-list>
@@ -268,7 +268,7 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-list role="list">
-      <mat-list-item *ngFor="let r of response['tramite_excepcional']['bajas_aprobadas']" role="listitem">
+      <mat-list-item *ngFor="let r of response['tramite_excepcional']['bajas_rechazadas']" role="listitem">
         <a target="_blank" [routerLink]="['/persona-admin']" [queryParams]="{legajo:r.per_legajo}">{{r.per_legajo}} {{r.per_nombres}} {{r.per_apellidos}}</a>
       </mat-list-item>
     </mat-list>
@@ -295,18 +295,21 @@
   </mat-card-content>  
 </mat-card>
 
-<mat-card *ngIf="response">
-  <mat-card-content>
-    <button mat-raised-button [disabled]="saveStatus != 'unsaved'" type="button" (click)="save()" color="primary">Guardar</button>&nbsp;
-    <button mat-raised-button [disabled]="saveStatus == 'saving'" color="accent" type="button" (click)="finalize()">Finalizar</button>
-  </mat-card-content>
-</mat-card>
-
 <mat-progress-bar *ngIf="saveStatus == 'saving'"
           [color]="'warn'"
           [mode]="'determinate'"
           [value]="progress"
           >
 </mat-progress-bar>
+  
+<mat-card *ngIf="response">
+  <mat-card-content>
+    <button mat-raised-button [disabled]="saveStatus != 'unsaved'" type="button" (click)="save()" color="primary">Guardar</button>&nbsp;
+    <button mat-raised-button [disabled]="saveStatus == 'saving'" color="accent" type="button" (click)="finalize()">Finalizar</button>&nbsp;
+    <a mat-mini-fab routerLink="/persona-admin" target="_blank"><mat-icon>search</mat-icon></a>
+  </mat-card-content>
+</mat-card>
+
+
 <!--p>Debug Form value: {{ uploadForm.value | json }}</p>
 <p>Debug Form status: {{ uploadForm.status | json }}</p-->

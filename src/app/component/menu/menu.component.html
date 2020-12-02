@@ -15,18 +15,17 @@
     Informe
   </button>
   <mat-menu #nuevo="matMenu">
+    <a mat-menu-item routerLink="/importe-summary" [queryParams]="importeSummaryQueryParams" routerLinkActive="active" title="Ver Importes">Resumen Importes</a>
     <a mat-menu-item routerLink="/importe-afiliacion-show" [queryParams]="importeAfiliacionShowQueryParams" routerLinkActive="active" title="Ver Importe Afiliaciones">Importes 40</a>
     <a mat-menu-item routerLink="/importe-tramite-excepcional-show" [queryParams]="importeTramiteExcepcionalShowQueryParams" routerLinkActive="active" title="Ver Importe Afiliaciones">Importes 80</a>
-    <a mat-menu-item routerLink="/importe-summary" [queryParams]="importeSummaryQueryParams" routerLinkActive="active" title="Ver Importes">Resumen Importes</a>
   </mat-menu>
 
   <button mat-button [matMenuTriggerFor]="archivo" aria-label="icon-button with menu icon">
     Archivo
   </button>
   <mat-menu #archivo="matMenu">
-    <a mat-menu-item routerLink="/archivo-afiliaciones-create" routerLinkActive="active" title="Crear Archivo de Afiliaciones">Crear Archivo Registro 40</a>    
-    <a mat-menu-item routerLink="/archivo-tramite-excepcional-create" routerLinkActive="active" title="Crear Archivo de Tramite Excepctional">Crear Archivo Registro 80</a>
-    <a mat-menu-item routerLink="/archivo-afiliaciones-show" routerLinkActive="active" title="Ver Archivos creados">Ver Archivos Creados (40 y 80)</a>
+    <a mat-menu-item routerLink="/archivo-sueldos-create" routerLinkActive="active" title="Crear Archivo de Sueldos">Crear Archivo Sueldos</a>    
+    <a mat-menu-item routerLink="/archivo-afiliaciones-show" routerLinkActive="active" title="Ver Archivos creados">Ver Archivos Creados</a>
     <a mat-menu-item routerLink="/archivo-sueldos-upload" routerLinkActive="active" title="Procesar Archivo">Procesar Archivo Sueldos</a>
   </mat-menu>
 
@@ -35,6 +34,7 @@
   </button>
   <mat-menu #administracion="matMenu">
     <a mat-menu-item routerLink="/departamento-judicial-admin" routerLinkActive="active" title="Nuevo Departamento Judicial">Departamento Judicial</a>
+    <a mat-menu-item routerLink="/backup" routerLinkActive="active" title="Copia de seguridad">Copia de seguridad</a>
     <a mat-menu-item routerLink="/importe-delete" routerLinkActive="active" title="Eliminar Importes">Eliminar importes</a>
   </mat-menu>
 

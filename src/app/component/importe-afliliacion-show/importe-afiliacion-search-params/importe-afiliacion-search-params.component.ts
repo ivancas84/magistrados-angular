@@ -20,7 +20,7 @@ export class ImporteAfiliacionSearchParamsComponent extends SearchParamsComponen
         validators: [Validators.required],
       }],
       "afi_per-departamento_judicial": [null, {
-        validators: [Validators.required],
+       //validators: [Validators.required],
       }],
       "afi_per-organo": [null, {
         validators: [Validators.required],

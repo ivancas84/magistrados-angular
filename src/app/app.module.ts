@@ -52,6 +52,8 @@ import { InputSelectCheckboxComponent } from '@component/input-select-checkbox/i
 import { InputSelectComponent } from '@component/input-select/input-select.component';
 import { InputSelectValueComponent } from '@component/input-select-value/input-select-value.component';
 import { InputSelectParamComponent } from '@component/input-select-param/input-select-param.component';
+import { InputSelectLabelComponent } from '@component/input-select-label/input-select-label.component';
+
 import { InputSearchGoComponent } from '@component/input-search-go/input-search-go.component';
 import { InputTextComponent } from '@component/input-text/input-text.component';
 import { InputTextareaComponent } from '@component/input-textarea/input-textarea.component';
@@ -72,9 +74,6 @@ import { AfiliacionFieldsetComponent } from '@component/afiliacion-admin/afiliac
 import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show/afiliacion-show.component';
 import { AfiliacionTableComponent } from '@component/afiliacion-show/afiliacion-table/afiliacion-table.component';
 import { AfiliacionSearchComponent } from '@component/afiliacion-show/afiliacion-search/afiliacion-search.component';
-
-import { ArchivoAfiliacionesCreateComponent } from '@component/archivo-afiliaciones-create/archivo-afiliaciones-create/archivo-afiliaciones-create.component';
-import { ArchivoAfiliacionesCreateFieldsetComponent } from '@component/archivo-afiliaciones-create/archivo-afiliaciones-create-fieldset/archivo-afiliaciones-create-fieldset.component';
 
 import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
 import { ArchivoAfiliacionesTableComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-table/archivo-afiliaciones-table.component';
@@ -112,6 +111,10 @@ import { ImporteTramiteExcepcionalTableComponent } from '@component/importe-tram
 import { ImporteTramiteExcepcionalSearchComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-search/importe-tramite-excepcional-search.component';
 import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-search-params/importe-tramite-excepcional-search-params.component';
 
+import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create/archivo-sueldos-create.component';
+import { ArchivoSueldosCreateFieldsetComponent } from '@component/archivo-sueldos-create/archivo-afiliaciones-create-fieldset/archivo-sueldos-create-fieldset.component';
+import { BackupComponent } from '@component/backup/backup.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -126,6 +129,7 @@ import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/impor
     SocialLoginComponent,
     LogoutComponent,
     HomeComponent,
+    BackupComponent,
 
     DialogAlertComponent,
     DialogConfirmComponent,
@@ -136,6 +140,7 @@ import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/impor
     InputSelectComponent,
     InputSelectValueComponent,
     InputSelectParamComponent,
+    InputSelectLabelComponent,
     InputSearchGoComponent,
     InputTextComponent,
     InputTextareaComponent,
@@ -152,7 +157,7 @@ import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/impor
     FieldLabelOrganoComponent,
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
     AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent, AfiliacionSearchParamsComponent,
-    ArchivoAfiliacionesCreateComponent, ArchivoAfiliacionesCreateFieldsetComponent,
+    ArchivoSueldosCreateComponent, ArchivoSueldosCreateFieldsetComponent,
     ArchivoAfiliacionesShowComponent, ArchivoAfiliacionesTableComponent,
     ArchivoSueldosUploadComponent,
     DepartamentoJudicialAdminArrayComponent, DepartamentoJudicialFieldsetArrayComponent,
