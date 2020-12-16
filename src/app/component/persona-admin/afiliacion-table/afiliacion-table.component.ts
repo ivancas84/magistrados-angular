@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, ViewChild, OnInit, SimpleChanges, OnChanges, Input } from '@angular/core';
 import { TableComponent } from '@component/table/table.component';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { Router } from '@angular/router';
@@ -31,7 +31,7 @@ export class PersonaAfiliacionTableComponent extends TableComponent implements O
   load$: Observable<any>;
   load: boolean;
   data$: BehaviorSubject<any> = new BehaviorSubject(null);
-  dataSource: any;
+  @Input() data;
     
   ngOnChanges(changes: SimpleChanges): void {
     if( changes['data'] && changes['data'].previousValue != changes['data'].currentValue ) {    

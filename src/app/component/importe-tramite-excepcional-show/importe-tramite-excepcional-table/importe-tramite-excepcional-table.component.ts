@@ -1,4 +1,4 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { TableComponent } from '@component/table/table.component';
 import { arrayColumn } from '@function/array-column';
@@ -22,7 +22,7 @@ export class ImporteTramiteExcepcionalTableComponent extends TableComponent {
   load$: Observable<any>;
   load: boolean = false;
   data$: BehaviorSubject<any> = new BehaviorSubject(null);
-  dataSource: any;
+  @Input() data;
   total: number;
   constructor(
     protected router: Router,

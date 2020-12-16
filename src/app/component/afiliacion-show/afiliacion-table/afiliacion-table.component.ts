@@ -1,4 +1,4 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { TableComponent } from '@component/table/table.component';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -22,7 +22,8 @@ export class AfiliacionTableComponent extends TableComponent {
   load$: Observable<any>;
   load: boolean = false;
   data$: BehaviorSubject<any> = new BehaviorSubject(null);
-  dataSource: any;
+  @Input() data;
+
   
   constructor(
     protected router: Router,

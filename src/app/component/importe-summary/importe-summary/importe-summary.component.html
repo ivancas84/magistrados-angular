@@ -4,5 +4,5 @@
 
 <div *ngIf="(load$ | async) && load; else loading">
   <app-importe-summary-search [display]="display"></app-importe-summary-search>
-  <app-importe-summary-table [data]="data" [length]="length" [display]="display"></app-importe-summary-table>
+  <app-importe-summary-table [dataSource]="data" [length]="length" [display]="display"></app-importe-summary-table>
 </div>

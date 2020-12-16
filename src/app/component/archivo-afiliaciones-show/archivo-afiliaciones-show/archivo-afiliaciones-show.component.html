@@ -3,5 +3,5 @@
 </ng-template>
 
 <div *ngIf="load$ | async; else loading">
-  <app-archivo-afiliaciones-table [data]="data" ></app-archivo-afiliaciones-table>
+  <app-archivo-afiliaciones-table [dataSource]="data" ></app-archivo-afiliaciones-table>
 </div>
