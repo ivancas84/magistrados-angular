@@ -43,6 +43,7 @@ import { LogoutComponent } from '@component/logout/logout.component';
 import { HomeComponent } from '@component/home/home.component';
 import { SocialLoginComponent } from '@component/social-login/social-login.component';
 
+import { BackupComponent } from '@component/backup/backup.component';
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
 import { DialogConfirmComponent } from '@component/dialog-confirm/dialog-confirm.component';
 import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
@@ -53,7 +54,6 @@ import { InputSelectComponent } from '@component/input-select/input-select.compo
 import { InputSelectValueComponent } from '@component/input-select-value/input-select-value.component';
 import { InputSelectParamComponent } from '@component/input-select-param/input-select-param.component';
 import { InputSelectLabelComponent } from '@component/input-select-label/input-select-label.component';
-
 import { InputSearchGoComponent } from '@component/input-search-go/input-search-go.component';
 import { InputTextComponent } from '@component/input-text/input-text.component';
 import { InputTextareaComponent } from '@component/input-textarea/input-textarea.component';
@@ -113,7 +113,7 @@ import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/impor
 
 import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create/archivo-sueldos-create.component';
 import { ArchivoSueldosCreateFieldsetComponent } from '@component/archivo-sueldos-create/archivo-afiliaciones-create-fieldset/archivo-sueldos-create-fieldset.component';
-import { BackupComponent } from '@component/backup/backup.component';
+
 
 @NgModule({
   declarations: [
