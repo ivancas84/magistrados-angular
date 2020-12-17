@@ -8,6 +8,7 @@ import { DataDefinitionService } from '@service/data-definition/data-definition.
 import { Sort } from '@angular/material/sort';
 import { emptyUrl } from '@function/empty-url.function';
 import { AfiliacionTableComponent } from '@component/afiliacion-show/afiliacion-table/afiliacion-table.component';
+import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
 
 @Component({
   selector: 'app-tramite-excepcional-table',
@@ -23,9 +24,9 @@ export class TramiteExcepcionalTableComponent extends AfiliacionTableComponent {
   
   constructor(
     protected router: Router,
-    protected dd: DataDefinitionService,
+    protected ddt: DataDefinitionToolService,
   ) {
-    super(router, dd);
+    super(router, ddt);
   }
 
     

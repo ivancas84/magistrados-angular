@@ -4,9 +4,9 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { arrayColumn } from '@function/array-column';
 import { Router } from '@angular/router';
-import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { Sort } from '@angular/material/sort';
 import { emptyUrl } from '@function/empty-url.function';
+import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
 
 @Component({
   selector: 'app-afiliacion-table',
@@ -27,7 +27,7 @@ export class AfiliacionTableComponent extends TableComponent {
   
   constructor(
     protected router: Router,
-    protected dd: DataDefinitionService,
+    protected ddt: DataDefinitionToolService,
   ) {
     super(router);
   }
@@ -56,20 +56,8 @@ export class AfiliacionTableComponent extends TableComponent {
   }
   
   initData(data): Observable<any>{
-    var idsPersonas = arrayColumn(data, "persona");
-    return this.dd.getAll("persona", idsPersonas).pipe(
-      map(
-        personas => {
-          for(var i = 0; i < data.length; i++){
-            data[i]["legajo"] = personas[i]["legajo"];
-            data[i]["nombre"] = personas[i]["apellidos"] + ", " + personas[i]["nombres"];
-            data[i]["departamento_judicial"] = personas[i]["departamento_judicial"];
-            data[i]["departamento_judicial_informado"] = personas[i]["departamento_judicial_informado"];
-          }
-          return data;
-        }
-      )
-    );
+    var fields = {legajo:"legajo",nombre:["apellidos","nombres"],departamento_judicial:"departamento_judicial",departamento_judicial_informado:"departamento_judicial_informado"}
+    return this.ddt.getAllColumnData(data,"persona", "persona",fields);    
   }
 
   serverSort(sort: Sort): boolean{ //@override
@@ -81,7 +69,7 @@ export class AfiliacionTableComponent extends TableComponent {
 
     if(!server && (!this.length || !this.display || this.data.length >= this.length)) return false;
     switch(sort.active){
-      case "nombre": this.display.setOrderByKeys(["per-apellidos"]); break;
+      case "nombre": this.display.setOrderByKeys(["per-apellidos","per-nombres"]); break;
       case "legajo": this.display.setOrderByKeys(["per-legajo"]); break;
       case "departamento_judicial": this.display.setOrderByKeys(["per_dj-codigo"]); break;
     }

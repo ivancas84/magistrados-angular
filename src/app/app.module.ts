@@ -113,6 +113,7 @@ import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/impor
 
 import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create/archivo-sueldos-create.component';
 import { ArchivoSueldosCreateFieldsetComponent } from '@component/archivo-sueldos-create/archivo-afiliaciones-create-fieldset/archivo-sueldos-create-fieldset.component';
+import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
 
 
 @NgModule({
@@ -198,7 +199,8 @@ import { ArchivoSueldosCreateFieldsetComponent } from '@component/archivo-sueldo
     DataDefinitionService, 
     SessionStorageService, 
     ValidatorsService,
-    
+  
+    DataDefinitionToolService,  
     DataDefinitionStorageService, 
     DataDefinitionLabelService, 
 
