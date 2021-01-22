@@ -25,6 +25,7 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
+//import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
 import { SessionStorageService } from '@service/storage/session-storage.service';
 import { ValidatorsService } from '@service/validators/validators.service';
 import { AuthService } from '@service/auth/auth.service';
@@ -43,6 +44,9 @@ import { LogoutComponent } from '@component/logout/logout.component';
 import { HomeComponent } from '@component/home/home.component';
 import { SocialLoginComponent } from '@component/social-login/social-login.component';
 
+import { CardDynamicComponent } from '@component/card-dynamic/card-dynamic.component';
+import { TableDynamicComponent } from '@component/table-dynamic/table-dynamic.component';
+import { FieldsetDynamicComponent } from '@component/fieldset-dynamic/fieldset-dynamic.component';
 import { BackupComponent } from '@component/backup/backup.component';
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
 import { DialogConfirmComponent } from '@component/dialog-confirm/dialog-confirm.component';
@@ -58,6 +62,7 @@ import { InputSearchGoComponent } from '@component/input-search-go/input-search-
 import { InputTextComponent } from '@component/input-text/input-text.component';
 import { InputTextareaComponent } from '@component/input-textarea/input-textarea.component';
 import { InputTimepickerComponent } from '@component/input-timepicker/input-timepicker.component';
+import { InputCheckboxComponent } from '@component/input-checkbox/input-checkbox.component';
 import { InputYmComponent } from '@component/input-ym/input-ym.component';
 import { InputYearComponent } from '@component/input-year/input-year.component';
 import { MenuComponent } from '@component/menu/menu.component';
@@ -65,6 +70,8 @@ import { SearchAllComponent } from '@component/search-all/search-all.component';
 import { LabelComponent } from '@component/label/label.component';
 import { FieldLabelComponent } from '@component/field-label/field-label.component';
 import { FieldTreeLabelComponent } from '@component/field-tree-label/field-tree-label.component';
+import { FieldValueComponent } from '@component/field-value/field-value.component';
+import { FieldViewComponent } from '@component/field-view/field-view.component';
 
 import { FieldLabelOrganoComponent } from '@component/reusable/field-label-organo/field-label-organo.component';
 
@@ -82,7 +89,6 @@ import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento
 import { DepartamentoJudicialFieldsetArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-fieldset-array/departamento-judicial-fieldset-array.component';
 
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
-import { PersonaFieldsetComponent } from '@component/persona-admin/persona-fieldset/persona-fieldset.component';
 import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
 import { AfiliacionSearchParamsComponent } from '@component/afiliacion-show/afiliacion-search-params/afiliacion-search-params.component';
 
@@ -113,6 +119,10 @@ import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/impor
 
 import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create/archivo-sueldos-create.component';
 import { ArchivoSueldosCreateFieldsetComponent } from '@component/archivo-sueldos-create/archivo-afiliaciones-create-fieldset/archivo-sueldos-create-fieldset.component';
+import { FieldTreeComponent } from '@component/field-tree/field-tree.component';
+import { FieldInputComponent } from '@component/field-input/field-input.component';
+import { SearchDynamicComponent } from '@component/search-dynamic/search-dynamic.component';
+import { SearchParamsDynamicComponent } from '@component/search-params-dynamic/search-params-dynamic.component';
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
 
 
@@ -134,7 +144,10 @@ import { DataDefinitionToolService } from '@service/data-definition/data-definit
 
     DialogAlertComponent,
     DialogConfirmComponent,
+    FieldViewComponent,
+    FieldValueComponent,
     InputAutocompleteComponent,
+    InputCheckboxComponent,
     InputDateComponent,
     InputNumberComponent,
     InputSelectCheckboxComponent,
@@ -153,6 +166,13 @@ import { DataDefinitionToolService } from '@service/data-definition/data-definit
     LabelComponent,
     FieldLabelComponent,
     FieldTreeLabelComponent,
+    FieldTreeComponent,
+    TableDynamicComponent,
+    CardDynamicComponent,
+    FieldsetDynamicComponent,
+    SearchDynamicComponent,
+    SearchParamsDynamicComponent,
+    FieldInputComponent,
     //DynamicTableComponent,
 
     FieldLabelOrganoComponent,
@@ -162,7 +182,7 @@ import { DataDefinitionToolService } from '@service/data-definition/data-definit
     ArchivoAfiliacionesShowComponent, ArchivoAfiliacionesTableComponent,
     ArchivoSueldosUploadComponent,
     DepartamentoJudicialAdminArrayComponent, DepartamentoJudicialFieldsetArrayComponent,
-    PersonaAdminComponent, PersonaFieldsetComponent, PersonaAfiliacionTableComponent, 
+    PersonaAdminComponent, PersonaAfiliacionTableComponent, 
     PTramiteExcepcionalTableComponent,
     TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent,
     ImporteAfiliacionShowComponent, ImporteAfiliacionTableComponent, ImporteAfiliacionSearchComponent, ImporteAfiliacionSearchParamsComponent,
@@ -197,10 +217,10 @@ import { DataDefinitionToolService } from '@service/data-definition/data-definit
     
     AuthService,
     DataDefinitionService, 
+    DataDefinitionToolService,
     SessionStorageService, 
     ValidatorsService,
-  
-    DataDefinitionToolService,  
+    
     DataDefinitionStorageService, 
     DataDefinitionLabelService, 
 

@@ -22,6 +22,7 @@ export class _DataDefinitionLabelService {
       case "importe_tramite_excepcional": { return this.labelImporteTramiteExcepcional(id); }
       case "organo": { return this.labelOrgano(id); }
       case "persona": { return this.labelPersona(id); }
+      case "sucursal": { return this.labelSucursal(id); }
       case "tipo_documento": { return this.labelTipoDocumento(id); }
       case "tramite_excepcional": { return this.labelTramiteExcepcional(id); }
     }
@@ -100,6 +101,15 @@ export class _DataDefinitionLabelService {
     if (row["apellidos"]) ret = ret.trim() + " " + row["apellidos"];
 
     if (row["legajo"]) ret = ret.trim() + " " + row["legajo"];
+
+    return ret.trim();
+  }
+
+  labelSucursalRow (row: any): string {
+    if(!row) return null;
+
+    let ret = "";
+    if (row["descripcion"]) ret = ret.trim() + " " + row["descripcion"];
 
     return ret.trim();
   }
@@ -241,6 +251,22 @@ export class _DataDefinitionLabelService {
           if(!row) return of(null);
           return combineLatest([
             of(this.labelPersonaRow(row)),
+          ])
+        }
+      ),
+      map(
+        response => { return (!response)? null : response.join(" "); }
+      )
+    );
+  }
+
+  labelSucursal(id: string): Observable<any> {
+    return this.dd.get("sucursal", id).pipe(
+      switchMap(
+        row => {
+          if(!row) return of(null);
+          return combineLatest([
+            of(this.labelSucursalRow(row)),
           ])
         }
       ),

@@ -20,6 +20,7 @@ export class DataDefinitionStorageService {
       case "importe_tramite_excepcional": this.storageImporteTramiteExcepcional(row); break;
       case "organo": this.storageOrgano(row); break;
       case "persona": this.storagePersona(row); break;
+      case "sucursal": this.storageSucursal(row); break;
       case "tipo_documento": this.storageTipoDocumento(row); break;
       case "tramite_excepcional": this.storageTramiteExcepcional(row); break;
     }
@@ -198,6 +199,12 @@ export class DataDefinitionStorageService {
       delete rowCloned['tramite_excepcional_']['persona_'];
     }
     if(('tramite_excepcional_' in rowCloned)
+    && ('sucursal_' in rowCloned['tramite_excepcional_'])
+    ){
+      this.stg.setItem('sucursal' + rowCloned['tramite_excepcional_']['sucursal_'].id, rowCloned['tramite_excepcional_']['sucursal_']);
+      delete rowCloned['tramite_excepcional_']['sucursal_'];
+    }
+    if(('tramite_excepcional_' in rowCloned)
     ){
       this.stg.setItem('tramite_excepcional' + rowCloned['tramite_excepcional_'].id, rowCloned['tramite_excepcional_']);
       delete rowCloned['tramite_excepcional_'];
@@ -246,6 +253,15 @@ export class DataDefinitionStorageService {
       delete rowCloned['tipo_documento_'];
     }
     this.stg.setItem("persona" + rowCloned.id, rowCloned);
+  }
+
+  storageSucursal(row: { [index: string]: any }): void{
+    if(!row) return;
+    var rowCloned = JSON.parse(JSON.stringify(row))
+    /**
+     * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
+     */
+    this.stg.setItem("sucursal" + rowCloned.id, rowCloned);
   }
 
   storageTipoDocumento(row: { [index: string]: any }): void{
@@ -297,6 +313,11 @@ export class DataDefinitionStorageService {
     ){
       this.stg.setItem('persona' + rowCloned['persona_'].id, rowCloned['persona_']);
       delete rowCloned['persona_'];
+    }
+    if(('sucursal_' in rowCloned)
+    ){
+      this.stg.setItem('sucursal' + rowCloned['sucursal_'].id, rowCloned['sucursal_']);
+      delete rowCloned['sucursal_'];
     }
     this.stg.setItem("tramite_excepcional" + rowCloned.id, rowCloned);
   }

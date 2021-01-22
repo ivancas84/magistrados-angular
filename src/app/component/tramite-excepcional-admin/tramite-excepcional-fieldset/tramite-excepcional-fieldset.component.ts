@@ -14,7 +14,7 @@ export class TramiteExcepcionalFieldsetComponent extends FieldsetComponent {
 
 readonly entityName: string = 'tramite_excepcional';
 
-  readonly defaultValues: {[key:string]: any} = {motivo: "Alta", estado: "Creado"}
+  readonly defaultValues: {[key:string]: any} = {motivo: "Alta", estado: "Creado",sucursal:"1"}
 
   constructor(
     protected fb: FormBuilder, 
@@ -47,6 +47,9 @@ readonly entityName: string = 'tramite_excepcional';
       persona: [null, {
         validators: [Validators.required],
       }],
+      sucursal: [null, {
+        validators: [Validators.required],
+      }],
     });
     return fg;
   }
@@ -62,6 +65,7 @@ readonly entityName: string = 'tramite_excepcional';
   get hasta() { return this.fieldset.get('hasta')}
   get monto() { return this.fieldset.get('monto')}
   get persona() { return this.fieldset.get('persona')}
+  get sucursal() { return this.fieldset.get('sucursal')}
 
   resetForm(values: {[key:string]: any}){
     this.fieldset.reset(values);
@@ -74,6 +78,7 @@ readonly entityName: string = 'tramite_excepcional';
       this.desde.disable();
       this.hasta.disable();
       this.monto.disable();
+      this.sucursal.disable()
     }
   }
 
