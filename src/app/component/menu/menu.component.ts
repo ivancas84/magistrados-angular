@@ -26,7 +26,7 @@ export class MenuComponent implements OnInit, OnChanges {
   }
 
   afiliacionShowQueryParams:  { [index: string]: boolean|string|number };
-  importeSummaryQueryParams:  { [index: string]: boolean|string|number };
+  summaryQueryParams:  { [index: string]: boolean|string|number };
   importeAfiliacionShowQueryParams:  { [index: string]: boolean|string|number };
   importeTramiteExcepcionalShowQueryParams:  { [index: string]: boolean|string|number };
 
@@ -36,7 +36,7 @@ export class MenuComponent implements OnInit, OnChanges {
       order:JSON.stringify({"per-apellidos":'asc'}),
     }
 
-    this.importeSummaryQueryParams = {
+    this.summaryQueryParams = {
       periodo:new Date().toJSON(),
       organo:"1"
     }

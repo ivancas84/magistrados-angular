@@ -15,7 +15,8 @@
     Informe
   </button>
   <mat-menu #nuevo="matMenu">
-    <a mat-menu-item routerLink="/importe-summary" [queryParams]="importeSummaryQueryParams" routerLinkActive="active" title="Ver Importes">Resumen Importes</a>
+    <a mat-menu-item routerLink="/importe-summary" [queryParams]="summaryQueryParams" routerLinkActive="active" title="Ver Importes">Resumen Importes</a>
+    <a mat-menu-item routerLink="/total-summary" [queryParams]="summaryQueryParams" routerLinkActive="active" title="Ver Totales">Resumen Totales</a>
     <a mat-menu-item routerLink="/importe-afiliacion-show" [queryParams]="importeAfiliacionShowQueryParams" routerLinkActive="active" title="Ver Importe Afiliaciones">Importes 40</a>
     <a mat-menu-item routerLink="/importe-tramite-excepcional-show" [queryParams]="importeTramiteExcepcionalShowQueryParams" routerLinkActive="active" title="Ver Importe Afiliaciones">Importes 80</a>
   </mat-menu>
