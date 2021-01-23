@@ -15,6 +15,7 @@ import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-
 import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete/importe-delete.component';
 import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
 import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create/archivo-sueldos-create.component';
+import { TotalSummaryComponent } from '@component/total-summary/total-summary/total-summary.component';
 
 const routes: Routes = [
   { path: 'backup', component: BackupComponent, pathMatch: 'full' },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent, pathMatch: 'full' },
   { path: 'tramite-excepcional-show', component: TramiteExcepcionalShowComponent, pathMatch: 'full' },
   { path: 'importe-delete', component: ImporteDeleteComponent, pathMatch: 'full' },
+  { path: 'total-summary', component: TotalSummaryComponent, pathMatch: 'full' },
   
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: '', component: PersonaAdminComponent, pathMatch: 'full' },

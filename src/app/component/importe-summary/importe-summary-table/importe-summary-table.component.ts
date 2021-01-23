@@ -15,7 +15,7 @@ declare function copyFormatted(html): any;
 export class ImporteSummaryTableComponent extends TableComponent { 
   displayedColumns: string[] = ['nombre', 'afiliaciones', 'importe', 'cuota_asociativa', 'fam', 'total_deduccion', 'total_pagar', 'viatico', 'total'];
 
-  footer: { [index: string]: any }[] = []; //footer
+  footer: { [index: string]: any } = {}; //footer
 
   ngOnInit(): void {
     if(!this.length) this.length = this.dataSource.length;    

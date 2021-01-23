@@ -1,5 +1,8 @@
+import { registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import localeEsAr from '@angular/common/locales/es-AR';
+registerLocaleData(localeEsAr, 'es-AR');
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -124,6 +127,10 @@ import { FieldInputComponent } from '@component/field-input/field-input.componen
 import { SearchDynamicComponent } from '@component/search-dynamic/search-dynamic.component';
 import { SearchParamsDynamicComponent } from '@component/search-params-dynamic/search-params-dynamic.component';
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
+import { TotalSummaryTableComponent } from '@component/total-summary/total-summary-table/total-summary-table.component';
+import { TotalSummaryComponent } from '@component/total-summary/total-summary/total-summary.component';
+
+
 
 
 @NgModule({
@@ -190,7 +197,7 @@ import { DataDefinitionToolService } from '@service/data-definition/data-definit
     ImporteSummaryComponent, ImporteSummarySearchComponent, ImporteSummarySearchParamsComponent, ImporteSummaryTableComponent,
     ImporteTramiteExcepcionalShowComponent, ImporteTramiteExcepcionalTableComponent, ImporteTramiteExcepcionalSearchComponent, ImporteTramiteExcepcionalSearchParamsComponent,
     TramiteExcepcionalShowComponent, TramiteExcepcionalTableComponent,
-    
+    TotalSummaryComponent, TotalSummaryTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -210,6 +217,7 @@ import { DataDefinitionToolService } from '@service/data-definition/data-definit
     //MatTimepickerModule
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'es-Ar' },
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000, verticalPosition:"top", horizontalPosition:"right"}},
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },

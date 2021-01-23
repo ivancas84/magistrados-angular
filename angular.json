@@ -29,7 +29,8 @@
             ],
             "scripts": [
               "src/assets/js/copyFormatted.js",
-              "src/assets/js/printHtml.js"
+              "src/assets/js/printHtml.js",
+              "src/assets/js/numerosALetras.js"
             ]
           },
           "configurations": {
