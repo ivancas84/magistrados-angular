@@ -89,7 +89,6 @@ import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliacione
 import { ArchivoAfiliacionesTableComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-table/archivo-afiliaciones-table.component';
 
 import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
-import { DepartamentoJudicialFieldsetArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-fieldset-array/departamento-judicial-fieldset-array.component';
 
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
@@ -129,6 +128,8 @@ import { SearchParamsDynamicComponent } from '@component/search-params-dynamic/s
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
 import { TotalSummaryTableComponent } from '@component/total-summary/total-summary-table/total-summary-table.component';
 import { TotalSummaryComponent } from '@component/total-summary/total-summary/total-summary.component';
+import { FieldsetArrayDynamicComponent } from '@component/fieldset-array-dynamic/fieldset-array-dynamic.component';
+import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 
 
 
@@ -177,6 +178,7 @@ import { TotalSummaryComponent } from '@component/total-summary/total-summary/to
     TableDynamicComponent,
     CardDynamicComponent,
     FieldsetDynamicComponent,
+    FieldsetArrayDynamicComponent,
     SearchDynamicComponent,
     SearchParamsDynamicComponent,
     FieldInputComponent,
@@ -188,7 +190,7 @@ import { TotalSummaryComponent } from '@component/total-summary/total-summary/to
     ArchivoSueldosCreateComponent, ArchivoSueldosCreateFieldsetComponent,
     ArchivoAfiliacionesShowComponent, ArchivoAfiliacionesTableComponent,
     ArchivoSueldosUploadComponent,
-    DepartamentoJudicialAdminArrayComponent, DepartamentoJudicialFieldsetArrayComponent,
+    DepartamentoJudicialAdminArrayComponent,
     PersonaAdminComponent, PersonaAfiliacionTableComponent, 
     PTramiteExcepcionalTableComponent,
     TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent,
@@ -196,6 +198,7 @@ import { TotalSummaryComponent } from '@component/total-summary/total-summary/to
     ImporteDeleteComponent, ImporteDeleteFieldsetComponent,
     ImporteSummaryComponent, ImporteSummarySearchComponent, ImporteSummarySearchParamsComponent, ImporteSummaryTableComponent,
     ImporteTramiteExcepcionalShowComponent, ImporteTramiteExcepcionalTableComponent, ImporteTramiteExcepcionalSearchComponent, ImporteTramiteExcepcionalSearchParamsComponent,
+    SucursalAdminArrayComponent,
     TramiteExcepcionalShowComponent, TramiteExcepcionalTableComponent,
     TotalSummaryComponent, TotalSummaryTableComponent,
   ],

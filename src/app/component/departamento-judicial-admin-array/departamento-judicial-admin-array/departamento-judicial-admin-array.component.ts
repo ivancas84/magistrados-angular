@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { DataDefinitionService } from '@service/data-definition/data-definition.service';
-import { ValidatorsService } from '@service/validators/validators.service';
-import { SessionStorageService } from '@service/storage/session-storage.service';
+import { Validators } from '@angular/forms';
 import { AdminArrayComponent } from '@component/admin-array/admin-array.component';
+import { FieldControl } from '@class/field-control';
 
 @Component({
   selector: 'app-departamento-judicial-admin-array',
@@ -17,5 +11,25 @@ export class DepartamentoJudicialAdminArrayComponent extends AdminArrayComponent
 
   readonly entityName: string = "departamento_judicial";
 
+  fieldsControl: FieldControl[] = [
+    new FieldControl({
+      field:"id",
+      label:"Id",
+      type: "hidden",
+    }),
+
+    new FieldControl({
+      field:"codigo",
+      label:"Codigo",
+      validators: [Validators.required],
+      asyncValidators: [],
+    }),
+
+    new FieldControl({
+      field:"nombre",
+      label:"Nombre",
+    }),
+
+  ];
 }
 
