@@ -1,7 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { FieldControl } from '@class/field-control';
 import { TableComponent } from '@component/table/table.component';
-
-declare function copyFormatted(html): any;
+import { emptyUrl } from '@function/empty-url.function';
 
 @Component({
   selector: 'app-importe-summary-table',
@@ -16,6 +17,24 @@ export class ImporteSummaryTableComponent extends TableComponent {
   displayedColumns: string[] = ['nombre', 'afiliaciones', 'importe', 'cuota_asociativa', 'fam', 'total_deduccion', 'total_pagar', 'viatico', 'total'];
 
   footer: { [index: string]: any } = {}; //footer
+
+  viatico: FieldControl = new FieldControl({
+    field:"valor", width:"100px", 
+    validators: [Validators.pattern('^-?[0-9]+(\\.[0-9]{1,2})?$'),
+    Validators.max(99999999999999999.99),
+    Validators.min(-99999999999999999.99)]
+  });
+
+  editViatico: boolean = false
+
+  edit(){ 
+    this.editViatico = !this.editViatico 
+    if(!this.editViatico){
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+        this.router.navigateByUrl('/importe-summary?' + this.display.encodeURI())  
+      );
+    } 
+  }
 
   ngOnInit(): void {
     if(!this.length) this.length = this.dataSource.length;    

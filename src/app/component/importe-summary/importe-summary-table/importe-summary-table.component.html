@@ -1,8 +1,10 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Importes <core-label [entityName]="'organo'" [id]="display.getParam('organo')"></core-label> {{display.getParam('periodo') | toDate | date:"M/y"}} <button mat-mini-fab color="primary" (click)="copyContent()"><mat-icon>content_copy</mat-icon></button>
-    <button mat-mini-fab color="primary" (click)="printContent()"><mat-icon>print</mat-icon></button>
-    
+    <mat-card-title>Importes 
+      <core-label [entityName]="'organo'" [id]="display.getParam('organo')"></core-label> {{display.getParam('periodo') | toDate | date:"M/y"}} 
+      <button mat-mini-fab color="accent" (click)="edit()"><mat-icon>edit</mat-icon></button>
+      <button mat-mini-fab color="primary" (click)="copyContent()"><mat-icon>content_copy</mat-icon></button>
+      <button mat-mini-fab color="primary" (click)="printContent()"><mat-icon>print</mat-icon></button>
     </mat-card-title>
   </mat-card-header>
   <mat-card-content #content>
@@ -39,7 +41,7 @@
 
       <ng-container matColumnDef="total_deduccion">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Total deducción </th>
-        <td mat-cell *matCellDef="let row"> {{row.total_deduccion}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.total_deduccion}} </td> 
         <td mat-footer-cell *matFooterCellDef> {{footer.total_deduccion}} </td>
       </ng-container>
 
@@ -51,7 +53,19 @@
 
       <ng-container matColumnDef="viatico">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Viático </th>
-        <td mat-cell *matCellDef="let row"> {{row.viatico}} </td>
+        <td mat-cell *matCellDef="let row"> 
+          <core-input-value *ngIf="editViatico"
+            [fieldControl]="viatico" 
+            [entityName]="'viatico'" 
+            [value]="row.viatico"
+            [params]="{
+              organo:display.getParam('organo'),
+              periodo:display.getParam('periodo'),
+              departamento_judicial:row.id
+            }"
+          ></core-input-value>
+          <span *ngIf="!editViatico">{{row.viatico}}</span>
+        </td>
         <td mat-footer-cell *matFooterCellDef> {{footer.viatico}} </td>
       </ng-container>
 

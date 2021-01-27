@@ -130,6 +130,7 @@ import { TotalSummaryTableComponent } from '@component/total-summary/total-summa
 import { TotalSummaryComponent } from '@component/total-summary/total-summary/total-summary.component';
 import { FieldsetArrayDynamicComponent } from '@component/fieldset-array-dynamic/fieldset-array-dynamic.component';
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
+import { InputValueComponent } from '@component/input-value/input-value.component';
 
 
 
@@ -166,6 +167,7 @@ import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/suc
     InputSearchGoComponent,
     InputTextComponent,
     InputTextareaComponent,
+    InputValueComponent,
     //InputTimepickerComponent,
     InputYearComponent,
     InputYmComponent,
