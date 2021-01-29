@@ -51,7 +51,7 @@
         <td mat-cell *matCellDef="let row"> 
           <a [routerLink]="['/persona-admin']" [queryParams]="{id:row.persona}" >
             {{row.nombre}}
-          </a>&nbsp;<!--app-field-label-organo [id]="row.persona"></app-field-label-organo-->
+          </a>&nbsp;<app-field-label-organo [id]="row.persona"></app-field-label-organo>
         </td>
       </ng-container>
 
