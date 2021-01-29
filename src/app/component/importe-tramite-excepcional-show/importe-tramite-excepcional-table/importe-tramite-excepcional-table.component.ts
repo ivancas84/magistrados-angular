@@ -2,6 +2,8 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { TableComponent } from '@component/table/table.component';
 import { arrayColumn } from '@function/array-column';
+import { arrayCombine } from '@function/array-combine';
+import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
 
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { Observable, BehaviorSubject, of } from 'rxjs';
@@ -27,6 +29,7 @@ export class ImporteTramiteExcepcionalTableComponent extends TableComponent {
   constructor(
     protected router: Router,
     protected dd: DataDefinitionService,
+    protected ddt: DataDefinitionToolService
   ) {
     super(router);
   }
@@ -42,13 +45,12 @@ export class ImporteTramiteExcepcionalTableComponent extends TableComponent {
       switchMap(      
         data => {
           this.load = false;
-          this.dataSource = data;
-          return this.initData();
+          return this.initData(data);
         }
       ),
       map(
-        () => {          
-          console.log(this.dataSource);
+        data => {  
+          this.dataSource = data;
           this.total = this.dataSource.map(t => t.valor).reduce((acc, value) => acc + value, 0).toFixed(2);
           return this.load = true;
         }
@@ -56,8 +58,8 @@ export class ImporteTramiteExcepcionalTableComponent extends TableComponent {
     )
   }
 
-  initData(): Observable<any>{
-    var idsAfiliaciones = arrayColumn(this.dataSource, "tramite_excepcional");
+  initData(data): Observable<any>{
+    var idsAfiliaciones = arrayColumn(data, "tramite_excepcional");
     return this.dd.getAll("tramite_excepcional", idsAfiliaciones).pipe(
       switchMap(
         afiliaciones => {
@@ -66,6 +68,7 @@ export class ImporteTramiteExcepcionalTableComponent extends TableComponent {
       ),
       switchMap(
         personas => {
+          //return this.ddt.getAllColumnData(personas, "departamento_judicial", "departamento_judicial", {})
           return this.departamentoJudicialData(personas);          
         }
       ),
@@ -73,19 +76,20 @@ export class ImporteTramiteExcepcionalTableComponent extends TableComponent {
         personas => {
           return this.departamentoJudicialInformadoData(personas);
         }
-      )
+      ),
     );
   }
 
   personaData(afiliaciones){
-    
     var idsPersonas = arrayColumn(afiliaciones, "persona");
     return this.dd.getAll("persona", idsPersonas).pipe(
       map(
         personas => {
-          for(var i = 0; i < this.dataSource.length; i++){
-            this.dataSource[i]["legajo"] = personas[i]["legajo"];
-            this.dataSource[i]["nombre"] = personas[i]["apellidos"] + " " + personas[i]["nombres"];
+          for(var i = 0; i < personas.length; i++){
+            personas[i]["nombre"] = personas[i]["apellidos"] + " " + personas[i]["nombres"];
+            for(var j = 0; j < afiliaciones.length; j++){
+              if(personas[i]["id"] == afiliaciones[j]["persona"]) personas[i]["valor"] = afiliaciones[j]["monto"]
+            }
           }
           return personas;
         }
@@ -93,13 +97,17 @@ export class ImporteTramiteExcepcionalTableComponent extends TableComponent {
     );
   }
 
+  
   departamentoJudicialData(personas){
     var idsDepartamentosJudiciales = arrayColumn(personas, "departamento_judicial");
     return this.dd.getAll("departamento_judicial", idsDepartamentosJudiciales).pipe(
       map(
         departamentos => {
-          for(var i = 0; i < this.dataSource.length; i++){
-            this.dataSource[i]["departamento_judicial"] = departamentos[i]["codigo"] + " " + departamentos[i]["nombre"];
+          for(var i = 0; i < personas.length; i++){
+            for(var j = 0; j < departamentos.length; j++){
+              if(personas[i]["departamento_judicial"] == departamentos[j]["id"]) 
+                personas[i]["departamento_judicial"] = departamentos[j]["codigo"] + " " + departamentos[j]["nombre"];
+            }
           }
           return personas;
         }
@@ -115,7 +123,8 @@ export class ImporteTramiteExcepcionalTableComponent extends TableComponent {
         departamentos => {
           for(var i = 0; i < departamentos.length; i++){
             for(var j = 0; j < personas.length; j++){
-              if(personas[j]["departamento_judicial_informado"] == departamentos[i]["id"]) this.dataSource[j]["departamento_judicial_informado"] = departamentos[i]["codigo"];
+              if(personas[j]["departamento_judicial_informado"] == departamentos[i]["id"]) 
+                personas[j]["departamento_judicial_informado"] = departamentos[i]["codigo"];
             }
           }
           return personas;
