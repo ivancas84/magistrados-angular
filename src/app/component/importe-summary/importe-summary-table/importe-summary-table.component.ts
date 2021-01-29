@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FieldControl } from '@class/field-control';
 import { TableComponent } from '@component/table/table.component';
@@ -13,7 +13,8 @@ import { emptyUrl } from '@function/empty-url.function';
     tr.mat-footer-row { font-weight: bold; }
   `],
 })
-export class ImporteSummaryTableComponent extends TableComponent { 
+export class ImporteSummaryTableComponent extends TableComponent implements OnChanges {
+
   displayedColumns: string[] = ['nombre', 'afiliaciones', 'importe', 'cuota_asociativa', 'fam', 'total_deduccion', 'total_pagar', 'viatico', 'total'];
 
   footer: { [index: string]: any } = {}; //footer
@@ -36,8 +37,18 @@ export class ImporteSummaryTableComponent extends TableComponent {
     } 
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if( changes['dataSource'] ) {
+      this.calcularTotales()
+    }
+  } 
+
   ngOnInit(): void {
     if(!this.length) this.length = this.dataSource.length;    
+ 
+  }
+
+  calcularTotales(){
     this.footer["afiliaciones"] = this.dataSource.map(t => t["afiliaciones"]).reduce((acc, value) => acc + value, 0).toFixed(0);
     this.footer["importe"] = this.dataSource.map(t => t["importe"]).reduce((acc, value) => acc + value, 0).toFixed(2);
     this.footer["cuota_asociativa"] = this.dataSource.map(t => t["cuota_asociativa"]).reduce((acc, value) => acc + value, 0).toFixed(2);
@@ -46,5 +57,6 @@ export class ImporteSummaryTableComponent extends TableComponent {
     this.footer["total_pagar"] = this.dataSource.map(t => t["total_pagar"]).reduce((acc, value) => acc + value, 0).toFixed(2);
     this.footer["viatico"] = this.dataSource.map(t => t["viatico"]).reduce((acc, value) => acc + value, 0).toFixed(2);
     this.footer["total"] = this.dataSource.map(t => t["total"]).reduce((acc, value) => acc + value, 0).toFixed(2);
+
   }
 }
