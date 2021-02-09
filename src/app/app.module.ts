@@ -131,6 +131,7 @@ import { TotalSummaryComponent } from '@component/total-summary/total-summary/to
 import { FieldsetArrayDynamicComponent } from '@component/fieldset-array-dynamic/fieldset-array-dynamic.component';
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 import { InputValueComponent } from '@component/input-value/input-value.component';
+import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
 
 
 
@@ -203,6 +204,7 @@ import { InputValueComponent } from '@component/input-value/input-value.componen
     SucursalAdminArrayComponent,
     TramiteExcepcionalShowComponent, TramiteExcepcionalTableComponent,
     TotalSummaryComponent, TotalSummaryTableComponent,
+    TipoDocumentoAdminArrayComponent,
   ],
   imports: [
     BrowserModule,
