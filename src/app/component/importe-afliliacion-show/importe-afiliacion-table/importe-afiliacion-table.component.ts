@@ -67,6 +67,7 @@ export class ImporteAfiliacionTableComponent extends TableComponent {
       map(
         personas => {
           for(var i = 0; i < data.length; i++){
+            data[i]["persona"] = personas[i]["id"];
             data[i]["legajo"] = personas[i]["legajo"];
             data[i]["nombre"] = personas[i]["apellidos"] + " " + personas[i]["nombres"] ;
           }

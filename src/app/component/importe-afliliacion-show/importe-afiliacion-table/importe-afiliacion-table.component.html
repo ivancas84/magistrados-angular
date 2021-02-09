@@ -41,7 +41,10 @@
       <ng-container matColumnDef="nombre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
         <td mat-cell *matCellDef="let row"> 
-          {{row.nombre}}
+          <a [routerLink]="['/persona-admin']" [queryParams]="{id:row.persona}" >
+            {{row.nombre}}
+          </a>&nbsp;
+          <app-field-label-organo [id]="row.persona"></app-field-label-organo>
         </td>
         <td mat-footer-cell *matFooterCellDef> TOTAL </td>
       </ng-container>

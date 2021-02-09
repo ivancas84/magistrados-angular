@@ -23,6 +23,7 @@ export class DataDefinitionStorageService {
       case "sucursal": this.storageSucursal(row); break;
       case "tipo_documento": this.storageTipoDocumento(row); break;
       case "tramite_excepcional": this.storageTramiteExcepcional(row); break;
+      case "viatico": this.storageViatico(row); break;
     }
   }
   storageAfiliacion(row: { [index: string]: any }): void{
@@ -320,6 +321,25 @@ export class DataDefinitionStorageService {
       delete rowCloned['sucursal_'];
     }
     this.stg.setItem("tramite_excepcional" + rowCloned.id, rowCloned);
+  }
+
+  storageViatico(row: { [index: string]: any }): void{
+    if(!row) return;
+    var rowCloned = JSON.parse(JSON.stringify(row))
+    /**
+     * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
+     */
+    if(('organo_' in rowCloned)
+    ){
+      this.stg.setItem('organo' + rowCloned['organo_'].id, rowCloned['organo_']);
+      delete rowCloned['organo_'];
+    }
+    if(('departamento_judicial_' in rowCloned)
+    ){
+      this.stg.setItem('departamento_judicial' + rowCloned['departamento_judicial_'].id, rowCloned['departamento_judicial_']);
+      delete rowCloned['departamento_judicial_'];
+    }
+    this.stg.setItem("viatico" + rowCloned.id, rowCloned);
   }
 
 }

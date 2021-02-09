@@ -25,6 +25,7 @@ export class _DataDefinitionLabelService {
       case "sucursal": { return this.labelSucursal(id); }
       case "tipo_documento": { return this.labelTipoDocumento(id); }
       case "tramite_excepcional": { return this.labelTramiteExcepcional(id); }
+      case "viatico": { return this.labelViatico(id); }
     }
   }
   labelAfiliacionRow (row: any): string {
@@ -124,6 +125,15 @@ export class _DataDefinitionLabelService {
   }
 
   labelTramiteExcepcionalRow (row: any): string {
+    if(!row) return null;
+
+    let ret = "";
+    if (row["id"]) ret = ret.trim() + " " + row["id"];
+
+    return ret.trim();
+  }
+
+  labelViaticoRow (row: any): string {
     if(!row) return null;
 
     let ret = "";
@@ -299,6 +309,22 @@ export class _DataDefinitionLabelService {
           if(!row) return of(null);
           return combineLatest([
             of(this.labelTramiteExcepcionalRow(row)),
+          ])
+        }
+      ),
+      map(
+        response => { return (!response)? null : response.join(" "); }
+      )
+    );
+  }
+
+  labelViatico(id: string): Observable<any> {
+    return this.dd.get("viatico", id).pipe(
+      switchMap(
+        row => {
+          if(!row) return of(null);
+          return combineLatest([
+            of(this.labelViaticoRow(row)),
           ])
         }
       ),
