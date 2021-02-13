@@ -8,7 +8,7 @@ import { AdminComponent } from '@component/admin/admin.component';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { ValidatorsService } from '@service/validators/validators.service';
 import { SessionStorageService } from '@service/storage/session-storage.service';
-import { FieldControl } from '@class/field-control';
+import { FieldViewOptions } from '@class/field-view-options';
 
 @Component({
   selector: 'app-persona-admin',
@@ -33,117 +33,123 @@ export class PersonaAdminComponent extends AdminComponent {
   }
 
 
-  fieldsControl: FieldControl[] = [
-    new FieldControl({
+  fieldsViewOptions: FieldViewOptions[] = [
+    new FieldViewOptions({
       field:"id",
       label:"Id",
       type: "hidden",
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"nombres",
       label:"Nombres",
+      type:"input_text"
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"apellidos",
       label:"Apellidos",
+      type:"input_text"
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"legajo",
       label:"Legajo",
+      type:"input_text",
       validators: [Validators.required],
       asyncValidators: [this.validators.unique('legajo', 'persona')],
       uniqueRoute:'persona-admin',
       widthGtSm: "20%" //screen and (min-width: 960px)
     }),
     
-    new FieldControl({
+    new FieldViewOptions({
       field:"tipo_documento",
       label:"Tipo Documento",
-      type: "select",
-      entityName: "tipo_documento",
+      type: "input_select",
+      entityNameRef: "tipo_documento",
       widthGtSm: "10%",
       widthSm: "15%"
-
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"numero_documento",
       label:"Numero Documento",
       asyncValidators: [this.validators.unique('numero_documento', 'persona')],
       uniqueRoute:'persona-admin',
       widthGtSm: "20%",
-      widthSm: "35%"
+      widthSm: "35%",
+      type:"input_text",
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"telefono_laboral",
       label:"Telefono Laboral",
+      type:"input_text",
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"telefono_particular",
       label:"Telefono Particular",
+      type:"input_text",
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"fecha_nacimiento",
       label:"Fecha Nacimiento",
-      type: "date",
+      type: "input_date",
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"email",
       label:"Email",
+      type: "input_text",
       validators: [Validators.pattern("[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[a-z]{2,3}")],
       asyncValidators: [],
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"tribunal",
       label:"Tribunal",
       widthGtSm: "18%",
       //widthSm: "15%"
-
+      type: "input_text",
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"cargo",
       label:"Cargo",
-      type: "select",
-      entityName: "cargo",
+      type: "input_select",
+      entityNameRef: "cargo",
       widthGtSm: "14%",
       widthSm: "20%"
 
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"organo",
       label:"Organo",
-      type: "select",
-      entityName: "organo",
+      type: "input_select",
+      entityNameRef: "organo",
       validators: [Validators.required],
       asyncValidators: [],
       widthGtSm: "18%",
       widthSm: "30%"
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"departamento_judicial",
       label:"Departamento Judicial",
-      type: "select",
-      entityName: "departamento_judicial",
+      type: "input_select",
+      entityNameRef: "departamento_judicial",
       validators: [Validators.required],
       asyncValidators: [],
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"departamento_judicial_informado",
       label:"Departamento Judicial Informado",
-      type: "select",
-      entityName: "departamento_judicial",
+      type: "input_select",
+      entityNameRef: "departamento_judicial",
       disabled:true
     }),
 

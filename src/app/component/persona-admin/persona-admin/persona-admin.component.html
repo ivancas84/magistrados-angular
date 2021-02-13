@@ -6,7 +6,7 @@
 <form *ngIf="(loadParams$ | async)" [formGroup]="adminForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
   <div *ngIf="(loadDisplay$ | async); else loading">
     <!--app-persona-fieldset [form]="adminForm" [data]="data"></app-persona-fieldset-->
-    <core-fieldset-dynamic [entityName]="entityName" [form]="adminForm" [fieldsControl]="fieldsControl" [data]="data" [title]="'Persona'"></core-fieldset-dynamic>
+    <core-fieldset-dynamic [entityName]="entityName" [form]="adminForm" [fieldsViewOptions]="fieldsViewOptions" [data]="data" [title]="'Persona'"></core-fieldset-dynamic>
 
     <mat-card>
       <mat-card-content>

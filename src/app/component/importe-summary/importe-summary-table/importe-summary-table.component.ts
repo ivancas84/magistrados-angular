@@ -1,8 +1,7 @@
 import { Component, ElementRef, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FieldControl } from '@class/field-control';
+import { FieldViewOptions } from '@class/field-view-options';
 import { TableComponent } from '@component/table/table.component';
-import { emptyUrl } from '@function/empty-url.function';
 
 @Component({
   selector: 'app-importe-summary-table',
@@ -19,8 +18,10 @@ export class ImporteSummaryTableComponent extends TableComponent implements OnCh
 
   footer: { [index: string]: any } = {}; //footer
 
-  viatico: FieldControl = new FieldControl({
+  viatico: FieldViewOptions = new FieldViewOptions({
+    entityName:"viatico",
     field:"valor", width:"100px", 
+    type:"input_text",
     validators: [Validators.pattern('^-?[0-9]+(\\.[0-9]{1,2})?$'),
     Validators.max(99999999999999999.99),
     Validators.min(-99999999999999999.99)]

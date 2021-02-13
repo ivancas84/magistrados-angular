@@ -56,16 +56,15 @@
       <ng-container matColumnDef="viatico">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Viático </th>
         <td mat-cell *matCellDef="let row"> 
-          <core-input-value *ngIf="editViatico"
-            [fieldControl]="viatico" 
-            [entityName]="'viatico'" 
+          <core-input-persist *ngIf="editViatico"
+            [fieldViewOptions]="viatico" 
             [value]="row.viatico"
             [params]="{
               organo:display.getParam('organo'),
               periodo:display.getParam('periodo'),
               departamento_judicial:row.id
             }"
-          ></core-input-value>
+          ></core-input-persist>
           <span *ngIf="!editViatico">{{row.viatico}}</span>
         </td>
         <td mat-footer-cell *matFooterCellDef> {{footer.viatico}} </td>

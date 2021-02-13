@@ -73,8 +73,8 @@ import { SearchAllComponent } from '@component/search-all/search-all.component';
 import { LabelComponent } from '@component/label/label.component';
 import { FieldLabelComponent } from '@component/field-label/field-label.component';
 import { FieldTreeLabelComponent } from '@component/field-tree-label/field-tree-label.component';
-import { FieldValueComponent } from '@component/field-value/field-value.component';
 import { FieldViewComponent } from '@component/field-view/field-view.component';
+import { FieldViewAuxComponent } from '@component/field-view-aux/field-view-aux.component';
 
 import { FieldLabelOrganoComponent } from '@component/reusable/field-label-organo/field-label-organo.component';
 
@@ -122,7 +122,6 @@ import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/impor
 import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create/archivo-sueldos-create.component';
 import { ArchivoSueldosCreateFieldsetComponent } from '@component/archivo-sueldos-create/archivo-afiliaciones-create-fieldset/archivo-sueldos-create-fieldset.component';
 import { FieldTreeComponent } from '@component/field-tree/field-tree.component';
-import { FieldInputComponent } from '@component/field-input/field-input.component';
 import { SearchDynamicComponent } from '@component/search-dynamic/search-dynamic.component';
 import { SearchParamsDynamicComponent } from '@component/search-params-dynamic/search-params-dynamic.component';
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
@@ -130,7 +129,7 @@ import { TotalSummaryTableComponent } from '@component/total-summary/total-summa
 import { TotalSummaryComponent } from '@component/total-summary/total-summary/total-summary.component';
 import { FieldsetArrayDynamicComponent } from '@component/fieldset-array-dynamic/fieldset-array-dynamic.component';
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
-import { InputValueComponent } from '@component/input-value/input-value.component';
+import { InputPersistComponent } from '@component/input-persist/input-persist.component';
 import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
 
 
@@ -154,8 +153,8 @@ import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admi
 
     DialogAlertComponent,
     DialogConfirmComponent,
+    FieldViewAuxComponent,
     FieldViewComponent,
-    FieldValueComponent,
     InputAutocompleteComponent,
     InputCheckboxComponent,
     InputDateComponent,
@@ -168,7 +167,7 @@ import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admi
     InputSearchGoComponent,
     InputTextComponent,
     InputTextareaComponent,
-    InputValueComponent,
+    InputPersistComponent,
     //InputTimepickerComponent,
     InputYearComponent,
     InputYmComponent,
@@ -184,7 +183,6 @@ import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admi
     FieldsetArrayDynamicComponent,
     SearchDynamicComponent,
     SearchParamsDynamicComponent,
-    FieldInputComponent,
     //DynamicTableComponent,
 
     FieldLabelOrganoComponent,

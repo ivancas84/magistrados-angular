@@ -8,7 +8,7 @@ import { AdminComponent } from '@component/admin/admin.component';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { ValidatorsService } from '@service/validators/validators.service';
 import { SessionStorageService } from '@service/storage/session-storage.service';
-import { FieldControl } from '@class/field-control';
+import { FieldViewOptions } from '@class/field-view-options';
 import { AdminArrayComponent } from '@component/admin-array/admin-array.component';
 
 @Component({
@@ -33,16 +33,17 @@ export class SucursalAdminArrayComponent extends AdminArrayComponent {
     super(fb, route, router, location, dd, storage, dialog, snackBar);
   }
 
-  fieldsControl: FieldControl[] = [
-    new FieldControl({
+  fieldsViewOptions: FieldViewOptions[] = [
+    new FieldViewOptions({
       field:"id",
       label:"Id",
       type: "hidden",
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"descripcion",
       label:"Descripcion",
+      type:"input_text",
       validators: [Validators.required],
       asyncValidators: [],
     }),

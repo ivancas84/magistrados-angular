@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { AdminArrayComponent } from '@component/admin-array/admin-array.component';
-import { FieldControl } from '@class/field-control';
+import { FieldViewOptions } from '@class/field-view-options';
 
 @Component({
   selector: 'app-departamento-judicial-admin-array',
@@ -11,23 +11,25 @@ export class DepartamentoJudicialAdminArrayComponent extends AdminArrayComponent
 
   readonly entityName: string = "departamento_judicial";
 
-  fieldsControl: FieldControl[] = [
-    new FieldControl({
+  fieldsViewOptions: FieldViewOptions[] = [
+    new FieldViewOptions({
       field:"id",
       label:"Id",
       type: "hidden",
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"codigo",
       label:"Codigo",
+      type:"input_text",
       validators: [Validators.required],
       asyncValidators: [],
     }),
 
-    new FieldControl({
+    new FieldViewOptions({
       field:"nombre",
       label:"Nombre",
+      type:"input_text",
     }),
 
   ];
