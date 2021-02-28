@@ -9,6 +9,8 @@ import { DataDefinitionService } from '@service/data-definition/data-definition.
 import { ValidatorsService } from '@service/validators/validators.service';
 import { SessionStorageService } from '@service/storage/session-storage.service';
 import { FieldViewOptions } from '@class/field-view-options';
+import { FieldControlOptions, FieldHiddenOptions, FieldInputDateOptions, FieldInputSelectOptions, FieldInputTextOptions } from '@class/field-type-options';
+import { FieldWidthOptions } from '@class/field-width-options';
 
 @Component({
   selector: 'app-persona-admin',
@@ -18,144 +20,142 @@ export class PersonaAdminComponent extends AdminComponent {
 
   readonly entityName: string = "persona";
 
-  constructor(
-    protected fb: FormBuilder, 
-    protected route: ActivatedRoute, 
-    protected router: Router, 
-    protected location: Location, 
-    protected dd: DataDefinitionService, 
-    protected validators: ValidatorsService,
-    protected storage: SessionStorageService, 
-    protected dialog: MatDialog,
-    protected snackBar: MatSnackBar
-  ) {
-    super(fb, route, router, location, dd, storage, dialog, snackBar);
-  }
-
-
   fieldsViewOptions: FieldViewOptions[] = [
     new FieldViewOptions({
       field:"id",
       label:"Id",
-      type: "hidden",
+      type: new FieldHiddenOptions(),
     }),
 
     new FieldViewOptions({
       field:"nombres",
       label:"Nombres",
-      type:"input_text"
+      type: new FieldInputTextOptions()
     }),
 
     new FieldViewOptions({
       field:"apellidos",
       label:"Apellidos",
-      type:"input_text"
+      type: new FieldInputTextOptions()
     }),
 
     new FieldViewOptions({
       field:"legajo",
       label:"Legajo",
-      type:"input_text",
-      validators: [Validators.required],
-      asyncValidators: [this.validators.unique('legajo', 'persona')],
-      uniqueRoute:'persona-admin',
-      widthGtSm: "20%" //screen and (min-width: 960px)
+      type: new FieldInputTextOptions({
+        uniqueRoute:'persona-admin',
+      }),
+      control: new FieldControlOptions({
+        validators: [Validators.required],
+        asyncValidators: [this.validators.unique('legajo', 'persona')],
+      }),
+      width:new FieldWidthOptions({gtSm:"20%"})
     }),
     
     new FieldViewOptions({
       field:"tipo_documento",
       label:"Tipo Documento",
-      type: "input_select",
-      entityNameRef: "tipo_documento",
-      widthGtSm: "10%",
-      widthSm: "15%"
+      type: new FieldInputSelectOptions({entityName: "tipo_documento"}),
+      width:new FieldWidthOptions({gtSm:"10%", sm:"15%"})
     }),
 
     new FieldViewOptions({
       field:"numero_documento",
       label:"Numero Documento",
-      asyncValidators: [this.validators.unique('numero_documento', 'persona')],
-      uniqueRoute:'persona-admin',
-      widthGtSm: "20%",
-      widthSm: "35%",
-      type:"input_text",
+      type: new FieldInputTextOptions({
+        uniqueRoute:'persona-admin',
+      }),
+      control: new FieldControlOptions({
+        asyncValidators: [this.validators.unique('numero_documento', 'persona')],
+      }),
+      width:new FieldWidthOptions({
+        gtSm: "20%",
+        sm: "35%",
+      })
     }),
 
     new FieldViewOptions({
       field:"telefono_laboral",
       label:"Telefono Laboral",
-      type:"input_text",
+      type: new FieldInputTextOptions
     }),
 
     new FieldViewOptions({
       field:"telefono_particular",
       label:"Telefono Particular",
-      type:"input_text",
+      type: new FieldInputTextOptions
     }),
 
     new FieldViewOptions({
       field:"fecha_nacimiento",
       label:"Fecha Nacimiento",
-      type: "input_date",
+      type: new FieldInputDateOptions
     }),
 
     new FieldViewOptions({
       field:"email",
       label:"Email",
-      type: "input_text",
-      validators: [Validators.pattern("[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[a-z]{2,3}")],
-      asyncValidators: [],
+      type: new FieldInputTextOptions,
+      control: new FieldControlOptions({
+        validators: [Validators.pattern("[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[a-z]{2,3}")],
+      }),
     }),
 
     new FieldViewOptions({
       field:"tribunal",
       label:"Tribunal",
-      widthGtSm: "18%",
-      //widthSm: "15%"
-      type: "input_text",
+      type: new FieldInputTextOptions,
+      width:new FieldWidthOptions({
+        gtSm: "18%",
+        //sm: "15%"
+      })
     }),
 
     new FieldViewOptions({
       field:"cargo",
       label:"Cargo",
-      type: "input_select",
-      entityNameRef: "cargo",
-      widthGtSm: "14%",
-      widthSm: "20%"
-
+      type: new FieldInputSelectOptions({
+        entityName: "cargo",
+      }),
+      width: new FieldWidthOptions({
+        gtSm: "14%",
+        sm: "20%"
+      })
     }),
 
     new FieldViewOptions({
       field:"organo",
       label:"Organo",
-      type: "input_select",
-      entityNameRef: "organo",
-      validators: [Validators.required],
-      asyncValidators: [],
-      widthGtSm: "18%",
-      widthSm: "30%"
+      type: new FieldInputSelectOptions({
+        entityName: "organo",
+      }),
+      control: new FieldControlOptions({
+        validators: [Validators.required],
+      }),
+      width: new FieldWidthOptions({
+        gtSm: "18%",
+        sm: "30%"
+      })
     }),
 
     new FieldViewOptions({
       field:"departamento_judicial",
       label:"Departamento Judicial",
-      type: "input_select",
-      entityNameRef: "departamento_judicial",
-      validators: [Validators.required],
-      asyncValidators: [],
+      type: new FieldInputSelectOptions({
+        entityName: "departamento_judicial",
+      })
     }),
 
     new FieldViewOptions({
       field:"departamento_judicial_informado",
       label:"Departamento Judicial Informado",
-      type: "input_select",
-      entityNameRef: "departamento_judicial",
-      disabled:true
+      type: new FieldInputSelectOptions({
+        entityName: "departamento_judicial",
+      }),
+      control:new FieldControlOptions({
+        disabled:true
+      })
     }),
-
-    
-
-
   ];
 }
 

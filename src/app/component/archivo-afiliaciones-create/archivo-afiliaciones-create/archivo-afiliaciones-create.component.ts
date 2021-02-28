@@ -19,20 +19,6 @@ export class ArchivoAfiliacionesCreateComponent extends AdminComponent {
 
   entityName: string = "archivo_afiliaciones";
 
-  constructor(
-    protected fb: FormBuilder, 
-    protected route: ActivatedRoute, 
-    protected router: Router, 
-    protected location: Location, 
-    protected dd: DataDefinitionService, 
-    protected validators: ValidatorsService,
-    protected storage: SessionStorageService, 
-    protected dialog: MatDialog,
-    protected snackBar: MatSnackBar
-  ) {
-    super(fb, route, router, location, dd, storage, dialog, snackBar);
-  }
-
   loadParams(){
     /**
      * No realizar la suscripcion en el template (cambia el Lifecycle)! 

@@ -19,22 +19,6 @@ export class ArchivoSueldosCreateComponent extends AdminComponent {
 
   entityName: string = "archivo_sueldos";
 
-  constructor(
-    protected fb: FormBuilder, 
-    protected route: ActivatedRoute, 
-    protected router: Router, 
-    protected location: Location, 
-    protected dd: DataDefinitionService, 
-    protected validators: ValidatorsService,
-    protected storage: SessionStorageService, 
-    protected dialog: MatDialog,
-    protected snackBar: MatSnackBar
-  ) {
-    super(fb, route, router, location, dd, storage, dialog, snackBar);
-  }
-
- 
-  
   persist(): Observable<any> {
     return this.dd.post("create", this.entityName, this.serverData());
   }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { AdminArrayComponent } from '@component/admin-array/admin-array.component';
 import { FieldViewOptions } from '@class/field-view-options';
+import { FieldControlOptions, FieldHiddenOptions, FieldInputTextOptions } from '@class/field-type-options';
 
 @Component({
   selector: 'app-departamento-judicial-admin-array',
@@ -15,21 +16,23 @@ export class DepartamentoJudicialAdminArrayComponent extends AdminArrayComponent
     new FieldViewOptions({
       field:"id",
       label:"Id",
-      type: "hidden",
+      type: new FieldHiddenOptions
     }),
 
     new FieldViewOptions({
       field:"codigo",
       label:"Codigo",
-      type:"input_text",
-      validators: [Validators.required],
-      asyncValidators: [],
+      type:new FieldInputTextOptions,
+      control:new FieldControlOptions({
+        validators: [Validators.required],
+        asyncValidators: [],
+      })
     }),
 
     new FieldViewOptions({
       field:"nombre",
       label:"Nombre",
-      type:"input_text",
+      type:new FieldInputTextOptions
     }),
 
   ];
