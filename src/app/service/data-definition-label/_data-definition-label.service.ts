@@ -190,21 +190,21 @@ export class _DataDefinitionLabelService {
     );
   }
 
-  labelFile(id: string): Observable<any> {
-    return this.dd.get("file", id).pipe(
-      switchMap(
-        row => {
-          if(!row) return of(null);
-          return combineLatest([
-            of(this.labelFileRow(row)),
-          ])
-        }
-      ),
-      map(
-        response => { return (!response)? null : response.join(" "); }
-      )
-    );
-  }
+    labelFile(id: string): Observable<any> {
+      return this.dd.get("file", id).pipe(
+        switchMap(
+          row => {
+            if(!row) return of(null);
+            return combineLatest([
+              of(this.labelFileRow(row)),
+            ])
+          }
+        ),
+        map(
+          response => { return (!response)? null : response.join(" "); }
+        )
+      );
+    }
 
   labelImporteAfiliacion(id: string): Observable<any> {
     return this.dd.get("importe_afiliacion", id).pipe(
