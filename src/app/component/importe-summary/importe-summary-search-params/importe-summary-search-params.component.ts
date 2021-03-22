@@ -17,7 +17,7 @@ export class ImporteSummarySearchParamsComponent extends SearchParamsComponent {
   formGroup(): FormGroup {
     let fg: FormGroup = this.fb.group({
       organo: [null, {
-        validators: [Validators.required],
+        //validators: [Validators.required],
       }],
       periodo: [null, {
         validators: [Validators.required],

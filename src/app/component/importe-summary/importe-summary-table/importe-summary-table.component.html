@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>Importes 
-      <core-label [entityName]="'organo'" [id]="display.getParam('organo')"></core-label> {{display.getParam('periodo') | toDate | date:"M/y"}} 
+      <core-label *ngIf="display.getParam('organo')" [entityName]="'organo'" [id]="display.getParam('organo')"></core-label> {{display.getParam('periodo') | toDate | date:"M/y"}} 
       <button mat-mini-fab color="accent" (click)="edit()"><mat-icon>edit</mat-icon></button>
       <button mat-mini-fab color="primary" (click)="copyContent()"><mat-icon>content_copy</mat-icon></button>
       <button mat-mini-fab color="primary" (click)="printContent()"><mat-icon>print</mat-icon></button>

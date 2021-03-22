@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Totales <core-label [entityName]="'organo'" [id]="display.getParam('organo')"></core-label> {{display.getParam('periodo') | toDate | date:"M/y"}} <button mat-mini-fab color="primary" (click)="copyContent()"><mat-icon>content_copy</mat-icon></button>
+    <mat-card-title>Totales <core-label *ngIf="display.getParam('organo')" [entityName]="'organo'" [id]="display.getParam('organo')"></core-label> {{display.getParam('periodo') | toDate | date:"M/y"}} <button mat-mini-fab color="primary" (click)="copyContent()"><mat-icon>content_copy</mat-icon></button>
     <button mat-mini-fab color="primary" (click)="printContent()"><mat-icon>print</mat-icon></button>
     </mat-card-title>
   </mat-card-header>
