@@ -1,13 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { AdminComponent } from '@component/admin/admin.component';
-import { DataDefinitionService } from '@service/data-definition/data-definition.service';
-import { ValidatorsService } from '@service/validators/validators.service';
-import { SessionStorageService } from '@service/storage/session-storage.service';
+import { Validators } from '@angular/forms';
 import { FieldViewOptions } from '@class/field-view-options';
 import { AdminArrayComponent } from '@component/admin-array/admin-array.component';
 import { FieldControlOptions, FieldHiddenOptions, FieldInputTextOptions } from '@class/field-type-options';
