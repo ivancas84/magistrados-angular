@@ -15,8 +15,8 @@
     Informe
   </button>
   <mat-menu #nuevo="matMenu">
-    <a mat-menu-item routerLink="/importe-summary" [queryParams]="summaryQueryParams" routerLinkActive="active" title="Ver Importes">Resumen Importes</a>
-    <a mat-menu-item routerLink="/total-summary" [queryParams]="summaryQueryParams" routerLinkActive="active" title="Ver Totales">Resumen Totales</a>
+    <a mat-menu-item routerLink="/importe-summary" [queryParams]="summaryQueryParams" routerLinkActive="active" title="Ver Importes">Planilla General</a>
+    <a mat-menu-item routerLink="/total-summary" [queryParams]="summaryQueryParams" routerLinkActive="active" title="Ver Totales">Recibos</a>
     <a mat-menu-item routerLink="/importe-afiliacion-show" [queryParams]="importeAfiliacionShowQueryParams" routerLinkActive="active" title="Ver Importe Afiliaciones">Importes 40</a>
     <a mat-menu-item routerLink="/importe-tramite-excepcional-show" [queryParams]="importeTramiteExcepcionalShowQueryParams" routerLinkActive="active" title="Ver Importe Afiliaciones">Importes 80</a>
   </mat-menu>
@@ -26,8 +26,9 @@
   </button>
   <mat-menu #archivo="matMenu">
     <a mat-menu-item routerLink="/archivo-sueldos-create" routerLinkActive="active" title="Crear Archivo de Sueldos">Crear Archivo Sueldos</a>    
-    <a mat-menu-item routerLink="/archivo-afiliaciones-show" routerLinkActive="active" title="Ver Archivos creados">Ver Archivos Creados</a>
     <a mat-menu-item routerLink="/archivo-sueldos-upload" routerLinkActive="active" title="Procesar Archivo">Procesar Archivo Sueldos</a>
+    <a mat-menu-item routerLink="/archivo-afiliaciones-show" routerLinkActive="active" title="Ver Archivos creados" [queryParams]="{subdir:40}">Ver Archivos Creados 40</a>
+    <a mat-menu-item routerLink="/archivo-afiliaciones-show" routerLinkActive="active" title="Ver Archivos creados" [queryParams]="{subdir:80}">Ver Archivos Creados 80</a>
   </mat-menu>
 
   <button mat-button [matMenuTriggerFor]="administracion" aria-label="icon-button with menu icon">
@@ -35,7 +36,7 @@
   </button>
   <mat-menu #administracion="matMenu">
     <a mat-menu-item routerLink="/departamento-judicial-admin" routerLinkActive="active" title="Nuevo Departamento Judicial">Departamento Judicial</a>
-    <a mat-menu-item routerLink="/sucursal-admin" routerLinkActive="active" title="Nueva Sucursal">Sucursal</a>
+    <a mat-menu-item routerLink="/sucursal-admin" routerLinkActive="active" title="Administrar Conceptos Registro 80">Concepto Registro 80</a>
     <a mat-menu-item routerLink="/tipo-documento-admin-array" routerLinkActive="active" title="Nuevo Tipo Documento">Tipo Documento</a>
     <a mat-menu-item routerLink="/backup" routerLinkActive="active" title="Copia de seguridad">Copia de seguridad</a>
     <a mat-menu-item routerLink="/importe-delete" routerLinkActive="active" title="Eliminar Importes">Eliminar importes</a>

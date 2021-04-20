@@ -8,7 +8,7 @@
   </mat-card-header>
   <mat-card-content>    
     <mat-nav-list>
-      <a mat-list-item [href]="fileUrl+link" *ngFor="let link of dataSource" download target="_blank"> {{ link }} </a>
+      <a download mat-list-item [href]="fileUrl+link" *ngFor="let link of dataSource" download target="_blank"> {{ link }} </a>
     </mat-nav-list>
   </mat-card-content>
 </mat-card>

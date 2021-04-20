@@ -22,11 +22,15 @@ export class ImporteSummarySearchParamsComponent extends SearchParamsComponent {
       periodo: [null, {
         validators: [Validators.required],
       }],
+      departamento_judicial: [null, {
+        //validators: [Validators.required],
+      }],
     });
     return fg;
   }
 
   get organo() { return this.fieldset.get('organo')}
   get periodo() { return this.fieldset.get('periodo')}
+  get departamentoJudicial() { return this.fieldset.get('departamento_judicial')}
 
 }

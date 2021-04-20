@@ -19,7 +19,8 @@ import { FieldControlOptions, FieldHiddenOptions, FieldInputTextOptions } from '
 export class SucursalAdminArrayComponent extends AdminArrayComponent {
 
   readonly entityName: string = "sucursal";
-
+  title: string = "Concepto Registro 80"
+  
   fieldsViewOptions: FieldViewOptions[] = [
     new FieldViewOptions({
       field:"id",

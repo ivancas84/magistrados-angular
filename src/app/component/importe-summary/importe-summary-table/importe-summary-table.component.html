@@ -58,6 +58,8 @@
         <td mat-cell *matCellDef="let row"> 
           <core-input-persist *ngIf="editViatico"
             [fieldViewOptions]="viatico" 
+            [entityName]="'viatico'"
+            [fieldName]="'valor'"
             [value]="row.viatico"
             [params]="{
               organo:display.getParam('organo'),

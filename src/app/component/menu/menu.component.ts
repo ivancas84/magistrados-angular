@@ -36,19 +36,21 @@ export class MenuComponent implements OnInit, OnChanges {
       order:JSON.stringify({"per-apellidos":'asc'}),
     }
 
+    var d = new Date()
+    d.setMonth(d.getMonth()-1);
     this.summaryQueryParams = {
-      periodo:new Date().toJSON(),
-      organo:"1"
+      periodo:d.toJSON(),
+      //organo:"1"
     }
 
     this.importeAfiliacionShowQueryParams = {
-      "periodo.ym":new Date().toJSON(),
+      "periodo.ym":d.toJSON(),
       "afi_per-organo":"1",
       "afi_per-departamento_judicial":"1",
       order:JSON.stringify({"afi_per-apellidos":'asc'}),
     }
     this.importeTramiteExcepcionalShowQueryParams = {
-      "periodo.ym":new Date().toJSON(),
+      "periodo.ym":d.toJSON(),
       order:JSON.stringify({"te_per-apellidos":'asc'}),
     }
   }

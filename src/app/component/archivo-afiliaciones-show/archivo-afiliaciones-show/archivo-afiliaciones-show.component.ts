@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ShowComponent } from '@component/show/show.component';
 import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-archivo-afiliaciones-show',
@@ -12,7 +12,18 @@ export class ArchivoAfiliacionesShowComponent extends ShowComponent {
   readonly entityName: string = "archivo_afiliaciones";
 
   ngOnInit(): void {
-    this.load$ = this.dd.post("list", this.entityName).pipe(
+    this.load$ = this.route.queryParams.pipe(
+      map(
+        queryParams => {
+          this.params = this.initParams(queryParams);
+        },
+      ),
+      switchMap(
+        () => {
+          console.log(this.params);
+          return this.dd._post("list", this.entityName, this.params)
+        } 
+      ),
       map(
         data => {
           this.data = data;
