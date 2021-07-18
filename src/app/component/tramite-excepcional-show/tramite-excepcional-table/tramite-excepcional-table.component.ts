@@ -21,13 +21,5 @@ import { DataDefinitionToolService } from '@service/data-definition/data-definit
 export class TramiteExcepcionalTableComponent extends AfiliacionTableComponent { 
   displayedColumns: string[] = ['nombre', 'legajo', 'departamento_judicial', 'desde', 'hasta', 'monto', 'motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado'];
 
-  
-  constructor(
-    protected router: Router,
-    protected ddt: DataDefinitionToolService,
-  ) {
-    super(router, ddt);
-  }
-
     
 }

@@ -15,12 +15,11 @@ export class ArchivoAfiliacionesShowComponent extends ShowComponent {
     this.load$ = this.route.queryParams.pipe(
       map(
         queryParams => {
-          this.params = this.initParams(queryParams);
+          this.initParams(queryParams);
         },
       ),
       switchMap(
         () => {
-          console.log(this.params);
           return this.dd._post("list", this.entityName, this.params)
         } 
       ),

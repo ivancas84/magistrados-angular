@@ -18,12 +18,6 @@ import { map, switchMap, tap } from 'rxjs/operators';
 export class PTramiteExcepcionalTableComponent extends TableComponent implements OnChanges{ 
   displayedColumns: string[] = ['motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado', 'observaciones', 'desde', 'hasta', 'monto'];
 
-  constructor(
-    protected dd: DataDefinitionService,
-    protected router: Router,
-  ) {
-    super(router);
-  }
 
   load$: Observable<any>;
   load: boolean;

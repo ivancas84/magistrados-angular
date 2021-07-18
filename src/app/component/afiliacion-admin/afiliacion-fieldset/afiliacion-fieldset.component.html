@@ -1,49 +1,38 @@
-<mat-card [formGroup]="fieldset">
+<mat-card >
   <mat-card-header>
     <mat-card-title>Afiliacion <core-label [entityName]="'persona'" [id]="data.persona"></core-label></mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-      <div fxLayout="row" fxFlex="auto" fxLayoutGap="10px" fxLayout.xs="column">
-        <div fxFlex="auto">
-          <mat-form-field>
-            <mat-label>Motivo</mat-label>
-            <mat-select formControlName="motivo">
-              <mat-option>--Seleccione--</mat-option>
-              <mat-option value="Alta">Alta</mat-option>
-              <mat-option value="Baja">Baja</mat-option>
-              <mat-option value="Pendiente">Pendiente</mat-option>
-            </mat-select>
-            <mat-error *ngIf="motivo.hasError('required')">Debe completar valor</mat-error>
-          </mat-form-field>
-        </div>
-        <div fxFlex="auto">
-          <mat-form-field>
-            <mat-label>Estado</mat-label>
-            <mat-select formControlName="estado">
-              <mat-option>--Seleccione--</mat-option>
-              <mat-option value="Creado">Creado</mat-option>
-              <mat-option value="Enviado">Enviado</mat-option>
-              <mat-option value="Aprobado">Aprobado</mat-option>
-              <mat-option value="Rechazado">Rechazado</mat-option>
-            </mat-select>
-            <mat-error *ngIf="estado.hasError('required')">Debe completar valor</mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-    <div fxLayout="row"  fxLayoutGap="10px">
-      <div fxFlex="auto">
-        <mat-form-field>
-          <mat-label>Observaciones</mat-label>
-          <textarea matInput formControlName="observaciones" ></textarea>
-        </mat-form-field>
-      </div>
-    </div>
+  <mat-card-content fxLayout="row wrap" [formGroup]="fieldset">
+    <core-input-select-param [field]="motivo" 
+                             [title]="'Motivo'" 
+                             [options]="['Alta','Baja','Pendiente']"
+                             [validatorOpts]="[requiredValidatorOpt]"
+                             fxFlex="33%" 
+                             fxFlex.xs="100%"></core-input-select-param>
+
+    <core-input-select-param [field]="codigo" 
+                             [title]="'Código'" 
+                             [options]="[161,162]"
+                             [validatorOpts]="[requiredValidatorOpt]"
+                             fxFlex="33%" 
+                             fxFlex.lt-md="50%" 
+                             fxFlex.xs="100%"></core-input-select-param>
+                           
+    <core-input-select-param [field]="estado" 
+                             [title]="'Estado'" 
+                             [options]="['Creado','Enviado','Aprobado','Rechazado']"
+                             [validatorOpts]="[requiredValidatorOpt]"
+                             fxFlex="34%" 
+                             fxFlex.lt-md="50%" 
+                             fxFlex.xs="100%"></core-input-select-param>          
+                             
+                             
+    <core-textarea [field]="observaciones" 
+                             [title]="'Observaciones'" 
+                             fxFlex="100%"></core-textarea>    
+                                          
     
-    <div *ngIf="data.creado" fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
-      <div fxFlex="auto" >
-        <mat-card *ngIf="data.creado" [style.backgroundColor]="'#17a2b8'">
+        <mat-card fxFlex="25%" *ngIf="data.creado" [style.backgroundColor]="'#17a2b8'">
           <mat-card-header>
             <mat-card-title>Creado</mat-card-title>
           </mat-card-header>
@@ -51,9 +40,8 @@
             <p>{{data.creado | toDate | date:"d/M/y"}}</p>
           </mat-card-content>
         </mat-card>
-      </div>
-      <div fxFlex="auto">
-        <mat-card *ngIf="data.enviado" [style.backgroundColor]="'#007bff'">
+
+        <mat-card fxFlex="25%" *ngIf="data.enviado" [style.backgroundColor]="'#007bff'">
           <mat-card-header>
             <mat-card-title>Enviado</mat-card-title>
           </mat-card-header>
@@ -61,9 +49,8 @@
             {{data.enviado | toDate | date:"d/M/y"}}
           </mat-card-content>
         </mat-card>
-      </div>
-      <div fxFlex="auto">   
-        <mat-card *ngIf="data.evaluado" [style.backgroundColor]="(data.estado == 'Aprobado') ? '#aaff80' : '#ff8080'">
+
+        <mat-card fxFlex="25%" *ngIf="data.evaluado" [style.backgroundColor]="(data.estado == 'Aprobado') ? '#aaff80' : '#ff8080'">
           <mat-card-header>
             <mat-card-title>Evaluado</mat-card-title>
           </mat-card-header>
@@ -71,9 +58,8 @@
             {{data.evaluado | toDate | date:"d/M/y"}}
           </mat-card-content>
         </mat-card>
-      </div>
-      <div fxFlex="auto">
-        <mat-card *ngIf="data.modificado" [style.backgroundColor]="'#6c757d'">
+
+        <mat-card fxFlex="25%" *ngIf="data.modificado" [style.backgroundColor]="'#6c757d'">
           <mat-card-header>
             <mat-card-title>Modificado</mat-card-title>
           </mat-card-header>
@@ -81,8 +67,5 @@
             {{data.modificado | toDate | date:"d/M/y"}}
           </mat-card-content>
         </mat-card>
-        
-      </div>
-    </div>
   </mat-card-content>
 </mat-card>

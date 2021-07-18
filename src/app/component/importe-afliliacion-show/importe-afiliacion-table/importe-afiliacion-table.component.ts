@@ -24,12 +24,7 @@ export class ImporteAfiliacionTableComponent extends TableComponent {
   data$: BehaviorSubject<any> = new BehaviorSubject(null);
   @Input() data;
   total: number;
-  constructor(
-    protected router: Router,
-    protected dd: DataDefinitionService,
-  ) {
-    super(router);
-  }
+
 
   ngOnChanges(changes: SimpleChanges): void {
     if( changes['data'] && changes['data'].previousValue != changes['data'].currentValue ) {    

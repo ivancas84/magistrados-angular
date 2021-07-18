@@ -26,13 +26,7 @@ export class ImporteTramiteExcepcionalTableComponent extends TableComponent {
   data$: BehaviorSubject<any> = new BehaviorSubject(null);
   @Input() data;
   total: number;
-  constructor(
-    protected router: Router,
-    protected dd: DataDefinitionService,
-    protected ddt: DataDefinitionToolService
-  ) {
-    super(router);
-  }
+ 
 
   ngOnChanges(changes: SimpleChanges): void {
     if( changes['data'] && changes['data'].previousValue != changes['data'].currentValue ) {    

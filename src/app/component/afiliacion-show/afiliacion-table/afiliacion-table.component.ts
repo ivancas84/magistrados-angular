@@ -25,12 +25,7 @@ export class AfiliacionTableComponent extends TableComponent {
   @Input() data;
 
   
-  constructor(
-    protected router: Router,
-    protected ddt: DataDefinitionToolService,
-  ) {
-    super(router);
-  }
+
   
   ngOnChanges(changes: SimpleChanges): void {
     if( changes['data'] && changes['data'].previousValue != changes['data'].currentValue ) {    
@@ -57,7 +52,7 @@ export class AfiliacionTableComponent extends TableComponent {
   
   initData(data): Observable<any>{
     var fields = {legajo:"legajo",nombre:["apellidos","nombres"],departamento_judicial:"departamento_judicial",departamento_judicial_informado:"departamento_judicial_informado"}
-    return this.ddt.getAllColumnData(data,"persona", "persona",fields);    
+    return this.dd.getAllColumnData(data,"persona", "persona",fields);    
   }
 
   serverSort(sort: Sort): boolean{ //@override

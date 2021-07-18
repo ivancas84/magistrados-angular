@@ -21,12 +21,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 export class PersonaAfiliacionTableComponent extends TableComponent implements OnInit, OnChanges{
   displayedColumns: string[] = ['motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado', 'observaciones'];
 
-  constructor(
-    protected dd: DataDefinitionService,
-    protected router: Router,
-  ) {
-    super(router);
-  }
+  
   
   load$: Observable<any>;
   load: boolean;

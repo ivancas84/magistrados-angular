@@ -47,9 +47,6 @@ import { LogoutComponent } from '@component/logout/logout.component';
 import { HomeComponent } from '@component/home/home.component';
 import { SocialLoginComponent } from '@component/social-login/social-login.component';
 
-import { CardDynamicComponent } from '@component/card-dynamic/card-dynamic.component';
-import { TableDynamicComponent } from '@component/table-dynamic/table-dynamic.component';
-import { FieldsetDynamicComponent } from '@component/fieldset-dynamic/fieldset-dynamic.component';
 import { BackupComponent } from '@component/backup/backup.component';
 import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.component';
 import { DialogConfirmComponent } from '@component/dialog-confirm/dialog-confirm.component';
@@ -63,7 +60,7 @@ import { InputSelectParamComponent } from '@component/input-select-param/input-s
 import { InputSelectLabelComponent } from '@component/input-select-label/input-select-label.component';
 import { InputSearchGoComponent } from '@component/input-search-go/input-search-go.component';
 import { InputTextComponent } from '@component/input-text/input-text.component';
-import { InputTextareaComponent } from '@component/input-textarea/input-textarea.component';
+import { TextareaComponent } from '@component/textarea/textarea.component';
 import { InputTimepickerComponent } from '@component/input-timepicker/input-timepicker.component';
 import { InputCheckboxComponent } from '@component/input-checkbox/input-checkbox.component';
 import { InputYmComponent } from '@component/input-ym/input-ym.component';
@@ -122,15 +119,19 @@ import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/impor
 import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create/archivo-sueldos-create.component';
 import { ArchivoSueldosCreateFieldsetComponent } from '@component/archivo-sueldos-create/archivo-afiliaciones-create-fieldset/archivo-sueldos-create-fieldset.component';
 import { FieldTreeComponent } from '@component/field-tree/field-tree.component';
-import { SearchDynamicComponent } from '@component/search-dynamic/search-dynamic.component';
-import { SearchParamsDynamicComponent } from '@component/search-params-dynamic/search-params-dynamic.component';
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
 import { TotalSummaryTableComponent } from '@component/total-summary/total-summary-table/total-summary-table.component';
 import { TotalSummaryComponent } from '@component/total-summary/total-summary/total-summary.component';
-import { FieldsetArrayDynamicComponent } from '@component/fieldset-array-dynamic/fieldset-array-dynamic.component';
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 import { InputPersistComponent } from '@component/input-persist/input-persist.component';
 import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
+import { TableDynamicComponent } from '@component/table/table-dynamic.component';
+import { CardDynamicComponent } from '@component/card/card-dynamic.component';
+import { FieldsetDynamicComponent } from '@component/fieldset/fieldset-dynamic.component';
+import { FieldsetArrayDynamicComponent } from '@component/fieldset-array/fieldset-array-dynamic.component';
+import { SearchDynamicComponent } from '@component/search/search-dynamic.component';
+import { SearchParamsDynamicComponent } from '@component/search-params/search-params-dynamic.component';
+import { ErrorUniqueRouteComponent } from '@component/error-unique/error-unique-route.component';
 
 
 
@@ -166,7 +167,7 @@ import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admi
     InputSelectLabelComponent,
     InputSearchGoComponent,
     InputTextComponent,
-    InputTextareaComponent,
+    TextareaComponent,
     InputPersistComponent,
     //InputTimepickerComponent,
     InputYearComponent,
@@ -183,6 +184,7 @@ import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admi
     FieldsetArrayDynamicComponent,
     SearchDynamicComponent,
     SearchParamsDynamicComponent,
+    ErrorUniqueRouteComponent,
     //DynamicTableComponent,
 
     FieldLabelOrganoComponent,

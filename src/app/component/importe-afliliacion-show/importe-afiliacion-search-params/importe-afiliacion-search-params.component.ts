@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { SearchParamsComponent } from '@component/search-params/search-params.component';
+import { FormBuilderService } from '@service/form-builder/form-builder.service';
 
 @Component({
   selector: 'app-importe-afiliacion-search-params',
@@ -10,7 +11,7 @@ import { SearchParamsComponent } from '@component/search-params/search-params.co
 export class ImporteAfiliacionSearchParamsComponent extends SearchParamsComponent {
 
   constructor (
-    protected fb: FormBuilder, 
+    protected fb: FormBuilderService, 
     protected dd: DataDefinitionService
   ) { super(fb); }
 
