@@ -106,7 +106,7 @@ export class PersonaAdminComponent extends AdminComponent {
       label:"Tribunal",
       type: new FieldInputTextOptions,
       width:new FieldWidthOptions({
-        gtSm: "18%",
+        gtSm: "50%",
         //sm: "15%"
       })
     }),
@@ -118,12 +118,11 @@ export class PersonaAdminComponent extends AdminComponent {
         entityName: "cargo",
       }),
       width: new FieldWidthOptions({
-        gtSm: "14%",
-        sm: "20%"
+        gtSm: "50%",
       })
     }),
 
-    new FieldViewOptions({
+    /*new FieldViewOptions({
       field:"organo",
       label:"Organo",
       type: new FieldInputSelectOptions({
@@ -155,7 +154,7 @@ export class PersonaAdminComponent extends AdminComponent {
       control:new FieldControlOptions({
         disabled:true
       })
-    }),
+    }),*/
   ];
 }
 

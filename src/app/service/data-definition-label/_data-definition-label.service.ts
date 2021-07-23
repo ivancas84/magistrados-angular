@@ -20,6 +20,7 @@ export class _DataDefinitionLabelService {
       case "file": { return this.labelFile(id); }
       case "importe_afiliacion": { return this.labelImporteAfiliacion(id); }
       case "importe_tramite_excepcional": { return this.labelImporteTramiteExcepcional(id); }
+      case "log": { return this.labelLog(id); }
       case "organo": { return this.labelOrgano(id); }
       case "persona": { return this.labelPersona(id); }
       case "sucursal": { return this.labelSucursal(id); }
@@ -76,6 +77,15 @@ export class _DataDefinitionLabelService {
   }
 
   labelImporteTramiteExcepcionalRow (row: any): string {
+    if(!row) return null;
+
+    let ret = "";
+    if (row["id"]) ret = ret.trim() + " " + row["id"];
+
+    return ret.trim();
+  }
+
+  labelLogRow (row: any): string {
     if(!row) return null;
 
     let ret = "";
@@ -229,6 +239,22 @@ export class _DataDefinitionLabelService {
           if(!row) return of(null);
           return combineLatest([
             of(this.labelImporteTramiteExcepcionalRow(row)),
+          ])
+        }
+      ),
+      map(
+        response => { return (!response)? null : response.join(" "); }
+      )
+    );
+  }
+
+  labelLog(id: string): Observable<any> {
+    return this.dd.get("log", id).pipe(
+      switchMap(
+        row => {
+          if(!row) return of(null);
+          return combineLatest([
+            of(this.labelLogRow(row)),
           ])
         }
       ),

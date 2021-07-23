@@ -30,18 +30,29 @@ export class AfiliacionFieldsetComponent extends FieldsetComponent {
   }
 
   formGroup(): FormGroup {
+    console.log(this.requiredValidatorOpt);
     let fg: FormGroup = this.fb.group({
       id:null,
       motivo: [null, {
         validators: [this.requiredValidatorOpt.fn],
       }],
-      estado: [{value: null, disabled: true}, {
+      estado: [null, {
         validators: [this.requiredValidatorOpt.fn],
       }],
       codigo: [{value: null}, {
         validators: [this.requiredValidatorOpt.fn],
       }],
       observaciones: [null, {
+      }],
+      departamento_judicial: [null, {
+        validators: [this.requiredValidatorOpt.fn],
+      }],
+      departamento_judicial_informado: [
+        {value: null, disabled: true}, 
+        {validators: [this.requiredValidatorOpt.fn],}
+      ],
+      organo: [null, {
+        validators: [this.requiredValidatorOpt.fn],
       }],
       persona: [null, {
         validators: [this.requiredValidatorOpt.fn],
@@ -67,5 +78,8 @@ export class AfiliacionFieldsetComponent extends FieldsetComponent {
   get codigo() { return this.fieldset.get('codigo')}
   get observaciones() { return this.fieldset.get('observaciones')}
   get persona() { return this.fieldset.get('persona')}
+  get organo() { return this.fieldset.get('organo')}
+  get departamentoJudicial() { return this.fieldset.get('departamento_judicial')}
+  get departamentoJudicialInformado() { return this.fieldset.get('departamento_judicial_informado')}
 
 }

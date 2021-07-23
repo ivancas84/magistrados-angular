@@ -78,9 +78,6 @@ import { FieldLabelOrganoComponent } from '@component/reusable/field-label-organ
 import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
 import { AfiliacionFieldsetComponent } from '@component/afiliacion-admin/afiliacion-fieldset/afiliacion-fieldset.component';
 
-import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show/afiliacion-show.component';
-import { AfiliacionTableComponent } from '@component/afiliacion-show/afiliacion-table/afiliacion-table.component';
-import { AfiliacionSearchComponent } from '@component/afiliacion-show/afiliacion-search/afiliacion-search.component';
 
 import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
 import { ArchivoAfiliacionesTableComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-table/archivo-afiliaciones-table.component';
@@ -89,7 +86,6 @@ import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento
 
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
 import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
-import { AfiliacionSearchParamsComponent } from '@component/afiliacion-show/afiliacion-search-params/afiliacion-search-params.component';
 
 import { PTramiteExcepcionalTableComponent } from '@component/persona-admin/tramite-excepcional-table/tramite-excepcional-table.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
@@ -105,8 +101,6 @@ import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-s
 import { ImporteAfiliacionTableComponent } from '@component/importe-afliliacion-show/importe-afiliacion-table/importe-afiliacion-table.component';
 import { ImporteAfiliacionSearchComponent } from '@component/importe-afliliacion-show/importe-afiliacion-search/importe-afiliacion-search.component';
 import { ImporteAfiliacionSearchParamsComponent } from '@component/importe-afliliacion-show/importe-afiliacion-search-params/importe-afiliacion-search-params.component';
-import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show/tramite-excepcional-show.component';
-import { TramiteExcepcionalTableComponent } from '@component/tramite-excepcional-show/tramite-excepcional-table/tramite-excepcional-table.component';
 
 import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete/importe-delete.component';
 import { ImporteDeleteFieldsetComponent } from '@component/importe-delete/importe-delete-fieldset/importe-delete-fieldset.component';
@@ -132,6 +126,8 @@ import { FieldsetArrayDynamicComponent } from '@component/fieldset-array/fieldse
 import { SearchDynamicComponent } from '@component/search/search-dynamic.component';
 import { SearchParamsDynamicComponent } from '@component/search-params/search-params-dynamic.component';
 import { ErrorUniqueRouteComponent } from '@component/error-unique/error-unique-route.component';
+import { AfiliacionShow2Component } from '@component/afiliacion-show2/afiliacion-show.component';
+import { TramiteExcepcionalShow2Component } from '@component/tramite-excepcional-show2/tramite-excepcional-show.component';
 
 
 
@@ -189,7 +185,8 @@ import { ErrorUniqueRouteComponent } from '@component/error-unique/error-unique-
 
     FieldLabelOrganoComponent,
     AfiliacionAdminComponent, AfiliacionFieldsetComponent,
-    AfiliacionShowComponent, AfiliacionTableComponent, AfiliacionSearchComponent, AfiliacionSearchParamsComponent,
+    AfiliacionShow2Component,
+    TramiteExcepcionalShow2Component,
     ArchivoSueldosCreateComponent, ArchivoSueldosCreateFieldsetComponent,
     ArchivoAfiliacionesShowComponent, ArchivoAfiliacionesTableComponent,
     ArchivoSueldosUploadComponent,
@@ -202,7 +199,6 @@ import { ErrorUniqueRouteComponent } from '@component/error-unique/error-unique-
     ImporteSummaryComponent, ImporteSummarySearchComponent, ImporteSummarySearchParamsComponent, ImporteSummaryTableComponent,
     ImporteTramiteExcepcionalShowComponent, ImporteTramiteExcepcionalTableComponent, ImporteTramiteExcepcionalSearchComponent, ImporteTramiteExcepcionalSearchParamsComponent,
     SucursalAdminArrayComponent,
-    TramiteExcepcionalShowComponent, TramiteExcepcionalTableComponent,
     TotalSummaryComponent, TotalSummaryTableComponent,
     TipoDocumentoAdminArrayComponent,
   ],

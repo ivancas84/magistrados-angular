@@ -19,10 +19,8 @@ import { MatSort, Sort } from '@angular/material/sort';
   `],
 })
 export class PersonaAfiliacionTableComponent extends TableComponent implements OnInit, OnChanges{
-  displayedColumns: string[] = ['motivo', 'estado', 'creado', 'enviado', 'evaluado', 'modificado', 'observaciones'];
+  displayedColumns: string[] = ['motivo', 'estado', 'codigo', 'organo', 'departamento_judicial', 'creado', 'enviado', 'evaluado', 'modificado', 'observaciones'];
 
-  
-  
   load$: Observable<any>;
   load: boolean;
   data$: BehaviorSubject<any> = new BehaviorSubject(null);

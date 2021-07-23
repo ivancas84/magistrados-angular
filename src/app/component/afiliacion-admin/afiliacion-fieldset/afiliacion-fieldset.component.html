@@ -25,21 +25,40 @@
                              fxFlex="34%" 
                              fxFlex.lt-md="50%" 
                              fxFlex.xs="100%"></core-input-select-param>          
-                             
+    
+    <core-input-select [field]="departamentoJudicial" 
+                       [title]="'Departamento Judicial'" 
+                            [entityName]="'departamento_judicial'"
+                             [validatorOpts]="[requiredValidatorOpt]"
+                             fxFlex="33%" 
+                             fxFlex.xs="100%"></core-input-select>
+
+    <core-input-select [field]="organo" 
+                             [title]="'Órgano'" 
+                                  [entityName]="'organo'"
+                                   [validatorOpts]="[requiredValidatorOpt]"
+                                   fxFlex="33%" 
+                                   fxFlex.xs="100%"></core-input-select>
+
+    <core-input-select [field]="departamentoJudicialInformado" 
+                       [title]="'Departamento Judicial Informado'" 
+                       [entityName]="'departamento_judicial'"
+                       fxFlex="33%" 
+                       fxFlex.xs="100%"></core-input-select>
                              
     <core-textarea [field]="observaciones" 
-                             [title]="'Observaciones'" 
-                             fxFlex="100%"></core-textarea>    
+                   [title]="'Observaciones'" 
+                   fxFlex="100%"></core-textarea>    
                                           
     
-        <mat-card fxFlex="25%" *ngIf="data.creado" [style.backgroundColor]="'#17a2b8'">
-          <mat-card-header>
-            <mat-card-title>Creado</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>{{data.creado | toDate | date:"d/M/y"}}</p>
-          </mat-card-content>
-        </mat-card>
+  <mat-card fxFlex="25%" *ngIf="data.creado" [style.backgroundColor]="'#17a2b8'">
+    <mat-card-header>
+      <mat-card-title>Creado</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{data.creado | toDate | date:"d/M/y"}}</p>
+    </mat-card-content>
+  </mat-card>
 
         <mat-card fxFlex="25%" *ngIf="data.enviado" [style.backgroundColor]="'#007bff'">
           <mat-card-header>
