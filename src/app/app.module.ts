@@ -66,59 +66,14 @@ import { InputCheckboxComponent } from '@component/input-checkbox/input-checkbox
 import { InputYmComponent } from '@component/input-ym/input-ym.component';
 import { InputYearComponent } from '@component/input-year/input-year.component';
 import { MenuComponent } from '@component/menu/menu.component';
-import { SearchAllComponent } from '@component/search-all/search-all.component';
 import { LabelComponent } from '@component/label/label.component';
 import { FieldLabelComponent } from '@component/field-label/field-label.component';
 import { FieldTreeLabelComponent } from '@component/field-tree-label/field-tree-label.component';
 import { FieldViewComponent } from '@component/field-view/field-view.component';
 import { FieldViewAuxComponent } from '@component/field-view-aux/field-view-aux.component';
-
-import { FieldLabelOrganoComponent } from '@component/reusable/field-label-organo/field-label-organo.component';
-
-import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
-import { AfiliacionFieldsetComponent } from '@component/afiliacion-admin/afiliacion-fieldset/afiliacion-fieldset.component';
-
-
-import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
-import { ArchivoAfiliacionesTableComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-table/archivo-afiliaciones-table.component';
-
-import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
-
-import { PersonaAdminComponent } from '@component/persona-admin/persona-admin/persona-admin.component';
-import { PersonaAfiliacionTableComponent } from '@component/persona-admin/afiliacion-table/afiliacion-table.component';
-
-import { PTramiteExcepcionalTableComponent } from '@component/persona-admin/tramite-excepcional-table/tramite-excepcional-table.component';
-import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin/tramite-excepcional-admin.component';
-import { TramiteExcepcionalFieldsetComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-fieldset/tramite-excepcional-fieldset.component';
-import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload/archivo-sueldos-upload.component';
-
-import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary/importe-summary.component';
-import { ImporteSummarySearchComponent } from '@component/importe-summary/importe-summary-search/importe-summary-search.component';
-import { ImporteSummarySearchParamsComponent } from '@component/importe-summary/importe-summary-search-params/importe-summary-search-params.component';
-import { ImporteSummaryTableComponent } from '@component/importe-summary/importe-summary-table/importe-summary-table.component';
-
-import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show/importe-afiliacion-show.component';
-import { ImporteAfiliacionTableComponent } from '@component/importe-afliliacion-show/importe-afiliacion-table/importe-afiliacion-table.component';
-import { ImporteAfiliacionSearchComponent } from '@component/importe-afliliacion-show/importe-afiliacion-search/importe-afiliacion-search.component';
-import { ImporteAfiliacionSearchParamsComponent } from '@component/importe-afliliacion-show/importe-afiliacion-search-params/importe-afiliacion-search-params.component';
-
-import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete/importe-delete.component';
-import { ImporteDeleteFieldsetComponent } from '@component/importe-delete/importe-delete-fieldset/importe-delete-fieldset.component';
-
-import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
-import { ImporteTramiteExcepcionalTableComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-table/importe-tramite-excepcional-table.component';
-import { ImporteTramiteExcepcionalSearchComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-search/importe-tramite-excepcional-search.component';
-import { ImporteTramiteExcepcionalSearchParamsComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-search-params/importe-tramite-excepcional-search-params.component';
-
-import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create/archivo-sueldos-create.component';
-import { ArchivoSueldosCreateFieldsetComponent } from '@component/archivo-sueldos-create/archivo-afiliaciones-create-fieldset/archivo-sueldos-create-fieldset.component';
 import { FieldTreeComponent } from '@component/field-tree/field-tree.component';
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
-import { TotalSummaryTableComponent } from '@component/total-summary/total-summary-table/total-summary-table.component';
-import { TotalSummaryComponent } from '@component/total-summary/total-summary/total-summary.component';
-import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 import { InputPersistComponent } from '@component/input-persist/input-persist.component';
-import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
 import { TableDynamicComponent } from '@component/table/table-dynamic.component';
 import { CardDynamicComponent } from '@component/card/card-dynamic.component';
 import { FieldsetDynamicComponent } from '@component/fieldset/fieldset-dynamic.component';
@@ -126,8 +81,8 @@ import { FieldsetArrayDynamicComponent } from '@component/fieldset-array/fieldse
 import { SearchDynamicComponent } from '@component/search/search-dynamic.component';
 import { SearchParamsDynamicComponent } from '@component/search-params/search-params-dynamic.component';
 import { ErrorUniqueRouteComponent } from '@component/error-unique/error-unique-route.component';
-import { AfiliacionShow2Component } from '@component/afiliacion-show2/afiliacion-show.component';
-import { TramiteExcepcionalShow2Component } from '@component/tramite-excepcional-show2/tramite-excepcional-show.component';
+import { PersonaAdmin2Component } from '@component/persona-admin-2/persona-admin-2.component';
+import { ControlCast, NoHidden } from '@class/reactive-form-ext';
 
 
 
@@ -141,6 +96,8 @@ import { TramiteExcepcionalShow2Component } from '@component/tramite-excepcional
     SiNoPipe, 
     SummaryPipe, 
     StoragePipe,
+    ControlCast,
+    NoHidden,
 
     LoginComponent,
     SocialLoginComponent,
@@ -169,7 +126,6 @@ import { TramiteExcepcionalShow2Component } from '@component/tramite-excepcional
     InputYearComponent,
     InputYmComponent,
     MenuComponent,
-    SearchAllComponent,
     LabelComponent,
     FieldLabelComponent,
     FieldTreeLabelComponent,
@@ -182,25 +138,7 @@ import { TramiteExcepcionalShow2Component } from '@component/tramite-excepcional
     SearchParamsDynamicComponent,
     ErrorUniqueRouteComponent,
     //DynamicTableComponent,
-
-    FieldLabelOrganoComponent,
-    AfiliacionAdminComponent, AfiliacionFieldsetComponent,
-    AfiliacionShow2Component,
-    TramiteExcepcionalShow2Component,
-    ArchivoSueldosCreateComponent, ArchivoSueldosCreateFieldsetComponent,
-    ArchivoAfiliacionesShowComponent, ArchivoAfiliacionesTableComponent,
-    ArchivoSueldosUploadComponent,
-    DepartamentoJudicialAdminArrayComponent,
-    PersonaAdminComponent, PersonaAfiliacionTableComponent, 
-    PTramiteExcepcionalTableComponent,
-    TramiteExcepcionalAdminComponent, TramiteExcepcionalFieldsetComponent,
-    ImporteAfiliacionShowComponent, ImporteAfiliacionTableComponent, ImporteAfiliacionSearchComponent, ImporteAfiliacionSearchParamsComponent,
-    ImporteDeleteComponent, ImporteDeleteFieldsetComponent,
-    ImporteSummaryComponent, ImporteSummarySearchComponent, ImporteSummarySearchParamsComponent, ImporteSummaryTableComponent,
-    ImporteTramiteExcepcionalShowComponent, ImporteTramiteExcepcionalTableComponent, ImporteTramiteExcepcionalSearchComponent, ImporteTramiteExcepcionalSearchParamsComponent,
-    SucursalAdminArrayComponent,
-    TotalSummaryComponent, TotalSummaryTableComponent,
-    TipoDocumentoAdminArrayComponent,
+    PersonaAdmin2Component
   ],
   imports: [
     BrowserModule,

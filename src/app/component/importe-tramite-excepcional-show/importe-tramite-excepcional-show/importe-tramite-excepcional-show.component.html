@@ -1,9 +1,0 @@
-<ng-template #loading>
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</ng-template>
-
-<div *ngIf="(load$ | async); else loading">
-  <mat-progress-bar *ngIf="!load" mode="indeterminate"></mat-progress-bar>
-  <app-importe-tramite-excepcional-search [display]="display"></app-importe-tramite-excepcional-search>
-  <app-importe-tramite-excepcional-table [data]="data" [length]="length" [display]="display"></app-importe-tramite-excepcional-table>
-</div>
