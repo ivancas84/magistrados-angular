@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FieldHiddenOptions, FieldInputTextOptions, FieldTextareaOptions } from '@class/field-type-options';
+import { FieldsetArrayDynamicOptions } from '@class/fieldset-array-dynamic-options';
+import { FieldsetDynamicOptions } from '@class/fieldset-dynamic-options';
 import { FormGroupFactory, FormGroupExt, FormControlExt, FormArrayExt } from '@class/reactive-form-ext';
 import { RequiredValidatorMsg } from '@class/validator-msg';
-import { AdminDynamicComponent } from '@component/admin/admin-dynamic.component';
+import { AdminComponent } from '@component/admin/admin.component';
 
 class AfiliacionFormGroupFactory implements FormGroupFactory{
 
@@ -39,9 +41,9 @@ class AfiliacionFormGroupFactory implements FormGroupFactory{
 
 @Component({
   selector: 'app-persona-admin',
-  templateUrl: '../../core/component/admin/admin-dynamic.component.html',
+  templateUrl: '../../core/component/admin/admin.component.html',
 })
-export class PersonaAdmin2Component extends AdminDynamicComponent implements OnInit{
+export class PersonaAdmin2Component extends AdminComponent implements OnInit{
   
 
   readonly entityName: string = "persona"
@@ -69,6 +71,9 @@ export class PersonaAdmin2Component extends AdminDynamicComponent implements OnI
     p.set({
       title:"Persona",
       position:2,
+      options: new FieldsetDynamicOptions({
+        title:"Persona"
+      })
     });
 
     (p.controls["id"] as FormControlExt).set({
@@ -101,9 +106,11 @@ export class PersonaAdmin2Component extends AdminDynamicComponent implements OnI
 
     var c = this.adminForm.controls["afiliacion/persona"] as FormArrayExt;
     c.set({
-       title:"Registro 40",
        factory:new AfiliacionFormGroupFactory,  
        position:3,
+       options:new FieldsetArrayDynamicOptions({
+         title: "Registro 40"
+       }),
        default: [{motivo:"Baja"},{estado:"Hola"}]
     });
     

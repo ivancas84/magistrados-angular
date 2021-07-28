@@ -83,6 +83,7 @@ import { SearchParamsDynamicComponent } from '@component/search-params/search-pa
 import { ErrorUniqueRouteComponent } from '@component/error-unique/error-unique-route.component';
 import { PersonaAdmin2Component } from '@component/persona-admin-2/persona-admin-2.component';
 import { ControlCast, NoHidden } from '@class/reactive-form-ext';
+import { PersonaShowComponent } from '@component/persona-show/persona-show.component';
 
 
 
@@ -138,7 +139,8 @@ import { ControlCast, NoHidden } from '@class/reactive-form-ext';
     SearchParamsDynamicComponent,
     ErrorUniqueRouteComponent,
     //DynamicTableComponent,
-    PersonaAdmin2Component
+    PersonaAdmin2Component,
+    PersonaShowComponent
   ],
   imports: [
     BrowserModule,
