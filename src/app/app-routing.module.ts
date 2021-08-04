@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin.component';
 import { BackupComponent } from '@component/backup/backup.component';
 import { LoginComponent } from '@component/login/login.component';
-import { PersonaAdmin2Component } from '@component/persona-admin-2/persona-admin-2.component';
+import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
 import { PersonaShowComponent } from '@component/persona-show/persona-show.component';
 
 const routes: Routes = [
   { path: 'backup', component: BackupComponent, pathMatch: 'full' },
-  { path: 'persona-admin', component: PersonaAdmin2Component, pathMatch: 'full' },
+  { path: 'afiliacion-admin', component: AfiliacionAdminComponent, pathMatch: 'full' },
+
+  { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'persona-show', component: PersonaShowComponent, pathMatch: 'full' },
 
 
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
-  { path: '', component: PersonaAdmin2Component, pathMatch: 'full' },
+  { path: '', component: PersonaAdminComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

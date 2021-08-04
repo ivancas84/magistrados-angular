@@ -81,9 +81,15 @@ import { FieldsetArrayDynamicComponent } from '@component/fieldset-array/fieldse
 import { SearchDynamicComponent } from '@component/search/search-dynamic.component';
 import { SearchParamsDynamicComponent } from '@component/search-params/search-params-dynamic.component';
 import { ErrorUniqueRouteComponent } from '@component/error-unique/error-unique-route.component';
-import { PersonaAdmin2Component } from '@component/persona-admin-2/persona-admin-2.component';
+import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
 import { ControlCast, NoHidden } from '@class/reactive-form-ext';
 import { PersonaShowComponent } from '@component/persona-show/persona-show.component';
+import { OptComponent } from '@component/opt/opt.component';
+import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin.component';
+import { RelLabelComponent } from '@component/rel-label/rel-label.component';
+import { DataDefinitionRelLabelService } from '@service/data-definition/data-definition-rel-label.service';
+import { RouteIconComponent } from '@component/route-icon/route-icon.component';
+import { FieldsetOptionsComponent } from '@component/fieldset-options/fieldset-options.component';
 
 
 
@@ -123,6 +129,7 @@ import { PersonaShowComponent } from '@component/persona-show/persona-show.compo
     InputTextComponent,
     TextareaComponent,
     InputPersistComponent,
+    RouteIconComponent,
     //InputTimepickerComponent,
     InputYearComponent,
     InputYmComponent,
@@ -134,13 +141,18 @@ import { PersonaShowComponent } from '@component/persona-show/persona-show.compo
     TableDynamicComponent,
     CardDynamicComponent,
     FieldsetDynamicComponent,
+    FieldsetOptionsComponent,
     FieldsetArrayDynamicComponent,
     SearchDynamicComponent,
     SearchParamsDynamicComponent,
     ErrorUniqueRouteComponent,
+    OptComponent,
+    RelLabelComponent,
     //DynamicTableComponent,
-    PersonaAdmin2Component,
-    PersonaShowComponent
+
+    AfiliacionAdminComponent,
+    PersonaAdminComponent,
+    PersonaShowComponent,
   ],
   imports: [
     BrowserModule,
@@ -173,7 +185,8 @@ import { PersonaShowComponent } from '@component/persona-show/persona-show.compo
     ValidatorsService,
     
     DataDefinitionStorageService, 
-    DataDefinitionLabelService, 
+    DataDefinitionLabelService,
+    DataDefinitionRelLabelService, 
 
     /*{provide: 'SocialAuthServiceConfig', useValue: { autoLogin: false,  providers: [
       {
