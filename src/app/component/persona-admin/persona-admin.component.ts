@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, PatternValidator, Validators } from '@angular/forms';
+import { ComponentOptions } from '@class/component-options';
 import { FieldDateOptions, FieldHiddenOptions, FieldInputDateOptions, FieldInputSelectOptions, FieldInputTextOptions, RouteIconFieldViewOptions, TypeLabelOptions } from '@class/field-type-options';
 import { RouterLinkOptions } from '@class/field-view-aux-options';
 import { FieldWidthOptions } from '@class/field-width-options';
 import { FieldsetDynamicOptions } from '@class/fieldset-dynamic-options';
-import { FormArrayConfig, FormConfig, FormControlConfig, FormControlOption, FormGroupConfig } from '@class/reactive-form-config';
+import { FormArrayConfig, FormConfig, FormControlConfig, FormControlOption, FormControlsConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { TableDynamicOptions } from '@class/table-dynamic-options';
 import { RequiredValidatorMsg, UniqueValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
@@ -54,17 +55,10 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
   });
 
 
-
-
-  configForm: FormConfig = new FormConfig({
+  configForm: FormStructureConfig = new FormStructureConfig({
     controls: {
       "persona": new FormGroupConfig({
-        title:"Persona",
         position:1,
-        options: new FieldsetDynamicOptions({
-          entityName:"persona",
-          title:"Persona",
-        }),
         controls: {
           "id": new FormControlConfig({
             type: new FieldHiddenOptions(),
@@ -156,31 +150,10 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
         }
       }),
 
-
-
       "afiliacion/persona": new FormArrayConfig({
         order:  {"creado":"desc"},
         factory:new AfiliacionFormGroupFactory,  
         position:2,
-        options:new TableDynamicOptions({
-          title: "Registro 40",
-          sortDisabled:["departamento_judicial","organo"],
-          optTitle: [
-            new FormControlOption({
-              config: new FormControlConfig({ 
-                type: new RouteIconFieldViewOptions({
-                  id: "route_icon",
-                  icon: "add",
-                  key:  "persona",
-                  routerLink: "afiliacion-admin",
-                  title: "Agregar Afiliacion",
-                  color:"accent"
-                }) 
-              }),
-              field: (this.adminForm.controls["persona"] as FormGroup).controls["id"]
-            }),
-        ]
-        }),
         controls:{
           "id": new FormControlConfig({
             type: new FieldHiddenOptions
@@ -234,33 +207,10 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
         }
       }),
 
-
       "tramite_excepcional/persona": new FormArrayConfig({
         order:  {"creado":"desc"},
         factory:new TramiteExcepcionalFormGroupFactory,  
         position:3,
-        options:new TableDynamicOptions({
-          title: "Registro 80",
-          sortDisabled:["departamento_judicial","organo"],
-          optTitle: [
-            new FormControlOption({
-              config: new FormControlConfig({ 
-                type: new RouteIconFieldViewOptions({
-                  id: "route_icon",
-                  icon: "add",
-                  key:  "persona",
-                  routerLink: "tramite-excepcional-admin",
-                  title: "Agregar Afiliacion",
-                  color:"accent"
-                }) 
-              }),
-              field: (this.adminForm.controls["persona"] as FormGroup).controls["id"]
-            }),
-        ]
-        }),
-
-        
-
         controls:{
           "id": new FormControlConfig({
             type: new FieldHiddenOptions
@@ -327,5 +277,48 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
     }
   });
 
+
+  configComponent: { [x: string]: ComponentOptions } = {
+    "persona": new FieldsetDynamicOptions({
+      entityName:"persona",
+      title:"Persona",
+    }),
+    "afiliacion/persona": new TableDynamicOptions({
+      title: "Registro 40",
+      sortDisabled:["departamento_judicial","organo"],
+      optTitle: [
+        new FormControlOption({
+          config: new FormControlConfig({ 
+            type: new RouteIconFieldViewOptions({
+              icon: "add",
+              key:  "persona",
+              routerLink: "afiliacion-admin",
+              title: "Agregar Afiliacion",
+              color:"accent"
+            }) 
+          }),
+          field: (this.adminForm.controls["persona"] as FormGroup).controls["id"]
+        }),
+      ]
+    }),
+    "tramite_excepcional/persona": new TableDynamicOptions({
+      title: "Registro 80",
+      sortDisabled:["departamento_judicial","organo"],
+      optTitle: [
+        new FormControlOption({
+          config: new FormControlConfig({ 
+            type: new RouteIconFieldViewOptions({
+              icon: "add",
+              key:  "persona",
+              routerLink: "tramite-excepcional-admin",
+              title: "Agregar Afiliacion",
+              color:"accent"
+            }) 
+          }),
+          field: (this.adminForm.controls["persona"] as FormGroup).controls["id"]
+        }),
+      ]
+    }),
+  }
 }
 

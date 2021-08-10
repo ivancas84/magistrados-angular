@@ -1,70 +1,92 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
-import { FieldHiddenOptions, FieldInputTextOptions, FieldTextareaOptions } from '@class/field-type-options';
-import { RouterLinkOptions } from '@class/field-view-aux-options';
-import { FormGroupFactory, FormGroupExt, FormControlExt, FormArrayExt } from '@class/reactive-form-ext';
+import { Component } from '@angular/core';
+import { FormArray } from '@angular/forms';
+import { ComponentOptions } from '@class/component-options';
+import { FieldHiddenOptions, TypeLabelOptions } from '@class/field-type-options';
+import { FormArrayConfig, FormControlConfig } from '@class/reactive-form-config';
 import { TableDynamicOptions } from '@class/table-dynamic-options';
-import { RequiredValidatorMsg } from '@class/validator-msg';
-import { AdminComponent } from '@component/admin/admin.component';
-import { FieldViewAuxComponent } from '@component/field-view-aux/field-view-aux.component';
 import { ShowComponent } from '@component/show/show.component';
-
-class AfiliacionFormGroupFactory implements FormGroupFactory{
-
-  formGroup(): FormGroupExt {
-    var fg = new FormGroupExt({
-      "id":new FormControlExt(),
-      "motivo":new FormControlExt(),
-      "per-nombres":new FormControlExt(),
-      "persona":new FormControlExt(),
-
-    });
-
-    (fg.controls["id"] as FormControlExt).set({
-      type: new FieldHiddenOptions()
-    });
-
-    (fg.controls["persona"] as FormControlExt).set({
-      type: new FieldHiddenOptions()
-    });
-
-    (fg.controls["motivo"] as FormControlExt).set({
-      label: "Motivo",
-    });
-
-    (fg.controls["per-nombres"] as FormControlExt).set({
-      label: "Persona",
-      aux: new RouterLinkOptions({
-        path:"persona-admin",
-        params: {id:"{{persona}}"} //utilizar {{key}} para identificar valor del conjunto de datos
-      })
-    });
-    return fg;
-  }
-}
+import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.class';
 
 @Component({
   selector: 'app-persona-show',
   templateUrl: '../../core/component/show/show.component.html',
 })
 export class PersonaShowComponent extends ShowComponent {
-  
-
   readonly entityName: string = "afiliacion"
 
-  structure: FormArrayExt = new FormArrayExt([])
+  tableOptions: ComponentOptions = new TableDynamicOptions({
+    title:"Visualización de Afiliaciones"
+  })
 
-  configForm() {
-    this.structure.set({
-       factory:new AfiliacionFormGroupFactory,  
-       position:3,
-       options: new TableDynamicOptions({
-         title: "Visualizacion de Afiliaciones"
+  form: FormArray = new FormArray([])
+
+  configForm: FormArrayConfig = new FormArrayConfig({
+    factory:new AfiliacionFormGroupFactory,  
+    position:3,
+    
+    controls: {
+      "id": new FormControlConfig({
+        type: new FieldHiddenOptions
+      }),
+      "motivo": new FormControlConfig({
+        label:"Motivo"
+      }),
+      "estado": new FormControlConfig({
+        label:"Estado"
+      }),
+      "codigo": new FormControlConfig({
+        label:"Cód"
+      }),
+      "departamento_judicial": new FormControlConfig({
+        label:"Departamento",
+        type: new TypeLabelOptions({entityName:"departamento_judicial"})
+      }),
+      "organo": new FormControlConfig({
+        label:"Organo",
+        type: new TypeLabelOptions({entityName:"organo"})
+      }),
+    }
+  })
+/*
+    (fg.controls["creado"] as FormControlExt).set({
+      label: "Creado",
+      type:new FieldDateOptions({
+        format: "dd/MM/yyyy HH:mm"
       })
     });
+
+    (fg.controls["enviado"] as FormControlExt).set({
+      label: "Enviado",
+      type:new FieldDateOptions({
+        format: "dd/MM/yyyy HH:mm"
+      })
+    });
+
+    (fg.controls["evaluado"] as FormControlExt).set({
+      label: "Evaluado",
+      type:new FieldDateOptions({
+        format: "dd/MM/yyyy HH:mm"
+      })
+    });
+
+
+    (fg.controls["modificado"] as FormControlExt).set({
+      label: "Modificado",
+      type:new FieldDateOptions({
+        format: "dd/MM/yyyy HH:mm"
+      })
+    });
+
     
-   
-  } 
+    (fg.controls["observaciones"] as FormControlExt).set({
+      label: "Observaciones"
+    });
+    
+    // (fg.controls["_delete"] as FormControlExt).set({
+    //   type: new FieldHiddenOptions,
+    // })*/
+    //return fg;
+  //}
 
 }
 

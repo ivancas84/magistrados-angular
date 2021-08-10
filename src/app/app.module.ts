@@ -90,6 +90,8 @@ import { RelLabelComponent } from '@component/rel-label/rel-label.component';
 import { DataDefinitionRelLabelService } from '@service/data-definition/data-definition-rel-label.service';
 import { RouteIconComponent } from '@component/route-icon/route-icon.component';
 import { FieldsetOptionsComponent } from '@component/fieldset-options/fieldset-options.component';
+import { EventButtonComponent } from '@component/event-button/event-button.component';
+import { EventIconComponent } from '@component/event-icon/event-icon.component';
 
 
 
@@ -130,6 +132,8 @@ import { FieldsetOptionsComponent } from '@component/fieldset-options/fieldset-o
     TextareaComponent,
     InputPersistComponent,
     RouteIconComponent,
+    EventButtonComponent,
+    EventIconComponent,
     //InputTimepickerComponent,
     InputYearComponent,
     InputYmComponent,

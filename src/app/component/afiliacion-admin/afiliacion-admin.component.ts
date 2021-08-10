@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { FieldHiddenOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldTextareaOptions } from '@class/field-type-options';
+import { FormGroup, Validators } from '@angular/forms';
+import { ComponentOptions } from '@class/component-options';
+import { FieldHiddenOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldLabelOptions, FieldTextareaOptions, TypeLabelOptions } from '@class/field-type-options';
 import { FieldWidthOptions } from '@class/field-width-options';
 import { FieldsetDynamicOptions } from '@class/fieldset-dynamic-options';
+import { FormControlConfig, FormControlOption, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { FormGroupExt, FormControlExt } from '@class/reactive-form-ext';
 import { RequiredValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
@@ -14,108 +16,102 @@ import { AdminComponent } from '@component/admin/admin.component';
 export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
   
   readonly entityName: string = "afiliacion"
+  inputSearchGo: boolean = false;
 
-  adminForm: FormGroupExt = new FormGroupExt({
-    "afiliacion":new FormGroupExt({
-      "id":new FormControlExt(),
-      "motivo":new FormControlExt(null, Validators.required),
-      "codigo":new FormControlExt(null, Validators.required),
-      "estado":new FormControlExt(null, Validators.required),
-      "organo":new FormControlExt(null, Validators.required),
-      "departamento_judicial":new FormControlExt(null, Validators.required),
-      "departamento_judicial_informado":new FormControlExt({value:null,disabled:true}),
-      "observaciones":new FormControlExt(null),
-      "persona":new FormControlExt(null, Validators.required),
 
+  adminForm: FormGroup = this.fb.group({
+    "afiliacion":this.fb.group({
+      "id":this.fb.control(null),
+      "motivo":this.fb.control(null, Validators.required),
+      "codigo":this.fb.control(null, Validators.required),
+      "estado":this.fb.control(null, Validators.required),
+      "organo":this.fb.control(null, Validators.required),
+      "departamento_judicial":this.fb.control(null, Validators.required),
+      "departamento_judicial_informado":this.fb.control({value:null,disabled:true}),
+      "observaciones":this.fb.control(null),
+      "persona":this.fb.control(null, Validators.required),
     }),
 
   }); 
 
-  /*configForm(){
-    var p = (this.adminForm.controls["afiliacion"] as FormGroupExt);
+  configForm: FormStructureConfig = new FormStructureConfig({
+    controls: {"afiliacion": new FormGroupConfig({
+      controls: {
+        "id": new FormControlConfig({
+          type: new FieldHiddenOptions(),
+        }),
+  
+        "motivo": new FormControlConfig({
+          type: new FieldInputSelectParamOptions({options:["Alta", "Baja", "Pendiente"]}),
+          default: "Alta",
+          label: "Motivo",
+          validatorMsgs: [ new RequiredValidatorMsg, ],
+          width:new FieldWidthOptions({gtSm:"33%"})
+        }),
+        "codigo": new FormControlConfig({
+          type: new FieldInputSelectParamOptions({options:[161, 162]}),
+          label: "Código",
+          validatorMsgs: [ new RequiredValidatorMsg, ],
+          width:new FieldWidthOptions({gtSm:"33%"})        
+        }),
+        "estado": new FormControlConfig({
+          type: new FieldInputSelectParamOptions({options:['Creado','Enviado','Aprobado','Rechazado']}),
+          default: "Creado",
+          label: "Estado",
+          validatorMsgs: [ new RequiredValidatorMsg, ],
+          width:new FieldWidthOptions({gtSm:"34%"})
+        }),
+        "organo": new FormControlConfig({
+          type: new FieldInputSelectOptions({
+            entityName: "organo",
+          }),
+          label: "Órgano",
+          width:new FieldWidthOptions({gtSm:"33%"})
+        }),
+        "departamento_judicial": new FormControlConfig({
+          type: new FieldInputSelectOptions({
+            entityName: "organo",
+          }),
+          label: "Órgano",
+          width:new FieldWidthOptions({gtSm:"33%"})
+        }),
+        "departamento_judicial_informado": new FormControlConfig({
+          type: new FieldInputSelectOptions({
+            entityName: "departamento_judicial",
+          }),
+          label: "Departamento Judicial Informado",
+          width:new FieldWidthOptions({gtSm:"33%"})
+        }),
+        "observaciones": new FormControlConfig({
+          type: new FieldTextareaOptions(),
+          label: "Observaciones",
+          width:new FieldWidthOptions({gtSm:"100%", sm:"100%"})
+        }),
+        "persona": new FormControlConfig({
+          type: new FieldHiddenOptions(),
+        }),
+      }
+    })}
+  })
 
-    p.set({
-      position:1,
-      options: new FieldsetDynamicOptions({
+  configComponent: { [x: string]: ComponentOptions } = {
+    "afiliacion": new FieldsetDynamicOptions({
         entityName:"afiliacion",
-        title:"Registro 40 " + this.labels,
-        inputSearchGo: false
+        title:"Registro 40 ",
+        optTitle:[
+          new FormControlOption({
+            config: new FormControlConfig({
+              type: new TypeLabelOptions({entityName:"persona"}),
+            }),
+            field: (this.adminForm.controls["afiliacion"] as FormGroup).controls["persona"],
+          }),
+        ]
       })
-    });
-
-    (p.controls["id"] as FormControlExt).set({
-      type: new FieldHiddenOptions(),
-    });
-
-    (p.controls["motivo"] as FormControlExt).set({
-      position:1,
-      type: new FieldInputSelectParamOptions({options:["Alta", "Baja", "Pendiente"]}),
-      default: "Alta",
-      label: "Motivo",
-      validatorMsgs: [ new RequiredValidatorMsg, ],
-      width:new FieldWidthOptions({gtSm:"33%"})
-    });
-
-    (p.controls["codigo"] as FormControlExt).set({
-      position:2,
-      type: new FieldInputSelectParamOptions({options:[161, 162]}),
-      label: "Código",
-      validatorMsgs: [ new RequiredValidatorMsg, ],
-      width:new FieldWidthOptions({gtSm:"33%"})
-
-    });
-
-    (p.controls["estado"] as FormControlExt).set({
-      position:3,
-      type: new FieldInputSelectParamOptions({options:['Creado','Enviado','Aprobado','Rechazado']}),
-      default: "Creado",
-      label: "Estado",
-      validatorMsgs: [ new RequiredValidatorMsg, ],
-      width:new FieldWidthOptions({gtSm:"34%"})
-    });
-
-    (p.controls["organo"] as FormControlExt).set({
-      position:4,
-      type: new FieldInputSelectOptions({
-        entityName: "organo",
-      }),
-      label: "Órgano",
-      width:new FieldWidthOptions({gtSm:"33%"})
-    });
-
-    (p.controls["departamento_judicial"] as FormControlExt).set({
-      position:4,
-      type: new FieldInputSelectOptions({
-        entityName: "departamento_judicial",
-      }),
-      label: "Departamento Judicial",
-      width:new FieldWidthOptions({gtSm:"33%"})
-    });
-
-    (p.controls["departamento_judicial_informado"] as FormControlExt).set({
-      position:5,
-      type: new FieldInputSelectOptions({
-        entityName: "departamento_judicial",
-      }),
-      label: "Departamento Judicial Informado",
-      width:new FieldWidthOptions({gtSm:"33%"})
-    });
-
-    (p.controls["observaciones"] as FormControlExt).set({
-      position:6,
-      type: new FieldTextareaOptions(),
-      label: "Observaciones",
-      width:new FieldWidthOptions({gtSm:"100%", sm:"100%"})
-    });
-
-
-    (p.controls["persona"] as FormControlExt).set({
-      type: new FieldHiddenOptions(),
-    });
   }
 
+ 
   reload(response){
     this.back();
-  }*/
+  }
 }
 
