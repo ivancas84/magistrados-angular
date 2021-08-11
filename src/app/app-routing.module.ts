@@ -4,14 +4,14 @@ import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion
 import { BackupComponent } from '@component/backup/backup.component';
 import { LoginComponent } from '@component/login/login.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
-import { PersonaShowComponent } from '@component/persona-show/persona-show.component';
+import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show.component';
 
 const routes: Routes = [
   { path: 'backup', component: BackupComponent, pathMatch: 'full' },
   { path: 'afiliacion-admin', component: AfiliacionAdminComponent, pathMatch: 'full' },
 
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
-  { path: 'persona-show', component: PersonaShowComponent, pathMatch: 'full' },
+  { path: 'afiliacion-show', component: AfiliacionShowComponent, pathMatch: 'full' },
 
 
   { path: 'login', component: LoginComponent, pathMatch: 'full' },

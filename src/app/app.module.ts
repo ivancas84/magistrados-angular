@@ -70,7 +70,7 @@ import { LabelComponent } from '@component/label/label.component';
 import { FieldLabelComponent } from '@component/field-label/field-label.component';
 import { FieldTreeLabelComponent } from '@component/field-tree-label/field-tree-label.component';
 import { FieldViewComponent } from '@component/field-view/field-view.component';
-import { FieldViewAuxComponent } from '@component/field-view-aux/field-view-aux.component';
+import { FieldWrapComponent } from '@component/field-wrap/field-wrap.component';
 import { FieldTreeComponent } from '@component/field-tree/field-tree.component';
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
 import { InputPersistComponent } from '@component/input-persist/input-persist.component';
@@ -79,12 +79,9 @@ import { CardDynamicComponent } from '@component/card/card-dynamic.component';
 import { FieldsetDynamicComponent } from '@component/fieldset/fieldset-dynamic.component';
 import { FieldsetArrayDynamicComponent } from '@component/fieldset-array/fieldset-array-dynamic.component';
 import { SearchDynamicComponent } from '@component/search/search-dynamic.component';
-import { SearchParamsDynamicComponent } from '@component/search-params/search-params-dynamic.component';
 import { ErrorUniqueRouteComponent } from '@component/error-unique/error-unique-route.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
-import { ControlCast, NoHidden } from '@class/reactive-form-ext';
-import { PersonaShowComponent } from '@component/persona-show/persona-show.component';
-import { OptComponent } from '@component/opt/opt.component';
+import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show.component';
 import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin.component';
 import { RelLabelComponent } from '@component/rel-label/rel-label.component';
 import { DataDefinitionRelLabelService } from '@service/data-definition/data-definition-rel-label.service';
@@ -92,6 +89,8 @@ import { RouteIconComponent } from '@component/route-icon/route-icon.component';
 import { FieldsetOptionsComponent } from '@component/fieldset-options/fieldset-options.component';
 import { EventButtonComponent } from '@component/event-button/event-button.component';
 import { EventIconComponent } from '@component/event-icon/event-icon.component';
+import { FieldWrapCardComponent } from '@component/field-wrap-card/field-wrap-card.component';
+import { FieldWrapRouterLinkComponent } from '@component/field-wrap-router-link/field-wrap-router-link.component';
 
 
 
@@ -105,8 +104,6 @@ import { EventIconComponent } from '@component/event-icon/event-icon.component';
     SiNoPipe, 
     SummaryPipe, 
     StoragePipe,
-    ControlCast,
-    NoHidden,
 
     LoginComponent,
     SocialLoginComponent,
@@ -116,7 +113,7 @@ import { EventIconComponent } from '@component/event-icon/event-icon.component';
 
     DialogAlertComponent,
     DialogConfirmComponent,
-    FieldViewAuxComponent,
+    FieldWrapComponent,
     FieldViewComponent,
     InputAutocompleteComponent,
     InputCheckboxComponent,
@@ -131,6 +128,8 @@ import { EventIconComponent } from '@component/event-icon/event-icon.component';
     InputTextComponent,
     TextareaComponent,
     InputPersistComponent,
+    FieldWrapCardComponent,
+    FieldWrapRouterLinkComponent,
     RouteIconComponent,
     EventButtonComponent,
     EventIconComponent,
@@ -148,15 +147,13 @@ import { EventIconComponent } from '@component/event-icon/event-icon.component';
     FieldsetOptionsComponent,
     FieldsetArrayDynamicComponent,
     SearchDynamicComponent,
-    SearchParamsDynamicComponent,
     ErrorUniqueRouteComponent,
-    OptComponent,
     RelLabelComponent,
     //DynamicTableComponent,
 
     AfiliacionAdminComponent,
     PersonaAdminComponent,
-    PersonaShowComponent,
+    AfiliacionShowComponent,
   ],
   imports: [
     BrowserModule,

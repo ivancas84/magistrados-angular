@@ -1,7 +1,5 @@
 import { FormControl, FormGroup } from "@angular/forms";
-import { FieldHiddenOptions, TypeLabelOptions, FieldDateOptions } from "@class/field-type-options";
-import { RouterLinkOptions } from "@class/field-view-aux-options";
-import { FormGroupFactory, FormGroupExt, FormControlExt } from "@class/reactive-form-ext";
+import { FormGroupFactory } from "@class/reactive-form-config";
 
 export class TramiteExcepcionalFormGroupFactory implements FormGroupFactory{
 

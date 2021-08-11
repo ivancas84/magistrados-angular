@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, PatternValidator, Validators } from '@angular/forms';
 import { ComponentOptions } from '@class/component-options';
 import { FieldDateOptions, FieldHiddenOptions, FieldInputDateOptions, FieldInputSelectOptions, FieldInputTextOptions, RouteIconFieldViewOptions, TypeLabelOptions } from '@class/field-type-options';
-import { RouterLinkOptions } from '@class/field-view-aux-options';
+import { RouterLinkOptions } from '@class/field-wrap-options';
 import { FieldWidthOptions } from '@class/field-width-options';
 import { FieldsetDynamicOptions } from '@class/fieldset-dynamic-options';
 import { FormArrayConfig, FormConfig, FormControlConfig, FormControlOption, FormControlsConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
@@ -160,7 +160,7 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
           }),
           "motivo": new FormControlConfig({
             label: "Motivo",
-            aux: new RouterLinkOptions({path:"afiliacion-admin"})
+            wrap: new RouterLinkOptions({path:"afiliacion-admin"})
           }),
           "estado": new FormControlConfig({
             label: "Estado",
@@ -217,7 +217,7 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
           }),
           "motivo": new FormControlConfig({
             label: "Motivo",
-            aux: new RouterLinkOptions({path:"afiliacion-admin"})
+            wrap: new RouterLinkOptions({path:"afiliacion-admin"})
           }),
           "estado": new FormControlConfig({
             label: "Estado",

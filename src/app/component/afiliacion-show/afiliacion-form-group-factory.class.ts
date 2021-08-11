@@ -1,7 +1,8 @@
 import { FormControl, FormGroup } from "@angular/forms";
-import { FormGroupFactory } from "@class/reactive-form-ext";
+import { FormGroupFactory } from "@class/reactive-form-config";
 
 export class AfiliacionFormGroupFactory implements FormGroupFactory{
+  
   
   formGroup(): FormGroup {
     var fg = new FormGroup({

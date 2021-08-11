@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormArray } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ComponentOptions } from '@class/component-options';
-import { FieldHiddenOptions, TypeLabelOptions } from '@class/field-type-options';
-import { FormArrayConfig, FormControlConfig } from '@class/reactive-form-config';
+import { FieldHiddenOptions, FieldInputAutocompleteOptions, FieldInputTextOptions, FieldViewOptions, TypeLabelOptions } from '@class/field-type-options';
+import { FieldWidthOptions } from '@class/field-width-options';
+import { FormArrayConfig, FormConfig, FormControlConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { TableDynamicOptions } from '@class/table-dynamic-options';
 import { ShowComponent } from '@component/show/show.component';
 import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.class';
@@ -11,7 +12,7 @@ import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.clas
   selector: 'app-persona-show',
   templateUrl: '../../core/component/show/show.component.html',
 })
-export class PersonaShowComponent extends ShowComponent {
+export class AfiliacionShowComponent extends ShowComponent {
   readonly entityName: string = "afiliacion"
 
   tableOptions: ComponentOptions = new TableDynamicOptions({
@@ -22,8 +23,6 @@ export class PersonaShowComponent extends ShowComponent {
 
   configForm: FormArrayConfig = new FormArrayConfig({
     factory:new AfiliacionFormGroupFactory,  
-    position:3,
-    
     controls: {
       "id": new FormControlConfig({
         type: new FieldHiddenOptions
@@ -45,6 +44,26 @@ export class PersonaShowComponent extends ShowComponent {
         label:"Organo",
         type: new TypeLabelOptions({entityName:"organo"})
       }),
+    }
+  })
+
+  searchForm: FormGroup = new FormGroup({
+    "params": new FormGroup({
+      "_search": new FormControl(null)
+    })
+  })
+
+  searchConfig: FormStructureConfig = new FormStructureConfig({
+    controls:{
+      "params":new FormConfig({
+        controls:{
+          "_search":new FormControlConfig({
+            label:"Buscar",
+            type: new FieldInputTextOptions(),
+            width: new FieldWidthOptions({sm:'100%',gtSm:'100%'}),
+          })
+        }
+      })
     }
   })
 /*
