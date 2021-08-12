@@ -28,10 +28,14 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
           ((this.configForm.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
         }
 
-        if(values["afiliacion"]["modificado"]
-          || values["afiliacion"]["enviado"]
-          || values["afiliacion"]["evaluado"]) 
+        /*console.log(this.adminForm.get("afiliacion.modificado").value);
+        if(this.adminForm.get("afiliacion.modificado").value
+          || this.adminForm.get("afiliacion.enviado").value
+          || this.adminForm.get("afiliacion.evaluado").value){
             this.adminForm.get("afiliacion.motivo").disable();
+
+          }*/
+             
       }
     )
   }
