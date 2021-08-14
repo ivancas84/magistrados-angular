@@ -5,6 +5,8 @@ import { BackupComponent } from '@component/backup/backup.component';
 import { LoginComponent } from '@component/login/login.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
 import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show.component';
+import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create.component';
+import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
 
 const routes: Routes = [
   { path: 'backup', component: BackupComponent, pathMatch: 'full' },
@@ -12,8 +14,10 @@ const routes: Routes = [
 
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'afiliacion-show', component: AfiliacionShowComponent, pathMatch: 'full' },
+  { path: 'archivo-sueldos-create', component: ArchivoSueldosCreateComponent, pathMatch: 'full' },
+  { path: 'archivo-afiliaciones-show', component: ArchivoAfiliacionesShowComponent, pathMatch: 'full' },
 
-
+  
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: '', component: PersonaAdminComponent, pathMatch: 'full' },
 ];

@@ -67,7 +67,6 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
             type: new FieldInputTextOptions(),
             label: "Nombres",
             position:1,
-          
           }),
           "apellidos": new FormControlConfig({
             type: new FieldInputTextOptions(),

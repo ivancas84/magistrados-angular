@@ -91,6 +91,9 @@ import { EventButtonComponent } from '@component/event-button/event-button.compo
 import { EventIconComponent } from '@component/event-icon/event-icon.component';
 import { FieldWrapCardComponent } from '@component/field-wrap-card/field-wrap-card.component';
 import { FieldWrapRouterLinkComponent } from '@component/field-wrap-router-link/field-wrap-router-link.component';
+import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create.component';
+import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
+import { LinkTextComponent } from '@component/link-text/link-text.component';
 
 
 
@@ -131,6 +134,7 @@ import { FieldWrapRouterLinkComponent } from '@component/field-wrap-router-link/
     FieldWrapCardComponent,
     FieldWrapRouterLinkComponent,
     RouteIconComponent,
+    LinkTextComponent,
     EventButtonComponent,
     EventIconComponent,
     //InputTimepickerComponent,
@@ -154,6 +158,8 @@ import { FieldWrapRouterLinkComponent } from '@component/field-wrap-router-link/
     AfiliacionAdminComponent,
     PersonaAdminComponent,
     AfiliacionShowComponent,
+    ArchivoSueldosCreateComponent,
+    ArchivoAfiliacionesShowComponent
   ],
   imports: [
     BrowserModule,
