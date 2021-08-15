@@ -94,6 +94,7 @@ import { FieldWrapRouterLinkComponent } from '@component/field-wrap-router-link/
 import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create.component';
 import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
 import { LinkTextComponent } from '@component/link-text/link-text.component';
+import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show.component';
 
 
 
@@ -156,10 +157,11 @@ import { LinkTextComponent } from '@component/link-text/link-text.component';
     //DynamicTableComponent,
 
     AfiliacionAdminComponent,
-    PersonaAdminComponent,
     AfiliacionShowComponent,
     ArchivoSueldosCreateComponent,
-    ArchivoAfiliacionesShowComponent
+    ArchivoAfiliacionesShowComponent,
+    PersonaAdminComponent,
+    TramiteExcepcionalShowComponent,
   ],
   imports: [
     BrowserModule,

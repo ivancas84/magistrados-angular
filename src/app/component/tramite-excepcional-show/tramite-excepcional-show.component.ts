@@ -8,17 +8,17 @@ import { FormArrayConfig, FormConfig, FormControlConfig, FormGroupConfig, FormSt
 import { TableDynamicOptions } from '@class/table-dynamic-options';
 import { DateValidatorMsg } from '@class/validator-msg';
 import { ShowComponent } from '@component/show/show.component';
-import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.class';
+import { TramiteExcepcionalFormGroupFactory } from './tramite-excepcional-form-group-factory.class';
 
 @Component({
-  selector: 'app-persona-show',
+  selector: 'app-tramite-excepcional-show',
   templateUrl: '../../core/component/show/show.component.html',
 })
-export class AfiliacionShowComponent extends ShowComponent {
-  readonly entityName: string = "afiliacion"
+export class TramiteExcepcionalShowComponent extends ShowComponent {
+  readonly entityName: string = "tramite_excepcional"
 
   tableOptions: ComponentOptions = new TableDynamicOptions({
-    title:"Registro 40",
+    title:"Registro 80",
     serverSortTranslate:{
       "persona":["per-nombres","per-apellidos"],
       "departamento_judicial":["dj-codigo"],
@@ -28,7 +28,7 @@ export class AfiliacionShowComponent extends ShowComponent {
   })
 
   configForm: FormArrayConfig = new FormArrayConfig({
-    factory:new AfiliacionFormGroupFactory,  
+    factory:new TramiteExcepcionalFormGroupFactory,  
     controls: {
       "id": new FormControlConfig({
         type: new FieldHiddenOptions
@@ -48,6 +48,14 @@ export class AfiliacionShowComponent extends ShowComponent {
       "departamento_judicial": new FormControlConfig({
         label:"Departamento",
         type: new TypeLabelOptions({entityName:"departamento_judicial"})
+      }),
+      "desde": new FormControlConfig({
+        label:"Desde",
+        type: new FieldDateOptions({format: "MM/yyyy"})
+      }),
+      "hasta": new FormControlConfig({
+        label:"Hasta",
+        type: new FieldDateOptions({format: "MM/yyyy"})
       }),
       "motivo": new FormControlConfig({
         label:"Motivo"
@@ -92,7 +100,6 @@ export class AfiliacionShowComponent extends ShowComponent {
       "enviado.ym": new FormControl(null),
       "evaluado.ym": new FormControl(null),
       "modificado.ym": new FormControl(null),
-
     })
   })
 
