@@ -17,7 +17,7 @@ import { TramiteExcepcionalFormGroupFactory } from './tramite-excepcional-form-g
 export class TramiteExcepcionalShowComponent extends ShowComponent {
   readonly entityName: string = "tramite_excepcional"
 
-  tableOptions: ComponentOptions = new TableDynamicOptions({
+  nestedComponent: ComponentOptions = new TableDynamicOptions({
     title:"Registro 80",
     serverSortTranslate:{
       "persona":["per-nombres","per-apellidos"],
@@ -27,7 +27,7 @@ export class TramiteExcepcionalShowComponent extends ShowComponent {
     serverSortObligatory:["persona","departamento_judicial","organo"],
   })
 
-  configForm: FormArrayConfig = new FormArrayConfig({
+  config: FormArrayConfig = new FormArrayConfig({
     factory:new TramiteExcepcionalFormGroupFactory,  
     controls: {
       "id": new FormControlConfig({

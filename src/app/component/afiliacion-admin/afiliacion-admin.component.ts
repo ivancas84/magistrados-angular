@@ -20,19 +20,19 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
 
   ngOnInit() {
     super.ngOnInit();  
-    this.adminForm.valueChanges.subscribe(
+    this.form.valueChanges.subscribe(
       values => {
         if(values["afiliacion"]["estado"] == "Aprobado"){
-          ((this.configForm.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#aaff80" 
+          ((this.config.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#aaff80" 
         } else {
-          ((this.configForm.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
+          ((this.config.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
         }
 
-        /*console.log(this.adminForm.get("afiliacion.modificado").value);
-        if(this.adminForm.get("afiliacion.modificado").value
-          || this.adminForm.get("afiliacion.enviado").value
-          || this.adminForm.get("afiliacion.evaluado").value){
-            this.adminForm.get("afiliacion.motivo").disable();
+        /*console.log(this.form.get("afiliacion.modificado").value);
+        if(this.form.get("afiliacion.modificado").value
+          || this.form.get("afiliacion.enviado").value
+          || this.form.get("afiliacion.evaluado").value){
+            this.form.get("afiliacion.motivo").disable();
 
           }*/
              
@@ -41,7 +41,7 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
   }
 
 
-  adminForm: FormGroup = this.fb.group({
+  form: FormGroup = this.fb.group({
     "afiliacion":this.fb.group({
       "id":this.fb.control(null),
       "motivo":this.fb.control("Alta", Validators.required),
@@ -60,7 +60,7 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
     }),
   }); 
 
-  configForm: FormStructureConfig = new FormStructureConfig({
+  config: FormStructureConfig = new FormStructureConfig({
     controls: {"afiliacion": new FormGroupConfig({
       controls: {
         "id": new FormControlConfig({
@@ -140,7 +140,7 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
     })}
   })
 
-  configComponent: { [x: string]: ComponentOptions } = {
+  nestedComponents: { [x: string]: ComponentOptions } = {
     "afiliacion": new FieldsetDynamicOptions({
         entityName:"afiliacion",
         title:"Registro 40 ",
@@ -149,13 +149,13 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
             config: new FormControlConfig({
               type: new TypeLabelOptions({entityName:"persona"}),
             }),
-            field: (this.adminForm.controls["afiliacion"] as FormGroup).controls["persona"],
+            field: (this.form.controls["afiliacion"] as FormGroup).controls["persona"],
           }),
         ]
       })
   }
 
-  optComponent: FormControlOption[] = [ //eliminar clear
+  optFooter: FormControlOption[] = [ //eliminar clear
     new FormControlOption({
       config: new FormControlConfig({ 
         type: new EventButtonFieldViewOptions({

@@ -17,7 +17,7 @@ import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.clas
 export class AfiliacionShowComponent extends ShowComponent {
   readonly entityName: string = "afiliacion"
 
-  tableOptions: ComponentOptions = new TableDynamicOptions({
+  nestedComponent: ComponentOptions = new TableDynamicOptions({
     title:"Registro 40",
     serverSortTranslate:{
       "persona":["per-nombres","per-apellidos"],
@@ -27,7 +27,7 @@ export class AfiliacionShowComponent extends ShowComponent {
     serverSortObligatory:["persona","departamento_judicial","organo"],
   })
 
-  configForm: FormArrayConfig = new FormArrayConfig({
+  config: FormArrayConfig = new FormArrayConfig({
     factory:new AfiliacionFormGroupFactory,  
     controls: {
       "id": new FormControlConfig({
@@ -36,7 +36,7 @@ export class AfiliacionShowComponent extends ShowComponent {
       "persona": new FormControlConfig({
         label:"Persona",
         type:new TypeLabelOptions({entityName: "persona"}),
-        aux:new RouterLinkOptions({path: "persona-admin", params:{id:"{{persona}})"}}), 
+        wrap:new RouterLinkOptions({path: "persona-admin", params:{id:"{{persona}})"}}), 
       }),
       "per-legajo": new FormControlConfig({
         field:"per-legajo",

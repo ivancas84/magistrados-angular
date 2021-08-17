@@ -13,26 +13,26 @@ import { AdminComponent } from '@component/admin/admin.component';
   selector: 'app-tramite-excepcional-admin',
   templateUrl: '../../core/component/admin/admin.component.html',
 })
-export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
+export class TramiteExcepcionalAdminComponent extends AdminComponent implements OnInit{
   
   readonly entityName: string = "tramite_excepcional"
   inputSearchGo: boolean = false;
 
   ngOnInit() {
     super.ngOnInit();  
-    this.adminForm.valueChanges.subscribe(
+    this.form.valueChanges.subscribe(
       values => {
         if(values["tramite_excepcional"]["estado"] == "Aprobado"){
-          ((this.configForm.controls["tramite_excepcional"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#aaff80" 
+          ((this.config.controls["tramite_excepcional"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#aaff80" 
         } else {
-          ((this.configForm.controls["tramite_excepcional"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
+          ((this.config.controls["tramite_excepcional"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
         }
 
-        /*console.log(this.adminForm.get("afiliacion.modificado").value);
-        if(this.adminForm.get("afiliacion.modificado").value
-          || this.adminForm.get("afiliacion.enviado").value
-          || this.adminForm.get("afiliacion.evaluado").value){
-            this.adminForm.get("afiliacion.motivo").disable();
+        /*console.log(this.form.get("tramite_excepcional.modificado").value);
+        if(this.form.get("tramite_excepcional.modificado").value
+          || this.form.get("tramite_excepcional.enviado").value
+          || this.form.get("tramite_excepcional.evaluado").value){
+            this.form.get("tramite_excepcional.motivo").disable();
 
           }*/
              
@@ -41,7 +41,7 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
   }
 
 
-  adminForm: FormGroup = this.fb.group({
+  form: FormGroup = this.fb.group({
     "tramite_excepcional":this.fb.group({
       "id":this.fb.control(null),
       "motivo":this.fb.control("Alta", Validators.required),
@@ -64,8 +64,8 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
     }),
   }); 
 
-  configForm: FormStructureConfig = new FormStructureConfig({
-    controls: {"afiliacion": new FormGroupConfig({
+  config: FormStructureConfig = new FormStructureConfig({
+    controls: {"tramite_excepcional": new FormGroupConfig({
       controls: {
         "id": new FormControlConfig({
           type: new FieldHiddenOptions(),
@@ -112,7 +112,6 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
           type: new FieldInputSelectParamOptions({options:[161, 162]}),
           label: "Código",
           validatorMsgs: [ new RequiredValidatorMsg, ],
-          width:new FieldWidthOptions({gtSm:"33%"})        
         }),
         "organo": new FormControlConfig({
           type: new FieldInputSelectOptions({
@@ -120,7 +119,6 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
           }),
           label: "Órgano",
           validatorMsgs: [ new RequiredValidatorMsg, ],
-          width:new FieldWidthOptions({gtSm:"33%"})
         }),
         "departamento_judicial": new FormControlConfig({
           type: new FieldInputSelectOptions({
@@ -128,14 +126,12 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
           }),
           label: "Departamento Judicial",
           validatorMsgs: [ new RequiredValidatorMsg, ],
-          width:new FieldWidthOptions({gtSm:"34%"})
         }),
         "departamento_judicial_informado": new FormControlConfig({
           type: new FieldInputSelectOptions({
             entityName: "departamento_judicial",
           }),
           label: "Departamento Judicial Informado",
-          width:new FieldWidthOptions({gtSm:"33%"})
         }),
         "observaciones": new FormControlConfig({
           type: new FieldTextareaOptions(),
@@ -169,22 +165,22 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
     })}
   })
 
-  configComponent: { [x: string]: ComponentOptions } = {
-    "afiliacion": new FieldsetDynamicOptions({
-        entityName:"afiliacion",
+  nestedComponents: { [x: string]: ComponentOptions } = {
+    "tramite_excepcional": new FieldsetDynamicOptions({
+        entityName:"tramite_excepcional",
         title:"Registro 40 ",
         optTitle:[
           new FormControlOption({
             config: new FormControlConfig({
               type: new TypeLabelOptions({entityName:"persona"}),
             }),
-            field: (this.adminForm.controls["afiliacion"] as FormGroup).controls["persona"],
+            field: (this.form.controls["tramite_excepcional"] as FormGroup).controls["persona"],
           }),
         ]
       })
   }
 
-  optComponent: FormControlOption[] = [ //eliminar clear
+  optFooter: FormControlOption[] = [ //eliminar clear
     new FormControlOption({
       config: new FormControlConfig({ 
         type: new EventButtonFieldViewOptions({

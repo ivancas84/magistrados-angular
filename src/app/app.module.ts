@@ -95,6 +95,7 @@ import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create
 import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
 import { LinkTextComponent } from '@component/link-text/link-text.component';
 import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show.component';
+import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin.component';
 
 
 
@@ -161,6 +162,7 @@ import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-
     ArchivoSueldosCreateComponent,
     ArchivoAfiliacionesShowComponent,
     PersonaAdminComponent,
+    TramiteExcepcionalAdminComponent,
     TramiteExcepcionalShowComponent,
   ],
   imports: [

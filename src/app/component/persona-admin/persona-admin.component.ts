@@ -22,12 +22,12 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
   readonly entityName: string = "persona"
   
   ngOnInit(){
-    this.adminForm.controls["afiliacion/persona"].disable();
-    this.adminForm.controls["tramite_excepcional/persona"].disable();
+    this.form.controls["afiliacion/persona"].disable();
+    this.form.controls["tramite_excepcional/persona"].disable();
     super.ngOnInit();
   }
 
-  adminForm: FormGroup = this.fb.group({
+  form: FormGroup = this.fb.group({
     "persona":this.fb.group({
       "id":[null],
       "nombres":[null],
@@ -55,7 +55,7 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
   });
 
 
-  configForm: FormStructureConfig = new FormStructureConfig({
+  config: FormStructureConfig = new FormStructureConfig({
     controls: {
       "persona": new FormGroupConfig({
         position:1,
@@ -216,7 +216,7 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
           }),
           "motivo": new FormControlConfig({
             label: "Motivo",
-            wrap: new RouterLinkOptions({path:"afiliacion-admin"})
+            wrap: new RouterLinkOptions({path:"tramite-excepcional-admin"})
           }),
           "estado": new FormControlConfig({
             label: "Estado",
@@ -277,7 +277,7 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
   });
 
 
-  configComponent: { [x: string]: ComponentOptions } = {
+  nestedComponents: { [x: string]: ComponentOptions } = {
     "persona": new FieldsetDynamicOptions({
       entityName:"persona",
       title:"Persona",
@@ -296,7 +296,7 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
               color:"accent"
             }) 
           }),
-          field: (this.adminForm.controls["persona"] as FormGroup).controls["id"]
+          field: (this.form.controls["persona"] as FormGroup).controls["id"]
         }),
       ]
     }),
@@ -314,7 +314,7 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
               color:"accent"
             }) 
           }),
-          field: (this.adminForm.controls["persona"] as FormGroup).controls["id"]
+          field: (this.form.controls["persona"] as FormGroup).controls["id"]
         }),
       ]
     }),

@@ -18,13 +18,13 @@ export class ArchivoAfiliacionesShowComponent extends ShowComponent {
   loadLength: boolean = false
   fileUrl = FILE_URL
 
-  tableOptions: ComponentOptions = new TableDynamicOptions({
+  nestedComponent: ComponentOptions = new TableDynamicOptions({
     title:"Archivo Afiliaciones",
     sortDisabled:["archivo"],
     showPaginator:false
   })
 
-  configForm: FormArrayConfig = new FormArrayConfig({
+  config: FormArrayConfig = new FormArrayConfig({
     factory:new ArchivoAfiliacionesFormGroupFactory,  
     controls: {
       "archivo": new FormControlConfig({

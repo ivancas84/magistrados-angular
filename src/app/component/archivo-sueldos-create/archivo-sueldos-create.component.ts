@@ -19,7 +19,7 @@ export class ArchivoSueldosCreateComponent extends AdminComponent implements OnI
 
   inputSearchGo: boolean = false
 
-  adminForm: FormGroup = this.fb.group({
+  form: FormGroup = this.fb.group({
     "archivo_sueldos": this.fb.group({
       "periodo":this.fb.control(moment(), Validators.required),
       "organo":this.fb.control(null, Validators.required),
@@ -27,7 +27,7 @@ export class ArchivoSueldosCreateComponent extends AdminComponent implements OnI
     })
   })
 
-  configForm: FormStructureConfig = new FormStructureConfig({
+  config: FormStructureConfig = new FormStructureConfig({
     controls: {
       "archivo_sueldos": new FormGroupConfig({
         controls:{
@@ -56,7 +56,7 @@ export class ArchivoSueldosCreateComponent extends AdminComponent implements OnI
     }
   });
 
-  configComponent: { [x: string]: ComponentOptions } = {
+  nestedComponents: { [x: string]: ComponentOptions } = {
     "archivo_sueldos": new FieldsetDynamicOptions({
       entityName:this.entityName,
       title:"Crear archivo de Sueldos ",
