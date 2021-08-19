@@ -8,6 +8,7 @@ export class AfiliacionFormGroupFactory implements FormGroupFactory{
     var fg = new FormGroup({
       "id":new FormControl(),
       "persona":new FormControl(),
+      "per-id":new FormControl(),
       "per-legajo":new FormControl(),
       "codigo":new FormControl(),
       "departamento_judicial":new FormControl(),

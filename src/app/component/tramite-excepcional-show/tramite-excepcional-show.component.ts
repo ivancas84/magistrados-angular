@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { ComponentOptions } from '@class/component-options';
-import { FieldDateOptions, FieldHiddenOptions, FieldInputAutocompleteOptions, FieldInputSelectCheckboxOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldInputTextOptions, FieldInputYearMonthOptions, FieldViewOptions, TypeLabelOptions } from '@class/field-type-options';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControlViewOptions, TableViewOptions } from '@class/abstract-control-view-options';
+import { FieldDateOptions, FieldHiddenOptions, FieldInputSelectCheckboxOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldInputYearMonthOptions, TypeLabelOptions } from '@class/field-type-options';
 import { FieldWidthOptions } from '@class/field-width-options';
 import { RouterLinkOptions } from '@class/field-wrap-options';
-import { FormArrayConfig, FormConfig, FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
-import { TableDynamicOptions } from '@class/table-dynamic-options';
+import { FormArrayConfig, FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { DateValidatorMsg } from '@class/validator-msg';
 import { ShowComponent } from '@component/show/show.component';
 import { TramiteExcepcionalFormGroupFactory } from './tramite-excepcional-form-group-factory.class';
@@ -17,7 +16,7 @@ import { TramiteExcepcionalFormGroupFactory } from './tramite-excepcional-form-g
 export class TramiteExcepcionalShowComponent extends ShowComponent {
   readonly entityName: string = "tramite_excepcional"
 
-  nestedComponent: ComponentOptions = new TableDynamicOptions({
+  nestedComponent: AbstractControlViewOptions = new TableViewOptions({
     title:"Registro 80",
     serverSortTranslate:{
       "persona":["per-nombres","per-apellidos"],
@@ -36,7 +35,7 @@ export class TramiteExcepcionalShowComponent extends ShowComponent {
       "persona": new FormControlConfig({
         label:"Persona",
         type:new TypeLabelOptions({entityName: "persona"}),
-        aux:new RouterLinkOptions({path: "persona-admin", params:{id:"{{persona}})"}}), 
+        wrap:new RouterLinkOptions({path: "persona-admin", params:{id:"{{persona}})"}}), 
       }),
       "per-legajo": new FormControlConfig({
         field:"per-legajo",

@@ -70,6 +70,7 @@ import { LabelComponent } from '@component/label/label.component';
 import { FieldLabelComponent } from '@component/field-label/field-label.component';
 import { FieldTreeLabelComponent } from '@component/field-tree-label/field-tree-label.component';
 import { FieldViewComponent } from '@component/field-view/field-view.component';
+import { AbstractControlViewComponent } from '@component/abstract-control-view/abstract-control-view.component';
 import { FieldWrapComponent } from '@component/field-wrap/field-wrap.component';
 import { FieldTreeComponent } from '@component/field-tree/field-tree.component';
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
@@ -88,7 +89,6 @@ import { DataDefinitionRelLabelService } from '@service/data-definition/data-def
 import { RouteIconComponent } from '@component/route-icon/route-icon.component';
 import { FieldsetOptionsComponent } from '@component/fieldset-options/fieldset-options.component';
 import { EventButtonComponent } from '@component/event-button/event-button.component';
-import { EventIconComponent } from '@component/event-icon/event-icon.component';
 import { FieldWrapCardComponent } from '@component/field-wrap-card/field-wrap-card.component';
 import { FieldWrapRouterLinkComponent } from '@component/field-wrap-router-link/field-wrap-router-link.component';
 import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create.component';
@@ -96,6 +96,8 @@ import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliacione
 import { LinkTextComponent } from '@component/link-text/link-text.component';
 import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin.component';
+import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
+import { EventIconComponent } from '@component/event-icon/event-icon.component';
 
 
 
@@ -120,6 +122,7 @@ import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional
     DialogConfirmComponent,
     FieldWrapComponent,
     FieldViewComponent,
+    AbstractControlViewComponent,
     InputAutocompleteComponent,
     InputCheckboxComponent,
     InputDateComponent,
@@ -164,6 +167,7 @@ import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional
     PersonaAdminComponent,
     TramiteExcepcionalAdminComponent,
     TramiteExcepcionalShowComponent,
+    DepartamentoJudicialAdminArrayComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@ export class TramiteExcepcionalFormGroupFactory implements FormGroupFactory{
 
       //"_delete":new FormControl(null),
     });
+    fg.disable()
     return fg;
   }
 }

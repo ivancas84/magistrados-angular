@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { ComponentOptions } from '@class/component-options';
-import { EventButtonFieldViewOptions, EventIconFieldViewOptions, FieldDateOptions, FieldHiddenOptions, FieldInputDateOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldInputTextOptions, FieldLabelOptions, FieldTextareaOptions, TypeLabelOptions } from '@class/field-type-options';
+import { FieldDateOptions, FieldHiddenOptions, FieldInputDateOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldInputTextOptions, FieldTextareaOptions, TypeLabelOptions } from '@class/field-type-options';
 import { FieldWrapCardOptions } from '@class/field-wrap-options';
 import { FieldWidthOptions } from '@class/field-width-options';
-import { FieldsetDynamicOptions } from '@class/fieldset-dynamic-options';
-import { FormControlConfig, FormControlOption, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
+import { AbstractControlOption, FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
+import { AbstractControlViewOptions, EventButtonViewOptions, FieldsetViewOptions } from '@class/abstract-control-view-options';
 
 @Component({
   selector: 'app-tramite-excepcional-admin',
@@ -17,29 +16,6 @@ export class TramiteExcepcionalAdminComponent extends AdminComponent implements 
   
   readonly entityName: string = "tramite_excepcional"
   inputSearchGo: boolean = false;
-
-  ngOnInit() {
-    super.ngOnInit();  
-    this.form.valueChanges.subscribe(
-      values => {
-        if(values["tramite_excepcional"]["estado"] == "Aprobado"){
-          ((this.config.controls["tramite_excepcional"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#aaff80" 
-        } else {
-          ((this.config.controls["tramite_excepcional"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
-        }
-
-        /*console.log(this.form.get("tramite_excepcional.modificado").value);
-        if(this.form.get("tramite_excepcional.modificado").value
-          || this.form.get("tramite_excepcional.enviado").value
-          || this.form.get("tramite_excepcional.evaluado").value){
-            this.form.get("tramite_excepcional.motivo").disable();
-
-          }*/
-             
-      }
-    )
-  }
-
 
   form: FormGroup = this.fb.group({
     "tramite_excepcional":this.fb.group({
@@ -165,35 +141,56 @@ export class TramiteExcepcionalAdminComponent extends AdminComponent implements 
     })}
   })
 
-  nestedComponents: { [x: string]: ComponentOptions } = {
-    "tramite_excepcional": new FieldsetDynamicOptions({
+  nestedComponents: { [x: string]: AbstractControlViewOptions } = {
+    "tramite_excepcional": new FieldsetViewOptions({
         entityName:"tramite_excepcional",
-        title:"Registro 40 ",
+        title:"Registro 80 ",
         optTitle:[
-          new FormControlOption({
+          new AbstractControlOption({
             config: new FormControlConfig({
               type: new TypeLabelOptions({entityName:"persona"}),
             }),
-            field: (this.form.controls["tramite_excepcional"] as FormGroup).controls["persona"],
+            control: (this.form.controls["tramite_excepcional"] as FormGroup).controls["persona"],
           }),
         ]
       })
   }
 
-  optFooter: FormControlOption[] = [ //eliminar clear
-    new FormControlOption({
-      config: new FormControlConfig({ 
-        type: new EventButtonFieldViewOptions({
-          text: "Aceptar", 
-          action: "submit",
-          color: "primary",
-          fieldEvent: this.optField
-        }) 
-      }),
+  optFooter: AbstractControlOption[] = [ //eliminar clear
+    new AbstractControlOption({
+      viewOptions: new EventButtonViewOptions({
+        text: "Aceptar", 
+        action: "submit",
+        color: "primary",
+        fieldEvent: this.optField
+      }) ,
+      config: new FormGroupConfig({}),
     }),
   ]
 
-  reload(response){
+  ngOnInit() {
+    super.ngOnInit();  
+    this.form.valueChanges.subscribe(
+      values => {
+        if(values["tramite_excepcional"]["estado"] == "Aprobado"){
+          ((this.config.controls["tramite_excepcional"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#aaff80" 
+        } else {
+          ((this.config.controls["tramite_excepcional"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
+        }
+
+        /*console.log(this.form.get("tramite_excepcional.modificado").value);
+        if(this.form.get("tramite_excepcional.modificado").value
+          || this.form.get("tramite_excepcional.enviado").value
+          || this.form.get("tramite_excepcional.evaluado").value){
+            this.form.get("tramite_excepcional.motivo").disable();
+
+          }*/
+             
+      }
+    )
+  }
+
+  reload(){
     this.back();
   }
 }

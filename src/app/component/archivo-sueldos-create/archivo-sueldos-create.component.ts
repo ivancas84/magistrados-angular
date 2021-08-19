@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { ComponentOptions } from '@class/component-options';
-import { FieldInputSelectLabelOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldInputYearMonthOptions } from '@class/field-type-options';
-import { FieldsetDynamicOptions } from '@class/fieldset-dynamic-options';
+import { FieldInputSelectLabelOptions, FieldInputSelectOptions, FieldInputYearMonthOptions } from '@class/field-type-options';
 import { FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
+import { FieldsetViewOptions, AbstractControlViewOptions } from '@class/abstract-control-view-options';
 
 @Component({
   selector: 'app-archivo-sueldos-create',
@@ -56,8 +55,8 @@ export class ArchivoSueldosCreateComponent extends AdminComponent implements OnI
     }
   });
 
-  nestedComponents: { [x: string]: ComponentOptions } = {
-    "archivo_sueldos": new FieldsetDynamicOptions({
+  nestedComponents: { [x: string]: AbstractControlViewOptions } = {
+    "archivo_sueldos": new FieldsetViewOptions({
       entityName:this.entityName,
       title:"Crear archivo de Sueldos ",
     })
@@ -67,8 +66,7 @@ export class ArchivoSueldosCreateComponent extends AdminComponent implements OnI
     return this.dd.post("create", this.entityName, this.serverData());
   }
 
-  reload(response){
-    console.log(response);
+  reload(){
     console.log("visualizar lista de archivos creados ordenados de forma descendiente");
   }
 }

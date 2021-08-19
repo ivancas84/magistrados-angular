@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { ComponentOptions } from '@class/component-options';
-import { EventButtonFieldViewOptions, EventIconFieldViewOptions, FieldDateOptions, FieldHiddenOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldLabelOptions, FieldTextareaOptions, TypeLabelOptions } from '@class/field-type-options';
+import { FieldDateOptions, FieldHiddenOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldTextareaOptions, TypeLabelOptions } from '@class/field-type-options';
 import { FieldWrapCardOptions } from '@class/field-wrap-options';
 import { FieldWidthOptions } from '@class/field-width-options';
-import { FieldsetDynamicOptions } from '@class/fieldset-dynamic-options';
-import { FormControlConfig, FormControlOption, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
+import { AbstractControlOption, FormControlConfig, FormControlOption, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
+import { FieldsetViewOptions, AbstractControlViewOptions, EventButtonViewOptions, EventIconViewOptions } from '@class/abstract-control-view-options';
 
 @Component({
   selector: 'app-persona-admin',
@@ -17,29 +16,6 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
   
   readonly entityName: string = "afiliacion"
   inputSearchGo: boolean = false;
-
-  ngOnInit() {
-    super.ngOnInit();  
-    this.form.valueChanges.subscribe(
-      values => {
-        if(values["afiliacion"]["estado"] == "Aprobado"){
-          ((this.config.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#aaff80" 
-        } else {
-          ((this.config.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
-        }
-
-        /*console.log(this.form.get("afiliacion.modificado").value);
-        if(this.form.get("afiliacion.modificado").value
-          || this.form.get("afiliacion.enviado").value
-          || this.form.get("afiliacion.evaluado").value){
-            this.form.get("afiliacion.motivo").disable();
-
-          }*/
-             
-      }
-    )
-  }
-
 
   form: FormGroup = this.fb.group({
     "afiliacion":this.fb.group({
@@ -62,6 +38,7 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
 
   config: FormStructureConfig = new FormStructureConfig({
     controls: {"afiliacion": new FormGroupConfig({
+   
       controls: {
         "id": new FormControlConfig({
           type: new FieldHiddenOptions(),
@@ -140,35 +117,66 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
     })}
   })
 
-  nestedComponents: { [x: string]: ComponentOptions } = {
-    "afiliacion": new FieldsetDynamicOptions({
+  nestedComponents: { [x: string]: AbstractControlViewOptions } = {
+    "afiliacion": new FieldsetViewOptions({
         entityName:"afiliacion",
         title:"Registro 40 ",
         optTitle:[
-          new FormControlOption({
+          new AbstractControlOption({
             config: new FormControlConfig({
               type: new TypeLabelOptions({entityName:"persona"}),
             }),
-            field: (this.form.controls["afiliacion"] as FormGroup).controls["persona"],
+            control: (this.form.controls["afiliacion"] as FormGroup).controls["persona"],
           }),
         ]
       })
   }
 
-  optFooter: FormControlOption[] = [ //eliminar clear
-    new FormControlOption({
-      config: new FormControlConfig({ 
-        type: new EventButtonFieldViewOptions({
-          text: "Aceptar", 
-          action: "submit",
-          color: "primary",
-          fieldEvent: this.optField
-        }) 
+  optFooter: AbstractControlOption[] = [ //eliminar clear
+    new AbstractControlOption({
+      viewOptions: new EventButtonViewOptions({
+        text: "Aceptar", 
+        action: "submit",
+        color: "primary",
+        fieldEvent: this.optField
       }),
+      config: new FormGroupConfig({}),
+    }),
+
+    new AbstractControlOption({
+      viewOptions: new EventIconViewOptions({
+        icon: "arrow_back", //texto del boton
+        action: "back", //accion del evento a realizar
+        color: "accent",
+        fieldEvent: this.optField
+      }),
+      config: new FormGroupConfig({}),
     }),
   ]
 
-  reload(response){
+  ngOnInit() {
+    super.ngOnInit();  
+    this.form.valueChanges.subscribe(
+      values => {
+        if(values["afiliacion"]["estado"] == "Aprobado"){
+          ((this.config.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#aaff80" 
+        } else {
+          ((this.config.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
+        }
+
+        /*console.log(this.form.get("afiliacion.modificado").value);
+        if(this.form.get("afiliacion.modificado").value
+          || this.form.get("afiliacion.enviado").value
+          || this.form.get("afiliacion.evaluado").value){
+            this.form.get("afiliacion.motivo").disable();
+
+          }*/
+             
+      }
+    )
+  }
+
+  reload(){
     this.back();
   }
 }

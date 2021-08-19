@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, PatternValidator, Validators } from '@angular/forms';
-import { ComponentOptions } from '@class/component-options';
-import { FieldDateOptions, FieldHiddenOptions, FieldInputDateOptions, FieldInputSelectOptions, FieldInputTextOptions, RouteIconFieldViewOptions, TypeLabelOptions } from '@class/field-type-options';
+import { FieldDateOptions, FieldHiddenOptions, FieldInputDateOptions, FieldInputSelectOptions, FieldInputTextOptions, TypeLabelOptions } from '@class/field-type-options';
 import { RouterLinkOptions } from '@class/field-wrap-options';
 import { FieldWidthOptions } from '@class/field-width-options';
-import { FieldsetDynamicOptions } from '@class/fieldset-dynamic-options';
-import { FormArrayConfig, FormConfig, FormControlConfig, FormControlOption, FormControlsConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
-import { TableDynamicOptions } from '@class/table-dynamic-options';
+import { AbstractControlOption, FormArrayConfig, FormControlConfig, FormControlOption, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg, UniqueValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
 import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.class';
 import { TramiteExcepcionalFormGroupFactory } from './tramite-excepcional-form-group-factory.class';
+import { FieldsetViewOptions, AbstractControlViewOptions, TableViewOptions, RouteIconFieldViewOptions } from '@class/abstract-control-view-options';
 
 @Component({
   selector: 'app-persona-admin',
@@ -277,16 +275,18 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
   });
 
 
-  nestedComponents: { [x: string]: ComponentOptions } = {
-    "persona": new FieldsetDynamicOptions({
+  nestedComponents: { [x: string]: AbstractControlViewOptions } = {
+    "persona": new FieldsetViewOptions({
+      pos:0,
       entityName:"persona",
       title:"Persona",
     }),
-    "afiliacion/persona": new TableDynamicOptions({
+    "afiliacion/persona": new TableViewOptions({
+      pos:1,
       title: "Registro 40",
       sortDisabled:["departamento_judicial","organo"],
       optTitle: [
-        new FormControlOption({
+        new AbstractControlOption({
           config: new FormControlConfig({ 
             type: new RouteIconFieldViewOptions({
               icon: "add",
@@ -296,27 +296,28 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
               color:"accent"
             }) 
           }),
-          field: (this.form.controls["persona"] as FormGroup).controls["id"]
+          control: (this.form.controls["persona"] as FormGroup).controls["id"]
         }),
       ]
     }),
-    "tramite_excepcional/persona": new TableDynamicOptions({
+    "tramite_excepcional/persona": new TableViewOptions({
+      pos:2,
       title: "Registro 80",
       sortDisabled:["departamento_judicial","organo"],
-      optTitle: [
-        new FormControlOption({
-          config: new FormControlConfig({ 
-            type: new RouteIconFieldViewOptions({
-              icon: "add",
-              key:  "persona",
-              routerLink: "tramite-excepcional-admin",
-              title: "Agregar Afiliacion",
-              color:"accent"
-            }) 
-          }),
-          field: (this.form.controls["persona"] as FormGroup).controls["id"]
-        }),
-      ]
+      // optTitle: [
+      //   new AbstractControlOption({
+      //     config: new FormControlConfig({
+      //       type: new RouteIconFieldViewOptions({
+      //         icon: "add",
+      //         key:  "persona",
+      //         routerLink: "tramite-excepcional-admin",
+      //         title: "Agregar Afiliacion",
+      //         color:"accent"
+      //       }),
+      //     }),
+      //     field: (this.form.controls["persona"] as FormGroup).controls["id"]
+      //   }),
+      // ]
     }),
   }
 }

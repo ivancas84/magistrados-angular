@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { ComponentOptions } from '@class/component-options';
-import { LinkTextFieldViewOptions } from '@class/field-type-options';
+import { AbstractControlViewOptions, LinkTextFieldViewOptions, TableViewOptions } from '@class/abstract-control-view-options';
 import { FormArrayConfig, FormControlConfig } from '@class/reactive-form-config';
-import { TableDynamicOptions } from '@class/table-dynamic-options';
 import { ShowComponent } from '@component/show/show.component';
 import { FILE_URL } from '@config/app.config';
 import { Observable } from 'rxjs';
@@ -18,7 +16,7 @@ export class ArchivoAfiliacionesShowComponent extends ShowComponent {
   loadLength: boolean = false
   fileUrl = FILE_URL
 
-  nestedComponent: ComponentOptions = new TableDynamicOptions({
+  nestedComponent: AbstractControlViewOptions = new TableViewOptions({
     title:"Archivo Afiliaciones",
     sortDisabled:["archivo"],
     showPaginator:false
