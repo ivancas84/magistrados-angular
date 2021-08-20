@@ -70,7 +70,6 @@ import { LabelComponent } from '@component/label/label.component';
 import { FieldLabelComponent } from '@component/field-label/field-label.component';
 import { FieldTreeLabelComponent } from '@component/field-tree-label/field-tree-label.component';
 import { FieldViewComponent } from '@component/field-view/field-view.component';
-import { AbstractControlViewComponent } from '@component/abstract-control-view/abstract-control-view.component';
 import { FieldWrapComponent } from '@component/field-wrap/field-wrap.component';
 import { FieldTreeComponent } from '@component/field-tree/field-tree.component';
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
@@ -98,6 +97,9 @@ import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
 import { EventIconComponent } from '@component/event-icon/event-icon.component';
+import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload/archivo-sueldos-upload.component';
+import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary.component';
+import { AbstractControlViewComponent } from '@component/abstract-control-view/abstract-control-view.component';
 
 
 
@@ -163,11 +165,13 @@ import { EventIconComponent } from '@component/event-icon/event-icon.component';
     AfiliacionAdminComponent,
     AfiliacionShowComponent,
     ArchivoSueldosCreateComponent,
+    ArchivoSueldosUploadComponent,
     ArchivoAfiliacionesShowComponent,
     PersonaAdminComponent,
     TramiteExcepcionalAdminComponent,
     TramiteExcepcionalShowComponent,
     DepartamentoJudicialAdminArrayComponent,
+    ImporteSummaryComponent,
   ],
   imports: [
     BrowserModule,

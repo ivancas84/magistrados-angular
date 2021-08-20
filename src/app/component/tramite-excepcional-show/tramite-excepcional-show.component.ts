@@ -7,6 +7,7 @@ import { RouterLinkOptions } from '@class/field-wrap-options';
 import { FormArrayConfig, FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { DateValidatorMsg } from '@class/validator-msg';
 import { ShowComponent } from '@component/show/show.component';
+import { debounceTime, map } from 'rxjs/operators';
 import { TramiteExcepcionalFormGroupFactory } from './tramite-excepcional-form-group-factory.class';
 
 @Component({
@@ -15,16 +16,6 @@ import { TramiteExcepcionalFormGroupFactory } from './tramite-excepcional-form-g
 })
 export class TramiteExcepcionalShowComponent extends ShowComponent {
   readonly entityName: string = "tramite_excepcional"
-
-  nestedComponent: AbstractControlViewOptions = new TableViewOptions({
-    title:"Registro 80",
-    serverSortTranslate:{
-      "persona":["per-nombres","per-apellidos"],
-      "departamento_judicial":["dj-codigo"],
-      "organo":["org-descripcion"]
-    },
-    serverSortObligatory:["persona","departamento_judicial","organo"],
-  })
 
   config: FormArrayConfig = new FormArrayConfig({
     factory:new TramiteExcepcionalFormGroupFactory,  
@@ -61,6 +52,9 @@ export class TramiteExcepcionalShowComponent extends ShowComponent {
       }),
       "estado": new FormControlConfig({
         label:"Estado"
+      }),
+      "monto": new FormControlConfig({
+        label:"Monto"
       }),
       "creado": new FormControlConfig({
         label:"Creado",
@@ -177,5 +171,40 @@ export class TramiteExcepcionalShowComponent extends ShowComponent {
       })
     }
   })
+
+  // footer = this.config.factory.formGroup()
+  // footerConfig: FormGroupConfig = new FormGroupConfig({
+  //   controls:{
+  //     "monto": new FormControlConfig()
+  //   }
+  // })
+  
+  nestedComponent: AbstractControlViewOptions = new TableViewOptions({
+    title:"Registro 80",
+    serverSortTranslate:{
+      "persona":["per-nombres","per-apellidos"],
+      "departamento_judicial":["dj-codigo"],
+      "organo":["org-descripcion"]
+    },
+    serverSortObligatory:["persona","departamento_judicial","organo"],
+    config:this.config,
+    fieldset:this.form,
+    //footer:this.footer
+    //footerConfig:this.footerConfig,
+  })
+
+  
+  ngOnInit(){
+    super.ngOnInit()
+    // this.form.valueChanges.pipe(
+    //   debounceTime(100),
+    // ).subscribe(
+    //   value => {
+    //     this.footer.controls["monto"].setValue(   
+    //       value.map(t => t["monto"]).reduce((acc, value) => acc + value, 0).toFixed(2)
+    //    )
+    //   }
+    // );
+  }
 }
 

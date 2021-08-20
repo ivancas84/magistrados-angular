@@ -14,6 +14,7 @@ export class TramiteExcepcionalFormGroupFactory implements FormGroupFactory{
       "desde":new FormControl(),
       "hasta":new FormControl(),
       "motivo":new FormControl(),
+      "monto":new FormControl(),
       "estado":new FormControl(),
       "creado":new FormControl(),
       "enviado":new FormControl(),

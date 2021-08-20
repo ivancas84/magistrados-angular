@@ -16,16 +16,6 @@ import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.clas
 export class AfiliacionShowComponent extends ShowComponent {
   readonly entityName: string = "afiliacion"
 
-  nestedComponent: AbstractControlViewOptions = new TableViewOptions({
-    title:"Registro 40",
-    serverSortTranslate:{
-      "persona":["per-nombres","per-apellidos"],
-      "departamento_judicial":["dj-codigo"],
-      "organo":["org-descripcion"]
-    },
-    serverSortObligatory:["persona","departamento_judicial","organo"],
-  })
-
   config: FormArrayConfig = new FormArrayConfig({
     factory:new AfiliacionFormGroupFactory,  
     controls: {
@@ -173,6 +163,18 @@ export class AfiliacionShowComponent extends ShowComponent {
         }
       })
     }
+  })
+
+  nestedComponent: AbstractControlViewOptions = new TableViewOptions({
+    title:"Registro 40",
+    serverSortTranslate:{
+      "persona":["per-nombres","per-apellidos"],
+      "departamento_judicial":["dj-codigo"],
+      "organo":["org-descripcion"]
+    },
+    serverSortObligatory:["persona","departamento_judicial","organo"],
+    config:this.config,
+    fieldset:this.form
   })
 }
 

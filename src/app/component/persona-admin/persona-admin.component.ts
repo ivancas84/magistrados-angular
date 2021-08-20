@@ -3,7 +3,7 @@ import { FormGroup, PatternValidator, Validators } from '@angular/forms';
 import { FieldDateOptions, FieldHiddenOptions, FieldInputDateOptions, FieldInputSelectOptions, FieldInputTextOptions, TypeLabelOptions } from '@class/field-type-options';
 import { RouterLinkOptions } from '@class/field-wrap-options';
 import { FieldWidthOptions } from '@class/field-width-options';
-import { AbstractControlOption, FormArrayConfig, FormControlConfig, FormControlOption, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
+import { AbstractControlOption, FormArrayConfig, FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg, UniqueValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
 import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.class';
@@ -42,8 +42,6 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
       "telefono_laboral":[null],
       "telefono_particular":[null],
       "fecha_nacimiento":[null],
-
-
       "email":[null],
       "tribunal":[null],
       "cargo":[null],
@@ -280,6 +278,8 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
       pos:0,
       entityName:"persona",
       title:"Persona",
+      config:this.config.controls["persona"],
+      fieldset:this.form.controls["persona"]
     }),
     "afiliacion/persona": new TableViewOptions({
       pos:1,
@@ -298,12 +298,16 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
           }),
           control: (this.form.controls["persona"] as FormGroup).controls["id"]
         }),
-      ]
+      ],
+      config:this.config.controls["afiliacion/persona"],
+      fieldset:this.form.controls["afiliacion/persona"]
     }),
     "tramite_excepcional/persona": new TableViewOptions({
       pos:2,
       title: "Registro 80",
       sortDisabled:["departamento_judicial","organo"],
+      config:this.config.controls["tramite_excepcional/persona"],
+      fieldset:this.form.controls["tramite_excepcional/persona"]
       // optTitle: [
       //   new AbstractControlOption({
       //     config: new FormControlConfig({
