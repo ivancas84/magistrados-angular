@@ -16,7 +16,9 @@ export class _DataDefinitionLabelService {
     switch(entityName) {
       case "afiliacion": { return this.labelAfiliacion(id); }
       case "cargo": { return this.labelCargo(id); }
+      case "configuracion_valor": { return this.labelConfiguracionValor(id); }
       case "departamento_judicial": { return this.labelDepartamentoJudicial(id); }
+      case "fam": { return this.labelFam(id); }
       case "file": { return this.labelFile(id); }
       case "importe_afiliacion": { return this.labelImporteAfiliacion(id); }
       case "importe_tramite_excepcional": { return this.labelImporteTramiteExcepcional(id); }
@@ -47,6 +49,15 @@ export class _DataDefinitionLabelService {
     return ret.trim();
   }
 
+  labelConfiguracionValorRow (row: any): string {
+    if(!row) return null;
+
+    let ret = "";
+    if (row["id"]) ret = ret.trim() + " " + row["id"];
+
+    return ret.trim();
+  }
+
   labelDepartamentoJudicialRow (row: any): string {
     if(!row) return null;
 
@@ -54,6 +65,15 @@ export class _DataDefinitionLabelService {
     if (row["codigo"]) ret = ret.trim() + " " + row["codigo"];
 
     if (row["nombre"]) ret = ret.trim() + " " + row["nombre"];
+
+    return ret.trim();
+  }
+
+  labelFamRow (row: any): string {
+    if(!row) return null;
+
+    let ret = "";
+    if (row["id"]) ret = ret.trim() + " " + row["id"];
 
     return ret.trim();
   }
@@ -184,6 +204,22 @@ export class _DataDefinitionLabelService {
     );
   }
 
+  labelConfiguracionValor(id: string): Observable<any> {
+    return this.dd.get("configuracion_valor", id).pipe(
+      switchMap(
+        row => {
+          if(!row) return of(null);
+          return combineLatest([
+            of(this.labelConfiguracionValorRow(row)),
+          ])
+        }
+      ),
+      map(
+        response => { return (!response)? null : response.join(" "); }
+      )
+    );
+  }
+
   labelDepartamentoJudicial(id: string): Observable<any> {
     return this.dd.get("departamento_judicial", id).pipe(
       switchMap(
@@ -191,6 +227,22 @@ export class _DataDefinitionLabelService {
           if(!row) return of(null);
           return combineLatest([
             of(this.labelDepartamentoJudicialRow(row)),
+          ])
+        }
+      ),
+      map(
+        response => { return (!response)? null : response.join(" "); }
+      )
+    );
+  }
+
+  labelFam(id: string): Observable<any> {
+    return this.dd.get("fam", id).pipe(
+      switchMap(
+        row => {
+          if(!row) return of(null);
+          return combineLatest([
+            of(this.labelFamRow(row)),
           ])
         }
       ),

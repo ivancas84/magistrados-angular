@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { FieldDateOptions, FieldHiddenOptions, FieldInputDateOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldInputTextOptions, FieldTextareaOptions, TypeLabelOptions } from '@class/field-type-options';
 import { FieldWrapCardOptions } from '@class/field-wrap-options';
 import { FieldWidthOptions } from '@class/field-width-options';
-import { AbstractControlOption, FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
+import { FormControlConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
-import { AbstractControlViewOptions, EventButtonViewOptions, FieldsetViewOptions } from '@class/abstract-control-view-options';
+import { FieldWrapCardConfig } from '@component/field-wrap-card/field-wrap-card.component';
+import { ControlDateConfig } from '@component/control-date/control-date.component';
+import { TextareaConfig } from '@component/textarea/textarea.component';
+import { InputSelectConfig } from '@component/input-select/input-select.component';
+import { InputSelectParamConfig } from '@component/input-select-param/input-select-param.component';
+import { InputDateConfig } from '@component/input-date/input-date.component';
+import { InputTextConfig } from '@component/input-text/input-text.component';
+import { TableDynamicConfig } from '@component/table/table-dynamic.component';
+import { ControlLabelConfig } from '@component/control-label/control-label.component';
+
 
 @Component({
   selector: 'app-tramite-excepcional-admin',
@@ -36,156 +44,120 @@ export class TramiteExcepcionalAdminComponent extends AdminComponent implements 
       "enviado":this.fb.control({value:null,disabled:true}),
       "evaluado":this.fb.control({value:null,disabled:true}),
       "modificado":this.fb.control({value:null,disabled:true}),
-
     }),
   }); 
 
   config: FormStructureConfig = new FormStructureConfig({
-    controls: {"tramite_excepcional": new FormGroupConfig({
+    controls: {"tramite_excepcional": new TableDynamicConfig({
+      entityName:"tramite_excepcional",
+      title:"Registro 80 ",
+      optTitle: [
+        {
+          config: new ControlLabelConfig({
+            entityName:"persona",
+          }),
+          control: (this.form.controls["tramite_excepcional"] as FormGroup).controls["persona"],
+        }
+      ],
       controls: {
-        "id": new FormControlConfig({
-          type: new FieldHiddenOptions(),
-        }),
-  
-        "motivo": new FormControlConfig({
-          type: new FieldInputSelectParamOptions({options:["Alta", "Baja", "Pendiente"]}),
+        "motivo": new InputSelectParamConfig({
+          options:["Alta", "Baja", "Pendiente"],
           label: "Motivo",
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"33%"}),
           default:"Alta"
         }),
-        "estado": new FormControlConfig({
-          type: new FieldInputSelectParamOptions({options:['Creado','Enviado','Aprobado','Rechazado']}),
+        "estado": new InputSelectParamConfig({
+          options:['Creado','Enviado','Aprobado','Rechazado'],
           label: "Estado",
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"34%"}),
           default:"Creado"
         }),
-        "monto": new FormControlConfig({
-          type: new FieldInputTextOptions(),
+        "monto": new InputTextConfig({
           label: "Monto",
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"33%"})
         }),
-        "desde": new FormControlConfig({
-          type: new FieldInputDateOptions(),
+        "desde": new InputDateConfig({
           label: "Desde",
           width:new FieldWidthOptions({gtSm:"33%"})
         }),
-        "hasta": new FormControlConfig({
-          type: new FieldInputDateOptions(),
+        "hasta": new InputDateConfig({
           label: "Hasta",
           width:new FieldWidthOptions({gtSm:"34%"})
         }),
-        "sucursal": new FormControlConfig({
-          type: new FieldInputSelectOptions({entityName:"sucursal"}),
+        "sucursal": new InputSelectConfig({
+          entityName:"sucursal",
           label: "Sucursal",
           width:new FieldWidthOptions({gtSm:"33%"}),
           default:1
         }),
 
-        "codigo": new FormControlConfig({
-          type: new FieldInputSelectParamOptions({options:[161, 162]}),
+        "codigo": new InputSelectParamConfig({
+          options:[161, 162],
           label: "Código",
           validatorMsgs: [ new RequiredValidatorMsg, ],
+          width:new FieldWidthOptions()
         }),
-        "organo": new FormControlConfig({
-          type: new FieldInputSelectOptions({
-            entityName: "organo",
-          }),
+        "organo": new InputSelectConfig({
+          entityName: "organo",
           label: "Órgano",
           validatorMsgs: [ new RequiredValidatorMsg, ],
+          width:new FieldWidthOptions()
         }),
-        "departamento_judicial": new FormControlConfig({
-          type: new FieldInputSelectOptions({
-            entityName: "departamento_judicial",
-          }),
+        "departamento_judicial": new InputSelectConfig({
+          entityName: "departamento_judicial",
           label: "Departamento Judicial",
           validatorMsgs: [ new RequiredValidatorMsg, ],
+          width:new FieldWidthOptions()
         }),
-        "departamento_judicial_informado": new FormControlConfig({
-          type: new FieldInputSelectOptions({
-            entityName: "departamento_judicial",
-          }),
+        "departamento_judicial_informado": new InputSelectConfig({
+          entityName: "departamento_judicial",
           label: "Departamento Judicial Informado",
+          width:new FieldWidthOptions()
         }),
-        "observaciones": new FormControlConfig({
-          type: new FieldTextareaOptions(),
+        "observaciones": new TextareaConfig({
           label: "Observaciones",
           width:new FieldWidthOptions({gtSm:"100%", sm:"100%"})
         }),
-        "persona": new FormControlConfig({
-          type: new FieldHiddenOptions(),
+        "persona": new FormControlConfig(),
+        "creado": new FieldWrapCardConfig({
+          backgroundColor:"#17a2b8",
+          config: new ControlDateConfig,
+          label:"Creado",
+          width:new FieldWidthOptions()
         }),
-        "creado": new FormControlConfig({
-          wrap: new FieldWrapCardOptions({ backgroundColor:"#17a2b8" }),
-          type: new FieldDateOptions(),
-          label:"Creado"
+        "enviado": new FieldWrapCardConfig({
+          backgroundColor:"#007bff",
+          config: new ControlDateConfig,
+          label:"Enviado",
+          width:new FieldWidthOptions()
         }),
-        "enviado": new FormControlConfig({
-          wrap: new FieldWrapCardOptions({ backgroundColor:"#007bff" }),
-          type: new FieldDateOptions(),
-          label:"Enviado"
+        "evaluado": new FieldWrapCardConfig({
+          config: new ControlDateConfig,
+          label:"Evaluado",
+          width:new FieldWidthOptions()
         }),
-        "evaluado": new FormControlConfig({
-          wrap: new FieldWrapCardOptions(),
-          type: new FieldDateOptions(),
-          label:"Evaluado"
-        }),
-        "modificado": new FormControlConfig({
-          wrap: new FieldWrapCardOptions({ backgroundColor:"#6c757d" }),
-          type: new FieldDateOptions(),
-          label:"Modificado"
+        "modificado": new FieldWrapCardConfig({
+          backgroundColor:"#6c757d",
+          config: new ControlDateConfig,
+          label:"Modificado",
+          width:new FieldWidthOptions()
         }),
       }
     })}
   })
-
-  nestedComponents: { [x: string]: AbstractControlViewOptions } = {
-    "tramite_excepcional": new FieldsetViewOptions({
-        entityName:"tramite_excepcional",
-        title:"Registro 80 ",
-        optTitle:[
-          new AbstractControlOption({
-            config: new FormControlConfig({
-              type: new TypeLabelOptions({entityName:"persona"}),
-            }),
-            control: (this.form.controls["tramite_excepcional"] as FormGroup).controls["persona"],
-          }),
-        ]
-      })
-  }
-
-  optFooter: AbstractControlOption[] = [ //eliminar clear
-    new AbstractControlOption({
-      viewOptions: new EventButtonViewOptions({
-        text: "Aceptar", 
-        action: "submit",
-        color: "primary",
-        fieldEvent: this.optField
-      }) ,
-      config: new FormGroupConfig({}),
-    }),
-  ]
 
   ngOnInit() {
     super.ngOnInit();  
     this.form.valueChanges.subscribe(
       values => {
         if(values["tramite_excepcional"]["estado"] == "Aprobado"){
-          ((this.config.controls["tramite_excepcional"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#aaff80" 
+          this.config.controls["tramite_excepcional"].controls["evaluado"].backgroundColor = "#aaff80" 
         } else {
-          ((this.config.controls["tramite_excepcional"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
+          this.config.controls["tramite_excepcional"].controls["evaluado"].backgroundColor = "#ff8080" 
         }
-
-        /*console.log(this.form.get("tramite_excepcional.modificado").value);
-        if(this.form.get("tramite_excepcional.modificado").value
-          || this.form.get("tramite_excepcional.enviado").value
-          || this.form.get("tramite_excepcional.evaluado").value){
-            this.form.get("tramite_excepcional.motivo").disable();
-
-          }*/
-             
       }
     )
   }

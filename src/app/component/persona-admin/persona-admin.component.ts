@@ -1,21 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, PatternValidator, Validators } from '@angular/forms';
-import { FieldDateOptions, FieldHiddenOptions, FieldInputDateOptions, FieldInputSelectOptions, FieldInputTextOptions, TypeLabelOptions } from '@class/field-type-options';
-import { RouterLinkOptions } from '@class/field-wrap-options';
 import { FieldWidthOptions } from '@class/field-width-options';
-import { AbstractControlOption, FormArrayConfig, FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
+import { FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg, UniqueValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
 import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.class';
 import { TramiteExcepcionalFormGroupFactory } from './tramite-excepcional-form-group-factory.class';
-import { FieldsetViewOptions, AbstractControlViewOptions, TableViewOptions, RouteIconFieldViewOptions } from '@class/abstract-control-view-options';
+import { InputTextConfig } from '@component/input-text/input-text.component';
+import { FieldsetDynamicConfig } from '@component/fieldset/fieldset-dynamic.component';
+import { InputSelectConfig } from '@component/input-select/input-select.component';
+import { InputDateConfig } from '@component/input-date/input-date.component';
+import { TableDynamicConfig } from '@component/table/table-dynamic.component';
+import { ControlValueConfig } from '@component/control-value/control-value.component';
+import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/field-wrap-router-link.component';
+import { ControlLabelConfig } from '@component/control-label/control-label.component';
+import { ControlDateConfig } from '@component/control-date/control-date.component';
+import { RouteIconConfig } from '@component/route-icon/route-icon.component';
+
+
 
 @Component({
   selector: 'app-persona-admin',
   templateUrl: '../../core/component/admin/admin.component.html',
 })
 export class PersonaAdminComponent extends AdminComponent implements OnInit{
-
 
   readonly entityName: string = "persona"
   
@@ -50,44 +58,40 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
     "tramite_excepcional/persona": this.fb.array([]),
   });
 
-
   config: FormStructureConfig = new FormStructureConfig({
     controls: {
-      "persona": new FormGroupConfig({
-        position:1,
+      "persona": new FieldsetDynamicConfig({
+        title: "Persona",
+        position: 1,
         controls: {
-          "id": new FormControlConfig({
-            type: new FieldHiddenOptions(),
-          }),
-          "nombres": new FormControlConfig({
-            type: new FieldInputTextOptions(),
+          "nombres": new InputTextConfig({
             label: "Nombres",
             position:1,
+            width:new FieldWidthOptions()
           }),
-          "apellidos": new FormControlConfig({
-            type: new FieldInputTextOptions(),
+          "apellidos": new InputTextConfig({
             label: "Apellidos",
-            position:2   
+            position:2,
+            width:new FieldWidthOptions()
           }),
-          "legajo": new FormControlConfig({
-            type: new FieldInputTextOptions(),
+          "legajo": new InputTextConfig({
             label: "Legajo",
             position:3,  
             validatorMsgs: [
               new RequiredValidatorMsg,
               new UniqueValidatorMsg
-            ]
+            ],
+            width:new FieldWidthOptions()
           }),
-          "tipo_documento": new FormControlConfig({
+          "tipo_documento": new InputSelectConfig({
             label: "Tipo Documento",
             position:4,
-            type: new FieldInputSelectOptions({entityName:"tipo_documento"}),
+            entityName:"tipo_documento",
             width:new FieldWidthOptions({gtSm:"10%", sm:"15%"})
           }),
-          "numero_documento": new FormControlConfig({
+          "numero_documento": new InputTextConfig({
             label: "DNI",
             position:5,
-            type: new FieldInputTextOptions(),
             width:new FieldWidthOptions({
               gtSm: "15%",
               sm: "35%",
@@ -99,43 +103,41 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
               })
             ],
           }),
-          "telefono_laboral": new FormControlConfig({
+          "telefono_laboral": new InputTextConfig({
             label: "Telefono Laboral",
             position:6,
-            type: new FieldInputTextOptions(),
+            width:new FieldWidthOptions()
+
           }),
-          "telefono_particular": new FormControlConfig({
+          "telefono_particular": new InputTextConfig({
             label: "Telefono Particular",
             position:6,
-            type: new FieldInputTextOptions(),
+            width:new FieldWidthOptions()
           }),
-          "fecha_nacimiento": new FormControlConfig({
+          "fecha_nacimiento": new InputDateConfig({
             position:7,
-            type: new FieldInputDateOptions,
             label: "Fecha Nacimiento",
+            width:new FieldWidthOptions()
           }),
-          "email": new FormControlConfig({
+          "email": new InputTextConfig({
             position:8,
-            type: new FieldInputTextOptions(),
             label: "Email",
             validatorMsgs: [
               new PatternValidator,
             ],
+            width:new FieldWidthOptions()
           }),
-          "tribunal": new FormControlConfig({
+          "tribunal": new InputTextConfig({
             position:9,
-            type: new FieldInputTextOptions(),
             label: "Tribunal",
             width:new FieldWidthOptions({
               gtSm: "50%",
               //sm: "15%"
             })  
           }),
-          "cargo": new FormControlConfig({
+          "cargo": new InputSelectConfig({
             position:10,
-            type: new FieldInputSelectOptions({
-              entityName: "cargo",
-            }),
+            entityName: "cargo",
             label: "Cargo",
             width:new FieldWidthOptions({
               gtSm: "50%",
@@ -145,184 +147,140 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
         }
       }),
 
-      "afiliacion/persona": new FormArrayConfig({
+      "afiliacion/persona": new TableDynamicConfig({
         order:  {"creado":"desc"},
         factory:new AfiliacionFormGroupFactory,  
         position:2,
-        controls:{
-          "id": new FormControlConfig({
-            type: new FieldHiddenOptions
+        title: "Registro 40",
+        sortDisabled:["departamento_judicial","organo"],
+        optTitle: [
+          new RouteIconConfig({
+            icon: "add",
+            key:  "persona",
+            routerLink: "afiliacion-admin",
+            title: "Agregar Afiliacion",
+            color:"accent",
+            control: (this.form.controls["persona"] as FormGroup).controls["id"]
+          })
+        ],
+        controls: {
+          "motivo": new FieldWrapRouterLinkConfig({
+            label:"Motivo",
+            path:"afiliacion-admin",
+            config: new ControlValueConfig({
+               label:"Motivo"
+            })
           }),
-          "motivo": new FormControlConfig({
-            label: "Motivo",
-            wrap: new RouterLinkOptions({path:"afiliacion-admin"})
-          }),
-          "estado": new FormControlConfig({
+          "estado": new ControlValueConfig({
             label: "Estado",
           }),
-          "codigo": new FormControlConfig({
-            label: "Cód"
+          "codigo": new ControlValueConfig({
+            label: "Cód",
           }),
-          "departamento_judicial": new FormControlConfig({
+          "departamento_judicial": new ControlLabelConfig({
             label: "Departamento",
-            type:new TypeLabelOptions({entityName:"departamento_judicial"})
+            entityName:"departamento_judicial"
           }),
-          "organo": new FormControlConfig({
+          "organo": new ControlLabelConfig({
             label: "Organo",
-            type:new TypeLabelOptions({entityName:"organo"})
+            entityName:"organo"
           }),
-          "creado": new FormControlConfig({
+          "creado": new ControlDateConfig({
             label: "Creado",
-            type:new FieldDateOptions({
-              format: "dd/MM/yyyy HH:mm"
-            })
+            format: "dd/MM/yyyy HH:mm"
           }),
-          "enviado": new FormControlConfig({
+          "enviado": new ControlDateConfig({
             label: "Enviado",
-            type:new FieldDateOptions({
-              format: "dd/MM/yyyy HH:mm"
-            })
+            format: "dd/MM/yyyy HH:mm"
           }),
-          "evaluado": new FormControlConfig({
+          "evaluado": new ControlDateConfig({
             label: "Evaluado",
-            type:new FieldDateOptions({
-              format: "dd/MM/yyyy HH:mm"
-            })
+            format: "dd/MM/yyyy HH:mm"
           }),
-          "modificado": new FormControlConfig({
+          "modificado": new ControlDateConfig({
             label: "Modificado",
-            type:new FieldDateOptions({
-              format: "dd/MM/yyyy HH:mm"
-            })
+            format: "dd/MM/yyyy HH:mm"
           }),
-          "observaciones": new FormControlConfig({
-            label: "Observaciones",
-  
-          }),
+          "observaciones": new ControlValueConfig({
+             label: "Observaciones",
+          })
         }
+       
       }),
 
-      "tramite_excepcional/persona": new FormArrayConfig({
+      "tramite_excepcional/persona": new TableDynamicConfig({
         order:  {"creado":"desc"},
         factory:new TramiteExcepcionalFormGroupFactory,  
-        position:3,
+        position:2,
+        title: "Registro 80",
+        sortDisabled:["departamento_judicial","organo"],
         controls:{
-          "id": new FormControlConfig({
-            type: new FieldHiddenOptions
+          "motivo": new FieldWrapRouterLinkConfig({
+            label:"Motivo",
+            path:"afiliacion-admin",
+            config: new ControlValueConfig({
+               label:"Motivo"
+            })
           }),
-          "motivo": new FormControlConfig({
-            label: "Motivo",
-            wrap: new RouterLinkOptions({path:"tramite-excepcional-admin"})
-          }),
-          "estado": new FormControlConfig({
+          "estado": new ControlValueConfig({
             label: "Estado",
           }),
-          "codigo": new FormControlConfig({
-            label: "Cód"
+          "codigo": new ControlValueConfig({
+            label: "Cód",
           }),
-          "departamento_judicial": new FormControlConfig({
+          "departamento_judicial": new ControlLabelConfig({
             label: "Departamento",
-            type:new TypeLabelOptions({entityName:"departamento_judicial"})
+            entityName:"departamento_judicial"
           }),
-          "organo": new FormControlConfig({
+          "organo": new ControlLabelConfig({
             label: "Organo",
-            type:new TypeLabelOptions({entityName:"organo"})
+            entityName:"organo"
           }),
-          
-          "creado": new FormControlConfig({
+          "creado": new ControlDateConfig({
             label: "Creado",
-            type:new FieldDateOptions({
-              format: "dd/MM/yyyy HH:mm"
-            })
+            format: "dd/MM/yyyy HH:mm"
           }),
-          "enviado": new FormControlConfig({
+          "enviado": new ControlDateConfig({
             label: "Enviado",
-            type:new FieldDateOptions({
-              format: "dd/MM/yyyy HH:mm"
-            })
+            format: "dd/MM/yyyy HH:mm"
           }),
-          "evaluado": new FormControlConfig({
+          "evaluado": new ControlDateConfig({
             label: "Evaluado",
-            type:new FieldDateOptions({
-              format: "dd/MM/yyyy HH:mm"
-            })
+            format: "dd/MM/yyyy HH:mm"
           }),
-          "modificado": new FormControlConfig({
+          "modificado": new ControlDateConfig({
             label: "Modificado",
-            type:new FieldDateOptions({
-              format: "dd/MM/yyyy HH:mm"
-            })
+            format: "dd/MM/yyyy HH:mm"
           }),
-          "observaciones": new FormControlConfig({
-            label: "Observaciones",
+          "observaciones": new ControlValueConfig({
+             label: "Observaciones",
           }),
-          "desde": new FormControlConfig({
+          "desde": new ControlDateConfig({
             label: "Desde",
-            type:new FieldDateOptions()
           }),
-          "hasta": new FormControlConfig({
+          "hasta": new ControlDateConfig({
             label: "Hasta",
-            type:new FieldDateOptions()
           }),
-          "monto": new FormControlConfig({
+          "monto": new ControlDateConfig({
             label: "Monto",
           }),
-        }
+        },
+        optTitle: [
+          new RouteIconConfig({
+            icon: "add",
+            key:  "persona",
+            routerLink: "tramite-excepcional-admin",
+            title: "Agregar Registro 80",
+            color:"accent",
+            control: (this.form.controls["persona"] as FormGroup).controls["id"]
+          }),
+          
+        ],
+   
       }),
     }
   });
 
 
-  nestedComponents: { [x: string]: AbstractControlViewOptions } = {
-    "persona": new FieldsetViewOptions({
-      pos:0,
-      entityName:"persona",
-      title:"Persona",
-      config:this.config.controls["persona"],
-      fieldset:this.form.controls["persona"]
-    }),
-    "afiliacion/persona": new TableViewOptions({
-      pos:1,
-      title: "Registro 40",
-      sortDisabled:["departamento_judicial","organo"],
-      optTitle: [
-        new AbstractControlOption({
-          config: new FormControlConfig({ 
-            type: new RouteIconFieldViewOptions({
-              icon: "add",
-              key:  "persona",
-              routerLink: "afiliacion-admin",
-              title: "Agregar Afiliacion",
-              color:"accent"
-            }) 
-          }),
-          control: (this.form.controls["persona"] as FormGroup).controls["id"]
-        }),
-      ],
-      config:this.config.controls["afiliacion/persona"],
-      fieldset:this.form.controls["afiliacion/persona"]
-    }),
-    "tramite_excepcional/persona": new TableViewOptions({
-      pos:2,
-      title: "Registro 80",
-      sortDisabled:["departamento_judicial","organo"],
-      config:this.config.controls["tramite_excepcional/persona"],
-      fieldset:this.form.controls["tramite_excepcional/persona"]
-      // optTitle: [
-      //   new AbstractControlOption({
-      //     config: new FormControlConfig({
-      //       type: new RouteIconFieldViewOptions({
-      //         icon: "add",
-      //         key:  "persona",
-      //         routerLink: "tramite-excepcional-admin",
-      //         title: "Agregar Afiliacion",
-      //         color:"accent"
-      //       }),
-      //     }),
-      //     field: (this.form.controls["persona"] as FormGroup).controls["id"]
-      //   }),
-      // ]
-    }),
-  }
 }
 

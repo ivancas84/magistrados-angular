@@ -52,7 +52,6 @@ import { DialogAlertComponent } from '@component/dialog-alert/dialog-alert.compo
 import { DialogConfirmComponent } from '@component/dialog-confirm/dialog-confirm.component';
 import { InputAutocompleteComponent } from '@component/input-autocomplete/input-autocomplete.component';
 import { InputDateComponent } from '@component/input-date/input-date.component';
-import { InputNumberComponent } from '@component/input-number/input-number.component';
 import { InputSelectCheckboxComponent } from '@component/input-select-checkbox/input-select-checkbox.component';
 import { InputSelectComponent } from '@component/input-select/input-select.component';
 import { InputSelectValueComponent } from '@component/input-select-value/input-select-value.component';
@@ -69,7 +68,6 @@ import { MenuComponent } from '@component/menu/menu.component';
 import { LabelComponent } from '@component/label/label.component';
 import { FieldLabelComponent } from '@component/field-label/field-label.component';
 import { FieldTreeLabelComponent } from '@component/field-tree-label/field-tree-label.component';
-import { FieldViewComponent } from '@component/field-view/field-view.component';
 import { FieldWrapComponent } from '@component/field-wrap/field-wrap.component';
 import { FieldTreeComponent } from '@component/field-tree/field-tree.component';
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
@@ -100,6 +98,14 @@ import { EventIconComponent } from '@component/event-icon/event-icon.component';
 import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload/archivo-sueldos-upload.component';
 import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary.component';
 import { AbstractControlViewComponent } from '@component/abstract-control-view/abstract-control-view.component';
+import { ControlDirective } from '@directive/control.directive';
+import { ControlValueComponent } from '@component/control-value/control-value.component';
+import { ControlLabelComponent } from '@component/control-label/control-label.component';
+import { ControlDateComponent } from '@component/control-date/control-date.component';
+import { ViaticoAdminComponent } from '@component/viatico-admin/viatico-admin.component';
+import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
+import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
+import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-valor-admin-array/configuracion-valor-admin-array.component';
 
 
 
@@ -123,12 +129,10 @@ import { AbstractControlViewComponent } from '@component/abstract-control-view/a
     DialogAlertComponent,
     DialogConfirmComponent,
     FieldWrapComponent,
-    FieldViewComponent,
     AbstractControlViewComponent,
     InputAutocompleteComponent,
     InputCheckboxComponent,
     InputDateComponent,
-    InputNumberComponent,
     InputSelectCheckboxComponent,
     InputSelectComponent,
     InputSelectValueComponent,
@@ -160,6 +164,10 @@ import { AbstractControlViewComponent } from '@component/abstract-control-view/a
     SearchDynamicComponent,
     ErrorUniqueRouteComponent,
     RelLabelComponent,
+    ControlDirective,
+    ControlValueComponent,
+    ControlLabelComponent,
+    ControlDateComponent,
     //DynamicTableComponent,
 
     AfiliacionAdminComponent,
@@ -172,6 +180,10 @@ import { AbstractControlViewComponent } from '@component/abstract-control-view/a
     TramiteExcepcionalShowComponent,
     DepartamentoJudicialAdminArrayComponent,
     ImporteSummaryComponent,
+    SucursalAdminArrayComponent,
+    TipoDocumentoAdminArrayComponent,
+    ViaticoAdminComponent,
+    ConfiguracionValorAdminArrayComponent
   ],
   imports: [
     BrowserModule,

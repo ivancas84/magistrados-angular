@@ -4,7 +4,7 @@ import { FieldWidthOptions } from '@class/field-width-options';
 import { FormArrayConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg, UniqueValidatorMsg } from '@class/validator-msg';
 import { ShowComponent } from '@component/show/show.component';
-import { DepartamentoJudicialFormGroupFactory } from './departamento-judicial-form-group-factory.class';
+import { SucursalFormGroupFactory } from './sucursal-form-group-factory.class';
 import { TableDynamicConfig } from '@component/table/table-dynamic.component';
 import { InputTextConfig } from '@component/input-text/input-text.component';
 import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
@@ -13,22 +13,17 @@ import { EventIconConfig } from '@component/event-icon/event-icon.component';
 
 
 @Component({
-  selector: 'app-departamento-judicial-admin-array',
+  selector: 'app-sucursal-admin-array',
   templateUrl: '../../core/component/show/show.component.html',
 })
-export class DepartamentoJudicialAdminArrayComponent extends ShowComponent {
-  readonly entityName: string = "departamento_judicial"
+export class SucursalAdminArrayComponent extends ShowComponent {
+  readonly entityName: string = "sucursal"
 
   config: FormArrayConfig = new TableDynamicConfig({
-    factory:new DepartamentoJudicialFormGroupFactory(this.validators),  
+    factory:new SucursalFormGroupFactory(this.validators),  
     controls: {
-      "codigo": new InputTextConfig({
-        label:"Código",
-        validatorMsgs: [new RequiredValidatorMsg, new UniqueValidatorMsg],
-        showLabel:false
-      }),
-      "nombre": new InputTextConfig({
-        label:"Nombre",
+      "descripcion": new InputTextConfig({
+        label:"Descripción",
         validatorMsgs: [new RequiredValidatorMsg, new UniqueValidatorMsg],
         showLabel:false
       }),

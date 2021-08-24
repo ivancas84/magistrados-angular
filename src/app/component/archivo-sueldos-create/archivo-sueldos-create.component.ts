@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { FieldInputSelectLabelOptions, FieldInputSelectOptions, FieldInputYearMonthOptions } from '@class/field-type-options';
-import { FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
+import { FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
-import { FieldsetViewOptions, AbstractControlViewOptions } from '@class/abstract-control-view-options';
+import { FieldsetDynamicConfig } from '@component/fieldset/fieldset-dynamic.component';
+import { InputYmConfig } from '@component/input-ym/input-ym.component';
+import { InputSelectConfig } from '@component/input-select/input-select.component';
+import { InputSelectLabelConfig } from '@component/input-select-label/input-select-label.component';
+import { FieldWidthOptions } from '@class/field-width-options';
 
 @Component({
   selector: 'app-archivo-sueldos-create',
@@ -28,39 +31,32 @@ export class ArchivoSueldosCreateComponent extends AdminComponent implements OnI
 
   config: FormStructureConfig = new FormStructureConfig({
     controls: {
-      "archivo_sueldos": new FormGroupConfig({
+      "archivo_sueldos": new FieldsetDynamicConfig({
+        entityName:this.entityName,
+        title:"Crear archivo de Sueldos ",
         controls:{
-          "periodo": new FormControlConfig({
-            type: new FieldInputYearMonthOptions(),
+          "periodo": new InputYmConfig({
             label: "Período",
             validatorMsgs: [ new RequiredValidatorMsg, ],
+            width: new FieldWidthOptions()
           }),
-          "organo": new FormControlConfig({
-            type: new FieldInputSelectOptions({
-              entityName: "organo",
-            }),
+          "organo": new InputSelectConfig({
+            entityName: "organo",
             label: "Órgano",
             validatorMsgs: [ new RequiredValidatorMsg, ],
+            width: new FieldWidthOptions()
           }),
-          "tipo": new FormControlConfig({
-            type: new FieldInputSelectLabelOptions({
-              options:  [{id:"afiliacion",label:"Registro 40"}, {id:"tramite_excepcional", label:"Registro 80"}],
-            }),
+          "tipo": new InputSelectLabelConfig({
+            options:  [{id:"afiliacion",label:"Registro 40"}, {id:"tramite_excepcional", label:"Registro 80"}],
             label: "Tipo",
             validatorMsgs: [ new RequiredValidatorMsg, ],
+            width: new FieldWidthOptions()
           })
-
         }
       })
     }
   });
 
-  nestedComponents: { [x: string]: AbstractControlViewOptions } = {
-    "archivo_sueldos": new FieldsetViewOptions({
-      entityName:this.entityName,
-      title:"Crear archivo de Sueldos ",
-    })
-  }
   
   persist(): Observable<any> {
     return this.dd.post("create", this.entityName, this.serverData());

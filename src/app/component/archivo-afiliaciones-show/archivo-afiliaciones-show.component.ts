@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { AbstractControlViewOptions, LinkTextFieldViewOptions, TableViewOptions } from '@class/abstract-control-view-options';
 import { FormArrayConfig, FormControlConfig } from '@class/reactive-form-config';
+import { ControlValueConfig } from '@component/control-value/control-value.component';
+import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/field-wrap-router-link.component';
+import { LinkTextComponent, LinkTextConfig } from '@component/link-text/link-text.component';
 import { ShowComponent } from '@component/show/show.component';
+import { TableDynamicComponent, TableDynamicConfig } from '@component/table/table-dynamic.component';
 import { FILE_URL } from '@config/app.config';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -16,22 +19,17 @@ export class ArchivoAfiliacionesShowComponent extends ShowComponent {
   loadLength: boolean = false
   fileUrl = FILE_URL
 
-  nestedComponent: AbstractControlViewOptions = new TableViewOptions({
+  config: FormArrayConfig = new TableDynamicConfig({
     title:"Archivo Afiliaciones",
     sortDisabled:["archivo"],
-    showPaginator:false
-  })
-
-  config: FormArrayConfig = new FormArrayConfig({
+    showPaginator:false,
     factory:new ArchivoAfiliacionesFormGroupFactory,  
     controls: {
-      "archivo": new FormControlConfig({
+      "archivo": new LinkTextConfig({
         label:"Archivo",
-        type: new LinkTextFieldViewOptions({
-          download: true,
-          prefix:this.fileUrl,
-          target: "_blank"
-        })
+        download: true,
+        prefix:this.fileUrl,
+        target: "_blank"
       }),
     }
   })

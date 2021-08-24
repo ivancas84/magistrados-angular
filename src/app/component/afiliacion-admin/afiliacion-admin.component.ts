@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { FieldDateOptions, FieldHiddenOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldTextareaOptions, TypeLabelOptions } from '@class/field-type-options';
-import { FieldWrapCardOptions } from '@class/field-wrap-options';
 import { FieldWidthOptions } from '@class/field-width-options';
-import { AbstractControlOption, FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
+import { FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
-import { FieldsetViewOptions, AbstractControlViewOptions, EventButtonViewOptions, EventIconViewOptions } from '@class/abstract-control-view-options';
+import { ControlLabelConfig } from '@component/control-label/control-label.component';
+import { EventButtonConfig } from '@component/event-button/event-button.component';
+import { EventIconConfig } from '@component/event-icon/event-icon.component';
+import { FieldsetDynamicConfig } from '@component/fieldset/fieldset-dynamic.component';
+import { InputSelectParamConfig } from '@component/input-select-param/input-select-param.component';
+import { InputSelectConfig } from '@component/input-select/input-select.component';
+import { TextareaConfig } from '@component/textarea/textarea.component';
+import { FieldWrapCardConfig } from '@component/field-wrap-card/field-wrap-card.component';
+import { ControlDateConfig } from '@component/control-date/control-date.component';
+import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
 
 @Component({
   selector: 'app-persona-admin',
@@ -37,133 +44,111 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
   }); 
 
   config: FormStructureConfig = new FormStructureConfig({
-    controls: {"afiliacion": new FormGroupConfig({
-   
-      controls: {
-        "id": new FormControlConfig({
-          type: new FieldHiddenOptions(),
+    controls: {"afiliacion": new FieldsetDynamicConfig({
+      entityName:"afiliacion",
+      title:"Registro 40 ",
+      optTitle:[
+        new ControlLabelConfig({
+          entityName:"persona",
+          control: (this.form.controls["afiliacion"] as FormGroup).controls["persona"],
         }),
-  
-        "motivo": new FormControlConfig({
-          type: new FieldInputSelectParamOptions({options:["Alta", "Baja", "Pendiente"]}),
+      ],
+      controls: {
+        "motivo": new InputSelectParamConfig({
+          options:["Alta", "Baja", "Pendiente"],
           label: "Motivo",
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"33%"})
         }),
-        "estado": new FormControlConfig({
-          type: new FieldInputSelectParamOptions({options:['Creado','Enviado','Aprobado','Rechazado']}),
+        "estado": new InputSelectParamConfig({
+          options:['Creado','Enviado','Aprobado','Rechazado'],
           label: "Estado",
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"34%"})
         }),
-        "codigo": new FormControlConfig({
-          type: new FieldInputSelectParamOptions({options:[161, 162]}),
+        "codigo": new InputSelectParamConfig({
+          options:[161, 162],
           label: "Código",
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"33%"})        
         }),
-        "organo": new FormControlConfig({
-          type: new FieldInputSelectOptions({
-            entityName: "organo",
-          }),
+        "organo": new InputSelectConfig({
+          entityName: "organo",
           label: "Órgano",
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"33%"})
         }),
-        "departamento_judicial": new FormControlConfig({
-          type: new FieldInputSelectOptions({
-            entityName: "departamento_judicial",
-          }),
+        "departamento_judicial": new InputSelectConfig({
+          entityName: "departamento_judicial",
           label: "Departamento Judicial",
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"34%"})
         }),
-        "departamento_judicial_informado": new FormControlConfig({
-          type: new FieldInputSelectOptions({
-            entityName: "departamento_judicial",
-          }),
+        "departamento_judicial_informado": new InputSelectConfig({
+          entityName: "departamento_judicial",
           label: "Departamento Judicial Informado",
           width:new FieldWidthOptions({gtSm:"33%"})
         }),
-        "observaciones": new FormControlConfig({
-          type: new FieldTextareaOptions(),
+        "observaciones": new TextareaConfig({
           label: "Observaciones",
           width:new FieldWidthOptions({gtSm:"100%", sm:"100%"})
         }),
-        "persona": new FormControlConfig({
-          type: new FieldHiddenOptions(),
+        "creado": new FieldWrapCardConfig({
+          backgroundColor:"#17a2b8",
+          label:"Creado",
+          config: new ControlDateConfig(),
+          width:new FieldWidthOptions()
         }),
-        "creado": new FormControlConfig({
-          wrap: new FieldWrapCardOptions({ backgroundColor:"#17a2b8" }),
-          type: new FieldDateOptions(),
-          label:"Creado"
+        "enviado": new FieldWrapCardConfig({
+          backgroundColor:"#007bff",
+          label:"Enviado",
+          config: new ControlDateConfig(),
+          width:new FieldWidthOptions()
         }),
-        "enviado": new FormControlConfig({
-          wrap: new FieldWrapCardOptions({ backgroundColor:"#007bff" }),
-          type: new FieldDateOptions(),
-          label:"Enviado"
+        "evaluado": new FieldWrapCardConfig({
+          label:"Evaluado",
+          config: new ControlDateConfig(),
+          width:new FieldWidthOptions()
+
         }),
-        "evaluado": new FormControlConfig({
-          wrap: new FieldWrapCardOptions(),
-          type: new FieldDateOptions(),
-          label:"Evaluado"
-        }),
-        "modificado": new FormControlConfig({
-          wrap: new FieldWrapCardOptions({ backgroundColor:"#6c757d" }),
-          type: new FieldDateOptions(),
-          label:"Modificado"
+        "modificado": new FieldWrapCardConfig({
+          backgroundColor:"#6c757d",
+          label:"Modificado",
+          config: new ControlDateConfig(),
+          width:new FieldWidthOptions()
+
         }),
       }
     })}
   })
-
-  nestedComponents: { [x: string]: AbstractControlViewOptions } = {
-    "afiliacion": new FieldsetViewOptions({
-        entityName:"afiliacion",
-        title:"Registro 40 ",
-        optTitle:[
-          new AbstractControlOption({
-            config: new FormControlConfig({
-              type: new TypeLabelOptions({entityName:"persona"}),
-            }),
-            control: (this.form.controls["afiliacion"] as FormGroup).controls["persona"],
-          }),
-        ]
-      })
-  }
-
-  optFooter: AbstractControlOption[] = [ //eliminar clear
-    new AbstractControlOption({
-      viewOptions: new EventButtonViewOptions({
-        text: "Aceptar", 
-        action: "submit",
-        color: "primary",
-        fieldEvent: this.optField
-      }),
-      config: new FormGroupConfig({}),
+  
+  optFooter: AbstractControlViewOption[] = [ //opciones de componente
+    {config:new EventButtonConfig({
+      text: "Aceptar", //texto del boton
+      action: "submit", //accion del evento a realizar
+      color: "primary",
+      fieldEvent: this.optField
     }),
-
-    new AbstractControlOption({
-      viewOptions: new EventIconViewOptions({
-        icon: "arrow_back", //texto del boton
-        action: "back", //accion del evento a realizar
-        color: "accent",
-        fieldEvent: this.optField
-      }),
-      config: new FormGroupConfig({}),
-    }),
-  ]
+    },
+    {config:new EventIconConfig({
+      icon: "arrow_back", //texto del boton
+      action: "back", //accion del evento a realizar
+      color: "accent",
+      fieldEvent: this.optField
+    }),}
+  ]; 
 
   ngOnInit() {
     super.ngOnInit();  
     this.form.valueChanges.subscribe(
       values => {
         if(values["afiliacion"]["estado"] == "Aprobado"){
-          ((this.config.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#aaff80" 
+          this.config.controls["afiliacion"].controls["evaluado"].backgroundColor = "#aaff80" 
         } else {
-          ((this.config.controls["afiliacion"].controls["evaluado"] as FormControlConfig).wrap as FieldWrapCardOptions).backgroundColor = "#ff8080" 
+          this.config.controls["afiliacion"].controls["evaluado"].backgroundColor = "#ff8080" 
         }
 
+        
         /*console.log(this.form.get("afiliacion.modificado").value);
         if(this.form.get("afiliacion.modificado").value
           || this.form.get("afiliacion.enviado").value

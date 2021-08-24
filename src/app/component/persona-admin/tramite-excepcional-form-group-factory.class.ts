@@ -1,8 +1,14 @@
 import { FormControl, FormGroup } from "@angular/forms";
-import { FormGroupFactory } from "@class/reactive-form-config";
+import { FormGroupConfig, FormGroupFactory } from "@class/reactive-form-config";
+import { ControlDateConfig } from "@component/control-date/control-date.component";
+import { ControlLabelConfig } from "@component/control-label/control-label.component";
+import { ControlValueConfig } from "@component/control-value/control-value.component";
+import { FieldWrapRouterLinkConfig } from "@component/field-wrap-router-link/field-wrap-router-link.component";
+import { TableDynamicConfig } from "@component/table/table-dynamic.component";
 
 export class TramiteExcepcionalFormGroupFactory implements FormGroupFactory{
-
+ 
+  
   formGroup(): FormGroup {
     var fg = new FormGroup({
       "id":new FormControl(null),

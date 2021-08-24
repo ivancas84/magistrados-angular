@@ -1,72 +1,83 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { FieldDateOptions, FieldHiddenOptions, FieldInputSelectCheckboxOptions, FieldInputSelectOptions, FieldInputSelectParamOptions, FieldInputYearMonthOptions, TypeLabelOptions } from '@class/field-type-options';
-import { FieldWidthOptions } from '@class/field-width-options';
-import { RouterLinkOptions } from '@class/field-wrap-options';
-import { AbstractControlViewOptions, TableViewOptions } from '@class/abstract-control-view-options';
-import { FormArrayConfig, FormControlConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
-import { DateValidatorMsg } from '@class/validator-msg';
+import { FormArrayConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { ShowComponent } from '@component/show/show.component';
 import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.class';
+import { TableDynamicConfig } from '@component/table/table-dynamic.component';
+import { ControlLabelConfig } from '@component/control-label/control-label.component';
+import { ControlValueConfig } from '@component/control-value/control-value.component';
+import { ControlDateConfig } from '@component/control-date/control-date.component';
+import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/field-wrap-router-link.component';
+import { FieldsetDynamicConfig } from '@component/fieldset/fieldset-dynamic.component';
+import { InputSelectParamConfig } from '@component/input-select-param/input-select-param.component';
+import { FieldWidthOptions } from '@class/field-width-options';
+import { InputSelectCheckboxConfig } from '@component/input-select-checkbox/input-select-checkbox.component';
+import { InputSelectConfig } from '@component/input-select/input-select.component';
+import { InputYmConfig } from '@component/input-ym/input-ym.component';
+import { DateValidatorMsg } from '@class/validator-msg';
 
 @Component({
   selector: 'app-persona-show',
   templateUrl: '../../core/component/show/show.component.html',
 })
 export class AfiliacionShowComponent extends ShowComponent {
+
   readonly entityName: string = "afiliacion"
 
-  config: FormArrayConfig = new FormArrayConfig({
+  config: FormArrayConfig = new TableDynamicConfig({
     factory:new AfiliacionFormGroupFactory,  
+    title:"Registro 40",
+    serverSortTranslate:{
+        "persona":["per-nombres","per-apellidos"],
+        "departamento_judicial":["dj-codigo"],
+        "organo":["org-descripcion"]
+    },
+    serverSortObligatory:["persona","departamento_judicial","organo"],
     controls: {
-      "id": new FormControlConfig({
-        type: new FieldHiddenOptions
-      }),
-      "persona": new FormControlConfig({
+      "persona": new FieldWrapRouterLinkConfig({
         label:"Persona",
-        type:new TypeLabelOptions({entityName: "persona"}),
-        wrap:new RouterLinkOptions({path: "persona-admin", params:{id:"{{persona}})"}}), 
+        config: new ControlLabelConfig({
+          entityName: "persona",
+          label:"Persona",
+        }),
+        path: "persona-admin", 
+        params:{id:"{{persona}})"}
       }),
-      "per-id": new FormControlConfig({
-        field:"per-id",
-        type:new FieldHiddenOptions(),
-      }),
-      "per-legajo": new FormControlConfig({
-        field:"per-legajo",
+      "per-legajo": new ControlValueConfig({
         label:"Legajo",
       }),
-      "codigo": new FormControlConfig({
-        label:"Cód"
+      "codigo": new ControlValueConfig({
+        label:"Cód",
       }),
-      "departamento_judicial": new FormControlConfig({
+      "departamento_judicial": new ControlLabelConfig({
         label:"Departamento",
-        type: new TypeLabelOptions({entityName:"departamento_judicial"})
+        entityName:"departamento_judicial"
       }),
-      "motivo": new FormControlConfig({
-        label:"Motivo"
+      "motivo": new ControlValueConfig({
+        label:"Motivo",
       }),
-      "estado": new FormControlConfig({
-        label:"Estado"
+      "estado": new ControlValueConfig({
+        label:"Estado",
       }),
-      "creado": new FormControlConfig({
+      "creado": new ControlDateConfig({
         label:"Creado",
-        type:new FieldDateOptions({format: "MM/yyyy"})
+        format: "MM/yyyy"
       }),
-      "enviado": new FormControlConfig({
+      "enviado": new ControlDateConfig({
         label:"Enviado",
-        type:new FieldDateOptions({format: "MM/yyyy"}) 
+        format: "MM/yyyy"
       }),
-      "evaluado": new FormControlConfig({
+      "evaluado": new ControlDateConfig({
         label:"Evaluado",
-        type:new FieldDateOptions({format: "MM/yyyy"})
+        format: "MM/yyyy"
       }),
-      "modificado": new FormControlConfig({
+      "modificado": new ControlDateConfig({
         label:"Modificado",
-        type:new FieldDateOptions({format: "MM/yyyy"})
+        format: "MM/yyyy"
       }),
-      "organo": new FormControlConfig({
+      "organo": new ControlValueConfig({
         label:"Organo",
-        type: new TypeLabelOptions({entityName:"organo"})
+        entityName:"organo"
       }),
     }
   })
@@ -91,90 +102,85 @@ export class AfiliacionShowComponent extends ShowComponent {
 
   searchConfig: FormStructureConfig = new FormStructureConfig({
     controls:{
-      "params":new FormGroupConfig({
+      "params":new FieldsetDynamicConfig({
         controls:{
           // "_search":new FormControlConfig({
           //   label:"Buscar",
           //   type: new FieldInputTextOptions(),
           //   width: new FieldWidthOptions({sm:'100%',gtSm:'100%'}),
           // })
-          "motivo":new FormControlConfig({
+          "motivo":new InputSelectParamConfig({
             position:1,
             label:"Motivo",
-            type: new FieldInputSelectParamOptions({options:['Alta','Baja','Pendiente']}),
+            options:['Alta','Baja','Pendiente'],
             width: new FieldWidthOptions({gtSm:'33%'}),
           }),
-          "estado":new FormControlConfig({
+          "estado":new InputSelectParamConfig({
             position:2,
             label:"Estado",
-            type: new FieldInputSelectParamOptions({options:['Creado','Enviado','Aprobado','Rechazado']}),
+            options:['Creado','Enviado','Aprobado','Rechazado'],
             width: new FieldWidthOptions({gtSm:'33%'}),
           }),
-          "modificado.is_set":new FormControlConfig({
+          "modificado.is_set":new InputSelectCheckboxConfig({
             position:3,
             label:"Está modificado?",
-            type: new FieldInputSelectCheckboxOptions(),
             width: new FieldWidthOptions({gtSm:'34%'}),
           }),
-          "departamento_judicial":new FormControlConfig({
+          "departamento_judicial":new InputSelectConfig({
             position:4,
             label:"Departamento Judicial",
-            type: new FieldInputSelectOptions({entityName:'departamento_judicial'}),
+            entityName:'departamento_judicial',
+            width: new FieldWidthOptions(),
+
           }),
-          "departamento_judicial_informado":new FormControlConfig({
+          "departamento_judicial_informado":new InputSelectConfig({
             position:5,
             label:"Departamento Judicial Informado",
-            type: new FieldInputSelectOptions({entityName:'departamento_judicial'}),
+            entityName:'departamento_judicial',
+            width: new FieldWidthOptions(),
           }),
-          "organo":new FormControlConfig({
+          "organo":new InputSelectConfig({
             position:6,
             label:"Organo",
-            type: new FieldInputSelectOptions({entityName:'organo'}),
+            entityName:'organo',
+            width: new FieldWidthOptions(),
           }),
-          "per-cargo":new FormControlConfig({
+          "per-cargo":new InputSelectConfig({
             position:7,
             label:"Cargo",
-            type: new FieldInputSelectOptions({entityName:"cargo"}),
+            entityName:"cargo",
+            width: new FieldWidthOptions(),
           }),
-          "creado.ym":new FormControlConfig({
+          "creado.ym":new InputYmConfig({
             position:8,
             label:"Creado",
-            type: new FieldInputYearMonthOptions(),
-            validatorMsgs: [new DateValidatorMsg()]
+            validatorMsgs: [new DateValidatorMsg()],
+            width: new FieldWidthOptions(),
           }),
-          "enviado.ym":new FormControlConfig({
+          "enviado.ym":new InputYmConfig({
             position:9,
             label:"Enviado",
-            type: new FieldInputYearMonthOptions(),
-            validatorMsgs: [new DateValidatorMsg()]
+            validatorMsgs: [new DateValidatorMsg()],
+            width: new FieldWidthOptions(),
           }),
-          "evaluado.ym":new FormControlConfig({
+          "evaluado.ym":new InputYmConfig({
             position:10,
             label:"Evaluado",
-            type: new FieldInputYearMonthOptions(),
-            validatorMsgs: [new DateValidatorMsg()]
+            validatorMsgs: [new DateValidatorMsg()],
+            width: new FieldWidthOptions(),
           }),
-          "modificado.ym":new FormControlConfig({
+          "modificado.ym":new InputYmConfig({
             position:11,
             label:"Modificado",
-            type: new FieldInputYearMonthOptions(),
-            validatorMsgs: [new DateValidatorMsg()]
+            validatorMsgs: [new DateValidatorMsg()],
+            width: new FieldWidthOptions(),
           }),
         }
       })
     }
   })
 
-  nestedComponent: AbstractControlViewOptions = new TableViewOptions({
-    title:"Registro 40",
-    serverSortTranslate:{
-      "persona":["per-nombres","per-apellidos"],
-      "departamento_judicial":["dj-codigo"],
-      "organo":["org-descripcion"]
-    },
-    serverSortObligatory:["persona","departamento_judicial","organo"],
-    config:this.config,
-    fieldset:this.form
-  })
+
+
 }
 
