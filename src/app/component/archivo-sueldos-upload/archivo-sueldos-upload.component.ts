@@ -7,6 +7,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
 import { SessionStorageService } from '@service/storage/session-storage.service';
+import { FormControlConfig } from '@class/reactive-form-config';
+import { InputYmConfig } from '@component/input-ym/input-ym.component';
+import { InputSelectConfig } from '@component/input-select/input-select.component';
 
 @Component({
   selector: 'app-archivo-sueldos-upload-sueldos',
@@ -42,6 +45,14 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
       }],
     }
   );
+
+  configPeriodo: FormControlConfig = new InputYmConfig({
+    label:"Periodo"
+  });
+  configOrgano: FormControlConfig = new InputSelectConfig({
+    label:"Organo",
+    entityName:"organo"
+  })
 
   formData(): FormData{
     /**

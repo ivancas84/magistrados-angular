@@ -1,7 +1,7 @@
 import { FormControl, FormGroup } from "@angular/forms";
 import { FormGroupFactory } from "@class/reactive-form-config";
 
-export class ImporteSummaryFormGroupFactory implements FormGroupFactory{
+export class ImporteSummary162FormGroupFactory implements FormGroupFactory{
   
 
   formGroup(): FormGroup {

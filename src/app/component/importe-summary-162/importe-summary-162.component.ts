@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { FormArrayConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { ShowComponent } from '@component/show/show.component';
-import { ImporteSummaryFormGroupFactory } from './importe-summary-form-group-factory.class';
+import { ImporteSummary162FormGroupFactory } from './importe-summary-162-form-group-factory.class';
 import { Observable, of } from 'rxjs';
 import { TableDynamicConfig } from '@component/table/table-dynamic.component';
 import { ControlValueConfig } from '@component/control-value/control-value.component';
 import { FieldsetDynamicConfig } from '@component/fieldset/fieldset-dynamic.component';
 import { debounceTime } from 'rxjs/operators';
 import { FormGroup, Validators } from '@angular/forms';
-import { InputSelectConfig } from '@component/input-select/input-select.component';
 import { FieldWidthOptions } from '@class/field-width-options';
 import { InputYmConfig } from '@component/input-ym/input-ym.component';
 import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/field-wrap-router-link.component';
@@ -17,8 +16,8 @@ import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/fie
   selector: 'app-persona-show',
   templateUrl: '../../core/component/show/show.component.html',
 })
-export class ImporteSummaryComponent extends ShowComponent {
-  readonly entityName: string = "importe"
+export class ImporteSummary162Component extends ShowComponent {
+  readonly entityName: string = "importe_162"
   loadLength: boolean = false; 
 
   queryData(): Observable<any>{
@@ -43,7 +42,7 @@ export class ImporteSummaryComponent extends ShowComponent {
 
   config: FormArrayConfig = new TableDynamicConfig({
     footerConfig:this.footerConfig,
-    factory:new ImporteSummaryFormGroupFactory  ,  
+    factory:new ImporteSummary162FormGroupFactory,  
     controls: {
       "nombre": new ControlValueConfig({
         label:"Departamento",

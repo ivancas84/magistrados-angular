@@ -16,6 +16,7 @@ import { ViaticoAdminComponent } from '@component/viatico-admin/viatico-admin.co
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
 import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-valor-admin-array/configuracion-valor-admin-array.component';
+import { ImporteSummary162Component } from '@component/importe-summary-162/importe-summary-162.component';
 
 const routes: Routes = [
   { path: 'backup', component: BackupComponent, pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'archivo-sueldos-upload', component: ArchivoSueldosUploadComponent, pathMatch: 'full' },
   { path: 'departamento-judicial-admin', component: DepartamentoJudicialAdminArrayComponent, pathMatch: 'full' },
   { path: 'importe-summary', component: ImporteSummaryComponent, pathMatch: 'full' },
+  { path: 'importe-summary-162', component: ImporteSummary162Component, pathMatch: 'full' },
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'sucursal-admin', component: SucursalAdminArrayComponent, pathMatch: 'full' },
   { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent, pathMatch: 'full' },

@@ -8,8 +8,11 @@ import { FieldsetDynamicConfig } from '@component/fieldset/fieldset-dynamic.comp
 import { InputSelectConfig } from '@component/input-select/input-select.component';
 import { InputTextConfig } from '@component/input-text/input-text.component';
 import { InputYmConfig } from '@component/input-ym/input-ym.component';
+import { isEmptyObject } from '@function/is-empty-object.function';
 import { ValidatorsService } from '@service/validators/validators.service';
 import * as moment from 'moment';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-persona-admin',
@@ -57,6 +60,24 @@ export class ViaticoAdminComponent extends AdminComponent implements OnInit{
 
   reload(){
     this.back();
+  }
+
+  initData(): Observable<any> {
+    /**
+     * Para realizar la consulta por campos unicos se utiliza un parametro con funcion, si en el resultado final de la consulta de datos existe ese parametro debe renombrarse
+     */
+
+    if(!isEmptyObject(this.display$.value)) {
+      return this.queryData().pipe(
+        map(
+          response => {
+            console.log(response)
+            if(response["viatico"].hasOwnProperty("periodo.ym")) response["viatico"]["periodo"] = response["viatico"]["periodo.ym"]
+            return response;
+          }
+        )
+      )
+    } else return of({});
   }
 }
 

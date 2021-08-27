@@ -106,6 +106,7 @@ import { ViaticoAdminComponent } from '@component/viatico-admin/viatico-admin.co
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
 import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-valor-admin-array/configuracion-valor-admin-array.component';
+import { ImporteSummary162Component } from '@component/importe-summary-162/importe-summary-162.component';
 
 
 
@@ -183,7 +184,8 @@ import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-
     SucursalAdminArrayComponent,
     TipoDocumentoAdminArrayComponent,
     ViaticoAdminComponent,
-    ConfiguracionValorAdminArrayComponent
+    ConfiguracionValorAdminArrayComponent,
+    ImporteSummary162Component
   ],
   imports: [
     BrowserModule,
