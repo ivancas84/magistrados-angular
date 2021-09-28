@@ -17,6 +17,8 @@ import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/suc
 import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
 import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-valor-admin-array/configuracion-valor-admin-array.component';
 import { ImporteSummary162Component } from '@component/importe-summary-162/importe-summary-162.component';
+import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show.component';
+import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
 
 const routes: Routes = [
   { path: 'backup', component: BackupComponent, pathMatch: 'full' },
@@ -27,8 +29,10 @@ const routes: Routes = [
   { path: 'archivo-sueldos-create', component: ArchivoSueldosCreateComponent, pathMatch: 'full' },
   { path: 'archivo-sueldos-upload', component: ArchivoSueldosUploadComponent, pathMatch: 'full' },
   { path: 'departamento-judicial-admin', component: DepartamentoJudicialAdminArrayComponent, pathMatch: 'full' },
+  { path: 'importe-afiliacion-show', component: ImporteAfiliacionShowComponent, pathMatch: 'full' },
   { path: 'importe-summary', component: ImporteSummaryComponent, pathMatch: 'full' },
   { path: 'importe-summary-162', component: ImporteSummary162Component, pathMatch: 'full' },
+  { path: 'importe-tramite-excepcional-show', component: ImporteTramiteExcepcionalShowComponent, pathMatch: 'full' },
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'sucursal-admin', component: SucursalAdminArrayComponent, pathMatch: 'full' },
   { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent, pathMatch: 'full' },
@@ -40,7 +44,7 @@ const routes: Routes = [
   { path: 'viatico-admin', component: ViaticoAdminComponent, pathMatch: 'full' },
 
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
-  { path: '', component: PersonaAdminComponent, pathMatch: 'full' },
+  { path: '', redirectTo: '/persona-admin', pathMatch: 'full' },
 ];
 
 @NgModule({

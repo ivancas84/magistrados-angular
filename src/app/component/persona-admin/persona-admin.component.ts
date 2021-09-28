@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, PatternValidator, Validators } from '@angular/forms';
 import { FieldWidthOptions } from '@class/field-width-options';
-import { FormStructureConfig } from '@class/reactive-form-config';
+import { ConfigFormGroupFactory, FormControlConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { RequiredValidatorMsg, UniqueValidatorMsg } from '@class/validator-msg';
 import { AdminComponent } from '@component/admin/admin.component';
-import { AfiliacionFormGroupFactory } from './afiliacion-form-group-factory.class';
-import { TramiteExcepcionalFormGroupFactory } from './tramite-excepcional-form-group-factory.class';
 import { InputTextConfig } from '@component/input-text/input-text.component';
 import { FieldsetDynamicConfig } from '@component/fieldset/fieldset-dynamic.component';
 import { InputSelectConfig } from '@component/input-select/input-select.component';
@@ -16,6 +14,7 @@ import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/fie
 import { ControlLabelConfig } from '@component/control-label/control-label.component';
 import { ControlDateConfig } from '@component/control-date/control-date.component';
 import { RouteIconConfig } from '@component/route-icon/route-icon.component';
+import { startWith } from 'rxjs/operators';
 
 
 
@@ -30,6 +29,17 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
   ngOnInit(){
     this.form.controls["afiliacion/persona"].disable();
     this.form.controls["tramite_excepcional/persona"].disable();
+    this.config.controls["afiliacion/persona"].factory = new ConfigFormGroupFactory(this.config.controls["afiliacion/persona"], true)
+    this.config.controls["tramite_excepcional/persona"].factory = new ConfigFormGroupFactory(this.config.controls["tramite_excepcional/persona"], true)
+    this.form.controls["persona"].get("id").valueChanges.pipe(
+      startWith(this.form.controls["persona"].get("id").value)
+    ).subscribe(
+      value => {
+        this.config.controls["tramite_excepcional/persona"].optTitle[0].config.disabled = (value)? false : true;  
+        this.config.controls["afiliacion/persona"].optTitle[0].config.disabled = (value)? false : true;  
+      }
+    )
+    
     super.ngOnInit();
   }
 
@@ -58,12 +68,14 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
     "tramite_excepcional/persona": this.fb.array([]),
   });
 
-  config: FormStructureConfig = new FormStructureConfig({
-    controls: {
-      "persona": new FieldsetDynamicConfig({
-        title: "Persona",
-        position: 1,
-        controls: {
+  config: FormStructureConfig = new FormStructureConfig({},
+    {
+      "persona": new FieldsetDynamicConfig(
+        {
+          title: "Persona",
+          position: 1,
+        },
+        {
           "nombres": new InputTextConfig({
             label: "Nombres",
             position:1,
@@ -145,25 +157,30 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
             })  
           }),
         }
-      }),
+      ),
 
-      "afiliacion/persona": new TableDynamicConfig({
-        order:  {"creado":"desc"},
-        factory:new AfiliacionFormGroupFactory,  
-        position:2,
-        title: "Registro 40",
-        sortDisabled:["departamento_judicial","organo"],
-        optTitle: [
-          new RouteIconConfig({
-            icon: "add",
-            key:  "persona",
-            routerLink: "afiliacion-admin",
-            title: "Agregar Afiliacion",
-            color:"accent",
-            control: (this.form.controls["persona"] as FormGroup).controls["id"]
-          })
-        ],
-        controls: {
+      "afiliacion/persona": new TableDynamicConfig(
+        {
+          order:  {"creado":"desc"},
+          position:2,
+          title: "Registro 40",
+          sortDisabled:["departamento_judicial","organo"],
+          optTitle: [
+            {
+              config: new RouteIconConfig({
+                icon: "add",
+                params:{persona:"{{id}}"},
+                routerLink: "afiliacion-admin",
+                title: "Agregar Registro 40",
+                color:"accent",
+              }),
+              control: (this.form.controls["persona"] as FormGroup)
+            },
+          ],
+        },
+        {
+          "id": new FormControlConfig(),
+          "persona": new FormControlConfig(),
           "motivo": new FieldWrapRouterLinkConfig({
             label:"Motivo",
             path:"afiliacion-admin",
@@ -206,15 +223,30 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
           })
         }
        
-      }),
+      ),
 
-      "tramite_excepcional/persona": new TableDynamicConfig({
-        order:  {"creado":"desc"},
-        factory:new TramiteExcepcionalFormGroupFactory,  
-        position:2,
-        title: "Registro 80",
-        sortDisabled:["departamento_judicial","organo"],
-        controls:{
+      "tramite_excepcional/persona": new TableDynamicConfig(
+        {
+          order:  {"creado":"desc"},
+          position:2,
+          title: "Registro 80",
+          sortDisabled:["departamento_judicial","organo"],
+          
+          optTitle: [ //opciones de titulo
+              {
+                config: new RouteIconConfig({
+                  icon: "add",
+                  params:{persona:"{{id}}"},
+                  routerLink: "tramite-excepcional-admin",
+                  title: "Agregar Registro 80",
+                  color:"accent",
+                }),
+                control: (this.form.controls["persona"] as FormGroup)
+              },
+          ],
+        },
+        {
+          "id": new FormControlConfig(),
           "motivo": new FieldWrapRouterLinkConfig({
             label:"Motivo",
             path:"afiliacion-admin",
@@ -265,21 +297,9 @@ export class PersonaAdminComponent extends AdminComponent implements OnInit{
             label: "Monto",
           }),
         },
-        optTitle: [
-          new RouteIconConfig({
-            icon: "add",
-            key:  "persona",
-            routerLink: "tramite-excepcional-admin",
-            title: "Agregar Registro 80",
-            color:"accent",
-            control: (this.form.controls["persona"] as FormGroup).controls["id"]
-          }),
-          
-        ],
-   
-      }),
+      ),
     }
-  });
+  );
 
 
 }

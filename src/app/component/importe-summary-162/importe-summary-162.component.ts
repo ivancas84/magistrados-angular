@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArrayConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
+import { ConfigFormGroupFactory, FormArrayConfig, FormGroupConfig, FormStructureConfig } from '@class/reactive-form-config';
 import { ShowComponent } from '@component/show/show.component';
 import { ImporteSummary162FormGroupFactory } from './importe-summary-162-form-group-factory.class';
 import { Observable, of } from 'rxjs';
@@ -25,27 +25,27 @@ export class ImporteSummary162Component extends ShowComponent {
     return this.dd.post("info", this.entityName, this.display$.value.getParams());
   }
     
-  footerConfig: FormGroupConfig = new FieldsetDynamicConfig({
-    controls:{
-      "nombre": new ControlValueConfig(),
+  footerConfig: FormGroupConfig = new FieldsetDynamicConfig({},
+    {
+      "afi_dj_nombre": new ControlValueConfig(),
+      "afi_org_descripcion": new ControlValueConfig(),
       "afiliaciones": new ControlValueConfig(),
       "importe": new ControlValueConfig(),
       "cuota_asociativa": new ControlValueConfig(),
-      "fam": new ControlValueConfig(),
-      "total_deduccion": new ControlValueConfig(),
-      "total_pagar": new ControlValueConfig(),
-      "viatico": new ControlValueConfig(),
-      "total": new ControlValueConfig(),
-
     }
-  })
+  )
 
-  config: FormArrayConfig = new TableDynamicConfig({
-    footerConfig:this.footerConfig,
-    factory:new ImporteSummary162FormGroupFactory,  
-    controls: {
-      "nombre": new ControlValueConfig({
+  config: FormArrayConfig = new TableDynamicConfig(
+    {
+      footerConfig:this.footerConfig,
+      // factory:new ImporteSummary162FormGroupFactory,  
+    },
+    {
+      "afi_dj_nombre": new ControlValueConfig({
         label:"Departamento",
+      }),
+      "afi_org_descripcion": new ControlValueConfig({
+        label:"Organo",
       }),
       "afiliaciones": new ControlValueConfig({
         label:"Colegiados",
@@ -56,28 +56,8 @@ export class ImporteSummary162Component extends ShowComponent {
       "cuota_asociativa": new ControlValueConfig({
         label:"15%",
       }),
-      "fam": new ControlValueConfig({
-        label:"FAM",
-      }),
-      "total_deduccion": new ControlValueConfig({
-        label:"Total deduccion",
-      }),
-      "total_pagar": new ControlValueConfig({
-        label:"Total a pagar",
-      }),
-      "viatico": new FieldWrapRouterLinkConfig({
-        label:"Viático",
-        params: {departamento_judicial:"{{id}}"}, //utilizar {{key}} para identificar valor del conjunto de datos
-        path:"viatico-admin",
-        config:new ControlValueConfig({
-          label:"Viático",
-        })
-      }),
-      "total": new ControlValueConfig({
-        label:"TOTAL",
-      }),
     }
-  })
+  )
 
   searchForm: FormGroup = this.fb.group({
     "params":this.fb.group({
@@ -85,21 +65,22 @@ export class ImporteSummary162Component extends ShowComponent {
     })
   })
 
-  searchConfig: FormStructureConfig = new FormStructureConfig({
-    controls:{
-      "params":new FieldsetDynamicConfig({
-        controls: {
+  searchConfig: FormStructureConfig = new FormStructureConfig({},
+    {
+      "params":new FieldsetDynamicConfig({},
+        {
           "periodo":new InputYmConfig({
             label:"Periodo",
             width:new FieldWidthOptions()
           }),
         }
-      })
+      )
     }
-  })
+  )
 
 
   ngOnInit(){
+    this.config.factory = new ConfigFormGroupFactory(this.config)
     super.ngOnInit()
     this.initFooter()
   }
@@ -107,13 +88,13 @@ export class ImporteSummary162Component extends ShowComponent {
   initParams(params: any){ 
     this.params = params; 
     var p = (this.params.hasOwnProperty("periodo")) ? this.params["periodo"] : JSON.parse(decodeURI(this.params["params"]))["periodo"]
-    this.config.controls["viatico"].params["periodo.ym"] = p;
+    // this.config.controls["viatico"].params["periodo.ym"] = p;
   }
 
 
   initFooter(){
     this.config.footer = this.config.factory.formGroup()
-    this.config.footer.controls["nombre"].setValue("TOTAL")
+    this.config.footer.controls["afi_dj_nombre"].setValue("TOTAL")
     this.form.valueChanges.pipe(
       debounceTime(100),
     ).subscribe(
@@ -126,21 +107,6 @@ export class ImporteSummary162Component extends ShowComponent {
         )
         this.config.footer.controls["cuota_asociativa"].setValue(   
           value.map(t => t["cuota_asociativa"]).reduce((acc, value) => acc + value, 0).toFixed(2)
-        )
-        this.config.footer.controls["fam"].setValue(   
-          value.map(t => t["fam"]).reduce((acc, value) => acc + value, 0).toFixed(2)
-        )
-        this.config.footer.controls["total_deduccion"].setValue(   
-          value.map(t => t["total_deduccion"]).reduce((acc, value) => acc + value, 0).toFixed(2)
-        )
-        this.config.footer.controls["total_pagar"].setValue(   
-          value.map(t => t["total_pagar"]).reduce((acc, value) => acc + value, 0).toFixed(2)
-        )
-        this.config.footer.controls["viatico"].setValue(   
-          value.map(t => t["viatico"]).reduce((acc, value) => acc + value, 0).toFixed(2)
-        )
-        this.config.footer.controls["total"].setValue(   
-          value.map(t => t["total"]).reduce((acc, value) => acc + value, 0).toFixed(2)
         )
       }
     );  

@@ -46,6 +46,10 @@ export class AfiliacionShowComponent extends ShowComponent {
       "per-legajo": new ControlValueConfig({
         label:"Legajo",
       }),
+      "organo": new ControlLabelConfig({
+        label:"Organo",
+        entityName:"organo"
+      }),
       "codigo": new ControlValueConfig({
         label:"Cód",
       }),
@@ -75,30 +79,27 @@ export class AfiliacionShowComponent extends ShowComponent {
         label:"Modificado",
         format: "MM/yyyy"
       }),
-      "organo": new ControlValueConfig({
-        label:"Organo",
-        entityName:"organo"
-      }),
+      
     }
   })
 
-  searchForm: FormGroup = new FormGroup({
-    "params": new FormGroup({
-      //"_search": new FormControl(null)
-      "motivo": new FormControl(null),
-      "estado": new FormControl(null),
-      "modificado.is_set": new FormControl(null),
-      "departamento_judicial": new FormControl(null),
-      "departamento_judicial_informado": new FormControl(null),
-      "organo": new FormControl(null),
-      "per-cargo": new FormControl(null),
-      "creado.ym": new FormControl(null),
-      "enviado.ym": new FormControl(null),
-      "evaluado.ym": new FormControl(null),
-      "modificado.ym": new FormControl(null),
+  // searchForm: FormGroup = new FormGroup({
+  //   "params": new FormGroup({
+  //     //"_search": new FormControl(null)
+  //     "motivo": new FormControl(null),
+  //     "estado": new FormControl(null),
+  //     "modificado.is_set": new FormControl(null),
+  //     "departamento_judicial": new FormControl(null),
+  //     "departamento_judicial_informado": new FormControl(null),
+  //     "organo": new FormControl(null),
+  //     "per-cargo": new FormControl(null),
+  //     "creado.ym": new FormControl(null),
+  //     "enviado.ym": new FormControl(null),
+  //     "evaluado.ym": new FormControl(null),
+  //     "modificado.ym": new FormControl(null),
 
-    })
-  })
+  //   })
+  // })
 
   searchConfig: FormStructureConfig = new FormStructureConfig({
     controls:{
@@ -113,64 +114,65 @@ export class AfiliacionShowComponent extends ShowComponent {
             position:1,
             label:"Motivo",
             options:['Alta','Baja','Pendiente'],
-            width: new FieldWidthOptions({gtSm:'33%'}),
           }),
           "estado":new InputSelectParamConfig({
             position:2,
             label:"Estado",
             options:['Creado','Enviado','Aprobado','Rechazado'],
-            width: new FieldWidthOptions({gtSm:'33%'}),
+          }),
+          "codigo":new InputSelectParamConfig({
+            position:4,
+            options:[161,162],
+            label:"Código",
           }),
           "modificado.is_set":new InputSelectCheckboxConfig({
-            position:3,
+            position:5,
             label:"Está modificado?",
-            width: new FieldWidthOptions({gtSm:'34%'}),
           }),
           "departamento_judicial":new InputSelectConfig({
-            position:4,
+            position:6,
             label:"Departamento Judicial",
             entityName:'departamento_judicial',
-            width: new FieldWidthOptions(),
 
           }),
           "departamento_judicial_informado":new InputSelectConfig({
-            position:5,
+            position:7,
             label:"Departamento Judicial Informado",
             entityName:'departamento_judicial',
             width: new FieldWidthOptions(),
           }),
           "organo":new InputSelectConfig({
-            position:6,
+            position:8,
             label:"Organo",
             entityName:'organo',
             width: new FieldWidthOptions(),
           }),
           "per-cargo":new InputSelectConfig({
-            position:7,
+            position:9,
             label:"Cargo",
             entityName:"cargo",
             width: new FieldWidthOptions(),
           }),
           "creado.ym":new InputYmConfig({
-            position:8,
+            position:10,
             label:"Creado",
             validatorMsgs: [new DateValidatorMsg()],
             width: new FieldWidthOptions(),
           }),
           "enviado.ym":new InputYmConfig({
-            position:9,
+            position:11,
             label:"Enviado",
             validatorMsgs: [new DateValidatorMsg()],
             width: new FieldWidthOptions(),
           }),
           "evaluado.ym":new InputYmConfig({
-            position:10,
+            position:12,
             label:"Evaluado",
             validatorMsgs: [new DateValidatorMsg()],
             width: new FieldWidthOptions(),
           }),
           "modificado.ym":new InputYmConfig({
-            position:11,
+            position:13,
             label:"Modificado",
             validatorMsgs: [new DateValidatorMsg()],
             width: new FieldWidthOptions(),

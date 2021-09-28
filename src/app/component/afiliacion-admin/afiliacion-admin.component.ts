@@ -47,11 +47,13 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
     controls: {"afiliacion": new FieldsetDynamicConfig({
       entityName:"afiliacion",
       title:"Registro 40 ",
-      optTitle:[
-        new ControlLabelConfig({
-          entityName:"persona",
+      optTitle: [
+        {
+          config: new ControlLabelConfig({
+            entityName:"persona",
+          }),
           control: (this.form.controls["afiliacion"] as FormGroup).controls["persona"],
-        }),
+        }
       ],
       controls: {
         "motivo": new InputSelectParamConfig({
@@ -67,7 +69,7 @@ export class AfiliacionAdminComponent extends AdminComponent implements OnInit{
           width:new FieldWidthOptions({gtSm:"34%"})
         }),
         "codigo": new InputSelectParamConfig({
-          options:[161, 162],
+          options:[161, 162, 1621, 1622],
           label: "Código",
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"33%"})        

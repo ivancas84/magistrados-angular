@@ -14,6 +14,7 @@ import { InputDateConfig } from '@component/input-date/input-date.component';
 import { InputTextConfig } from '@component/input-text/input-text.component';
 import { TableDynamicConfig } from '@component/table/table-dynamic.component';
 import { ControlLabelConfig } from '@component/control-label/control-label.component';
+import { FieldsetDynamicConfig } from '@component/fieldset/fieldset-dynamic.component';
 
 
 @Component({
@@ -48,7 +49,7 @@ export class TramiteExcepcionalAdminComponent extends AdminComponent implements 
   }); 
 
   config: FormStructureConfig = new FormStructureConfig({
-    controls: {"tramite_excepcional": new TableDynamicConfig({
+    controls: {"tramite_excepcional": new FieldsetDynamicConfig({
       entityName:"tramite_excepcional",
       title:"Registro 80 ",
       optTitle: [
@@ -95,7 +96,7 @@ export class TramiteExcepcionalAdminComponent extends AdminComponent implements 
         }),
 
         "codigo": new InputSelectParamConfig({
-          options:[161, 162],
+          options:[163, 1631, 1632],
           label: "Código",
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions()
