@@ -1,21 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@service/auth/auth.service';
-import { SessionStorageService } from '@service/storage/session-storage.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  constructor(
-    protected storage: SessionStorageService, 
-    public auth: AuthService
-  ) { }
-
-  ngOnInit(): void {
-    this.storage.clear();
-  }
-
-  title = 'magistrados';
+export class AppComponent {
+  title = 'magistrados-angular';
 }
