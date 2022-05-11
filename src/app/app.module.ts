@@ -30,6 +30,8 @@ import { ImporteSummary162Component } from '@component/importe-summary-162/impor
 import { AppCoreModule } from './core/app-core.module';
 import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show.component';
 import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
+import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete/importe-delete.component';
+import { ImporteDeleteFieldsetComponent } from '@component/importe-delete/importe-delete-fieldset/importe-delete-fieldset.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,7 @@ import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-trami
     ConfiguracionValorAdminArrayComponent,
     ImporteSummary162Component,
     ImporteAfiliacionShowComponent,
-    ImporteTramiteExcepcionalShowComponent
+    ImporteTramiteExcepcionalShowComponent,
   ],
   imports: [
     BrowserModule,
