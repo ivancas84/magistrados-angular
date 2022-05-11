@@ -18,7 +18,6 @@ export class _DataDefinitionLabelService {
       case "cargo": { return this.labelCargo(id); }
       case "configuracion_valor": { return this.labelConfiguracionValor(id); }
       case "departamento_judicial": { return this.labelDepartamentoJudicial(id); }
-      case "fam": { return this.labelFam(id); }
       case "file": { return this.labelFile(id); }
       case "importe_afiliacion": { return this.labelImporteAfiliacion(id); }
       case "importe_tramite_excepcional": { return this.labelImporteTramiteExcepcional(id); }
@@ -65,15 +64,6 @@ export class _DataDefinitionLabelService {
     if (row["codigo"]) ret = ret.trim() + " " + row["codigo"];
 
     if (row["nombre"]) ret = ret.trim() + " " + row["nombre"];
-
-    return ret.trim();
-  }
-
-  labelFamRow (row: any): string {
-    if(!row) return null;
-
-    let ret = "";
-    if (row["id"]) ret = ret.trim() + " " + row["id"];
 
     return ret.trim();
   }
@@ -227,22 +217,6 @@ export class _DataDefinitionLabelService {
           if(!row) return of(null);
           return combineLatest([
             of(this.labelDepartamentoJudicialRow(row)),
-          ])
-        }
-      ),
-      map(
-        response => { return (!response)? null : response.join(" "); }
-      )
-    );
-  }
-
-  labelFam(id: string): Observable<any> {
-    return this.dd.get("fam", id).pipe(
-      switchMap(
-        row => {
-          if(!row) return of(null);
-          return combineLatest([
-            of(this.labelFamRow(row)),
           ])
         }
       ),
