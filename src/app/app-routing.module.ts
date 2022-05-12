@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
 
 const routes: Routes = [
-  //{ path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
 
 ];
 

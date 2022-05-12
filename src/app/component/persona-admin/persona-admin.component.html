@@ -1,0 +1,39 @@
+<ng-template #loading>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>
+  
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+        Buscar persona
+        <core-event-icon [config]="{icon:'cached', action:'reset', color:'primary',fieldEvent:optField}"></core-event-icon>    
+        <core-event-icon [config]="{icon:'clear', action:'clear', color:'primary',fieldEvent:optField}"></core-event-icon>    
+        </mat-card-title>
+
+    </mat-card-header>
+    <mat-card-content>
+        <core-input-search-go fxFlex="auto" [entityName]="'persona'"></core-input-search-go>    
+    </mat-card-content>
+</mat-card>
+  
+
+<ng-container *ngIf="(loadParams$ | async); else loading">
+    <ng-container *ngIf="(loadDisplay$ | async); else loading">
+        <ng-container *ngIf="(loadStorage$ | async); else loading">
+            <mat-card>
+                <mat-card-header>
+                <mat-card-title>
+                    Datos personales
+                </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                <core-abstract-control-form-group [config]="configPersona"
+                                                    [control]="controlPersona"></core-abstract-control-form-group>
+                </mat-card-content>
+            </mat-card>
+
+        </ng-container>
+    </ng-container>
+</ng-container>
+
+

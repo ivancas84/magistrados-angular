@@ -13,10 +13,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppMaterialModule } from './core/app-material.module';
 import { AppCoreModule } from './core/app-core.module';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
+import { MenuComponent } from '@component/menu/menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+    MenuComponent,
+
+    PersonaAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +35,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     AppCoreModule,
     
     MaterialFileInputModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
