@@ -16,20 +16,23 @@ export class _DataDefinitionLabelService {
     switch(entityName) {
       case "afiliacion": { return this.labelAfiliacion(id); }
       case "cargo": { return this.labelCargo(id); }
+      case "configuracion_valor": { return this.labelConfiguracionValor(id); }
       case "departamento_judicial": { return this.labelDepartamentoJudicial(id); }
       case "file": { return this.labelFile(id); }
       case "importe_afiliacion": { return this.labelImporteAfiliacion(id); }
       case "importe_tramite_excepcional": { return this.labelImporteTramiteExcepcional(id); }
+      case "log": { return this.labelLog(id); }
       case "organo": { return this.labelOrgano(id); }
       case "persona": { return this.labelPersona(id); }
       case "sucursal": { return this.labelSucursal(id); }
       case "tipo_documento": { return this.labelTipoDocumento(id); }
       case "tramite_excepcional": { return this.labelTramiteExcepcional(id); }
       case "viatico": { return this.labelViatico(id); }
+      default: return of("");
     }
   }
   labelAfiliacionRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["id"]) ret = ret.trim() + " " + row["id"];
@@ -38,7 +41,7 @@ export class _DataDefinitionLabelService {
   }
 
   labelCargoRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["descripcion"]) ret = ret.trim() + " " + row["descripcion"];
@@ -46,8 +49,17 @@ export class _DataDefinitionLabelService {
     return ret.trim();
   }
 
+  labelConfiguracionValorRow (row: any): string {
+    if(!row) return "";
+
+    let ret = "";
+    if (row["id"]) ret = ret.trim() + " " + row["id"];
+
+    return ret.trim();
+  }
+
   labelDepartamentoJudicialRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["codigo"]) ret = ret.trim() + " " + row["codigo"];
@@ -58,7 +70,7 @@ export class _DataDefinitionLabelService {
   }
 
   labelFileRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["id"]) ret = ret.trim() + " " + row["id"];
@@ -67,7 +79,7 @@ export class _DataDefinitionLabelService {
   }
 
   labelImporteAfiliacionRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["id"]) ret = ret.trim() + " " + row["id"];
@@ -76,7 +88,16 @@ export class _DataDefinitionLabelService {
   }
 
   labelImporteTramiteExcepcionalRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
+
+    let ret = "";
+    if (row["id"]) ret = ret.trim() + " " + row["id"];
+
+    return ret.trim();
+  }
+
+  labelLogRow (row: any): string {
+    if(!row) return "";
 
     let ret = "";
     if (row["id"]) ret = ret.trim() + " " + row["id"];
@@ -85,7 +106,7 @@ export class _DataDefinitionLabelService {
   }
 
   labelOrganoRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["descripcion"]) ret = ret.trim() + " " + row["descripcion"];
@@ -94,7 +115,7 @@ export class _DataDefinitionLabelService {
   }
 
   labelPersonaRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["nombres"]) ret = ret.trim() + " " + row["nombres"];
@@ -107,7 +128,7 @@ export class _DataDefinitionLabelService {
   }
 
   labelSucursalRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["descripcion"]) ret = ret.trim() + " " + row["descripcion"];
@@ -116,7 +137,7 @@ export class _DataDefinitionLabelService {
   }
 
   labelTipoDocumentoRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["descripcion"]) ret = ret.trim() + " " + row["descripcion"];
@@ -125,7 +146,7 @@ export class _DataDefinitionLabelService {
   }
 
   labelTramiteExcepcionalRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["id"]) ret = ret.trim() + " " + row["id"];
@@ -134,7 +155,7 @@ export class _DataDefinitionLabelService {
   }
 
   labelViaticoRow (row: any): string {
-    if(!row) return null;
+    if(!row) return "";
 
     let ret = "";
     if (row["id"]) ret = ret.trim() + " " + row["id"];
@@ -142,7 +163,7 @@ export class _DataDefinitionLabelService {
     return ret.trim();
   }
 
-  labelAfiliacion(id: string): Observable<any> {
+  labelAfiliacion(id: string): Observable<string> {
     return this.dd.get("afiliacion", id).pipe(
       switchMap(
         row => {
@@ -153,12 +174,12 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelCargo(id: string): Observable<any> {
+  labelCargo(id: string): Observable<string> {
     return this.dd.get("cargo", id).pipe(
       switchMap(
         row => {
@@ -169,12 +190,28 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelDepartamentoJudicial(id: string): Observable<any> {
+  labelConfiguracionValor(id: string): Observable<string> {
+    return this.dd.get("configuracion_valor", id).pipe(
+      switchMap(
+        row => {
+          if(!row) return of(null);
+          return combineLatest([
+            of(this.labelConfiguracionValorRow(row)),
+          ])
+        }
+      ),
+      map(
+        response => { return (!response)? "" : response.join(" "); }
+      )
+    );
+  }
+
+  labelDepartamentoJudicial(id: string): Observable<string> {
     return this.dd.get("departamento_judicial", id).pipe(
       switchMap(
         row => {
@@ -185,12 +222,12 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelFile(id: string): Observable<any> {
+  labelFile(id: string): Observable<string> {
     return this.dd.get("file", id).pipe(
       switchMap(
         row => {
@@ -201,12 +238,12 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelImporteAfiliacion(id: string): Observable<any> {
+  labelImporteAfiliacion(id: string): Observable<string> {
     return this.dd.get("importe_afiliacion", id).pipe(
       switchMap(
         row => {
@@ -217,12 +254,12 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelImporteTramiteExcepcional(id: string): Observable<any> {
+  labelImporteTramiteExcepcional(id: string): Observable<string> {
     return this.dd.get("importe_tramite_excepcional", id).pipe(
       switchMap(
         row => {
@@ -233,12 +270,28 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelOrgano(id: string): Observable<any> {
+  labelLog(id: string): Observable<string> {
+    return this.dd.get("log", id).pipe(
+      switchMap(
+        row => {
+          if(!row) return of(null);
+          return combineLatest([
+            of(this.labelLogRow(row)),
+          ])
+        }
+      ),
+      map(
+        response => { return (!response)? "" : response.join(" "); }
+      )
+    );
+  }
+
+  labelOrgano(id: string): Observable<string> {
     return this.dd.get("organo", id).pipe(
       switchMap(
         row => {
@@ -249,12 +302,12 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelPersona(id: string): Observable<any> {
+  labelPersona(id: string): Observable<string> {
     return this.dd.get("persona", id).pipe(
       switchMap(
         row => {
@@ -265,12 +318,12 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelSucursal(id: string): Observable<any> {
+  labelSucursal(id: string): Observable<string> {
     return this.dd.get("sucursal", id).pipe(
       switchMap(
         row => {
@@ -281,12 +334,12 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelTipoDocumento(id: string): Observable<any> {
+  labelTipoDocumento(id: string): Observable<string> {
     return this.dd.get("tipo_documento", id).pipe(
       switchMap(
         row => {
@@ -297,12 +350,12 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelTramiteExcepcional(id: string): Observable<any> {
+  labelTramiteExcepcional(id: string): Observable<string> {
     return this.dd.get("tramite_excepcional", id).pipe(
       switchMap(
         row => {
@@ -313,12 +366,12 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }
 
-  labelViatico(id: string): Observable<any> {
+  labelViatico(id: string): Observable<string> {
     return this.dd.get("viatico", id).pipe(
       switchMap(
         row => {
@@ -329,7 +382,7 @@ export class _DataDefinitionLabelService {
         }
       ),
       map(
-        response => { return (!response)? null : response.join(" "); }
+        response => { return (!response)? "" : response.join(" "); }
       )
     );
   }

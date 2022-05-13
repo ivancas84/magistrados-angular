@@ -20,6 +20,11 @@ import { ControlDateConfig } from "@component/control-date/control-date.componen
 import { combineLatest, map, Observable, of, switchMap } from "rxjs";
 import { isEmptyObject } from "@function/is-empty-object.function";
 import { Display } from "@class/display";
+import { AbstractControlViewOption } from "@component/abstract-control-view/abstract-control-view.component";
+import { EventButtonConfig } from "@component/event-button/event-button.component";
+import { DialogAlertComponent } from "@component/dialog-alert/dialog-alert.component";
+import { EventIconConfig } from "@component/event-icon/event-icon.component";
+import { RouteIconConfig } from "@component/route-icon/route-icon.component";
 
 @Component({
     selector: 'app-persona-admin',
@@ -128,8 +133,53 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
         monto: new ControlValueConfig,        
     })
 
+    optFooterPersona: AbstractControlViewOption[] = [
+      {
+        config: new EventButtonConfig({
+          text: "Guardar Datos Persona", //texto del boton
+          action: "submit_persona", //accion del evento a realizar
+          color: "primary",
+          fieldEvent: this.optField
+        }),
+      }
+    ];
 
-      
+    optFooterAfiliacion_: AbstractControlViewOption[] = [
+      {
+        config: new RouteIconConfig({
+          icon: "add",
+          params:{persona:"{{id}}"},
+          routerLink: "afiliacion-admin",
+          title: "Agregar Registro 40",
+          color:"accent",
+        }),
+        control: this.controlPersona
+      },
+    ];
+
+    optFooterTramiteExcepcional_: AbstractControlViewOption[] = [
+      {
+        config: new RouteIconConfig({
+          icon: "add",
+          params:{persona:"{{id}}"},
+          routerLink: "tramite-excepcional-admin",
+          title: "Agregar Registro 40",
+          color:"accent",
+        }),
+        control: this.controlPersona
+      },
+    ];
+
+    optColumnAfiliacion_: FormControlConfig[] = [
+      new RouteIconConfig({
+        params:{id:"{{id}}"},
+        routerLink: "afiliacion-admin",
+        color: "accent",
+        icon:"edit"
+      })
+    ]; //columna opciones para todas las tablas
+  
+    
     constructor(
         protected override dialog: MatDialog,
         protected override storage: SessionStorageService,
@@ -239,4 +289,35 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
         return this.control.getRawValue()
     }
 
+    override switchOptField(data: { action: string; [x: string]: any; }): void {
+      switch(data.action){
+       
+        case "submit_persona":
+          this.isSubmitted = true;
+          if (!this.control.valid) {
+            this.cancelSubmit();
+          } else {
+            this.submitPersona();
+          } 
+        break;
+
+        default: super.switchOptField(data)
+      }
+    }
+
+    protected submitPersona() {
+      var s = this.dd._post("persist", "persona", this.controlPersona.value).subscribe({
+        next: (response: any) => {
+          this.response = response
+          this.submitted()        
+        },
+        error: (error: any) => { 
+          this.dialog.open(DialogAlertComponent, {
+            data: {title: "Error", message: error.error}
+          });
+          this.isSubmitted = false;
+        }
+      });
+      this.subscriptions.add(s);
+    }
 }

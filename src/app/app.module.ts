@@ -15,6 +15,7 @@ import { AppCoreModule } from './core/app-core.module';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
 import { MenuComponent } from '@component/menu/menu.component';
+import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MenuComponent } from '@component/menu/menu.component';
     MenuComponent,
 
     PersonaAdminComponent,
+    AfiliacionAdminComponent,
   ],
   imports: [
     BrowserModule,
