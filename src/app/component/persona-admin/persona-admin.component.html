@@ -42,13 +42,14 @@
               <mat-card>
                 <mat-card-header>
                   <mat-card-title>
-                    Afiliaciones
+                    Registro 40
                   </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                   <core-table-one [control]="controlAfiliacion_"
                                   [config]="configAfiliacion_"
-                                  [optColumn]="optColumnAfiliacion_"></core-table-one>
+                                  [optColumn]="optColumnAfiliacion_"
+                                  [sortDisabled]="sortDisabled"></core-table-one>
         
                   <core-abstract-control-view *ngFor="let o of optFooterAfiliacion_" 
                                   [config]="o.config" 
@@ -59,12 +60,13 @@
               <mat-card>
                 <mat-card-header>
                   <mat-card-title>
-                    Tramite Excepcional
+                    Registro 80
                   </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                   <core-table-one [control]="controlTramiteExcepcional_"
-                                  [config]="configTramiteExcepcional_"></core-table-one>
+                                  [config]="configTramiteExcepcional_"
+                                  [sortDisabled]="sortDisabled"></core-table-one>
         
                   <core-abstract-control-view *ngFor="let o of optFooterTramiteExcepcional_" 
                                   [config]="o.config" 

@@ -17,13 +17,12 @@ import { FieldWidthOptions } from "@class/field-width-options";
 import { ControlValueConfig } from "@component/control-value/control-value.component";
 import { ControlLabelConfig } from "@component/control-label/control-label.component";
 import { ControlDateConfig } from "@component/control-date/control-date.component";
-import { combineLatest, map, Observable, of, switchMap } from "rxjs";
+import { combineLatest, map, Observable, of, startWith, switchMap } from "rxjs";
 import { isEmptyObject } from "@function/is-empty-object.function";
 import { Display } from "@class/display";
 import { AbstractControlViewOption } from "@component/abstract-control-view/abstract-control-view.component";
 import { EventButtonConfig } from "@component/event-button/event-button.component";
 import { DialogAlertComponent } from "@component/dialog-alert/dialog-alert.component";
-import { EventIconConfig } from "@component/event-icon/event-icon.component";
 import { RouteIconConfig } from "@component/route-icon/route-icon.component";
 
 @Component({
@@ -108,6 +107,7 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
         observaciones: new ControlValueConfig
     })
 
+
     configTramiteExcepcional_: FormArrayConfig = new FormArrayConfig({
         persona: new FormControlConfig,
         motivo: new ControlValueConfig,
@@ -132,6 +132,8 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
         hasta: new ControlDateConfig,
         monto: new ControlValueConfig,        
     })
+    sortDisabled: string[] = ["departamento_judicial","organo"]
+
 
     optFooterPersona: AbstractControlViewOption[] = [
       {
@@ -178,6 +180,15 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
         icon:"edit"
       })
     ]; //columna opciones para todas las tablas
+
+    optColumnTramiteExepcional_: FormControlConfig[] = [
+      new RouteIconConfig({
+        params:{id:"{{id}}"},
+        routerLink: "tramite-excepcional-admin",
+        color: "accent",
+        icon:"edit"
+      })
+    ]; //columna opciones para todas las tablas
   
     
     constructor(
@@ -206,6 +217,15 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
         this.control.addControl("afiliacion/persona",this.controlAfiliacion_)
         this.control.addControl("tramite_excepcional/persona",this.controlTramiteExcepcional_)
     
+
+        this.controlPersona.get("id")!.valueChanges.pipe(
+          startWith(this.controlPersona.get("id")!.value)
+        ).subscribe(
+          value => {
+            this.optFooterAfiliacion_[0]["config"].disabled = (value) ? false : true;  
+            this.optFooterTramiteExcepcional_[0]["config"].disabled = (value) ? false : true;  
+          }
+        )
         super.ngOnInit()
     }
 
@@ -254,6 +274,7 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
     initMultiple(data: { [x: string]: any }): Observable<any> {
         var display = new Display()
         display.setParams({"persona":data["persona"]["id"]})
+        display.setOrder({"creado":"asc"})
     
         return combineLatest([
           this.dd.all("afiliacion", display),
