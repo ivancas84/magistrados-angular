@@ -16,6 +16,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
 import { MenuComponent } from '@component/menu/menu.component';
 import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin.component';
+import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion
 
     PersonaAdminComponent,
     AfiliacionAdminComponent,
+    TramiteExcepcionalAdminComponent,
+
   ],
   imports: [
     BrowserModule,

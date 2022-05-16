@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { FormGroupConfig, FormControlConfig } from "@class/reactive-form-config";
-import { RequiredValidatorMsg } from "@class/validator-msg";
+import { MaxValidatorMsg, MinValidatorMsg, PatternValidatorMsg, RequiredValidatorMsg } from "@class/validator-msg";
 import { InputSelectConfig } from "@component/input-select/input-select.component";
 import { FieldWidthOptions } from "@class/field-width-options";
 import { ControlDateConfig } from "@component/control-date/control-date.component";
@@ -13,17 +13,19 @@ import { AbstractControlViewOption } from "@component/abstract-control-view/abst
 import { EventButtonConfig } from "@component/event-button/event-button.component";
 import { EventIconConfig } from "@component/event-icon/event-icon.component";
 import { ControlLabelConfig } from "@component/control-label/control-label.component";
+import { InputTextConfig } from "@component/input-text/input-text.component";
+import { InputDateConfig } from "@component/input-date/input-date.component";
 
 @Component({
     selector: 'app-afiliacion-admin',
     templateUrl: '../../core/component/structure/detail.component.html',
 })
-export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
+export class TramiteExcepcionalAdminComponent extends DetailComponent implements OnInit{
 
-    override entityName: string = "afiliacion"  
+    override entityName: string = "tramite_excepcional"  
     override inputSearchGo: boolean = false;
     override control: FormGroup =  new FormGroup({})
-    override title: string = "Registro 40"
+    override title: string = "Registro 80"
 
     override config: FormGroupConfig = new FormGroupConfig({
         persona: new FormControlConfig,
@@ -41,27 +43,43 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"34%"})
         }),
+        monto: new InputTextConfig({
+          validatorMsgs: [ new RequiredValidatorMsg, new MaxValidatorMsg, new MinValidatorMsg, new PatternValidatorMsg ],
+          width:new FieldWidthOptions({gtSm:"33%"})
+        }),
+        desde: new InputDateConfig({
+          width:new FieldWidthOptions({gtSm:"33%"})
+        }),
+        hasta: new InputDateConfig({
+          width:new FieldWidthOptions({gtSm:"34%"})
+        }),
+        sucursal: new InputSelectConfig({
+          label: "Sucursal",
+          width:new FieldWidthOptions({gtSm:"33%"}),
+          default:1
+        }),
         codigo: new InputSelectParamConfig({
-          options:[161, 162, 1621, 1622],
+          options:[163, 1631, 1632],
           required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],
-          width:new FieldWidthOptions({gtSm:"33%"})        
+          width:new FieldWidthOptions()    
         }),
         organo: new InputSelectConfig({
           required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],
-          width:new FieldWidthOptions({gtSm:"33%"})
+          width:new FieldWidthOptions()
         }),
         departamento_judicial: new InputSelectConfig({
           required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],
-          width:new FieldWidthOptions({gtSm:"34%"})
+          width:new FieldWidthOptions()
         }),
         departamento_judicial_informado: new InputSelectConfig({
           disabled: true,
           entityName: "departamento_judicial",
-          width:new FieldWidthOptions({gtSm:"33%"})
+          width:new FieldWidthOptions()
         }),
+        
         observaciones: new TextareaConfig({
           width:new FieldWidthOptions({gtSm:"100%", sm:"100%"})
         }),
@@ -89,6 +107,7 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
           width:new FieldWidthOptions()
         }),
     })
+
 
     override optTitle: AbstractControlViewOption[] = [ //opciones de componente
       {
@@ -126,6 +145,7 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
 
   ];
 
+
     override reload(){
       this.back();
     }
@@ -141,7 +161,6 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
           } else {
             (this.config.controls["evaluado"] as FieldWrapCardConfig).backgroundColor = "#ff8080" 
           }
-               
         }
       )
     }
