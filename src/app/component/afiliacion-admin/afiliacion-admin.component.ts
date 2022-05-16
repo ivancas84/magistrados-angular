@@ -12,6 +12,7 @@ import { FieldWrapCardConfig } from "@component/field-wrap-card/field-wrap-card.
 import { AbstractControlViewOption } from "@component/abstract-control-view/abstract-control-view.component";
 import { EventButtonConfig } from "@component/event-button/event-button.component";
 import { EventIconConfig } from "@component/event-icon/event-icon.component";
+import { ControlLabelConfig } from "@component/control-label/control-label.component";
 
 @Component({
     selector: 'app-afiliacion-admin',
@@ -20,19 +21,25 @@ import { EventIconConfig } from "@component/event-icon/event-icon.component";
 export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
 
     override entityName: string = "afiliacion"  
+    
+    override inputSearchGo: boolean = false;
 
     override control: FormGroup =  new FormGroup({})
+
+    override title: string = "Registro 40"
 
     override config: FormGroupConfig = new FormGroupConfig({
         persona: new FormControlConfig,
         motivo: new InputSelectParamConfig({
           options:["Alta", "Baja", "Pendiente"],
+          default: "Alta",
           required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"33%"})
         }),
         estado: new InputSelectParamConfig({
           options:['Creado','Enviado','Aprobado','Rechazado'],
+          default: "Creado",
           required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"34%"})
@@ -87,6 +94,14 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
     })
 
 
+    override optTitle: AbstractControlViewOption[] = [ //opciones de componente
+      {
+        config: new ControlLabelConfig({
+          entityName:"persona",
+        }),
+      }
+    ];
+
     override optFooter: AbstractControlViewOption[] = [ //opciones de componente
     {
       config:new EventButtonConfig({
@@ -122,6 +137,8 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
 
     override ngOnInit() {
       super.ngOnInit();  
+      this.optTitle[0].control = this.control.controls["persona"]
+
       this.control.valueChanges.subscribe(
         values => {
           if(values["estado"] == "Aprobado"){
