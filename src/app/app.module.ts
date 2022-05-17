@@ -17,6 +17,8 @@ import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.co
 import { MenuComponent } from '@component/menu/menu.component';
 import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin.component';
+import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show.component';
+import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,9 @@ import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional
 
     PersonaAdminComponent,
     AfiliacionAdminComponent,
+    AfiliacionShowComponent,
     TramiteExcepcionalAdminComponent,
-
+    TramiteExcepcionalShowComponent,
   ],
   imports: [
     BrowserModule,

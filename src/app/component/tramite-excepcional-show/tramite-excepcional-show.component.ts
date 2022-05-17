@@ -12,13 +12,12 @@ import { InputYmConfig } from "@component/input-ym/input-ym.component";
 import { TableComponent } from "@component/structure/table.component";
 
 @Component({
-    selector: 'app-afiliacion-show',
+    selector: 'app-tramite-excepcional-show',
     templateUrl: '../../core/component/structure/table.component.html',
 })
-export class AfiliacionShowComponent extends TableComponent implements OnInit{
+export class TramiteExcepcionalShowComponent extends TableComponent implements OnInit{
 
-  
-  override entityName: string = "afiliacion"
+  override entityName: string = "tramite_excepcional"
   override config: FormArrayConfig = new FormArrayConfig({
     persona: new FieldWrapRouterLinkConfig({
       config: new ControlLabelConfig({
@@ -37,8 +36,15 @@ export class AfiliacionShowComponent extends TableComponent implements OnInit{
     departamento_judicial: new ControlLabelConfig({
       label:"Departamento",
     }),
+    desde: new ControlDateConfig({
+      format: "MM/yyyy"
+    }),
+    hasta: new ControlDateConfig({
+      format: "MM/yyyy"
+    }),
     motivo: new ControlValueConfig,
     estado: new ControlValueConfig,
+    monto: new ControlValueConfig,
     creado: new ControlDateConfig({
       format: "MM/yyyy"
     }),
@@ -97,6 +103,7 @@ export class AfiliacionShowComponent extends TableComponent implements OnInit{
     }
   )
 
+
   override serverSortTranslate = {
     "persona":["per-nombres","per-apellidos"],
     "departamento_judicial":["dj-codigo"],
@@ -106,6 +113,5 @@ export class AfiliacionShowComponent extends TableComponent implements OnInit{
   override serverSortObligatory = ["persona","departamento_judicial","organo"]
 
   
-
 }
 

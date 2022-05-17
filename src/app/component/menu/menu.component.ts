@@ -14,27 +14,35 @@ export class MenuComponent implements OnInit {
     protected auth: AuthService, 
   ) { }
 
-  year?: number;
-  semester?: number;
-  comisionShowQueryParams:any = {}
-  tomaShowQueryParams:any = {}
-
-
   
-  ngOnInit(): void {
-    this.year = new Date().getFullYear();
-    this.semester = getSemester();
-    this.tomaShowQueryParams = {
-      "cur_com_cal-anio":this.year,
-      "cur_com_cal-semestre":this.semester,
+  afiliacionShowQueryParams!:  { [index: string]: boolean|string|number };
+  summaryQueryParams!:  { [index: string]: boolean|string|number };
+  importeAfiliacionShowQueryParams!:  { [index: string]: boolean|string|number };
+  importeTramiteExcepcionalShowQueryParams!:  { [index: string]: boolean|string|number };
+
+  ngOnInit() {
+    this.afiliacionShowQueryParams = {
+      "modificado.is_set":'false', 
+      order:JSON.stringify({"per-apellidos":'asc'}),
     }
-    this.comisionShowQueryParams = {
-      "cal-anio":this.year,
-      "cal-semestre":this.semester,
-      "autorizada":true
-    } 
-    // var token = this.auth.getToken();
-    // this.view = (token && token.hasOwnProperty("view")) ? token["view"] : [];
+
+    var d = new Date()
+    d.setMonth(d.getMonth()-1);
+    this.summaryQueryParams = {
+      periodo:d.toJSON(),
+      //organo:"1"
+    }
+
+    this.importeAfiliacionShowQueryParams = {
+      "periodo.ym":d.toJSON(),
+      "afi-organo":"1",
+      "afi-departamento_judicial":"1",
+      order:JSON.stringify({"afi_per-apellidos":'asc'}),
+    }
+    this.importeTramiteExcepcionalShowQueryParams = {
+      "periodo.ym":d.toJSON(),
+      order:JSON.stringify({"te_per-apellidos":'asc'}),
+    }
   }
  
 }
