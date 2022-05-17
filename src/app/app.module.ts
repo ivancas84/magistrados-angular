@@ -19,6 +19,7 @@ import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-show.component';
 import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show.component';
+import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-
     PersonaAdminComponent,
     AfiliacionAdminComponent,
     AfiliacionShowComponent,
+    ArchivoSueldosCreateComponent,
     TramiteExcepcionalAdminComponent,
     TramiteExcepcionalShowComponent,
   ],
