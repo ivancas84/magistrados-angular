@@ -145,6 +145,10 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
         }
       )
     }
+
+    override removeStorage(){
+      this.storage.clear();
+    }
   
 }
 
