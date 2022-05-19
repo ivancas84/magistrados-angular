@@ -23,6 +23,7 @@ import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create
 import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
 import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload/archivo-sueldos-upload.component';
 import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary.component';
+import { ViaticoAdminComponent } from '@component/viatico-admin/viatico-admin.component';
 
 @NgModule({
   declarations: [
@@ -30,15 +31,16 @@ import { ImporteSummaryComponent } from '@component/importe-summary/importe-summ
 
     MenuComponent,
 
-    PersonaAdminComponent,
     AfiliacionAdminComponent,
     AfiliacionShowComponent,
     ArchivoAfiliacionesShowComponent,
     ArchivoSueldosCreateComponent,
-    TramiteExcepcionalAdminComponent,
-    TramiteExcepcionalShowComponent,
     ArchivoSueldosUploadComponent,
     ImporteSummaryComponent,
+    PersonaAdminComponent,
+    TramiteExcepcionalAdminComponent,
+    TramiteExcepcionalShowComponent,
+    ViaticoAdminComponent,
   ],
   imports: [
     BrowserModule,

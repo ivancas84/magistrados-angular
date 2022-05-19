@@ -9,6 +9,7 @@ import { ImporteSummaryComponent } from '@component/importe-summary/importe-summ
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show.component';
+import { ViaticoAdminComponent } from '@component/viatico-admin/viatico-admin.component';
 
 const routes: Routes = [
   { path: 'afiliacion-admin', component: AfiliacionAdminComponent, pathMatch: 'full' },
@@ -17,9 +18,10 @@ const routes: Routes = [
   { path: 'archivo-sueldos-create', component: ArchivoSueldosCreateComponent  , pathMatch: 'full' },
   { path: 'archivo-sueldos-upload', component: ArchivoSueldosUploadComponent, pathMatch: 'full' },
   { path: 'importe-summary', component: ImporteSummaryComponent, pathMatch: 'full' },
+  { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent  , pathMatch: 'full' },
   { path: 'tramite-excepcional-show', component: TramiteExcepcionalShowComponent  , pathMatch: 'full' },
-  { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
+  { path: 'viatico-admin', component: ViaticoAdminComponent, pathMatch: 'full' },
 
 ];
 
