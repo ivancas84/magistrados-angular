@@ -1,4 +1,4 @@
-<form [formGroup]="uploadForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
+<form [formGroup]="control" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
 
 <mat-card *ngIf="!response">
   <mat-card-header>
@@ -16,7 +16,7 @@
           <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
             <mat-icon>clear</mat-icon>
           </button>
-          <mat-error *ngIf="file.hasError('required')">Debe completar valor</mat-error>
+          <mat-error *ngIf="file!.hasError('required')">Debe completar valor</mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -24,7 +24,7 @@
 </mat-card>
 <mat-card *ngIf="!response">
   <mat-card-content>
-    <button mat-raised-button [disabled]="uploadForm.pending || isSubmitted" type="submit" color="primary">Aceptar</button>&nbsp;
+    <button mat-raised-button [disabled]="control.pending || isSubmitted" type="submit" color="primary">Aceptar</button>&nbsp;
     <button mat-mini-fab color="accent" type="button"  (click)="back()"><mat-icon>keyboard_backspace</mat-icon></button>
     <button mat-mini-fab color="accent" type="button" (click)="reset()"><mat-icon>clear_all</mat-icon></button>
   </mat-card-content>
@@ -311,5 +311,5 @@
 </mat-card>
 
 
-<!--p>Debug Form value: {{ uploadForm.value | json }}</p>
-<p>Debug Form status: {{ uploadForm.status | json }}</p-->
+<!--p>Debug Form value: {{ control.value | json }}</p>
+<p>Debug Form status: {{ control.status | json }}</p-->
