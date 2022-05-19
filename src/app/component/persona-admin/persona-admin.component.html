@@ -19,7 +19,6 @@
 
 <ng-container *ngIf="(loadParams$ | async); else loading">
     <ng-container *ngIf="(loadDisplay$ | async); else loading">
-        <ng-container *ngIf="(loadStorage$ | async); else loading">
             <mat-card>
                 <mat-card-header>
                     <mat-card-title>
@@ -74,7 +73,6 @@
                                   [control]="o.control" ></core-abstract-control-view>
                 </mat-card-content>
               </mat-card>
-        </ng-container>
     </ng-container>
 </ng-container>
 

@@ -30,6 +30,11 @@ import { RouteIconConfig } from "@component/route-icon/route-icon.component";
     templateUrl: './persona-admin.component.html',
 })
 export class PersonaAdminComponent extends StructureComponent implements OnInit{
+  /**
+   * Administracion de persona.
+   * Para evitar complicaciones a la hora de administrar entidades relaciona-
+   * das. No se guarda el storage.
+   */
 
     override control: FormGroup = new FormGroup({})
 
