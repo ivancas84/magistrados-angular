@@ -17,8 +17,9 @@ import { TableComponent } from "@component/structure/table.component";
 })
 export class AfiliacionShowComponent extends TableComponent implements OnInit{
 
-  
+
   override entityName: string = "afiliacion"
+  override title: string = "Registros 40"
   override config: FormArrayConfig = new FormArrayConfig({
     persona: new FieldWrapRouterLinkConfig({
       config: new ControlLabelConfig({

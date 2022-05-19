@@ -5,8 +5,11 @@ import { AfiliacionShowComponent } from '@component/afiliacion-show/afiliacion-s
 import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliaciones-show/archivo-afiliaciones-show.component';
 import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create.component';
 import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload/archivo-sueldos-upload.component';
+import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
 import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
+import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
+import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show.component';
 import { ViaticoAdminComponent } from '@component/viatico-admin/viatico-admin.component';
@@ -17,8 +20,11 @@ const routes: Routes = [
   { path: 'archivo-afiliaciones-show', component: ArchivoAfiliacionesShowComponent, pathMatch: 'full' },
   { path: 'archivo-sueldos-create', component: ArchivoSueldosCreateComponent  , pathMatch: 'full' },
   { path: 'archivo-sueldos-upload', component: ArchivoSueldosUploadComponent, pathMatch: 'full' },
+  { path: 'departamento-judicial-admin', component: DepartamentoJudicialAdminArrayComponent, pathMatch: 'full' },
   { path: 'importe-summary', component: ImporteSummaryComponent, pathMatch: 'full' },
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
+  { path: 'sucursal-admin', component: SucursalAdminArrayComponent, pathMatch: 'full' },
+  { path: 'tipo-documento-admin', component: TipoDocumentoAdminArrayComponent, pathMatch: 'full' },
   { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent  , pathMatch: 'full' },
   { path: 'tramite-excepcional-show', component: TramiteExcepcionalShowComponent  , pathMatch: 'full' },
   { path: 'viatico-admin', component: ViaticoAdminComponent, pathMatch: 'full' },

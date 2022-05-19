@@ -24,6 +24,9 @@ import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliacione
 import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload/archivo-sueldos-upload.component';
 import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary.component';
 import { ViaticoAdminComponent } from '@component/viatico-admin/viatico-admin.component';
+import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
+import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
+import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +39,11 @@ import { ViaticoAdminComponent } from '@component/viatico-admin/viatico-admin.co
     ArchivoAfiliacionesShowComponent,
     ArchivoSueldosCreateComponent,
     ArchivoSueldosUploadComponent,
+    DepartamentoJudicialAdminArrayComponent,
     ImporteSummaryComponent,
     PersonaAdminComponent,
+    SucursalAdminArrayComponent,
+    TipoDocumentoAdminArrayComponent,
     TramiteExcepcionalAdminComponent,
     TramiteExcepcionalShowComponent,
     ViaticoAdminComponent,
