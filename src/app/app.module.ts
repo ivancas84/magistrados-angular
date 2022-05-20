@@ -29,6 +29,7 @@ import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admi
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 import { ImporteSummary162Component } from '@component/importe-summary-162/importe-summary-162.component';
 import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show.component';
+import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-valor-admin-array/configuracion-valor-admin-array.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-s
     ArchivoAfiliacionesShowComponent,
     ArchivoSueldosCreateComponent,
     ArchivoSueldosUploadComponent,
+    ConfiguracionValorAdminArrayComponent,
     DepartamentoJudicialAdminArrayComponent,
     ImporteAfiliacionShowComponent,
     ImporteSummaryComponent,

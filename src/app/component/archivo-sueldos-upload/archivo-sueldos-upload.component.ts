@@ -9,6 +9,8 @@ import { Location } from '@angular/common';
 import { SessionStorageService } from '@service/storage/session-storage.service';
 import { InputYmConfig } from '@component/input-ym/input-ym.component';
 import { InputSelectConfig } from '@component/input-select/input-select.component';
+import { Display } from '@class/display';
+import { map, Observable, of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-archivo-sueldos-upload-sueldos',
@@ -68,18 +70,34 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
 
   progress = 0;
   saveStatus: string = "unsaved";
-
-  save(progress = 0){
+  total = 0;
+  
+  save(){
     this.saveStatus = "saving";
-    var s = this.dd._post("persist", "archivo_sueldos", {log:this.response["log"], progress:progress}).subscribe({
-      next: (res) => {
-        this.progress = (res["progress"]+1) * 100 / res["total"];
-        if(res["progress"]+1 < (res["total"])) this.save(res["progress"]+1);
-        else {
-          this.storage.clear();
-          this.saveStatus = "saved";
-          this.snackBar.open("Procesamiento realizado", "X");
+    var display = new Display()
+    display.addParam("user",this.response["log"]);
+
+    var s = this.dd._post("count","log", display).pipe(
+      switchMap(
+        (total: number) => {
+          this.total = total
+          return this.persist(0)
         }
+      ),
+      switchMap(
+        () => {
+          return this.dd._post("ids","log", display).pipe(
+            switchMap(
+              ids => this.dd._post("delete", "log", ids)
+            )
+          )
+        }
+      )
+    ).subscribe({
+      next: () => {
+        this.storage.clear();
+        this.saveStatus = "saved";
+        this.snackBar.open("Procesamiento realizado", "X");
       },
       error: (err)=> {
         this.saveStatus = "unsaved";
@@ -88,7 +106,21 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
         });
       }
     })
-    this.subscriptions.add(s);
+    
+  }
+  
+  persist(progress: number): Observable<any>{
+    return this.dd._post("persist", "archivo_sueldos", {log:this.response["log"], progress:progress}).pipe(
+      switchMap(
+        res => {
+          console.log(res)
+          console.log(this.total)
+          this.progress = (res["progress"]) * 100 / this.total;
+          if(res["progress"] < this.total) return this.persist(res["progress"]);
+          return of(null)
+        } 
+      )
+    )
   }
   
 

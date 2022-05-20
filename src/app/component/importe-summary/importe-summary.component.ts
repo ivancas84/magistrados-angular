@@ -55,6 +55,7 @@ export class ImporteSummaryComponent extends TableComponent {
   })
 
   override config: FormArrayConfig = new FormArrayConfig({
+      "id": new FormControlConfig,
       "nombre": new ControlValueConfig({
         label:"Departamento",
       }),
