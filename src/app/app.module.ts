@@ -28,6 +28,7 @@ import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento
 import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 import { ImporteSummary162Component } from '@component/importe-summary-162/importe-summary-162.component';
+import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ImporteSummary162Component } from '@component/importe-summary-162/impor
     ArchivoSueldosCreateComponent,
     ArchivoSueldosUploadComponent,
     DepartamentoJudicialAdminArrayComponent,
+    ImporteAfiliacionShowComponent,
     ImporteSummaryComponent,
     ImporteSummary162Component,
     PersonaAdminComponent,
