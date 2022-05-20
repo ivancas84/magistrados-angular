@@ -43,19 +43,18 @@ export class ImporteSummaryComponent extends TableComponent {
   }
     
   override footerConfig: FormGroupConfig = new FormGroupConfig({
-      "nombre": new ControlValueConfig(),
-      "afiliaciones": new ControlValueConfig(),
-      "importe": new ControlValueConfig(),
-      "cuota_asociativa": new ControlValueConfig(),
-      "fam": new ControlValueConfig(),
-      "total_deduccion": new ControlValueConfig(),
-      "total_pagar": new ControlValueConfig(),
-      "viatico": new ControlValueConfig(),
-      "total": new ControlValueConfig(),
+      nombre: new ControlValueConfig(),
+      afiliaciones: new ControlValueConfig(),
+      importe: new ControlValueConfig(),
+      cuota_asociativa: new ControlValueConfig(),
+      fam: new ControlValueConfig(),
+      total_deduccion: new ControlValueConfig(),
+      total_pagar: new ControlValueConfig(),
+      viatico: new ControlValueConfig(),
+      total: new ControlValueConfig(),
   })
 
   override config: FormArrayConfig = new FormArrayConfig({
-      "id": new FormControlConfig,
       "nombre": new ControlValueConfig({
         label:"Departamento",
       }),

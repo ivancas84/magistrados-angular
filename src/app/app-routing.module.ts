@@ -6,6 +6,7 @@ import { ArchivoAfiliacionesShowComponent } from '@component/archivo-afiliacione
 import { ArchivoSueldosCreateComponent } from '@component/archivo-sueldos-create/archivo-sueldos-create.component';
 import { ArchivoSueldosUploadComponent } from '@component/archivo-sueldos-upload/archivo-sueldos-upload.component';
 import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento-judicial-admin-array/departamento-judicial-admin-array.component';
+import { ImporteSummary162Component } from '@component/importe-summary-162/importe-summary-162.component';
 import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'archivo-sueldos-upload', component: ArchivoSueldosUploadComponent, pathMatch: 'full' },
   { path: 'departamento-judicial-admin', component: DepartamentoJudicialAdminArrayComponent, pathMatch: 'full' },
   { path: 'importe-summary', component: ImporteSummaryComponent, pathMatch: 'full' },
+  { path: 'importe-summary-162', component: ImporteSummary162Component, pathMatch: 'full' },
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'sucursal-admin', component: SucursalAdminArrayComponent, pathMatch: 'full' },
   { path: 'tipo-documento-admin', component: TipoDocumentoAdminArrayComponent, pathMatch: 'full' },
