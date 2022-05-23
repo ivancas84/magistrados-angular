@@ -30,6 +30,7 @@ import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/suc
 import { ImporteSummary162Component } from '@component/importe-summary-162/importe-summary-162.component';
 import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show.component';
 import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-valor-admin-array/configuracion-valor-admin-array.component';
+import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-
     ImporteAfiliacionShowComponent,
     ImporteSummaryComponent,
     ImporteSummary162Component,
+    ImporteTramiteExcepcionalShowComponent,
     PersonaAdminComponent,
     SucursalAdminArrayComponent,
     TipoDocumentoAdminArrayComponent,

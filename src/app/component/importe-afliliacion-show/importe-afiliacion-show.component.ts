@@ -38,7 +38,6 @@ export class ImporteAfiliacionShowComponent extends TableComponent {
         path: "persona-admin", 
         params:{id:"{{persona}})"}
       }),
-      // "afi_per-legajo": new ControlValueConfig,
       "departamento_judicial": new ControlLabelConfig,
       "organo": new ControlLabelConfig,
       "codigo": new ControlValueConfig({

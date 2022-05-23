@@ -10,6 +10,7 @@ import { DepartamentoJudicialAdminArrayComponent } from '@component/departamento
 import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show.component';
 import { ImporteSummary162Component } from '@component/importe-summary-162/importe-summary-162.component';
 import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary.component';
+import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'importe-afiliacion-show', component: ImporteAfiliacionShowComponent, pathMatch: 'full' },
   { path: 'importe-summary', component: ImporteSummaryComponent, pathMatch: 'full' },
   { path: 'importe-summary-162', component: ImporteSummary162Component, pathMatch: 'full' },
+  { path: 'importe-tramite-excepcional-show', component: ImporteTramiteExcepcionalShowComponent, pathMatch: 'full' },
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'sucursal-admin', component: SucursalAdminArrayComponent, pathMatch: 'full' },
   { path: 'tipo-documento-admin', component: TipoDocumentoAdminArrayComponent, pathMatch: 'full' },
