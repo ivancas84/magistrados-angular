@@ -22,26 +22,26 @@ export class ImporteAfiliacionShowComponent extends TableComponent {
   override title: string = "Importes Registro 40"
 
   override serverSortTranslate = {
-    "afi-persona":["afi_per-nombres","afi_per-apellidos"],
-    "afi-departamento_judicial":["afi_dj-codigo"],
-    "afi-organo":["afi_org-descripcion"]
+    "persona":["afi_per-nombres","afi_per-apellidos"],
+    "departamento_judicial":["afi_dj-codigo"],
+    "organo":["afi_org-descripcion"]
   }
 
   override serverSortObligatory = ["afi-persona","afi-departamento_judicial","afi-organo"]
     
   override config: FormArrayConfig = new FormArrayConfig({
-      "afi-persona": new FieldWrapRouterLinkConfig({
+      "persona": new FieldWrapRouterLinkConfig({
         label:"Persona",
         config: new ControlLabelConfig({
           entityName:"persona"
         }),
         path: "persona-admin", 
-        params:{id:"{{afi-persona}})"}
+        params:{id:"{{persona}})"}
       }),
-      "afi_per-legajo": new ControlValueConfig,
-      "afi-departamento_judicial": new ControlLabelConfig,
-      "afi-organo": new ControlLabelConfig,
-      "afi-codigo": new ControlValueConfig({
+      // "afi_per-legajo": new ControlValueConfig,
+      "departamento_judicial": new ControlLabelConfig,
+      "organo": new ControlLabelConfig,
+      "codigo": new ControlValueConfig({
         label:"Cód",
       }),
       "periodo": new ControlDateConfig({
@@ -73,47 +73,11 @@ export class ImporteAfiliacionShowComponent extends TableComponent {
   override initData(): Observable<any>{
     
     return this.dd.all(this.entityName, this.display$.value).pipe(
-      map(
-        data => {
-          data.forEach((element: { [x: string]: any; }) => element["afi-persona"] = element["persona"])
-
-          console.log(data)
-          return data
-        }
-      )
-    )
-    return this.dd.all(this.entityName, this.display$.value).pipe(
       switchMap(
-        ids => this.dd.getAll(this.entityName, ids)
-      )
-    )
-  }
-
-  override loadDisplay(){
-    /**
-     * Se define un load independiente para el display, es util para reasignar
-     * valores directamente al display y reinicializar por ejemplo al limpiar
-     * o resetear el formulario
-     */
-    this.loadDisplay$ = this.display$.pipe(
-      switchMap(
-        () => {
-          this.load = false
-          return this.initLength();
-        }
-      ),
-      switchMap(
-        () =>   (this.length === 0) ? of([]) : this.initData()
-      ),
-      map(
-        data => {
-          console.log(data)
-          this.setData(data)
-          return this.load = true;
-        }
+        data =>  this.dd.getAllConnection(data, "afiliacion", {"persona":"persona","departamento_judicial":"departamento_judicial","organo":"organo","codigo":"codigo"}, "afiliacion")
       ),
     )
   }
- 
+
 }
 
