@@ -84,15 +84,7 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
           return this.persist(0)
         }
       ),
-      switchMap(
-        () => {
-          return this.dd._post("ids","log", display).pipe(
-            switchMap(
-              ids => this.dd._post("delete", "log", ids)
-            )
-          )
-        }
-      )
+
     ).subscribe({
       next: () => {
         this.storage.clear();
@@ -110,6 +102,9 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
   }
   
   persist(progress: number): Observable<any>{
+    var display = new Display()
+    display.addParam("user",this.response["log"]);
+    
     return this.dd._post("persist", "archivo_sueldos", {log:this.response["log"], progress:progress}).pipe(
       switchMap(
         res => {
@@ -117,7 +112,11 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
           console.log(this.total)
           this.progress = (res["progress"]) * 100 / this.total;
           if(res["progress"] < this.total) return this.persist(res["progress"]);
-          return of(null)
+          return this.dd._post("ids","log", display).pipe(
+            switchMap(
+              ids => this.dd._post("delete", "log", ids)
+            )
+          )
         } 
       )
     )
