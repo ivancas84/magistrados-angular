@@ -31,6 +31,7 @@ import { ImporteSummary162Component } from '@component/importe-summary-162/impor
 import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-show/importe-afiliacion-show.component';
 import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-valor-admin-array/configuracion-valor-admin-array.component';
 import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
+import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-trami
     ConfiguracionValorAdminArrayComponent,
     DepartamentoJudicialAdminArrayComponent,
     ImporteAfiliacionShowComponent,
+    ImporteDeleteComponent,
     ImporteSummaryComponent,
     ImporteSummary162Component,
     ImporteTramiteExcepcionalShowComponent,
