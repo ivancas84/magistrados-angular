@@ -24,6 +24,7 @@ import { AbstractControlViewOption } from "@component/abstract-control-view/abst
 import { EventButtonConfig } from "@component/event-button/event-button.component";
 import { DialogAlertComponent } from "@component/dialog-alert/dialog-alert.component";
 import { RouteIconConfig } from "@component/route-icon/route-icon.component";
+import { emptyUrl } from "@function/empty-url.function";
 
 @Component({
     selector: 'app-persona-admin',
@@ -345,5 +346,15 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
         }
       });
       this.subscriptions.add(s);
+    }
+
+    override reload(){
+      /**
+       * Recargar una vez persistido
+       */
+      let route = emptyUrl(this.router.url) + "?id="+this.response["id"];
+      if(route != this.router.url) this.router.navigateByUrl('/' + route, {replaceUrl: true});
+      else this.display$.next(this.display$.value);
+      this.isSubmitted = false;
     }
 }
