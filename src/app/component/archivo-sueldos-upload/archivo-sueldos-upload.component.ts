@@ -118,6 +118,7 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
               () => {
                 this.storage.clear();
                 this.saveStatus = "saved";
+                this.isSubmitted = false;
                 this.snackBar.open("Procesamiento realizado", "X");
               }
             )
