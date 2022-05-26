@@ -46,7 +46,7 @@ export class ImporteSummary162Component extends TableComponent {
       afi_org_descripcion: new ControlValueConfig(),
       afiliaciones: new ControlValueConfig(),
       importe: new ControlValueConfig(),
-      cuota_asociativa: new ControlValueConfig(),
+      // cuota_asociativa: new ControlValueConfig(),
   })
 
   override config: FormArrayConfig = new FormArrayConfig({
@@ -59,10 +59,10 @@ export class ImporteSummary162Component extends TableComponent {
       afiliaciones: new ControlValueConfig({
         label:"Colegiados",
       }),
-      importe: new ControlValueConfig,
-      cuota_asociativa: new ControlValueConfig({
+      importe: new ControlValueConfig({
         label:"15%",
       }),
+   
     }
   )
 
@@ -90,9 +90,9 @@ export class ImporteSummary162Component extends TableComponent {
         this.footer!.controls["importe"].setValue(   
           value.map((t: { [x: string]: any; }) => t["importe"]).reduce((acc: any, value: any) => acc + value, 0).toFixed(2)
         )
-        this.footer!.controls["cuota_asociativa"].setValue(   
-          value.map((t: { [x: string]: any; }) => t["cuota_asociativa"]).reduce((acc: any, value: any) => acc + value, 0).toFixed(2)
-        )
+        // this.footer!.controls["cuota_asociativa"].setValue(   
+        //   value.map((t: { [x: string]: any; }) => t["cuota_asociativa"]).reduce((acc: any, value: any) => acc + value, 0).toFixed(2)
+        // )
       }
     );  
   }

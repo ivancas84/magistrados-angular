@@ -69,6 +69,8 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
 
 
   progress = 0;
+  progress_ = 0;
+
   saveStatus: string = "unsaved";
   total = 0;
   
@@ -86,11 +88,6 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
       ),
 
     ).subscribe({
-      next: () => {
-        this.storage.clear();
-        this.saveStatus = "saved";
-        this.snackBar.open("Procesamiento realizado", "X");
-      },
       error: (err)=> {
         this.saveStatus = "unsaved";
         this.dialog.open(DialogAlertComponent, {
@@ -98,6 +95,7 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
         });
       }
     })
+    this.subscriptions.add(s)
     
   }
   
@@ -108,13 +106,20 @@ export class ArchivoSueldosUploadComponent extends UploadComponent {
     return this.dd._post("persist", "archivo_sueldos", {log:this.response["log"], progress:progress}).pipe(
       switchMap(
         res => {
-          console.log(res)
-          console.log(this.total)
+          this.progress_ = res["progress"];
           this.progress = (res["progress"]) * 100 / this.total;
-          if(res["progress"] < this.total) return this.persist(res["progress"]);
+
+          if(parseInt(res["progress"]) < this.total) return this.persist(res["progress"]);
           return this.dd._post("ids","log", display).pipe(
             switchMap(
               ids => this.dd._post("delete", "log", ids)
+            ),
+            tap(
+              () => {
+                this.storage.clear();
+                this.saveStatus = "saved";
+                this.snackBar.open("Procesamiento realizado", "X");
+              }
             )
           )
         } 

@@ -295,12 +295,19 @@
   </mat-card-content>  
 </mat-card>
 
-<mat-progress-bar *ngIf="saveStatus == 'saving'"
-          [color]="'warn'"
-          [mode]="'determinate'"
-          [value]="progress"
-          >
-</mat-progress-bar>
+<mat-card *ngIf="saveStatus == 'saving'">
+  <mat-card-content>
+    Procesando registro {{progress_}}/{{total}}
+    <mat-progress-bar
+    [color]="'warn'"
+    [mode]="'determinate'"
+    [value]="progress"
+    >
+    </mat-progress-bar>
+  </mat-card-content>
+</mat-card>
+
+
   
 <mat-card *ngIf="response">
   <mat-card-content>
