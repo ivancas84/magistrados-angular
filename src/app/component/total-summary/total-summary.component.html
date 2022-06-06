@@ -1,0 +1,45 @@
+<ng-template #loading>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </ng-template>
+  
+  <ng-container *ngIf="(loadParams$ | async); else loading">
+    <ng-container *ngIf="(loadDisplay$ | async); else loading">
+      <mat-card>
+     
+        <mat-card-content>
+  
+        <core-search [display]="display$.value" 
+                     [config]="searchConfig"
+                     [control]="searchControl"></core-search>
+  
+        <div #mainTable *ngIf="control.value">
+            <p>RECIBI DEL COLEGO DE MAGISTRADOS Y FUNCIONARIOS DEL PODER JUDICIAL DE LA PROVINCIA DE BUENOS AIRES LA SUMA DE $ {{control.value["total_pagar"]}} (pesos) mediante transferencia del BANCO DE LA PROIVINCIA DE BUENOS AIRES, CONFORME AL SIGUIENTE DETALLE: </p>
+            <table>
+                <tr>
+                    <td><strong>MES</strong></td><td><strong>{{periodo | toDate | date:"MM/yyyy" }}</strong></td>
+                </tr>
+                <tr>
+                    <td>COLEGIADOS</td><td>{{control.value["afiliaciones"]}}</td>
+                </tr>
+                <tr>
+                    <td>IMPORTE TOTAL</td><td>{{control.value["importe"]}}</td>
+                </tr>
+                <tr>
+                    <td>DEDUCCIÓN FAM</td><td>{{control.value["fam"]}}</td>
+                </tr>                   
+                <tr>
+                    <td>TOTAL DEDUCCIÓN</td><td>{{control.value["total_deduccion"]}}</td>
+                </tr>
+                <tr>
+                    <td><strong>TOTAL A PAGAR</strong></td><td><strong>{{control.value["total_pagar"]}}</strong></td>
+                </tr>
+            </table>
+        </div>
+          
+      </mat-card-content>
+      </mat-card>
+    </ng-container>
+    <!-- <p>Debug Form value: {{ form.value | json }}</p>
+    <p>Debug Form status: {{ form.status | json }}</p> -->
+  
+  </ng-container>
