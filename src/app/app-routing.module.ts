@@ -16,6 +16,7 @@ import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-trami
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
+import { TotalSummaryComponent } from '@component/total-summary/total-summary.component';
 import { TramiteExcepcionalAdminComponent } from '@component/tramite-excepcional-admin/tramite-excepcional-admin.component';
 import { TramiteExcepcionalShowComponent } from '@component/tramite-excepcional-show/tramite-excepcional-show.component';
 import { ViaticoAdminComponent } from '@component/viatico-admin/viatico-admin.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'persona-admin', component: PersonaAdminComponent, pathMatch: 'full' },
   { path: 'sucursal-admin', component: SucursalAdminArrayComponent, pathMatch: 'full' },
   { path: 'tipo-documento-admin', component: TipoDocumentoAdminArrayComponent, pathMatch: 'full' },
+  { path: 'total-summary', component: TotalSummaryComponent  , pathMatch: 'full' },
   { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent  , pathMatch: 'full' },
   { path: 'tramite-excepcional-show', component: TramiteExcepcionalShowComponent  , pathMatch: 'full' },
   { path: 'viatico-admin', component: ViaticoAdminComponent, pathMatch: 'full' },

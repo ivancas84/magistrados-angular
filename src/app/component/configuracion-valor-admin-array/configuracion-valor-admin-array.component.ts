@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormArrayConfig } from '@class/reactive-form-config';
 import { DateValidatorMsg, PatternValidatorMsg, RequiredValidatorMsg } from '@class/validator-msg';
 import { InputTextConfig } from '@component/input-text/input-text.component';
@@ -29,17 +29,19 @@ export class ConfiguracionValorAdminArrayComponent extends TableComponent {
 
   constructor(
     protected override dd: DataDefinitionToolService, 
-    protected override route: ActivatedRoute, 
-    protected override dialog: MatDialog,
     protected override storage: SessionStorageService,
-    protected override router: Router, 
+    protected override dialog: MatDialog,
     protected override snackBar: MatSnackBar,
+    protected override router: Router, 
+    protected override route: ActivatedRoute, 
     protected override location: Location, 
-    protected override ddrf: DataDefinitionFkAllService, //@deprecated?
+    protected override cd: ChangeDetectorRef,
     protected validators: DdAsyncValidatorsService
   ) {
-    super(dd, route, dialog, storage, router, snackBar, location, ddrf)
+    super(dd, storage, dialog, snackBar, router, route, location, cd)
   }
+
+
   
   override config: FormArrayConfig = new FormArrayConfig({
     nombre: new InputSelectParamConfig({

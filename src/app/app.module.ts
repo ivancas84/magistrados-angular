@@ -32,6 +32,7 @@ import { ImporteAfiliacionShowComponent } from '@component/importe-afliliacion-s
 import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-valor-admin-array/configuracion-valor-admin-array.component';
 import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
 import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete.component';
+import { TotalSummaryComponent } from '@component/total-summary/total-summary.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete
     PersonaAdminComponent,
     SucursalAdminArrayComponent,
     TipoDocumentoAdminArrayComponent,
+    TotalSummaryComponent,
     TramiteExcepcionalAdminComponent,
     TramiteExcepcionalShowComponent,
     ViaticoAdminComponent,

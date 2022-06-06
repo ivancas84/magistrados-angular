@@ -207,8 +207,10 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
         protected override route: ActivatedRoute, 
         protected validators: DdAsyncValidatorsService,
     ) { 
-    super(dialog,storage,dd,snackBar,router,location,route)
+      super(dd,storage,dialog,snackBar,router,route, location)
     }
+
+
 
       
     override ngOnInit(){

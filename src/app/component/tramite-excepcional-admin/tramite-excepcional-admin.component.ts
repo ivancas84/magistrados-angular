@@ -30,7 +30,7 @@ export class TramiteExcepcionalAdminComponent extends DetailComponent implements
     override config: FormGroupConfig = new FormGroupConfig({
         persona: new FormControlConfig,
         motivo: new InputSelectParamConfig({
-          options:["Alta", "Baja", "Pendiente"],
+          options:["Alta", "Modificación", "Baja", "Pendiente"],
           default: "Alta",
           required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],

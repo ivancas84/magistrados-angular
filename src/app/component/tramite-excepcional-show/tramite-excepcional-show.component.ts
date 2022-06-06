@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormArrayConfig, FormGroupConfig } from "@class/reactive-form-config";
+import { FormArrayConfig, FormControlConfig, FormGroupConfig } from "@class/reactive-form-config";
 import { DateValidatorMsg } from "@class/validator-msg";
 import { ControlDateConfig } from "@component/control-date/control-date.component";
 import { ControlLabelConfig } from "@component/control-label/control-label.component";
@@ -10,6 +10,7 @@ import { InputSelectParamConfig } from "@component/input-select-param/input-sele
 import { InputSelectConfig } from "@component/input-select/input-select.component";
 import { InputYmConfig } from "@component/input-ym/input-ym.component";
 import { TableComponent } from "@component/structure/table.component";
+import { Observable, switchMap } from "rxjs";
 
 @Component({
     selector: 'app-tramite-excepcional-show',
@@ -18,17 +19,18 @@ import { TableComponent } from "@component/structure/table.component";
 export class TramiteExcepcionalShowComponent extends TableComponent implements OnInit{
 
   override entityName: string = "tramite_excepcional"
+  override title: string = "Registros 80"
   override config: FormArrayConfig = new FormArrayConfig({
-    persona: new FieldWrapRouterLinkConfig({
-      config: new ControlLabelConfig({
-        entityName: "persona",
+    persona: new FormControlConfig,
+    nombres: new FieldWrapRouterLinkConfig({
+      config: new ControlValueConfig({
+        entityName: "nombres",
       }),
       path: "persona-admin", 
       params:{id:"{{persona}})"}
     }),
-    "per-legajo": new ControlValueConfig({
-      label:"Legajo",
-    }),
+    apellidos: new ControlValueConfig,
+    legajo: new ControlValueConfig,
     organo: new ControlLabelConfig,
     codigo: new ControlValueConfig({
       label:"Cód",
@@ -68,7 +70,7 @@ export class TramiteExcepcionalShowComponent extends TableComponent implements O
         options:['Creado','Enviado','Aprobado','Rechazado'],
       }),
       codigo:new InputSelectParamConfig({
-        options:[161,162],
+        options:[163, 1631, 1632],
       }),
       "modificado.is_set":new InputSelectCheckboxConfig({
         label:"Está modificado?",
@@ -105,13 +107,23 @@ export class TramiteExcepcionalShowComponent extends TableComponent implements O
 
 
   override serverSortTranslate = {
-    "persona":["per-nombres","per-apellidos"],
+    "nombres":["per-nombres"],
+    "apellidos":["per-apellidos"],
+    "legajo":["per-legajo"],
     "departamento_judicial":["dj-codigo"],
     "organo":["org-descripcion"]
   }
 
-  override serverSortObligatory = ["persona","departamento_judicial","organo"]
+  override serverSortObligatory = ["departamento_judicial","organo"]
 
+  override initData(): Observable<any>{
+    return super.initData().pipe(
+      switchMap(
+        data => this.dd.getAllConnection(data, "persona", {"nombres":"nombres", "apellidos":"apellidos", "legajo":"legajo"})
+      ),
+    )
+
+  }
   
 }
 
