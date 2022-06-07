@@ -17,8 +17,10 @@
                      [config]="searchConfig"
                      [control]="searchControl"></core-search>
   
-        <div #mainContent *ngIf="control.value">
-            <p>RECIBI DEL COLEGO DE MAGISTRADOS Y FUNCIONARIOS DEL PODER JUDICIAL DE LA PROVINCIA DE BUENOS AIRES LA SUMA DE $ {{control.value["total_pagar"]}} (pesos) mediante transferencia del BANCO DE LA PROIVINCIA DE BUENOS AIRES, CONFORME AL SIGUIENTE DETALLE: </p>
+        <div #mainContent *ngIf="!emptyData">
+            <p style="text-align:right">La Plata, {{fecha}} </p>
+
+            <p style="text-align:justify">RECIBI DEL COLEGIO DE MAGISTRADOS Y FUNCIONARIOS DEL PODER JUDICIAL DE LA PROVINCIA DE BUENOS AIRES LA SUMA DE $ {{control.value["total_pagar"]}} ({{control.value["total_pagar_letras"]}}) mediante transferencia del BANCO DE LA PROIVINCIA DE BUENOS AIRES, CONFORME AL SIGUIENTE DETALLE: </p>
             <table>
                 <tr>
                     <td><strong>MES</strong></td><td><strong>{{periodo | toDate | date:"MM/yyyy" }}</strong></td>
