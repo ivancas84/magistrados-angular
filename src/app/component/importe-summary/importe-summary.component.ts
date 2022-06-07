@@ -6,6 +6,8 @@ import { map, startWith, switchMap } from 'rxjs/operators';
 import { InputYmConfig } from '@component/input-ym/input-ym.component';
 import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/field-wrap-router-link.component';
 import { TableComponent } from '@component/structure/table.component';
+import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
+import { EventIconConfig } from '@component/event-icon/event-icon.component';
 
 @Component({
   selector: 'app-importe-summary',
@@ -14,6 +16,26 @@ import { TableComponent } from '@component/structure/table.component';
 export class ImporteSummaryComponent extends TableComponent {
   override entityName: string = "importe"
 
+  override optTitle: AbstractControlViewOption[] = [
+    {
+      config: new EventIconConfig({
+        icon: "content_copy", //icono del boton
+        action: "copy_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Copiar"
+      })
+    },
+    {
+      config: new EventIconConfig({
+        icon: "print", //icono del boton
+        action: "print_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Imprimir"
+      })
+    },
+
+  ]; 
+  
   override initData(): Observable<any>{
     if(!this.display$.value.hasOwnProperty("params")) return of([]);
     return this.dd.post("info", this.entityName, this.display$.value.getParams());

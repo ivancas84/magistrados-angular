@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Display } from '@class/display';
 import { FormArrayConfig, FormGroupConfig } from '@class/reactive-form-config';
+import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
 import { ControlDateConfig } from '@component/control-date/control-date.component';
 import { ControlLabelConfig } from '@component/control-label/control-label.component';
 import { ControlValueConfig } from '@component/control-value/control-value.component';
+import { EventIconConfig } from '@component/event-icon/event-icon.component';
 import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/field-wrap-router-link.component';
 import { InputSelectParamConfig } from '@component/input-select-param/input-select-param.component';
 import { InputSelectConfig } from '@component/input-select/input-select.component';
@@ -78,5 +80,24 @@ export class ImporteAfiliacionShowComponent extends TableComponent {
     )
   }
 
+  override optTitle: AbstractControlViewOption[] = [
+    {
+      config: new EventIconConfig({
+        icon: "content_copy", //icono del boton
+        action: "copy_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Copiar"
+      })
+    },
+    {
+      config: new EventIconConfig({
+        icon: "print", //icono del boton
+        action: "print_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Imprimir"
+      })
+    },
+
+  ]; 
 }
 

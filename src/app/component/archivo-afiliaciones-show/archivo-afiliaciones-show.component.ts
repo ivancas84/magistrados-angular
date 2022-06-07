@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArrayConfig, FormControlConfig } from '@class/reactive-form-config';
+import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
 import { ControlValueConfig } from '@component/control-value/control-value.component';
+import { EventIconConfig } from '@component/event-icon/event-icon.component';
 import { LinkTextConfig } from '@component/link-text/link-text.component';
 import { LinkValueConfig } from '@component/link-value/link-value.component';
 import { TableComponent } from '@component/structure/table.component';
@@ -62,5 +64,25 @@ export class ArchivoAfiliacionesShowComponent extends TableComponent {
       )
     )
   }
+
+  override optTitle: AbstractControlViewOption[] = [
+    {
+      config: new EventIconConfig({
+        icon: "content_copy", //icono del boton
+        action: "copy_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Copiar"
+      })
+    },
+    {
+      config: new EventIconConfig({
+        icon: "print", //icono del boton
+        action: "print_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Imprimir"
+      })
+    },
+
+  ]; 
 
 }

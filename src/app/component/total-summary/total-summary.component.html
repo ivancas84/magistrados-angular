@@ -7,10 +7,11 @@
       <mat-card>
         <mat-card-title>
           Recibo
-        </mat-card-title>
-        <core-abstract-control-view *ngFor="let o of optTitle" 
+          <core-abstract-control-view *ngFor="let o of optTitle" 
               [config]="o.config" 
               [control]="o.control" ></core-abstract-control-view> 
+        </mat-card-title>
+        
         <mat-card-content>
   
         <core-search [display]="display$.value" 

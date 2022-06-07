@@ -5,6 +5,8 @@ import { ControlValueConfig } from '@component/control-value/control-value.compo
 import { map, startWith, switchMap } from 'rxjs/operators';
 import { InputYmConfig } from '@component/input-ym/input-ym.component';
 import { TableComponent } from '@component/structure/table.component';
+import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
+import { EventIconConfig } from '@component/event-icon/event-icon.component';
 
 @Component({
   selector: 'app-persona-show',
@@ -77,6 +79,7 @@ export class ImporteSummary162Component extends TableComponent {
     // this.config.controls["viatico"].params["periodo.ym"] = p;
   }
 
+  
 
   initFooterData(){
     this.footer!.controls["afi_dj_nombre"].setValue("TOTAL")
@@ -97,7 +100,25 @@ export class ImporteSummary162Component extends TableComponent {
     );  
   }
 
+  override optTitle: AbstractControlViewOption[] = [
+    {
+      config: new EventIconConfig({
+        icon: "content_copy", //icono del boton
+        action: "copy_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Copiar"
+      })
+    },
+    {
+      config: new EventIconConfig({
+        icon: "print", //icono del boton
+        action: "print_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Imprimir"
+      })
+    },
 
+  ]; 
 
 }
 

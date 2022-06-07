@@ -3,9 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Display } from '@class/display';
 import { FormArrayConfig, FormGroupConfig } from '@class/reactive-form-config';
 import { DateValidatorMsg, RequiredValidatorMsg } from '@class/validator-msg';
+import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
 import { ControlDateConfig } from '@component/control-date/control-date.component';
 import { ControlLabelConfig } from '@component/control-label/control-label.component';
 import { ControlValueConfig } from '@component/control-value/control-value.component';
+import { EventIconConfig } from '@component/event-icon/event-icon.component';
 import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/field-wrap-router-link.component';
 import { InputSelectConfig } from '@component/input-select/input-select.component';
 import { InputYmConfig } from '@component/input-ym/input-ym.component';
@@ -84,5 +86,24 @@ export class ImporteTramiteExcepcionalShowComponent extends TableComponent {
     )
   }
 
+  override optTitle: AbstractControlViewOption[] = [
+    {
+      config: new EventIconConfig({
+        icon: "content_copy", //icono del boton
+        action: "copy_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Copiar"
+      })
+    },
+    {
+      config: new EventIconConfig({
+        icon: "print", //icono del boton
+        action: "print_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Imprimir"
+      })
+    },
+
+  ]; 
 }
 

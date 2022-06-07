@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormArrayConfig, FormControlConfig, FormGroupConfig } from "@class/reactive-form-config";
 import { DateValidatorMsg } from "@class/validator-msg";
+import { AbstractControlViewOption } from "@component/abstract-control-view/abstract-control-view.component";
 import { ControlDateConfig } from "@component/control-date/control-date.component";
 import { ControlLabelConfig } from "@component/control-label/control-label.component";
 import { ControlValueConfig } from "@component/control-value/control-value.component";
+import { EventIconConfig } from "@component/event-icon/event-icon.component";
 import { FieldWrapRouterLinkConfig } from "@component/field-wrap-router-link/field-wrap-router-link.component";
 import { InputSelectCheckboxConfig } from "@component/input-select-checkbox/input-select-checkbox.component";
 import { InputSelectParamConfig } from "@component/input-select-param/input-select-param.component";
@@ -125,5 +127,24 @@ export class TramiteExcepcionalShowComponent extends TableComponent implements O
 
   }
   
+  override optTitle: AbstractControlViewOption[] = [
+    {
+      config: new EventIconConfig({
+        icon: "content_copy", //icono del boton
+        action: "copy_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Copiar"
+      })
+    },
+    {
+      config: new EventIconConfig({
+        icon: "print", //icono del boton
+        action: "print_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Imprimir"
+      })
+    },
+
+  ]; 
 }
 
