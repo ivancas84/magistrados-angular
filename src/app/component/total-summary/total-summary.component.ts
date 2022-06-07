@@ -9,6 +9,8 @@ import { InputSelectConfig } from '@component/input-select/input-select.componen
 import { DetailComponent } from '@component/structure/detail.component';
 import { FormGroup } from '@angular/forms';
 import { isEmptyObject } from '@function/is-empty-object.function';
+import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
+import { EventIconConfig } from '@component/event-icon/event-icon.component';
 
 @Component({
   selector: 'app-total-summary',
@@ -60,6 +62,26 @@ export class TotalSummaryComponent extends DetailComponent {
   periodo!: string
   departamento_judicial!: string
 
+  override optTitle: AbstractControlViewOption[] = [
+    {
+      config: new EventIconConfig({
+        icon: "content_copy", //icono del boton
+        action: "copy_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Copiar"
+      })
+    },
+    {
+      config: new EventIconConfig({
+        icon: "print", //icono del boton
+        action: "print_content", //accion del evento a realizar
+        fieldEvent: this.optField,
+        title: "Imprimir"
+      })
+    },
+
+  ]; 
+  
   override initParams(params: any){ 
     this.params = params
     var p = (params.hasOwnProperty("periodo")) ? this.params["periodo"] : JSON.parse(decodeURI(this.params["params"]))["periodo"]
