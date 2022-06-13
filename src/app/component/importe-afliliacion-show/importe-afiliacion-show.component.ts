@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Display } from '@class/display';
-import { FormArrayConfig, FormGroupConfig } from '@class/reactive-form-config';
+import { FormArrayConfig, FormControlConfig, FormGroupConfig } from '@class/reactive-form-config';
 import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
 import { ControlDateConfig } from '@component/control-date/control-date.component';
 import { ControlLabelConfig } from '@component/control-label/control-label.component';
@@ -11,7 +11,7 @@ import { InputSelectParamConfig } from '@component/input-select-param/input-sele
 import { InputSelectConfig } from '@component/input-select/input-select.component';
 import { InputYmConfig } from '@component/input-ym/input-ym.component';
 import { TableComponent } from '@component/structure/table.component';
-import { switchMap, of, map, Observable } from 'rxjs';
+import { switchMap, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-importe-afiliacion-show',
@@ -24,31 +24,43 @@ export class ImporteAfiliacionShowComponent extends TableComponent {
   override title: string = "Importes Registro 40"
 
   override serverSortTranslate = {
-    "persona":["afi_per-nombres","afi_per-apellidos"],
+    "apellido":["afi_per-apellidos"],
+    "nombres":["afi_per-nombres"],
+    "legajo":["afi_per-legajo"],
     "departamento_judicial":["afi_dj-codigo"],
     "organo":["afi_org-descripcion"]
   }
 
-  override serverSortObligatory = ["afi-persona","afi-departamento_judicial","afi-organo"]
+  override serverSortObligatory = ["afi-departamento_judicial","afi-organo"]
     
   override config: FormArrayConfig = new FormArrayConfig({
-      "persona": new FieldWrapRouterLinkConfig({
-        label:"Persona",
-        config: new ControlLabelConfig({
-          entityName:"persona"
-        }),
+      persona: new FormControlConfig,
+      
+      apellidos: new FieldWrapRouterLinkConfig({
+        config: new ControlValueConfig,
         path: "persona-admin", 
         params:{id:"{{persona}})"}
       }),
-      "departamento_judicial": new ControlLabelConfig,
-      "organo": new ControlLabelConfig,
-      "codigo": new ControlValueConfig({
+      nombres: new ControlValueConfig,
+      legajo: new ControlValueConfig,
+
+      departamento_judicial: new ControlLabelConfig,
+      organo: new ControlLabelConfig,
+      codigo: new ControlValueConfig({
         label:"Cód",
       }),
-      "periodo": new ControlDateConfig({
+      periodo: new ControlDateConfig({
         format: "dd/MM/yyyy"
       }),
-      "valor": new ControlValueConfig,
+      valor: new ControlValueConfig,
+    }
+  )
+
+  override footerConfig: FormGroupConfig = new FormGroupConfig({
+      apellidos: new ControlValueConfig,
+      nombres: new ControlValueConfig,
+      periodo: new ControlValueConfig,
+      valor: new ControlValueConfig,
     }
   )
 
@@ -77,6 +89,9 @@ export class ImporteAfiliacionShowComponent extends TableComponent {
       switchMap(
         data =>  this.dd.getAllConnection(data, "afiliacion", {"persona":"persona","departamento_judicial":"departamento_judicial","organo":"organo","codigo":"codigo"}, "afiliacion")
       ),
+      switchMap(
+        data =>  this.dd.getAllConnection(data, "persona", {"nombres":"nombres","apellidos":"apellidos","legajo":"legajo"})
+      ),
     )
   }
 
@@ -99,5 +114,17 @@ export class ImporteAfiliacionShowComponent extends TableComponent {
     },
 
   ]; 
+
+  override setData(data: any[]){
+    super.setData(data)
+    this.footer!.controls["apellidos"].setValue("AFILIADOS")
+    this.footer!.controls["nombres"].setValue(data.length)
+    this.footer!.controls["periodo"].setValue("TOTAL")
+    this.footer!.controls["valor"].setValue(   
+      data.map((t: { [x: string]: any; }) => t["valor"]).reduce((acc: any, value: any) => acc + value, 0).toFixed(2)
+    )  
+  }
+
+
 }
 

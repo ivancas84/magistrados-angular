@@ -33,15 +33,30 @@
                     <td>IMPORTE TOTAL</td><td>{{control.value["importe"]}}</td>
                 </tr>
                 <tr>
+                    <td>DEDUCCIÓN 15%</td><td>{{control.value["cuota_asociativa"]}}</td>
+                </tr>
+                <tr>
                     <td>DEDUCCIÓN FAM</td><td>{{control.value["fam"]}}</td>
                 </tr>                   
                 <tr>
                     <td>TOTAL DEDUCCIÓN</td><td>{{control.value["total_deduccion"]}}</td>
                 </tr>
+                <tr *ngIf="control.value['viatico']">
+                    <td><br>VIÁTICO</td><td><br>{{control.value["viatico"]}}</td>
+                </tr>
                 <tr>
-                    <td><strong>TOTAL A PAGAR</strong></td><td><strong>{{control.value["total_pagar"]}}</strong></td>
+                    <td><strong><br>TOTAL A PAGAR</strong></td><td><strong><br>{{control.value["total_pagar"]}}</strong></td>
                 </tr>
             </table>
+            <br><br><br><br><br>
+
+            <p>Recibí conforme</p>
+            <div>
+                <p style="float:left"><strong>Departamental {{departamento_judicial}}</strong></p>
+
+                <p style="float:right">Firma y aclaración</p>
+            </div>
+
         </div>
           
       </mat-card-content>

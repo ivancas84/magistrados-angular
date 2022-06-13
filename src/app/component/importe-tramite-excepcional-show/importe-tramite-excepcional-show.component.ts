@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Display } from '@class/display';
-import { FormArrayConfig, FormGroupConfig } from '@class/reactive-form-config';
+import { FormArrayConfig, FormControlConfig, FormGroupConfig } from '@class/reactive-form-config';
 import { DateValidatorMsg, RequiredValidatorMsg } from '@class/validator-msg';
 import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
 import { ControlDateConfig } from '@component/control-date/control-date.component';
@@ -25,32 +25,34 @@ export class ImporteTramiteExcepcionalShowComponent extends TableComponent {
   override title: string = "Importes Registro 80"
 
   override serverSortTranslate = {
-    "persona":["te_per-nombres","te_per-apellidos"],
-    "departamento_judicial":["te_dj-codigo"],
-    "organo":["te_org-descripcion"]
+    "apellido":["afi_per-apellidos"],
+    "nombres":["afi_per-nombres"],
+    "legajo":["afi_per-legajo"],
+    "departamento_judicial":["afi_dj-codigo"],
+    "organo":["afi_org-descripcion"]
   }
 
-  override serverSortObligatory = ["te-persona","te-departamento_judicial","te-organo"]
+  override serverSortObligatory = ["afi-departamento_judicial","afi-organo"]
 
   override config: FormArrayConfig = new FormArrayConfig({
-      "persona": new FieldWrapRouterLinkConfig({
-        label:"Persona",
-        config: new ControlLabelConfig({
-          entityName:"persona"
-        }),
+      persona: new FormControlConfig,
+        
+      apellidos: new FieldWrapRouterLinkConfig({
+        config: new ControlValueConfig,
         path: "persona-admin", 
         params:{id:"{{persona}})"}
       }),
-      "departamento_judicial": new ControlLabelConfig,
-      "organo": new ControlLabelConfig,
-      "codigo": new ControlValueConfig({
+      nombres: new ControlValueConfig,
+      legajo: new ControlValueConfig,
+      departamento_judicial: new ControlLabelConfig,
+      organo: new ControlLabelConfig,
+      codigo: new ControlValueConfig({
         label:"Cód",
       }),
-      "periodo": new ControlDateConfig({
+      periodo: new ControlDateConfig({
         format: "dd/MM/yyyy"
       }),
-      "valor": new ControlValueConfig({
-        label:"Valor",
+      valor: new ControlValueConfig({
       }),
     }
   )
@@ -70,6 +72,14 @@ export class ImporteTramiteExcepcionalShowComponent extends TableComponent {
         "te-organo": new InputSelectConfig,
   })
 
+  override footerConfig: FormGroupConfig = new FormGroupConfig({
+      apellidos: new ControlValueConfig,
+      nombres: new ControlValueConfig,
+      periodo: new ControlValueConfig,
+      valor: new ControlValueConfig,
+    }
+  )
+
   override initDisplay() {
     var display = new Display();
     display.setSize(0);
@@ -82,6 +92,9 @@ export class ImporteTramiteExcepcionalShowComponent extends TableComponent {
     return this.dd.all(this.entityName, this.display$.value).pipe(
       switchMap(
         data =>  this.dd.getAllConnection(data, "tramite_excepcional", {"persona":"persona","departamento_judicial":"departamento_judicial","organo":"organo","codigo":"codigo"})
+      ),
+      switchMap(
+        data =>  this.dd.getAllConnection(data, "persona", {"nombres":"nombres","apellidos":"apellidos","legajo":"legajo"})
       ),
     )
   }
@@ -105,5 +118,17 @@ export class ImporteTramiteExcepcionalShowComponent extends TableComponent {
     },
 
   ]; 
+
+
+  override setData(data: any[]){
+    super.setData(data)
+    this.footer!.controls["apellidos"].setValue("AFILIADOS")
+    this.footer!.controls["nombres"].setValue(data.length)
+    this.footer!.controls["periodo"].setValue("TOTAL")
+    this.footer!.controls["valor"].setValue(   
+      data.map((t: { [x: string]: any; }) => t["valor"]).reduce((acc: any, value: any) => acc + value, 0).toFixed(2)
+    )  
+  }
+
 }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControlConfig, FormGroupConfig } from '@class/reactive-form-config';
-import { Observable, of } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { ControlValueConfig } from '@component/control-value/control-value.component';
 import { InputYmConfig } from '@component/input-ym/input-ym.component';
 import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/field-wrap-router-link.component';
@@ -26,9 +26,7 @@ export class TotalSummaryComponent extends DetailComponent {
       "id": new FormControlConfig,
       "afiliaciones": new ControlValueConfig,
       "importe": new ControlValueConfig,
-      "cuota_asociativa": new ControlValueConfig({
-        label:"15%",
-      }),
+      "cuota_asociativa": new ControlValueConfig,
       "fam": new ControlValueConfig,
       "total_deduccion": new ControlValueConfig,
       "total_pagar": new ControlValueConfig,
@@ -45,7 +43,9 @@ export class TotalSummaryComponent extends DetailComponent {
   
   fecha!: string;
   periodo!: string
+  id_departamento_judicial!: string
   departamento_judicial!: string
+
 
   override optTitle: AbstractControlViewOption[] = [
     {
@@ -84,7 +84,15 @@ export class TotalSummaryComponent extends DetailComponent {
   }
 
   override queryData(): Observable<any>{
-    return this.dd.post("info", this.entityName, this.display$.value.getParams());
+    return this.dd.get("departamento_judicial", this.id_departamento_judicial).pipe(
+      switchMap(
+        departamento_judicial => {
+            this.departamento_judicial = departamento_judicial["nombre"]
+            return this.dd.post("info", this.entityName, this.display$.value.getParams()).pipe(
+          )
+        }
+      )
+    )
   }
 
   override initData(): Observable<any> {
@@ -98,6 +106,8 @@ export class TotalSummaryComponent extends DetailComponent {
     ) return of({})
 
     this.periodo = p["periodo"]
+    this.id_departamento_judicial = p["departamento_judicial"]
+  
 
     return this.queryData()
   }
