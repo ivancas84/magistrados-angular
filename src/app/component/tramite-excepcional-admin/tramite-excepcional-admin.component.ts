@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 import { FormGroupConfig, FormControlConfig } from "@class/reactive-form-config";
 import { MaxValidatorMsg, MinValidatorMsg, PatternValidatorMsg, RequiredValidatorMsg } from "@class/validator-msg";
 import { InputSelectConfig } from "@component/input-select/input-select.component";
@@ -24,9 +24,14 @@ export class TramiteExcepcionalAdminComponent extends DetailComponent implements
 
     override entityName: string = "tramite_excepcional"  
     override inputSearchGo: boolean = false;
-    override control: FormGroup =  new FormGroup({})
     override title: string = "Registro 80"
-
+    override control: FormGroup =  new FormGroup({
+      creado: new FormControl({value: null, disabled: true}),
+      enviado: new FormControl({value: null, disabled: true}),
+      evaluado: new FormControl({value: null, disabled: true}),
+      modificado: new FormControl({value: null, disabled: true}),
+      departamento_judicial_informado: new FormControl({value: null, disabled: true}),
+    })
     override config: FormGroupConfig = new FormGroupConfig({
         persona: new FormControlConfig,
         motivo: new InputSelectParamConfig({

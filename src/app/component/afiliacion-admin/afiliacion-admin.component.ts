@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 import { FormGroupConfig, FormControlConfig } from "@class/reactive-form-config";
 import { RequiredValidatorMsg } from "@class/validator-msg";
 import { InputSelectConfig } from "@component/input-select/input-select.component";
@@ -22,7 +22,13 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
 
     override entityName: string = "afiliacion"  
     override inputSearchGo: boolean = false;
-    override control: FormGroup =  new FormGroup({})
+    override control: FormGroup =  new FormGroup({
+      creado: new FormControl({value: null, disabled: true}),
+      enviado: new FormControl({value: null, disabled: true}),
+      evaluado: new FormControl({value: null, disabled: true}),
+      modificado: new FormControl({value: null, disabled: true}),
+      departamento_judicial_informado: new FormControl({value: null, disabled: true}),
+    })
     override title: string = "Registro 40"
 
     override config: FormGroupConfig = new FormGroupConfig({
@@ -65,7 +71,7 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
         observaciones: new TextareaConfig({
           width:new FieldWidthOptions({gtSm:"100%", sm:"100%"})
         }),
-        creado: new FieldWrapCardConfig({        
+        creado: new FieldWrapCardConfig({  
           disabled:true,
           backgroundColor:"#17a2b8",        
           config: new ControlDateConfig,

@@ -60,6 +60,7 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
             validatorMsgs:[new RequiredValidatorMsg(), new UniqueValidatorMsg()],
         }),
         tipo_documento: new InputSelectConfig({
+            default:"1",
             width:new FieldWidthOptions({gtSm:"10%", sm:"15%"})
         }),
         numero_documento: new InputTextConfig({
@@ -230,8 +231,8 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
           startWith(this.controlPersona.get("id")!.value)
         ).subscribe(
           value => {
-            this.optFooterAfiliacion_[0]["config"].disabled = (value) ? false : true;  
-            this.optFooterTramiteExcepcional_[0]["config"].disabled = (value) ? false : true;  
+            this.optFooterAfiliacion_[0]["config"]["disabled"] = (value) ? false : true;  
+            this.optFooterTramiteExcepcional_[0]["config"]["disabled"] = (value) ? false : true;  
           }
         )
         super.ngOnInit()
