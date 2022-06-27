@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FormGroupConfig, FormControlConfig } from "@class/reactive-form-config";
 import { MaxValidatorMsg, MinValidatorMsg, PatternValidatorMsg, RequiredValidatorMsg } from "@class/validator-msg";
 import { InputSelectConfig } from "@component/input-select/input-select.component";
@@ -26,6 +26,15 @@ export class TramiteExcepcionalAdminComponent extends DetailComponent implements
     override inputSearchGo: boolean = false;
     override title: string = "Registro 80"
     override control: FormGroup =  new FormGroup({
+      motivo: new FormControl(null, {validators:Validators.required}),
+      estado: new FormControl(null, {validators:Validators.required}),
+      monto: new FormControl(null, {validators:Validators.required}),
+      desde: new FormControl(null, {validators:Validators.required}),
+      hasta: new FormControl(null, {validators:Validators.required}),
+      codigo: new FormControl(null, {validators:Validators.required}),
+      organo: new FormControl(null, {validators:Validators.required}),
+      sucursal: new FormControl(null, {validators:Validators.required}),
+      departamento_judicial: new FormControl(null, {validators:Validators.required}),
       creado: new FormControl({value: null, disabled: true}),
       enviado: new FormControl({value: null, disabled: true}),
       evaluado: new FormControl({value: null, disabled: true}),
@@ -67,22 +76,18 @@ export class TramiteExcepcionalAdminComponent extends DetailComponent implements
           options:[163, 1631, 1632],
           required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],
-          width:new FieldWidthOptions()    
         }),
         organo: new InputSelectConfig({
           required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],
-          width:new FieldWidthOptions()
         }),
         departamento_judicial: new InputSelectConfig({
           required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],
-          width:new FieldWidthOptions()
         }),
         departamento_judicial_informado: new InputSelectConfig({
           disabled: true,
           entityName: "departamento_judicial",
-          width:new FieldWidthOptions()
         }),
         
         observaciones: new TextareaConfig({
@@ -92,24 +97,20 @@ export class TramiteExcepcionalAdminComponent extends DetailComponent implements
           disabled:true,
           backgroundColor:"#17a2b8",        
           config: new ControlDateConfig,
-          width:new FieldWidthOptions
         }),
         enviado: new FieldWrapCardConfig({
           disabled:true,
           backgroundColor:"#007bff",
           config: new ControlDateConfig(),
-          width:new FieldWidthOptions()
         }),
         evaluado: new FieldWrapCardConfig({
           disabled:true,
           config: new ControlDateConfig(),
-          width:new FieldWidthOptions()
         }),
         modificado: new FieldWrapCardConfig({
           disabled:true,
           backgroundColor:"#6c757d",
           config: new ControlDateConfig(),
-          width:new FieldWidthOptions()
         }),
     })
 

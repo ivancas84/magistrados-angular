@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FormGroupConfig, FormControlConfig } from "@class/reactive-form-config";
 import { RequiredValidatorMsg } from "@class/validator-msg";
 import { InputSelectConfig } from "@component/input-select/input-select.component";
@@ -23,6 +23,12 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
     override entityName: string = "afiliacion"  
     override inputSearchGo: boolean = false;
     override control: FormGroup =  new FormGroup({
+      motivo: new FormControl(null, {validators:Validators.required}),
+      estado: new FormControl(null, {validators:Validators.required}),
+      codigo: new FormControl(null, {validators:Validators.required}),
+      organo: new FormControl(null, {validators:Validators.required}),
+      departamento_judicial: new FormControl(null, {validators:Validators.required}),
+
       creado: new FormControl({value: null, disabled: true}),
       enviado: new FormControl({value: null, disabled: true}),
       evaluado: new FormControl({value: null, disabled: true}),
@@ -36,14 +42,12 @@ export class AfiliacionAdminComponent extends DetailComponent implements OnInit{
         motivo: new InputSelectParamConfig({
           options:["Alta", "Baja", "Pendiente"],
           default: "Alta",
-          required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"33%"})
         }),
         estado: new InputSelectParamConfig({
           options:['Creado','Enviado','Aprobado','Rechazado'],
           default: "Creado",
-          required: true,
           validatorMsgs: [ new RequiredValidatorMsg, ],
           width:new FieldWidthOptions({gtSm:"34%"})
         }),
