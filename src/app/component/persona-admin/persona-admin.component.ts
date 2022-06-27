@@ -25,6 +25,7 @@ import { EventButtonConfig } from "@component/event-button/event-button.componen
 import { DialogAlertComponent } from "@component/dialog-alert/dialog-alert.component";
 import { RouteIconConfig } from "@component/route-icon/route-icon.component";
 import { emptyUrl } from "@function/empty-url.function";
+import { EventIconConfig } from "@component/event-icon/event-icon.component";
 
 @Component({
     selector: 'app-persona-admin',
@@ -185,6 +186,15 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
         routerLink: "afiliacion-admin",
         color: "accent",
         icon:"edit"
+      }),
+
+      new EventIconConfig({
+        params:{id:"{{id}}"},
+        title: "Eliminar Registro 40",
+        color: "primary",
+        icon:"delete",
+        action:"delete_afiliacion",
+        fieldEvent:this.optField
       })
     ]; //columna opciones para todas las tablas
 
@@ -194,10 +204,19 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
         routerLink: "tramite-excepcional-admin",
         color: "accent",
         icon:"edit"
+      }),
+
+
+      new EventIconConfig({
+        params:{id:"{{id}}"},
+        title: "Eliminar Registro 80",
+        color: "primary",
+        icon:"delete",
+        action:"delete_tramite_excepcional",
+        fieldEvent:this.optField
       })
-    ]; //columna opciones para todas las tablas
+    ];
   
-    
     constructor(
         protected override dialog: MatDialog,
         protected override storage: SessionStorageService,
@@ -331,8 +350,46 @@ export class PersonaAdminComponent extends StructureComponent implements OnInit{
           } 
         break;
 
+        case "delete_tramite_excepcional":
+          if(data["control"].value["estado"] != "Creado"){
+            this.dialog.open(DialogAlertComponent, {
+              data: {title: "Error", message: "No se puede eliminar un registro " + data["control"].value["estado"]}
+            });
+          } else {
+            this.deleteRegistro("tramite_excepcional", data["control"].value["id"])
+          }
+        break;
+
+        case "delete_afiliacion":
+          if(data["control"].value["estado"] != "Creado"){
+            this.dialog.open(DialogAlertComponent, {
+              data: {title: "Error", message: "No se puede eliminar un registro " + data["control"].value["estado"]}
+            });
+          } else {
+            this.deleteRegistro("afiliacion", data["control"].value["id"])
+          }
+        break;
+
         default: super.switchOptField(data)
       }
+    }
+
+    protected deleteRegistro(registro: string, id: any){
+      var s = this.dd._post("delete", registro, [id]).subscribe({
+        next: (response: any) => {
+          this.response = response
+          this.snackBar.open("Registro realizado", "X");
+          this.removeStorage();
+          this.display$.next(this.display$.value);
+        },
+        error: (error: any) => { 
+          this.dialog.open(DialogAlertComponent, {
+            data: {title: "Error", message: error.error}
+          });
+          this.isSubmitted = false;
+        }
+      });
+      this.subscriptions.add(s);
     }
 
     protected submitPersona() {
