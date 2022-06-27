@@ -33,6 +33,7 @@ import { ConfiguracionValorAdminArrayComponent } from '@component/configuracion-
 import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
 import { ImporteDeleteComponent } from '@component/importe-delete/importe-delete.component';
 import { TotalSummaryComponent } from '@component/total-summary/total-summary.component';
+import { RegistroUpdateComponent } from '@component/registro-update/registro-update.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { TotalSummaryComponent } from '@component/total-summary/total-summary.co
     TramiteExcepcionalAdminComponent,
     TramiteExcepcionalShowComponent,
     ViaticoAdminComponent,
+    RegistroUpdateComponent,
   ],
   imports: [
     BrowserModule,
