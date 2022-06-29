@@ -10,6 +10,7 @@ import { EventButtonConfig } from '@component/event-button/event-button.componen
 import { EventIconConfig } from '@component/event-icon/event-icon.component';
 import { InputSelectParamConfig } from '@component/input-select-param/input-select-param.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { InputSelectLabelConfig } from '@component/input-select-label/input-select-label.component';
 
 @Component({
   selector: 'app-registro-update',
@@ -32,12 +33,13 @@ export class RegistroUpdateComponent extends DetailComponent implements OnInit {
   })
   
   override config: FormGroupConfig = new FormGroupConfig({
-    "organo": new InputSelectConfig({
+    organo: new InputSelectConfig({
       validatorMsgs: [ new RequiredValidatorMsg, ],
     }),
-    "registro": new InputSelectParamConfig({
-      options:["afiliacion","tramite_excepcional"],
+    registro: new InputSelectLabelConfig({
+      options:  [{id:"afiliacion",label:"Registro 40"}, {id:"tramite_excepcional", label:"Registro 80"}],
       validatorMsgs: [ new RequiredValidatorMsg, ],
+      required:true
     }),
   })
   
