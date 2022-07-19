@@ -14,6 +14,7 @@ import { ImporteSummary162Component } from '@component/importe-summary-162/impor
 import { ImporteSummaryComponent } from '@component/importe-summary/importe-summary.component';
 import { ImporteTramiteExcepcionalShowComponent } from '@component/importe-tramite-excepcional-show/importe-tramite-excepcional-show.component';
 import { PersonaAdminComponent } from '@component/persona-admin/persona-admin.component';
+import { RegistroUpdateComponent } from '@component/registro-update/registro-update.component';
 import { SucursalAdminArrayComponent } from '@component/sucursal-admin-array/sucursal-admin-array.component';
 import { TipoDocumentoAdminArrayComponent } from '@component/tipo-documento-admin-array/tipo-documento-admin-array.component';
 import { TotalSummaryComponent } from '@component/total-summary/total-summary.component';
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'tramite-excepcional-admin', component: TramiteExcepcionalAdminComponent  , pathMatch: 'full' },
   { path: 'tramite-excepcional-show', component: TramiteExcepcionalShowComponent  , pathMatch: 'full' },
   { path: 'viatico-admin', component: ViaticoAdminComponent, pathMatch: 'full' },
+  { path: 'registro-update', component: RegistroUpdateComponent, pathMatch: 'full' },
 
 ];
 
