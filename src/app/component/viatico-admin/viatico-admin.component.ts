@@ -25,8 +25,10 @@ export class ViaticoAdminComponent extends DetailComponent implements OnInit{
   override entityName: string = "viatico"
   override inputSearchGo: boolean = false;
 
-  form: FormGroup = new FormGroup({
-      valor:new FormControl(null, {validators: [Validators.required, ValidatorsService.real(2)]}),
+  override control: FormGroup = new FormGroup({
+    periodo:new FormControl(null, {validators: [Validators.required]}),
+    departamento_judicial:new FormControl(null, {validators: [Validators.required]}),
+    valor:new FormControl(null, {validators: [Validators.required, ValidatorsService.real(2)]}),
   })
 
   override config: FormGroupConfig = new FormGroupConfig({
@@ -34,16 +36,13 @@ export class ViaticoAdminComponent extends DetailComponent implements OnInit{
         validatorMsgs: [ new RequiredValidatorMsg, ],
         width:new FieldWidthOptions({gtSm:"34%"}),
         default:moment(),
-        required:true
       }),
       departamento_judicial: new InputSelectConfig({
         validatorMsgs: [ new RequiredValidatorMsg, ],
         width:new FieldWidthOptions({gtSm:"34%"}),
-        required:true
       }),
       valor: new InputTextConfig({
         validatorMsgs: [ new RequiredValidatorMsg, ],
-        width:new FieldWidthOptions()
       }),
     }
   )
@@ -63,6 +62,7 @@ export class ViaticoAdminComponent extends DetailComponent implements OnInit{
         map(
           response => {
             if(!response) return {}
+            //if(response.hasOwnProperty("periodo")) response["viatico"]["periodo.ym"] = response["viatico"]["periodo"]
             if(response.hasOwnProperty("periodo.ym")) response["viatico"]["periodo"] = response["viatico"]["periodo.ym"]
             return response;
           }
