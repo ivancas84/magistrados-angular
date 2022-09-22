@@ -8,6 +8,7 @@ import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/fie
 import { TableComponent } from '@component/structure/table.component';
 import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
 import { EventIconConfig } from '@component/event-icon/event-icon.component';
+import { ControlNumberConfig } from '@component/control-number/control-number.component';
 
 @Component({
   selector: 'app-importe-summary',
@@ -66,14 +67,14 @@ export class ImporteSummaryComponent extends TableComponent {
     
   override footerConfig: FormGroupConfig = new FormGroupConfig({
       nombre: new ControlValueConfig(),
-      afiliaciones: new ControlValueConfig(),
-      importe: new ControlValueConfig(),
-      cuota_asociativa: new ControlValueConfig(),
-      fam: new ControlValueConfig(),
-      total_deduccion: new ControlValueConfig(),
-      total_pagar: new ControlValueConfig(),
-      viatico: new ControlValueConfig(),
-      total: new ControlValueConfig(),
+      afiliaciones: new ControlNumberConfig(),
+      importe: new ControlNumberConfig(),
+      cuota_asociativa: new ControlNumberConfig(),
+      fam: new ControlNumberConfig(),
+      total_deduccion: new ControlNumberConfig(),
+      total_pagar: new ControlNumberConfig(),
+      viatico: new ControlNumberConfig(),
+      total: new ControlNumberConfig(),
   })
 
   override config: FormArrayConfig = new FormArrayConfig({
@@ -81,29 +82,29 @@ export class ImporteSummaryComponent extends TableComponent {
       "nombre": new ControlValueConfig({
         label:"Departamento",
       }),
-      "afiliaciones": new ControlValueConfig({
+      "afiliaciones": new ControlNumberConfig({
         label:"Colegiados",
       }),
-      "importe": new ControlValueConfig,
-      "cuota_asociativa": new ControlValueConfig({
+      "importe": new ControlNumberConfig,
+      "cuota_asociativa": new ControlNumberConfig({
         label:"15%",
       }),
-      "fam": new ControlValueConfig({
+      "fam": new ControlNumberConfig({
         label:"FAM",
       }),
-      "total_deduccion": new ControlValueConfig,
-      "total_pagar": new ControlValueConfig({
+      "total_deduccion": new ControlNumberConfig,
+      "total_pagar": new ControlNumberConfig({
         label:"Total a pagar",
       }),
       "viatico": new FieldWrapRouterLinkConfig({
         label:"Viático",
         params: {departamento_judicial:"{{id}}"}, //utilizar {{key}} para identificar valor del conjunto de datos
         path:"viatico-admin",
-        config:new ControlValueConfig({
+        config:new ControlNumberConfig({
           label:"Viático",
         })
       }),
-      "total": new ControlValueConfig({
+      "total": new ControlNumberConfig({
         label:"TOTAL",
       }),
   })

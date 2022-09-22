@@ -10,6 +10,7 @@ import { FormGroup } from '@angular/forms';
 import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
 import { EventIconConfig } from '@component/event-icon/event-icon.component';
 import { isEmptyObject } from '@function/is-empty-object.function';
+import { ControlNumberConfig } from '@component/control-number/control-number.component';
 
 @Component({
   selector: 'app-total-summary',
@@ -24,15 +25,17 @@ export class TotalSummaryComponent extends DetailComponent {
 
   override config: FormGroupConfig = new FormGroupConfig({
       "id": new FormControlConfig,
-      "afiliaciones": new ControlValueConfig,
-      "importe": new ControlValueConfig,
-      "cuota_asociativa": new ControlValueConfig,
-      "fam": new ControlValueConfig,
-      "total_deduccion": new ControlValueConfig,
-      "total_pagar": new ControlValueConfig,
+      "afiliaciones": new ControlNumberConfig,
+      "importe": new ControlNumberConfig,
+      "cuota_asociativa": new ControlNumberConfig,
+      "fam": new ControlNumberConfig,
+      "total_deduccion": new ControlNumberConfig,
+      "total_pagar": new ControlNumberConfig,
       "total_pagar_letras": new ControlValueConfig,
-      "viatico": new ControlValueConfig,
-      "total": new ControlValueConfig,
+      "viatico": new ControlNumberConfig,
+      "total": new ControlNumberConfig,
+      "total_letras": new ControlValueConfig,
+
   })
 
   searchConfig: FormGroupConfig = new FormGroupConfig({

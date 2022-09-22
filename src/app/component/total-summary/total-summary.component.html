@@ -21,31 +21,36 @@
         <div #mainContent *ngIf="!emptyData">
             <p style="text-align:right">La Plata, {{fecha}} </p>
 
-            <p style="text-align:justify">RECIBI DEL COLEGIO DE MAGISTRADOS Y FUNCIONARIOS DEL PODER JUDICIAL DE LA PROVINCIA DE BUENOS AIRES LA SUMA DE $ {{control.value["total_pagar"]}} ({{control.value["total_pagar_letras"]}}) mediante transferencia del BANCO DE LA PROIVINCIA DE BUENOS AIRES, CONFORME AL SIGUIENTE DETALLE: </p>
+            <p style="text-align:justify">RECIBI DEL COLEGIO DE MAGISTRADOS Y 
+              FUNCIONARIOS DEL PODER JUDICIAL DE LA PROVINCIA DE BUENOS AIRES 
+              LA SUMA DE $ {{control.value["total"] | number:"":"es-AR"}} 
+              ({{control.value["total_letras"]}}) mediante transferencia del
+              BANCO DE LA PROIVINCIA DE BUENOS AIRES, CONFORME AL SIGUIENTE
+              DETALLE: </p>
             <table>
                 <tr>
                     <td><strong>MES</strong></td><td><strong>{{periodo | toDate | date:"MM/yyyy" }}</strong></td>
                 </tr>
                 <tr>
-                    <td>COLEGIADOS</td><td>{{control.value["afiliaciones"]}}</td>
+                    <td>COLEGIADOS</td><td>{{control.value["afiliaciones"] | number:"":"es-AR" }}</td>
                 </tr>
                 <tr>
-                    <td>IMPORTE TOTAL</td><td>{{control.value["importe"]}}</td>
+                    <td>IMPORTE TOTAL</td><td>{{control.value["importe"] | number:"":"es-AR"}}</td>
                 </tr>
                 <tr>
-                    <td>DEDUCCIÓN 15%</td><td>{{control.value["cuota_asociativa"]}}</td>
+                    <td>DEDUCCIÓN 15%</td><td>{{control.value["cuota_asociativa"] | number:"":"es-AR"}}</td>
                 </tr>
                 <tr>
-                    <td>DEDUCCIÓN FAM</td><td>{{control.value["fam"]}}</td>
+                    <td>DEDUCCIÓN FAM</td><td>{{control.value["fam"] | number:"":"es-AR"}}</td>
                 </tr>                   
                 <tr>
-                    <td>TOTAL DEDUCCIÓN</td><td>{{control.value["total_deduccion"]}}</td>
+                    <td>TOTAL DEDUCCIÓN</td><td>{{control.value["total_deduccion"] | number:"":"es-AR"}}</td>
                 </tr>
                 <tr *ngIf="control.value['viatico']">
-                    <td><br>VIÁTICO</td><td><br>{{control.value["viatico"]}}</td>
+                    <td><br>VIÁTICO</td><td><br>{{control.value["viatico"] | number:"":"es-AR"}}</td>
                 </tr>
                 <tr>
-                    <td><strong><br>TOTAL A PAGAR</strong></td><td><strong><br>{{control.value["total"]}}</strong></td>
+                    <td><strong><br>TOTAL A PAGAR</strong></td><td><strong><br>{{control.value["total"] | number:"":"es-AR"}}</strong></td>
                 </tr>
             </table>
             <br><br><br><br><br>

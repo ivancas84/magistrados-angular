@@ -4,6 +4,7 @@ import { DateValidatorMsg } from "@class/validator-msg";
 import { AbstractControlViewOption } from "@component/abstract-control-view/abstract-control-view.component";
 import { ControlDateConfig } from "@component/control-date/control-date.component";
 import { ControlLabelConfig } from "@component/control-label/control-label.component";
+import { ControlNumberConfig } from "@component/control-number/control-number.component";
 import { ControlValueConfig } from "@component/control-value/control-value.component";
 import { EventIconConfig } from "@component/event-icon/event-icon.component";
 import { FieldWrapRouterLinkConfig } from "@component/field-wrap-router-link/field-wrap-router-link.component";
@@ -24,14 +25,17 @@ export class TramiteExcepcionalShowComponent extends TableComponent implements O
   override title: string = "Registros 80"
   override config: FormArrayConfig = new FormArrayConfig({
     persona: new FormControlConfig,
-    nombres: new FieldWrapRouterLinkConfig({
-      config: new ControlValueConfig({
-        entityName: "nombres",
-      }),
+    apellidos: new FieldWrapRouterLinkConfig({
+      config: new ControlValueConfig,
       path: "persona-admin", 
       params:{id:"{{persona}})"}
     }),
-    apellidos: new ControlValueConfig,
+
+    nombres: new FieldWrapRouterLinkConfig({
+      config: new ControlValueConfig,
+      path: "persona-admin", 
+      params:{id:"{{persona}})"}
+    }),
     legajo: new ControlValueConfig,
     organo: new ControlLabelConfig,
     codigo: new ControlValueConfig({
@@ -48,7 +52,7 @@ export class TramiteExcepcionalShowComponent extends TableComponent implements O
     }),
     motivo: new ControlValueConfig,
     estado: new ControlValueConfig,
-    monto: new ControlValueConfig,
+    monto: new ControlNumberConfig,
     creado: new ControlDateConfig({
       format: "MM/yyyy"
     }),

@@ -4,6 +4,7 @@ import { FormArrayConfig, FormControlConfig, FormGroupConfig } from '@class/reac
 import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
 import { ControlDateConfig } from '@component/control-date/control-date.component';
 import { ControlLabelConfig } from '@component/control-label/control-label.component';
+import { ControlNumberConfig } from '@component/control-number/control-number.component';
 import { ControlValueConfig } from '@component/control-value/control-value.component';
 import { EventIconConfig } from '@component/event-icon/event-icon.component';
 import { FieldWrapRouterLinkConfig } from '@component/field-wrap-router-link/field-wrap-router-link.component';
@@ -52,15 +53,15 @@ export class ImporteAfiliacionShowComponent extends TableComponent {
       periodo: new ControlDateConfig({
         format: "dd/MM/yyyy"
       }),
-      valor: new ControlValueConfig,
+      valor: new ControlNumberConfig,
     }
   )
 
   override footerConfig: FormGroupConfig = new FormGroupConfig({
       apellidos: new ControlValueConfig,
-      nombres: new ControlValueConfig,
+      nombres: new ControlNumberConfig,
       periodo: new ControlValueConfig,
-      valor: new ControlValueConfig,
+      valor: new ControlNumberConfig,
     }
   )
 

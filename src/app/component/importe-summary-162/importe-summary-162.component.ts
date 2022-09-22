@@ -7,6 +7,7 @@ import { InputYmConfig } from '@component/input-ym/input-ym.component';
 import { TableComponent } from '@component/structure/table.component';
 import { AbstractControlViewOption } from '@component/abstract-control-view/abstract-control-view.component';
 import { EventIconConfig } from '@component/event-icon/event-icon.component';
+import { ControlNumberConfig } from '@component/control-number/control-number.component';
 
 @Component({
   selector: 'app-persona-show',
@@ -46,8 +47,8 @@ export class ImporteSummary162Component extends TableComponent {
   override footerConfig: FormGroupConfig = new FormGroupConfig({
       afi_dj_nombre: new ControlValueConfig(),
       afi_org_descripcion: new ControlValueConfig(),
-      afiliaciones: new ControlValueConfig(),
-      importe: new ControlValueConfig(),
+      afiliaciones: new ControlNumberConfig(),
+      importe: new ControlNumberConfig(),
       // cuota_asociativa: new ControlValueConfig(),
   })
 
@@ -58,10 +59,10 @@ export class ImporteSummary162Component extends TableComponent {
       afi_org_descripcion: new ControlValueConfig({
         label:"Organo",
       }),
-      afiliaciones: new ControlValueConfig({
+      afiliaciones: new ControlNumberConfig({
         label:"Colegiados",
       }),
-      importe: new ControlValueConfig({
+      importe: new ControlNumberConfig({
         label:"15%",
       }),
    
