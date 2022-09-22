@@ -25,14 +25,16 @@ export class AfiliacionShowComponent extends TableComponent implements OnInit{
   override title: string = "Registros 40"
   override config: FormArrayConfig = new FormArrayConfig({
     persona: new FormControlConfig,
-    nombres: new FieldWrapRouterLinkConfig({
-      config: new ControlValueConfig({
-        entityName: "nombres",
-      }),
+    apellidos: new FieldWrapRouterLinkConfig({
+      config: new ControlValueConfig,
       path: "persona-admin", 
       params:{id:"{{persona}})"}
     }),
-    apellidos: new ControlValueConfig,
+    nombres: new FieldWrapRouterLinkConfig({
+      config: new ControlValueConfig,
+      path: "persona-admin", 
+      params:{id:"{{persona}})"}
+    }),
     legajo: new ControlValueConfig,
     organo: new ControlLabelConfig,
     codigo: new ControlValueConfig({
