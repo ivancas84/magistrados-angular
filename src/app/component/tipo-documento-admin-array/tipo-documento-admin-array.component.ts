@@ -11,7 +11,6 @@ import { TableComponent } from '@component/structure/table.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataDefinitionFkAllService } from '@service/data-definition/data-definition-fk-all.service';
 import { DataDefinitionToolService } from '@service/data-definition/data-definition-tool.service';
 import { SessionStorageService } from '@service/storage/session-storage.service';
 import { DdAsyncValidatorsService } from '@service/validators/dd-async-validators.service';
